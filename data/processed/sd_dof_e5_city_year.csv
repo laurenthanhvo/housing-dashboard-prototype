@@ -1,4 +1,4 @@
-jur_norm,year,population_total,housing_units_total,housing_units_per_1000_pop
+jur_clean,year,population_total,housing_units_total,housing_units_per_1000_pop
 CARLSBAD,2020.0,115029.0,47734.0,414.9736153491728
 CARLSBAD,2021.0,115889.0,47981.0,414.0254899084469
 CARLSBAD,2022.0,115997.0,48385.0,417.12285662560237
