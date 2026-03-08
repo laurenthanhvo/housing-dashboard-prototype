@@ -1,0 +1,316 @@
+
+==========================================================================================
+APR Table A (apr_a)
+shape: (302408, 27)
+columns:
+  - JURIS_NAME
+  - CNTY_NAME
+  - YEAR
+  - PRIOR_APN
+  - APN
+  - STREET_ADDRESS
+  - PROJECT_NAME
+  - JURS_TRACKING_ID
+  - UNIT_CAT
+  - TENURE
+  - APP_SUBMIT_DT
+  - VLOW_INCOME_DR
+  - VLOW_INCOME_NDR
+  - LOW_INCOME_DR
+  - LOW_INCOME_NDR
+  - MOD_INCOME_DR
+  - MOD_INCOME_NDR
+  - ABOVE_MOD_INCOME
+  - TOT_PROPOSED_UNITS
+  - TOT_APPROVED_UNITS
+  - TOT_DISAPPROVED_UNITS
+  - APP_SUBMITTED_SB35
+  - DENSITY_BONUS_RECEIVED
+  - DENSITY_BONUS_APPROVED
+  - APPLICATION_STATUS
+  - PROJECT_TYPE
+  - NOTES
+
+==========================================================================================
+APR Table A2 (apr_a2)
+shape: (787329, 52)
+columns:
+  - JURIS_NAME
+  - CNTY_NAME
+  - YEAR
+  - PRIOR_APN
+  - APN
+  - STREET_ADDRESS
+  - PROJECT_NAME
+  - JURS_TRACKING_ID
+  - UNIT_CAT
+  - TENURE
+  - VLOW_INCOME_DR
+  - VLOW_INCOME_NDR
+  - LOW_INCOME_DR
+  - LOW_INCOME_NDR
+  - MOD_INCOME_DR
+  - MOD_INCOME_NDR
+  - ABOVE_MOD_INCOME
+  - ENT_APPROVE_DT1
+  - NO_ENTITLEMENTS
+  - BP_VLOW_INCOME_DR
+  - BP_VLOW_INCOME_NDR
+  - BP_LOW_INCOME_DR
+  - BP_LOW_INCOME_NDR
+  - BP_MOD_INCOME_DR
+  - BP_MOD_INCOME_NDR
+  - BP_ABOVE_MOD_INCOME
+  - BP_ISSUE_DT1
+  - NO_BUILDING_PERMITS
+  - CO_VLOW_INCOME_DR
+  - CO_VLOW_INCOME_NDR
+  - CO_LOW_INCOME_DR
+  - CO_LOW_INCOME_NDR
+  - CO_MOD_INCOME_DR
+  - CO_MOD_INCOME_NDR
+  - CO_ABOVE_MOD_INCOME
+  - CO_ISSUE_DT1
+  - NO_OTHER_FORMS_OF_READINESS
+  - EXTR_LOW_INCOME_UNITS
+  - APPROVE_SB35
+  - INFILL_UNITS
+  - FIN_ASSIST_NAME
+  - DR_TYPE
+  - NO_FA_DR
+  - TERM_AFF_DR
+  - DEM_DES_UNITS
+  - DEM_OR_DES_UNITS
+  - DEM_DES_UNITS_OWN_RENT
+  - DENSITY_BONUS_TOTAL
+  - DENSITY_BONUS_NUMBER_OTHER_INCENTIVES
+  - DENSITY_BONUS_INCENTIVES
+  - DENSITY_BONUS_RECEIVE_REDUCTION
+  - NOTES
+
+==========================================================================================
+APR Table C (apr_c)
+shape: (8312, 21)
+columns:
+  - JURISDICTION
+  - COUNTY
+  - YEAR
+  - APN
+  - STREET_ADDRESS
+  - PROJECT_NAME
+  - JURS_TRACKING_ID
+  - REZONE_DT
+  - VLOW_INCOME
+  - LOW_INCOME
+  - MOD_INCOME
+  - ABOVE_MOD_INCOME
+  - SHORTFALL_DESC
+  - PARCEL_SIZE
+  - GEN_PLAN_DESIGNATION
+  - ZONING
+  - MIN_DENSITY_ALLOWED
+  - MAX_DENSITY_ALLOWED
+  - REALISTIC_CAPACITY
+  - PARCEL_VACANT_NONVACANT
+  - DESCRIPTION
+
+==========================================================================================
+APR Table F (apr_f)
+shape: (295, 13)
+columns:
+  - JURISDICTION_NAME
+  - YEAR
+  - ACTIVITY
+  - ELI_NON_RHNA
+  - VLI_NON_RHNA
+  - LI_NON_RHNA
+  - TOTAL_UNITS
+  - DESCRIPTION
+  - ELI_RHNA
+  - VLI_RHNA
+  - LI_RHNA
+  - TOTAL_UNITS_RHNA
+  - DESCRIPTION_RHNA
+
+==========================================================================================
+RHNA 6th Cycle (rhna6)
+shape: (539, 15)
+columns:
+  - Jurisdiction
+  - Planning Period
+  - 6th Cycle Started
+  - VLI UNITS
+  - RHNA VLI
+  - VLI %
+  - LI UNITS
+  - RHNA LI
+  - LI %
+  - MOD UNITS
+  - RHNA MOD
+  - MOD %
+  - ABOVE MOD UNITS
+  - RHNA ABOVE MOD
+  - ABOVE MOD %
+
+==========================================================================================
+RHNA 5th Cycle (rhna5)
+shape: (539, 15)
+columns:
+  - _id
+  - Jurisdiction
+  - Planning Period
+  - VLI UNITS
+  - RHNA VLI
+  - VLI %
+  - LI UNITS
+  - RHNA LI
+  - LI %
+  - MOD UNITS
+  - RHNA MOD
+  - MOD %
+  - ABOVE MOD UNITS
+  - RHNA ABOVE MOD
+  - ABOVE MOD %
+
+==========================================================================================
+SD Permits Active (permits_active)
+shape: (256882, 47)
+columns:
+  - PROJECT_ID
+  - JOB_ID
+  - APPROVAL_ID
+  - PROJECT_TITLE
+  - PROJECT_SCOPE
+  - APPROVAL_SCOPE
+  - APPROVAL_TYPE
+  - PROJECT_PROCESSING_CODE
+  - APPROVAL_PROCESSING_CODE
+  - APPROVAL_STATUS
+  - JOB_BC_CODE
+  - JOB_BC_CODE_DESCRIPTION
+  - APPROVAL_PERMIT_HOLDER
+  - ADDRESS_JOB
+  - JOB_APN
+  - LAT_JOB
+  - LNG_JOB
+  - DATE_PROJECT_CREATE
+  - DATE_PROJECT_COMPLETE
+  - DATE_APPROVAL_CREATE
+  - DATE_APPROVAL_ISSUE
+  - DATE_APPROVAL_CLOSE
+  - DATE_APPROVAL_EXPIRE
+  - APPROVAL_VALUATION
+  - APPROVAL_STORIES
+  - APPROVAL_FLOOR_AREA
+  - APPROVAL_DU_EXTREMELY_LOW
+  - APPROVAL_DU_VERY_LOW
+  - APPROVAL_DU_LOW
+  - APPROVAL_DU_MODERATE
+  - APPROVAL_DU_ABOVE_MODERATE
+  - APPROVAL_DU_BONUS
+  - APPROVAL_DU_FUTURE_DEMO
+  - APPROVAL_ADU_EXTREMELY_LOW
+  - APPROVAL_ADU_VERY_LOW
+  - APPROVAL_ADU_LOW
+  - APPROVAL_ADU_MODERATE
+  - APPROVAL_ADU_ABOVE_MODERATE
+  - APPROVAL_ADU_BONUS
+  - APPROVAL_ADU_TOTAL
+  - APPROVAL_JADU_EXTREMELY_LOW
+  - APPROVAL_JADU_VERY_LOW
+  - APPROVAL_JADU_LOW
+  - APPROVAL_JADU_MODERATE
+  - APPROVAL_JADU_ABOVE_MODERATE
+  - APPROVAL_JADU_BONUS
+  - APPROVAL_JADU_TOTAL
+
+==========================================================================================
+SD Permits Closed (permits_closed)
+shape: (132550, 47)
+columns:
+  - PROJECT_ID
+  - JOB_ID
+  - APPROVAL_ID
+  - PROJECT_TITLE
+  - PROJECT_SCOPE
+  - APPROVAL_SCOPE
+  - APPROVAL_TYPE
+  - PROJECT_PROCESSING_CODE
+  - APPROVAL_PROCESSING_CODE
+  - APPROVAL_STATUS
+  - JOB_BC_CODE
+  - JOB_BC_CODE_DESCRIPTION
+  - APPROVAL_PERMIT_HOLDER
+  - ADDRESS_JOB
+  - JOB_APN
+  - LAT_JOB
+  - LNG_JOB
+  - DATE_PROJECT_CREATE
+  - DATE_PROJECT_COMPLETE
+  - DATE_APPROVAL_CREATE
+  - DATE_APPROVAL_ISSUE
+  - DATE_APPROVAL_CLOSE
+  - DATE_APPROVAL_EXPIRE
+  - APPROVAL_VALUATION
+  - APPROVAL_STORIES
+  - APPROVAL_FLOOR_AREA
+  - APPROVAL_DU_EXTREMELY_LOW
+  - APPROVAL_DU_VERY_LOW
+  - APPROVAL_DU_LOW
+  - APPROVAL_DU_MODERATE
+  - APPROVAL_DU_ABOVE_MODERATE
+  - APPROVAL_DU_BONUS
+  - APPROVAL_DU_FUTURE_DEMO
+  - APPROVAL_ADU_EXTREMELY_LOW
+  - APPROVAL_ADU_VERY_LOW
+  - APPROVAL_ADU_LOW
+  - APPROVAL_ADU_MODERATE
+  - APPROVAL_ADU_ABOVE_MODERATE
+  - APPROVAL_ADU_BONUS
+  - APPROVAL_ADU_TOTAL
+  - APPROVAL_JADU_EXTREMELY_LOW
+  - APPROVAL_JADU_VERY_LOW
+  - APPROVAL_JADU_LOW
+  - APPROVAL_JADU_MODERATE
+  - APPROVAL_JADU_ABOVE_MODERATE
+  - APPROVAL_JADU_BONUS
+  - APPROVAL_JADU_TOTAL
+
+==========================================================================================
+SD Permits Data Dictionary (permits_dict)
+shape: (21, 3)
+columns:
+  - field
+  - description
+  - possible_values
+
+==========================================================================================
+Municipal Boundaries (muni)
+shape: (73, 16)
+columns:
+  - OBJECTID
+  - Name
+  - CREATEDBY
+  - CREATEDDATE
+  - UPDATEDBY
+  - UPDATEDATE
+  - GlobalID
+  - CODE
+  - DOCYR
+  - DOCNO
+  - DOCDATE
+  - SUBJECT
+  - Shape_Length
+  - Shape_Area
+  - geometry
+  - jur_clean
+
+==========================================================================================
+County Boundary (county)
+shape: (1, 5)
+columns:
+  - OBJECTID
+  - TRANUM
+  - Shape_Length
+  - Shape_Area
+  - geometry

@@ -1,0 +1,16 @@
+# Data
+data/raw/
+data/interim/
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Notebooks
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

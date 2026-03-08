@@ -1,0 +1,450 @@
+JURISDICTION,COUNTY,YEAR,APN,STREET_ADDRESS,PROJECT_NAME,JURS_TRACKING_ID,REZONE_DT,VLOW_INCOME,LOW_INCOME,MOD_INCOME,ABOVE_MOD_INCOME,SHORTFALL_DESC,PARCEL_SIZE,GEN_PLAN_DESIGNATION,ZONING,MIN_DENSITY_ALLOWED,MAX_DENSITY_ALLOWED,REALISTIC_CAPACITY,PARCEL_VACANT_NONVACANT,DESCRIPTION,jur_clean,year
+CARLSBAD,San Diego,2024,155-200-12,2775 State St,Carlsbad Village COASTER Station,Site 14,2024-01-30,0,11,0,0,Shortfall of Sites,0.78,V-B,V-B,28,35,11.0,Non-Vacant,COASTER Station,CARLSBAD,2024
+CARLSBAD,San Diego,2024,156-301-06,2501 El Camnio Real,The Shoppes at Carlsbad Parking Lot,Site 2,2024-01-30,0,27,0,0,Shortfall of Sites,1.0,R/R-40,RD-M/C-2,37.5,40,27.0,Non-Vacant,The site encompasses the parking lots for The Shoppes at Carlsbad mall.,CARLSBAD,2024
+CARLSBAD,San Diego,2024,156-301-10,2501 El Camnio Real,The Shoppes at Carlsbad Parking Lot,Site 2,2024-01-30,0,26,0,0,Shortfall of Sites,1.0,R/R-40,RD-M/C-2,37.5,40,26.0,Non-Vacant,The site encompasses the parking lots for The Shoppes at Carlsbad mall.,CARLSBAD,2024
+CARLSBAD,San Diego,2024,156-301-11,2501 El Camnio Real,The Shoppes at Carlsbad Parking Lot,Site 2,2024-01-30,0,337,85,0,Shortfall of Sites,22.6,R/R-40/R-23/OS,RD-M/C-2/OS,19,40,422.0,Non-Vacant,The site encompasses the parking lots for The Shoppes at Carlsbad mall and a North County Transit District transit station.,CARLSBAD,2024
+CARLSBAD,San Diego,2024,156-301-16,1810 Marron Road,North County Plaza,Site 1,2024-01-30,0,36,0,204,Shortfall of Sites,19.0,R/R-40/OS,RD-M-Q/C-2-Q/OS,37.5,40,240.0,Non-Vacant,"The site is a nearly 20-acre shopping center (North County Plaza) developed with stores, restaurants and other businesses",CARLSBAD,2024
+CARLSBAD,San Diego,2024,156-302-14,2501 El Camnio Real,The Shoppes at Carlsbad Parking Lot,Site 2,2024-01-30,0,1,0,0,Shortfall of Sites,0.22,R/R-40,RD-M/C-2,37.5,40,1.0,Non-Vacant,The site encompasses the parking lots for The Shoppes at Carlsbad mall.,CARLSBAD,2024
+CARLSBAD,San Diego,2024,156-302-17,2501 El Camnio Real,The Shoppes at Carlsbad Parking Lot,Site 2,2024-01-30,0,1,0,0,Shortfall of Sites,0.11,R/R-40,RD-M/C02,37.5,40,1.0,Non-Vacant,The site encompasses the parking lots for The Shoppes at Carlsbad mall.,CARLSBAD,2024
+CARLSBAD,San Diego,2024,156-302-23,2501 El Camnio Real,The Shoppes at Carlsbad Parking Lot,Site 2,2024-01-30,0,12,0,0,Shortfall of Sites,0.77,R/R-40,RD-M/C-2,37.5,40,12.0,Non-Vacant,The site encompasses the parking lots for The Shoppes at Carlsbad mall.,CARLSBAD,2024
+CARLSBAD,San Diego,2024,156-302-35,2501 El Camnio Real,The Shoppes at Carlsbad Parking Lot,Site 2,2024-01-30,0,337,167,0,Shortfall of Sites,29.81,R/R-40/R-23,RD-M/C-2,19,40,504.0,Non-Vacant,The site encompasses the parking lots for The Shoppes at Carlsbad mall.,CARLSBAD,2024
+CARLSBAD,San Diego,2024,167-080-33,El Camino Real,Chestnut at El Camino Real,Site 3,2024-01-30,0,0,7,0,Shortfall of Sites,0.25,R-15,RD-M,11.5,15,7.0,Vacant,,CARLSBAD,2024
+CARLSBAD,San Diego,2024,167-080-34,El Camino Real,Chestnut at El Camino Real,Site 3,2024-01-30,0,0,7,0,Shortfall of Sites,0.75,R-15,RD-M,11.5,15,7.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,167-080-41,El Camino Real,Chestnut at El Camino Real,Site 3,2024-01-30,0,0,7,0,Shortfall of Sites,0.75,R-15,RD-M,11.5,15,7.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,167-080-42,Chestnut & El Camino Real,Chestnut at El Camino Real,Site 3,2024-01-30,0,0,7,0,Shortfall of Sites,0.75,R-15,RD-M,11.5,15,7.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,1955-12-05,Calle Barcelona,La Costa Glen Forum,Site 19,2024-01-30,0,0,76,0,Shortfall of Sites,7.8,R-23/OS,P-C,19,23,76.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,2016-10-01,Ponto Drive,North Ponto Parcels,Site 18,2024-01-30,0,0,6,0,Shortfall of Sites,0.24,R-23,RD-M,19,23,6.0,Vacant,,CARLSBAD,2024
+CARLSBAD,San Diego,2024,2016-10-02,Ponto Drive,North Ponto Parcels,Site 18,2024-01-30,0,0,8,0,Shortfall of Sites,0.23,R-23,RD-M,19,23,8.0,Vacant,,CARLSBAD,2024
+CARLSBAD,San Diego,2024,2016-10-03,Ponto Drive,North Ponto Parcels,Site 18,2024-01-30,0,0,2,0,Shortfall of Sites,0.23,R-23,RD-M,19,23,2.0,Vacant,,CARLSBAD,2024
+CARLSBAD,San Diego,2024,2016-10-04,Ponto Drive,North Ponto Parcels,Site 18,2024-01-30,0,0,3,0,Shortfall of Sites,0.23,R-23,RD-M,19,23,3.0,Vacant,,CARLSBAD,2024
+CARLSBAD,San Diego,2024,2016-10-05,Ponto Drive,North Ponto Parcels,Site 18,2024-01-30,0,0,3,0,Shortfall of Sites,0.23,R-23,RD-M,19,23,3.0,Vacant,,CARLSBAD,2024
+CARLSBAD,San Diego,2024,203-054-28,2775 State St,Carlsbad Village COASTER Station,Site 14,2024-01-30,0,82,0,0,Shortfall of Sites,7.15,V-B,V-B,28,35,82.0,Non-Vacant,COASTER Station,CARLSBAD,2024
+CARLSBAD,San Diego,2024,209-060-72,2820 Sunny Creek Rd,Zone 15 Cluster,Site 4,2024-01-30,0,0,1,0,Shortfall of Sites,9.8,R-30/OS,RD-M,26.5,30,1.0,Non-Vacant,"Features a house, some outbuildings, and is mostly vacant. In the past, the property was an equestrian center.",CARLSBAD,2024
+CARLSBAD,San Diego,2024,209-090-11,College Blvd & El Camnio Real,Zone 15 Cluster,Site 4,2024-01-30,0,212,115,0,Shortfall of Sites,17.8,R-15/R-30,RD-M,12,30,327.0,Non-Vacant,Contains an RV storage lot but is otherwise vacant.,CARLSBAD,2024
+CARLSBAD,San Diego,2024,210-090-24,5007 Avenida Encinas,Avenida Encinas Car Storage Lot,Site 5,2024-01-30,0,53,0,0,Shortfall of Sites,11.4,R-30,RD-M,26.5,30,53.0,Non-Vacant,Developed with a car storage lot.,CARLSBAD,2024
+CARLSBAD,San Diego,2024,211-050-08,6050 Paseo Del Norte,Caltrans Maintenance Station/Pacific Sales,Site 16,2024-01-30,0,120,0,0,Shortfall of Sites,3.45,R-30,RD-M,26.5,30,120.0,Non-Vacant,Owned by the State of California and developed with a Caltrans maintenance station.,CARLSBAD,2024
+CARLSBAD,San Diego,2024,211-050-09,6050 Paseo Del Norte,Caltrans Maintenance Station/Pacific Sales,Site 16,2024-01-30,0,63,0,0,Shortfall of Sites,3.45,R-30,RD-M,26.5,30,63.0,Non-Vacant,Developed with a Pacific Sales kitchen and home store.,CARLSBAD,2024
+CARLSBAD,San Diego,2024,212-021-04,Salk Ave,Salk Avenue,Site 7,2024-01-30,0,259,0,0,Shortfall of Sites,9.8,R-30,RD-M,26.5,30,259.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,212-040-26,West Oaks Way,West Oaks Industrial,Site 9,2024-01-30,0,0,0,12,Shortfall of Sites,0.63,R-30/OS,RD-M/OS,26.5,30,12.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,212-110-01,West Oaks Way,West Oaks Industrial,Site 9,2024-01-30,0,0,0,36,Shortfall of Sites,2.01,R-30/OS,RD-M/OS,26.5,30,36.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,212-110-02,West Oaks Way,West Oaks Industrial,Site 9,2024-01-30,0,0,0,18,Shortfall of Sites,0.97,R-30/OS,RD-M/OS,26.5,30,18.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,212-110-03,West Oaks Way,West Oaks Industrial,Site 9,2024-01-30,0,0,0,17,Shortfall of Sites,0.9,R-30/OS,RD-M/OS,26.5,30,17.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,212-110-04,West Oaks Way,West Oaks Industrial,Site 9,2024-01-30,0,18,0,0,Shortfall of Sites,0.93,R-30/OS,RD-M/OS,26.5,30,18.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,212-110-05,West Oaks Way,West Oaks Industrial,Site 9,2024-01-30,0,0,0,31,Shortfall of Sites,1.64,R-30/OS,RD-M/OS,26.5,30,31.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,212-110-06,West Oaks Way,West Oaks Industrial,Site 9,2024-01-30,0,24,0,0,Shortfall of Sites,1.29,R-30/OS,RD-M/OS,26.5,30,24.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,212-110-07,West Oaks Way,West Oaks Industrial,Site 9,2024-01-30,0,0,0,21,Shortfall of Sites,1.13,R-30/OS,RD-M/OS,26.5,30,21.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,212-110-08,West Oaks Way,West Oaks Industrial,Site 9,2024-01-30,0,0,0,15,Shortfall of Sites,1.3,R-30/OS,RD-M/OS,26.5,30,15.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,212-270-05,College Blvd,Crossings Golf Course,Site 6,2024-01-30,0,181,0,0,Shortfall of Sites,11.4,R-30,RD-M,26.5,30,181.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,213-262-17,Colt Place,Bressi Ranch Colt Place,Site 10,2024-01-30,0,0,49,0,Shortfall of Sites,2.6,R-23,P-C,19,23,49.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,213-263-19,Palomar Airport Road & Gateway Road,Bressi Ranch Gateway Road,Site 11,2024-01-30,0,99,0,0,Shortfall of Sites,2.34,R-40,P-C,37.5,40,99.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,213-263-20,Gateway Road,Bressi Ranch Gateway Road,Site 11,2024-01-30,0,100,0,0,Shortfall of Sites,2.96,R-40,P-C,37.5,40,100.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,214-150-08,6511 Avenida Encinas,Poinsettia COASTER Station,Site 17,2024-01-30,0,0,13,0,Shortfall of Sites,2.9,R-23/P,RD-M-Q/T-C-Q,19,23,13.0,Non-Vacant,COASTER Station,CARLSBAD,2024
+CARLSBAD,San Diego,2024,214-150-20,6511 Avenida Encinas,Poinsettia COASTER Station,Site 17,2024-01-30,0,0,14,0,Shortfall of Sites,2.9,R-23/P,RD-M-Q/T-C-Q,19,23,14.0,Non-Vacant,COASTER Station,CARLSBAD,2024
+CARLSBAD,San Diego,2024,214-160-25,7300 Ponto Dr,FPC Residential,Site 18,2024-01-30,0,0,0,40,Shortfall of Sites,1.5,R-15/VC,RD-M-Q/T-C-Q,11.5,15,40.0,Non-Vacant,Mini-storage facility,CARLSBAD,2024
+CARLSBAD,San Diego,2024,214-160-28,7300 Ponto Dr,FPC Residential,Site 18,2024-01-30,0,0,0,30,Shortfall of Sites,0.9,R-15/VC,RD-M-Q/T-C-Q,11.5,15,30.0,Non-Vacant,Open storage lot,CARLSBAD,2024
+CARLSBAD,San Diego,2024,214-171-11,7500 Ponto Dr,FPC Residential,Site 18,2024-01-30,0,13,0,3,Shortfall of Sites,2.2,R-15,RD-M-Q,11.5,15,16.0,Non-Vacant,Abandoned storage buildings,CARLSBAD,2024
+CARLSBAD,San Diego,2024,221-014-03,Tiger Run Court & Eagle Drive,Industrial Sites East of Melrose,Site 12,2024-01-30,0,263,0,0,Shortfall of Sites,8.11,R-35,RD-M,32.5,35,263.0,Vacant, ,CARLSBAD,2024
+CARLSBAD,San Diego,2024,221-015-08,Grey Hawk Court & Eagle Drive,Industrial Sites East of Melrose,Site 12,2024-01-30,0,193,0,0,Shortfall of Sites,5.99,R-35,RD-M,32.5,35,193.0,Vacant, ,CARLSBAD,2024
+ENCINITAS,San Diego,2019,2160520100,1967 N Vulcan Ave,VULCAN & LA COSTA,Ord No. 2019-04,2019-03-27,0,50,0,0,Unaccommodated Need,2.0,R3/ R30 OL,R3/ R30 OL,25 DU/AC,30 DU/AC,50.0,Non-Vacant,temporary agricultural structures such as greenhouses,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2546121200,) 1150 Quail Gardens Drive,ECHTER PROPERTY,Ord No. 2019-04,2019-03-27,0,246,0,0,Unaccommodated Need,9.85,Encinitas Ranch Specific Plan,ER-AG,25 DU/AC,30 DU/AC,246.0,Non-Vacant,temporary greenhouse agricultural structures along with an existing single-family residential structure,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2561711300,682 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,19,0,0,Unaccommodated Need,0.75,R5/ R-30 OL,R5/ R-30 OL,25 DU/AC,30 DU/AC,19.0,Non-Vacant,"single-story
+residence",ENCINITAS,2019
+ENCINITAS,San Diego,2019,2561711400,672 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,16,0,0,Unaccommodated Need,0.63,R5/ R-30 OL,R5/ R-30 OL,25 DU/AC,30 DU/AC,16.0,Non-Vacant,"single-story
+residence",ENCINITAS,2019
+ENCINITAS,San Diego,2019,2561711500,662 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,36,0,0,Unaccommodated Need,1.41,R5/ R-30 OL,R5/ R-30 OL,25 DU/AC,30 DU/AC,36.0,Non-Vacant,outdoor storage area associated with agricultural uses,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2561712000,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,15,0,0,Unaccommodated Need,0.6,R3/ R30 OL,R3/ R30 OL,25 DU/AC,30 DU/AC,15.0,Non-Vacant,flower growing business and associated greenhouse and sales temporary structures,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2561712100,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,10,0,0,Unaccommodated Need,0.38,R3/ R30 OL,R3/ R30 OL,25 DU/AC,30 DU/AC,10.0,Non-Vacant,SEE ABOVE,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2561712400,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,67,0,0,Unaccommodated Need,2.65,R3/ R30 OL,R3/ R30 OL,25 DU/AC,30 DU/AC,67.0,Non-Vacant,SEE ABOVE,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2570203600,"Mays Hollow Ln,",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,43,0,0,Unaccommodated Need,1.74,R3/ R30 OL,R3/ R30 OL,25 DU/AC,30 DU/AC,43.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2570203700,225 Quail Gardens Dr,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.24,R3/ R30 OL,R3/ R30 OL,25 DU/AC,30 DU/AC,31.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2574702400,1950 HWY 101,JACKEL PROPERTIES,Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,2.97,N-LVSC,N-LVSC,25 DU/AC,30 DU/AC,33.0,Non-Vacant,VACANT RESTAURANT AND SURFACE PARKING LOT,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2580350700,371 2nd St,HARRISON PROPERTIES,Ord No. 2019-04,2019-03-27,0,14,0,0,Unaccommodated Need,1.26,DESP-VCM,DESP-VCM/ R-30 OL,25 DU/AC,30 DU/AC,14.0,Non-Vacant,"2-story office building, one 2-story residential structure, and a surface parking lot - Existing operational
+businesses",ENCINITAS,2019
+ENCINITAS,San Diego,2019,2580521200,364 2nd St,HARRISON PROPERTIES,Ord No. 2019-04,2019-03-27,0,7,0,0,Unaccommodated Need,0.65,DESP-VCM,DESP-VCM/ R-30 OL,25 DU/AC,30 DU/AC,7.0,Non-Vacant,"2-story office building and a surface parking lot - Existing operational
+businesses",ENCINITAS,2019
+ENCINITAS,San Diego,2019,2581111600,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,55,0,0,Unaccommodated Need,2.2,OP/ R-30 OL,OP/ R-30 OL,25 DU/AC,30 DU/AC,55.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2581303400,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,25,0,0,Unaccommodated Need,1.02,OP/ R-30 OL,OP/ R-30 OL,25 DU/AC,30 DU/AC,25.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2581304500,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,6,0,0,Unaccommodated Need,0.23,OP/ R-30 OL,OP/ R-30 OL,25 DU/AC,30 DU/AC,6.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2581308000,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,25,0,0,Unaccommodated Need,1.0,R5/ R-30 OL,R5/ R-30 OL,25 DU/AC,30 DU/AC,25.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2581308100,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,1.31,OP/ R-30 OL,OP/ R-30 OL,25 DU/AC,30 DU/AC,33.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2581308200,Quail Gardens Drive,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,22,0,0,Unaccommodated Need,0.88,R5/ R-30 OL,R5/ R-30 OL,25 DU/AC,30 DU/AC,22.0,Non-Vacant,UTILITY EASEMENT,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2581308600,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,56,0,0,Unaccommodated Need,2.24,R5/ R-30 OL,R5/ R-30 OL,25 DU/AC,30 DU/AC,56.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2581309100,Mays Hollow Lane,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,8,0,0,Unaccommodated Need,0.33,R5/ R-30 OL,R5/ R-30 OL,25 DU/AC,30 DU/AC,8.0,Non-Vacant,SEE ABOVE,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2581309300,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,1.35,R5/ R-30 OL,R5/ R-30 OL,25 DU/AC,30 DU/AC,33.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2581309400,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,7,0,0,Unaccommodated Need,0.27,R5/ R-30 OL,R5/ R-30 OL,25 DU/AC,30 DU/AC,7.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,"2581309700, 2581309800",630 Encinitas Boulevard,SUNSHINE GARDENS,Ord No. 2019-04,2019-03-27,0,84,0,0,Unaccommodated Need,3.39,OP/ R-30 OL,OP/ R-30 OL,25 DU/AC,30 DU/AC,84.0,Non-Vacant,"single-story commercial building, a paved surface parking lot, and a variety of retail uses in both permanent and temporary structures",ENCINITAS,2019
+ENCINITAS,San Diego,2019,2582411000,) 1050 Regal Road,SEACOAST CHURCH,Ord No. 2019-04,2019-03-27,0,35,0,0,Unaccommodated Need,1.41,R11/ R-30 OL,R11/ R-30 OL,25 DU/AC,30 DU/AC,35.0,Non-Vacant,"four existing 1 and
+2-story structures associated with the existing church facility on-site, two paved parking lots",ENCINITAS,2019
+ENCINITAS,San Diego,2019,2592312800,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,89,0,0,Unaccommodated Need,3.57,RR2/ R-30  OL,RR2/ R-30  OL,25 DU/AC,30 DU/AC,89.0,Non-Vacant,three residential structures across multiple parcels,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2592313000,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,13,0,0,Unaccommodated Need,0.54,RR2/ R-30  OL,RR2/ R-30  OL,25 DU/AC,30 DU/AC,13.0,Non-Vacant,SEE ABOVE,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2592313100,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,11,0,0,Unaccommodated Need,0.46,RR2/ R-30  OL,RR2/ R-30  OL,25 DU/AC,30 DU/AC,11.0,Non-Vacant,SEE ABOVE,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2592313200,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,36,0,0,Unaccommodated Need,1.45,RR2/ R-30  OL,RR2/ R-30  OL,25 DU/AC,30 DU/AC,36.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2611506400,3459 Manchester Avenue,GREEK CHURCH PARCEL,Ord No. 2019-04,2019-03-27,0,50,0,0,Unaccommodated Need,2.0,RR1/ R-30 OL,RR1/ R-30 OL,25 DU/AC,30 DU/AC,50.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2612003700,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,13,0,0,Unaccommodated Need,0.54,R11/ R-30 OL,R11/ R-30 OL,25 DU/AC,30 DU/AC,13.0,Non-Vacant,ONE SINGLE STORY SINGLE-FAMILY RESIDENCE,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2612003800,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,12,0,0,Unaccommodated Need,0.5,R11/ R-30 OL,R11/ R-30 OL,25 DU/AC,30 DU/AC,12.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2612003900,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,16,0,0,Unaccommodated Need,0.63,R11/ R-30 OL,R11/ R-30 OL,25 DU/AC,30 DU/AC,16.0,Non-Vacant,ONE SINGLE STORY SINGLE-FAMILY RESIDENCE,ENCINITAS,2019
+ENCINITAS,San Diego,2019,2620618500,Sage Canyon Drive,SAGE CANYON PARCEL,Ord No. 2019-04,2019-03-27,0,60,0,0,Unaccommodated Need,2.4,R3/ R30 OL,R3/ R30 OL,25 DU/AC,30 DU/AC,60.0,Vacant,,ENCINITAS,2019
+ENCINITAS,San Diego,2020,2160412000,1950 HWY 101,JACKEL PROPERTIES,Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,2.97,North 101 Corridor Specific Plan,N-LVSC,25,30,33.0,Non-Vacant,VACANT RESTAURANT AND SURFACE PARKING LOT,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2160520100,1967 N Vulcan Ave,VULCAN & LA COSTA,Ord No. 2019-04,2019-03-27,0,50,0,0,Unaccommodated Need,2.0,R3/ R30 OL,R3/ R30 OL,25,30,50.0,Non-Vacant,temporary agricultural structures such as greenhouses,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2541440100,Piraeus Street,CANNON PROPERTY,Ord No. 2019-04,2019-03-27,0,173,0,0,Unaccommodated Need,6.93,RR2/ R-30  OL,RR2/ R-30  OL,25,30,173.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2546121200,1150 Quail Gardens Drive,ECHTER PROPERTY,Ord No. 2019-04,2019-03-27,0,246,0,0,Unaccommodated Need,9.85,Encinitas Ranch Specific Plan,ER-AG,25,30,246.0,Non-Vacant,temporary greenhouse agricultural structures along with an existing single-family residential structure,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2561711300,682 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,19,0,0,Unaccommodated Need,0.75,R5/ R-30 OL,R5/ R-30 OL,25,30,19.0,Non-Vacant,"single-story
+residence",ENCINITAS,2020
+ENCINITAS,San Diego,2020,2561711400,672 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,16,0,0,Unaccommodated Need,0.63,R5/ R-30 OL,R5/ R-30 OL,25,30,16.0,Non-Vacant,"single-story
+residence",ENCINITAS,2020
+ENCINITAS,San Diego,2020,2561711500,662 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,36,0,0,Unaccommodated Need,1.41,R5/ R-30 OL,R5/ R-30 OL,25,30,36.0,Non-Vacant,outdoor storage area associated with agricultural uses,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2561712000,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,15,0,0,Unaccommodated Need,0.6,R3/ R30 OL,R3/ R30 OL,25,30,15.0,Non-Vacant,flower growing business and associated greenhouse and sales temporary structures,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2561712100,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,10,0,0,Unaccommodated Need,0.38,R3/ R30 OL,R3/ R30 OL,25,30,10.0,Non-Vacant,SEE ABOVE,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2561712400,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,67,0,0,Unaccommodated Need,2.65,R3/ R30 OL,R3/ R30 OL,25,30,67.0,Non-Vacant,SEE ABOVE,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2570203600,"Mays Hollow Ln,",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,43,0,0,Unaccommodated Need,1.74,R3/ R30 OL,R3/ R30 OL,25,30,43.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2570203700,225 Quail Gardens Dr,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.24,R3/ R30 OL,R3/ R30 OL,25,30,31.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2580350700,371 2nd St,HARRISON PROPERTIES,Ord No. 2019-04,2019-03-27,0,14,0,0,Unaccommodated Need,1.26,DESP-VCM,DESP-VCM/ R-30 OL,25,30,14.0,Non-Vacant,"2-story office building, one 2-story residential structure, and a surface parking lot - Existing operational
+businesses",ENCINITAS,2020
+ENCINITAS,San Diego,2020,2580521200,364 2nd St,HARRISON PROPERTIES,Ord No. 2019-04,2019-03-27,0,7,0,0,Unaccommodated Need,0.65,DESP-VCM,DESP-VCM/ R-30 OL,25,30,7.0,Non-Vacant,"2-story office building and a surface parking lot - Existing operational
+businesses",ENCINITAS,2020
+ENCINITAS,San Diego,2020,2581111600,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,55,0,0,Unaccommodated Need,2.2,OP/ R-30 OL,OP/ R-30 OL,25,30,55.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2581303400,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,25,0,0,Unaccommodated Need,1.02,OP/ R-30 OL,OP/ R-30 OL,25,30,25.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2581304500,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,6,0,0,Unaccommodated Need,0.23,OP/ R-30 OL,OP/ R-30 OL,25,30,6.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2581308000,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,25,0,0,Unaccommodated Need,1.0,R5/ R-30 OL,R5/ R-30 OL,25,30,25.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2581308100,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,1.31,OP/ R-30 OL,OP/ R-30 OL,25,30,33.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2581308200,Quail Gardens Drive,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,22,0,0,Unaccommodated Need,0.88,R5/ R-30 OL,R5/ R-30 OL,25,30,22.0,Non-Vacant,UTILITY EASEMENT,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2581308600,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,56,0,0,Unaccommodated Need,2.24,R5/ R-30 OL,R5/ R-30 OL,25,30,56.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2581309100,Mays Hollow Lane,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,8,0,0,Unaccommodated Need,0.33,R5/ R-30 OL,R5/ R-30 OL,25,30,8.0,Non-Vacant,SEE ABOVE,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2581309300,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,1.35,R5/ R-30 OL,R5/ R-30 OL,25,30,33.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2581309400,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,7,0,0,Unaccommodated Need,0.27,R5/ R-30 OL,R5/ R-30 OL,25,30,7.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,"2581309700, 2581309800",630 Encinitas Boulevard,SUNSHINE GARDENS,Ord No. 2019-04,2019-03-27,0,84,0,0,Unaccommodated Need,3.39,OP/ R-30 OL,OP/ R-30 OL,25,30,84.0,Non-Vacant,"single-story commercial building, a paved surface parking lot, and a variety of retail uses in both permanent and temporary structures",ENCINITAS,2020
+ENCINITAS,San Diego,2020,2582411000,1050 Regal Road,SEACOAST CHURCH,Ord No. 2019-04,2019-03-27,0,35,0,0,Unaccommodated Need,1.41,R11/ R-30 OL,R11/ R-30 OL,25,30,35.0,Non-Vacant,"four existing 1 and
+2-story structures associated with the existing church facility on-site, two paved parking lots",ENCINITAS,2020
+ENCINITAS,San Diego,2020,2592312800,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,89,0,0,Unaccommodated Need,3.57,RR2/ R-30  OL,RR2/ R-30  OL,25,30,89.0,Non-Vacant,three residential structures across multiple parcels,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2592313000,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,13,0,0,Unaccommodated Need,0.54,RR2/ R-30  OL,RR2/ R-30  OL,25,30,13.0,Non-Vacant,SEE ABOVE,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2592313100,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,11,0,0,Unaccommodated Need,0.46,RR2/ R-30  OL,RR2/ R-30  OL,25,30,11.0,Non-Vacant,SEE ABOVE,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2592313200,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,36,0,0,Unaccommodated Need,1.45,RR2/ R-30  OL,RR2/ R-30  OL,25,30,36.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2611506400,3459 Manchester Avenue,GREEK CHURCH PARCEL,Ord No. 2019-04,2019-03-27,0,50,0,0,Unaccommodated Need,2.0,RR1/ R-30 OL,RR1/ R-30 OL,25,30,50.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2612003700,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,13,0,0,Unaccommodated Need,0.54,R11/ R-30 OL,R11/ R-30 OL,25,30,13.0,Non-Vacant,ONE SINGLE STORY SINGLE-FAMILY RESIDENCE,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2612003800,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,12,0,0,Unaccommodated Need,0.5,R11/ R-30 OL,R11/ R-30 OL,25,30,12.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2612003900,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,16,0,0,Unaccommodated Need,0.63,R11/ R-30 OL,R11/ R-30 OL,25,30,16.0,Non-Vacant,ONE SINGLE STORY SINGLE-FAMILY RESIDENCE,ENCINITAS,2020
+ENCINITAS,San Diego,2020,2620618500,Sage Canyon Drive,SAGE CANYON PARCEL,Ord No. 2019-04,2019-03-27,0,60,0,0,Unaccommodated Need,2.4,R3/ R30 OL,R3/ R30 OL,25,30,60.0,Vacant,,ENCINITAS,2020
+ENCINITAS,San Diego,2021,2160412000,1950 HWY 101,JACKEL PROPERTIES,Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,2.97,North 101 Corridor Specific Plan,N-LVSC,25,30,33.0,Non-Vacant,VACANT RESTAURANT AND SURFACE PARKING LOT,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2160520100,1967 N Vulcan Ave,VULCAN & LA COSTA,Ord No. 2019-04,2019-03-27,0,50,0,0,Unaccommodated Need,2.0,R3/ R30 OL,R3/ R30 OL,25,30,50.0,Non-Vacant,temporary agricultural structures such as greenhouses,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2541440100,Piraeus Street,CANNON PROPERTY,Ord No. 2019-04,2019-03-27,0,208,0,0,Unaccommodated Need,6.93,RR2/ R-30  OL,RR2/ R-30  OL,25,30,208.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2561711300,682 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,23,0,0,Unaccommodated Need,0.75,R5/ R-30 OL,R5/ R-30 OL,25,30,23.0,Non-Vacant,"single-story
+residence",ENCINITAS,2021
+ENCINITAS,San Diego,2021,2561711400,672 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,19,0,0,Unaccommodated Need,0.63,R5/ R-30 OL,R5/ R-30 OL,25,30,19.0,Non-Vacant,"single-story
+residence",ENCINITAS,2021
+ENCINITAS,San Diego,2021,2561711500,662 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,42,0,0,Unaccommodated Need,1.41,R5/ R-30 OL,R5/ R-30 OL,25,30,42.0,Non-Vacant,outdoor storage area associated with agricultural uses,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2561712000,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,18,0,0,Unaccommodated Need,0.6,R3/ R30 OL,R3/ R30 OL,25,30,18.0,Non-Vacant,flower growing business and associated greenhouse and sales temporary structures,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2561712100,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,11,0,0,Unaccommodated Need,0.38,R3/ R30 OL,R3/ R30 OL,25,30,11.0,Non-Vacant,SEE ABOVE,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2561712400,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,82,0,0,Unaccommodated Need,2.75,R3/ R30 OL,R3/ R30 OL,25,30,82.0,Non-Vacant,SEE ABOVE,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2570203600,"Mays Hollow Ln,",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,43,0,0,Unaccommodated Need,1.74,R3/ R30 OL,R3/ R30 OL,25,30,43.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2570203700,225 Quail Gardens Dr,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.24,R3/ R30 OL,R3/ R30 OL,25,30,31.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2574702400,N El Camino Real,ARMSTRONG PARCELS,Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.06,GC/ R30 OL,GC R-30 OL,25,30,31.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2580350700,371 2nd St,HARRISON PROPERTIES,Ord No. 2019-04,2019-03-27,0,16,0,0,Unaccommodated Need,1.26,DESP-VCM,DESP-VCM/ R-30 OL,25,30,16.0,Non-Vacant,"2-story office building, one 2-story residential structure, and a surface parking lot - Existing operational
+businesses",ENCINITAS,2021
+ENCINITAS,San Diego,2021,2580521200,364 2nd St,HARRISON PROPERTIES,Ord No. 2019-04,2019-03-27,0,9,0,0,Unaccommodated Need,0.65,DESP-VCM,DESP-VCM/ R-30 OL,25,30,9.0,Non-Vacant,"2-story office building and a surface parking lot - Existing operational
+businesses",ENCINITAS,2021
+ENCINITAS,San Diego,2021,2581111600,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,66,0,0,Unaccommodated Need,2.2,OP/ R-30 OL,OP/ R-30 OL,25,30,66.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2581303400,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.02,OP/ R-30 OL,OP/ R-30 OL,25,30,31.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2581304500,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,7,0,0,Unaccommodated Need,0.23,OP/ R-30 OL,OP/ R-30 OL,25,30,7.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2581308000,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,25,0,0,Unaccommodated Need,1.0,R5/ R-30 OL,R5/ R-30 OL,25,30,25.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2581308100,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,39,0,0,Unaccommodated Need,1.31,OP/ R-30 OL,OP/ R-30 OL,25,30,39.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2581308200,Quail Gardens Drive,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,22,0,0,Unaccommodated Need,0.88,R5/ R-30 OL,R5/ R-30 OL,25,30,22.0,Non-Vacant,UTILITY EASEMENT,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2581308600,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,56,0,0,Unaccommodated Need,2.24,R5/ R-30 OL,R5/ R-30 OL,25,30,56.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2581309100,Mays Hollow Lane,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,8,0,0,Unaccommodated Need,0.33,R5/ R-30 OL,R5/ R-30 OL,25,30,8.0,Non-Vacant,SEE ABOVE,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2581309300,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,1.35,R5/ R-30 OL,R5/ R-30 OL,25,30,33.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2581309400,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,7,0,0,Unaccommodated Need,0.27,R5/ R-30 OL,R5/ R-30 OL,25,30,7.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,"2581309700, 2581309800",630 Encinitas Boulevard,SUNSHINE GARDENS,Ord No. 2019-04,2019-03-27,0,84,0,0,Unaccommodated Need,3.39,OP/ R-30 OL,OP/ R-30 OL,25,30,84.0,Non-Vacant,"single-story commercial building, a paved surface parking lot, and a variety of retail uses in both permanent and temporary structures",ENCINITAS,2021
+ENCINITAS,San Diego,2021,2582411000,1050 Regal Road,SEACOAST CHURCH,Ord No. 2019-04,2019-03-27,0,42,0,0,Unaccommodated Need,1.41,R11/ R-30 OL,R11/ R-30 OL,25,30,42.0,Non-Vacant,"four existing 1 and
+2-story structures associated with the existing church facility on-site, two paved parking lots",ENCINITAS,2021
+ENCINITAS,San Diego,2021,2592312800,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,89,0,0,Unaccommodated Need,3.57,RR2/ R-30  OL,RR2/ R-30  OL,25,30,89.0,Non-Vacant,three residential structures across multiple parcels,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2592313000,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,13,0,0,Unaccommodated Need,0.54,RR2/ R-30  OL,RR2/ R-30  OL,25,30,13.0,Non-Vacant,SEE ABOVE,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2592313100,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,11,0,0,Unaccommodated Need,0.46,RR2/ R-30  OL,RR2/ R-30  OL,25,30,11.0,Non-Vacant,SEE ABOVE,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2592313200,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,36,0,0,Unaccommodated Need,1.45,RR2/ R-30  OL,RR2/ R-30  OL,25,30,36.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2611506400,3459 Manchester Avenue,GREEK CHURCH PARCEL,Ord No. 2019-04,2019-03-27,0,60,0,0,Unaccommodated Need,2.0,RR1/ R-30 OL,RR1/ R-30 OL,25,30,60.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2612003700,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,16,0,0,Unaccommodated Need,0.54,R11/ R-30 OL,R11/ R-30 OL,25,30,16.0,Non-Vacant,ONE SINGLE STORY SINGLE-FAMILY RESIDENCE,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2612003800,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,15,0,0,Unaccommodated Need,0.5,R11/ R-30 OL,R11/ R-30 OL,25,30,15.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2612003900,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,19,0,0,Unaccommodated Need,0.63,R11/ R-30 OL,R11/ R-30 OL,25,30,19.0,Non-Vacant,ONE SINGLE STORY SINGLE-FAMILY RESIDENCE,ENCINITAS,2021
+ENCINITAS,San Diego,2021,2620618500,Sage Canyon Drive,SAGE CANYON PARCEL,Ord No. 2019-04,2019-03-27,0,60,0,0,Unaccommodated Need,2.4,R3/ R30 OL,R3/ R30 OL,25,30,60.0,Vacant,,ENCINITAS,2021
+ENCINITAS,San Diego,2022,"2160412000, 2160412100",1950 HWY 101,JACKEL PROPERTIES,Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,2.97,North 101 Corridor Specific Plan,N-LVSC,25,30,33.0,Non-Vacant,VACANT RESTAURANT AND SURFACE PARKING LOT,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2160520100,1967 N Vulcan Ave,VULCAN & LA COSTA,Ord No. 2019-04,2019-03-27,0,50,0,0,Unaccommodated Need,2.0,R3/ R30 OL,R3/ R30 OL,25,30,50.0,Non-Vacant,temporary agricultural structures such as greenhouses,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2541440100,Piraeus Street,CANNON PROPERTY,Ord No. 2019-04,2019-03-27,0,208,0,0,Unaccommodated Need,6.93,RR2/ R-30  OL,RR2/ R-30  OL,25,30,208.0,Vacant,,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2561711300,682 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,23,0,0,Unaccommodated Need,0.75,R5/ R-30 OL,R5/ R-30 OL,25,30,23.0,Non-Vacant,"single-story
+residence",ENCINITAS,2022
+ENCINITAS,San Diego,2022,2561711400,672 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,19,0,0,Unaccommodated Need,0.63,R5/ R-30 OL,R5/ R-30 OL,25,30,19.0,Non-Vacant,"single-story
+residence",ENCINITAS,2022
+ENCINITAS,San Diego,2022,2561711500,662 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,42,0,0,Unaccommodated Need,1.41,R5/ R-30 OL,R5/ R-30 OL,25,30,42.0,Non-Vacant,outdoor storage area associated with agricultural uses,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2561712000,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,18,0,0,Unaccommodated Need,0.6,R3/ R30 OL,R3/ R30 OL,25,30,18.0,Non-Vacant,flower growing business and associated greenhouse and sales temporary structures,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2561712100,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,11,0,0,Unaccommodated Need,0.38,R3/ R30 OL,R3/ R30 OL,25,30,11.0,Non-Vacant,SEE ABOVE,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2561712400,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,82,0,0,Unaccommodated Need,2.75,R3/ R30 OL,R3/ R30 OL,25,30,82.0,Non-Vacant,SEE ABOVE,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2570203600,Mays Hollow Ln,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,43,0,0,Unaccommodated Need,1.74,R3/ R30 OL,R3/ R30 OL,25,30,43.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2570203700,225 Quail Gardens Dr,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.24,R3/ R30 OL,R3/ R30 OL,25,30,31.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2574702400,N El Camino Real,ARMSTRONG PARCELS,Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.06,GC/ R30 OL,GC R-30 OL,25,30,31.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2580350700,371 2nd St,HARRISON PROPERTIES,Ord No. 2019-04,2019-03-27,0,16,0,0,Unaccommodated Need,1.26,DESP-VCM,DESP-VCM/ R-30 OL,25,30,16.0,Non-Vacant,"2-story office building, one 2-story residential structure, and a surface parking lot - Existing operational
+businesses",ENCINITAS,2022
+ENCINITAS,San Diego,2022,2580521200,364 2nd St,HARRISON PROPERTIES,Ord No. 2019-04,2019-03-27,0,9,0,0,Unaccommodated Need,0.65,DESP-VCM,DESP-VCM/ R-30 OL,25,30,9.0,Non-Vacant,"2-story office building and a surface parking lot - Existing operational
+businesses",ENCINITAS,2022
+ENCINITAS,San Diego,2022,2581111600,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,66,0,0,Unaccommodated Need,2.2,OP/ R-30 OL,OP/ R-30 OL,25,30,66.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2581303400,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.02,OP/ R-30 OL,OP/ R-30 OL,25,30,31.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2581304500,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,7,0,0,Unaccommodated Need,0.23,OP/ R-30 OL,OP/ R-30 OL,25,30,7.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2581308000,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,25,0,0,Unaccommodated Need,1.0,R5/ R-30 OL,R5/ R-30 OL,25,30,25.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2581308100,"696 & 550 Encinitas Blvd, Quail
+Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,39,0,0,Unaccommodated Need,1.31,OP/ R-30 OL,OP/ R-30 OL,25,30,39.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2581308200,Quail Gardens Drive,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,22,0,0,Unaccommodated Need,0.88,R5/ R-30 OL,R5/ R-30 OL,25,30,22.0,Non-Vacant,UTILITY EASEMENT,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2581308600,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,56,0,0,Unaccommodated Need,2.24,R5/ R-30 OL,R5/ R-30 OL,25,30,56.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2581309100,Mays Hollow Lane,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,8,0,0,Unaccommodated Need,0.33,R5/ R-30 OL,R5/ R-30 OL,25,30,8.0,Non-Vacant,SEE ABOVE,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2581309300,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,1.35,R5/ R-30 OL,R5/ R-30 OL,25,30,33.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2581309400,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,7,0,0,Unaccommodated Need,0.27,R5/ R-30 OL,R5/ R-30 OL,25,30,7.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,"2581309700, 2581309800",630 Encinitas Boulevard,SUNSHINE GARDENS,Ord No. 2019-04,2019-03-27,0,84,0,0,Unaccommodated Need,3.39,OP/ R-30 OL,OP/ R-30 OL,25,30,84.0,Non-Vacant,"single-story commercial building, a paved surface parking lot, and a variety of retail uses in both permanent and temporary structures",ENCINITAS,2022
+ENCINITAS,San Diego,2022,2582411000,1050 Regal Road,SEACOAST CHURCH,Ord No. 2019-04,2019-03-27,0,42,0,0,Unaccommodated Need,1.41,R11/ R-30 OL,R11/ R-30 OL,25,30,42.0,Non-Vacant,"four existing 1 and
+2-story structures associated with the existing church facility on-site, two paved parking lots",ENCINITAS,2022
+ENCINITAS,San Diego,2022,2592312800,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,89,0,0,Unaccommodated Need,3.57,RR2/ R-30  OL,RR2/ R-30  OL,25,30,89.0,Non-Vacant,three residential structures across multiple parcels,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2592313000,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,13,0,0,Unaccommodated Need,0.54,RR2/ R-30  OL,RR2/ R-30  OL,25,30,13.0,Non-Vacant,SEE ABOVE,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2592313100,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,11,0,0,Unaccommodated Need,0.46,RR2/ R-30  OL,RR2/ R-30  OL,25,30,11.0,Non-Vacant,SEE ABOVE,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2592313200,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,36,0,0,Unaccommodated Need,1.45,RR2/ R-30  OL,RR2/ R-30  OL,25,30,36.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2611506400,3459 Manchester Avenue,GREEK CHURCH PARCEL,Ord No. 2019-04,2019-03-27,0,60,0,0,Unaccommodated Need,2.0,RR1/ R-30 OL,RR1/ R-30 OL,25,30,60.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2612003700,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,16,0,0,Unaccommodated Need,0.54,R11/ R-30 OL,R11/ R-30 OL,25,30,16.0,Non-Vacant,ONE SINGLE STORY SINGLE-FAMILY RESIDENCE,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2612003800,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,15,0,0,Unaccommodated Need,0.5,R11/ R-30 OL,R11/ R-30 OL,25,30,15.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2612003900,2955 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,19,0,0,Unaccommodated Need,0.63,R11/ R-30 OL,R11/ R-30 OL,25,30,19.0,Non-Vacant,ONE SINGLE STORY SINGLE-FAMILY RESIDENCE,ENCINITAS,2022
+ENCINITAS,San Diego,2022,2620618500,Sage Canyon Drive,SAGE CANYON PARCEL,Ord No. 2019-04,2019-03-27,0,60,0,0,Unaccommodated Need,2.4,R3/ R30 OL,R3/ R30 OL,25,30,60.0,Vacant, ,ENCINITAS,2022
+ENCINITAS,San Diego,2023,"2160412000, 2160412100",1950 HWY 101,JACKEL PROPERTIES,Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,2.97,North 101 Corridor Specific Plan,N-LVSC,25,30,33.0,Non-Vacant,VACANT RESTAURANT AND SURFACE PARKING LOT,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2160520100,1967 N Vulcan Ave,VULCAN & LA COSTA,Ord No. 2019-04,2019-03-27,0,50,0,0,Unaccommodated Need,2.0,R3/ R30 OL,R3/ R30 OL,25,30,50.0,Non-Vacant,temporary agricultural structures such as greenhouses,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2541440100,Piraeus Street,CANNON PROPERTY,Ord No. 2019-04,2019-03-27,0,208,0,0,Unaccommodated Need,6.93,RR2/ R-30  OL,RR2/ R-30  OL,25,30,208.0,Vacant,,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2561711300,682 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,23,0,0,Unaccommodated Need,0.75,R5/ R-30 OL,R5/ R-30 OL,25,30,23.0,Non-Vacant,single-story residence,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2561711400,672 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,19,0,0,Unaccommodated Need,0.63,R5/ R-30 OL,R5/ R-30 OL,25,30,19.0,Non-Vacant,single-story residence,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2561711500,662 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,42,0,0,Unaccommodated Need,1.41,R5/ R-30 OL,R5/ R-30 OL,25,30,42.0,Non-Vacant,outdoor storage area associated with agricultural uses,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2561712000,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,18,0,0,Unaccommodated Need,0.6,R3/ R30 OL,R3/ R30 OL,25,30,18.0,Non-Vacant,flower growing business and associated greenhouse and sales temporary structures,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2561712100,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,11,0,0,Unaccommodated Need,0.38,R3/ R30 OL,R3/ R30 OL,25,30,11.0,Non-Vacant,SEE ABOVE,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2561712400,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,82,0,0,Unaccommodated Need,2.75,R3/ R30 OL,R3/ R30 OL,25,30,82.0,Non-Vacant,SEE ABOVE,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2570203600,Mays Hollow Ln,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,43,0,0,Unaccommodated Need,1.74,R3/ R30 OL,R3/ R30 OL,25,30,43.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2570203700,225 Quail Gardens Dr,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.24,R3/ R30 OL,R3/ R30 OL,25,30,31.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2574702400,N El Camino Real,ARMSTRONG PARCELS,Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.06,GC/ R30 OL,GC R-30 OL,25,30,31.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2580350700,371 2nd St,HARRISON PROPERTIES,Ord No. 2019-04,2019-03-27,0,16,0,0,Unaccommodated Need,1.26,DESP-VCM,DESP-VCM/ R-30 OL,25,30,16.0,Non-Vacant,"2-story office building, one 2-story residential structure, and a surface parking lot - Existing operational businesses",ENCINITAS,2023
+ENCINITAS,San Diego,2023,2580521200,364 2nd St,HARRISON PROPERTIES,Ord No. 2019-04,2019-03-27,0,9,0,0,Unaccommodated Need,0.65,DESP-VCM,DESP-VCM/ R-30 OL,25,30,9.0,Non-Vacant,2-story office building and a surface parking lot - Existing operational businesses,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2581111600,"696 & 550 Encinitas Blvd, Quail Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,66,0,0,Unaccommodated Need,2.2,OP/ R-30 OL,OP/ R-30 OL,25,30,66.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2581303400,"696 & 550 Encinitas Blvd, Quail Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.02,OP/ R-30 OL,OP/ R-30 OL,25,30,31.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2581304500,"696 & 550 Encinitas Blvd, Quail Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,7,0,0,Unaccommodated Need,0.23,OP/ R-30 OL,OP/ R-30 OL,25,30,7.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2581308000,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,25,0,0,Unaccommodated Need,1.0,R5/ R-30 OL,R5/ R-30 OL,25,30,25.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2581308100,"696 & 550 Encinitas Blvd, Quail Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,39,0,0,Unaccommodated Need,1.31,OP/ R-30 OL,OP/ R-30 OL,25,30,39.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2581308200,Quail Gardens Drive,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,22,0,0,Unaccommodated Need,0.88,R5/ R-30 OL,R5/ R-30 OL,25,30,22.0,Non-Vacant,UTILITY EASEMENT,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2581308600,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,56,0,0,Unaccommodated Need,2.24,R5/ R-30 OL,R5/ R-30 OL,25,30,56.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2581309100,Mays Hollow Lane,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,8,0,0,Unaccommodated Need,0.33,R5/ R-30 OL,R5/ R-30 OL,25,30,8.0,Non-Vacant,SEE ABOVE,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2581309300,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,1.35,R5/ R-30 OL,R5/ R-30 OL,25,30,33.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2581309400,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,7,0,0,Unaccommodated Need,0.27,R5/ R-30 OL,R5/ R-30 OL,25,30,7.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,"2581309700, 2581309800",630 Encinitas Boulevard,SUNSHINE GARDENS,Ord No. 2019-04,2019-03-27,0,84,0,0,Unaccommodated Need,3.39,OP/ R-30 OL,OP/ R-30 OL,25,30,84.0,Non-Vacant,"single-story commercial building, a paved surface parking lot, and a variety of retail uses in both permanent and temporary structures",ENCINITAS,2023
+ENCINITAS,San Diego,2023,2582411000,1050 Regal Road,SEACOAST CHURCH,Ord No. 2019-04,2019-03-27,0,42,0,0,Unaccommodated Need,1.41,R11/ R-30 OL,R11/ R-30 OL,25,30,42.0,Non-Vacant,"four existing 1 and
+2-story structures associated with the existing church facility on-site, two paved parking lots",ENCINITAS,2023
+ENCINITAS,San Diego,2023,2592312800,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,89,0,0,Unaccommodated Need,3.57,RR2/ R-30  OL,RR2/ R-30  OL,25,30,89.0,Non-Vacant,three residential structures across multiple parcels,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2592313000,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,13,0,0,Unaccommodated Need,0.54,RR2/ R-30  OL,RR2/ R-30  OL,25,30,13.0,Non-Vacant,SEE ABOVE,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2592313100,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,11,0,0,Unaccommodated Need,0.46,RR2/ R-30  OL,RR2/ R-30  OL,25,30,11.0,Non-Vacant,SEE ABOVE,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2592313200,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,36,0,0,Unaccommodated Need,1.45,RR2/ R-30  OL,RR2/ R-30  OL,25,30,36.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2611506400,3459 Manchester Avenue,GREEK CHURCH PARCEL,Ord No. 2019-04,2019-03-27,0,60,0,0,Unaccommodated Need,2.0,RR1/ R-30 OL,RR1/ R-30 OL,25,30,60.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2612003700,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,16,0,0,Unaccommodated Need,0.54,R11/ R-30 OL,R11/ R-30 OL,25,30,16.0,Non-Vacant,ONE SINGLE STORY SINGLE-FAMILY RESIDENCE,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2612003800,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,15,0,0,Unaccommodated Need,0.5,R11/ R-30 OL,R11/ R-30 OL,25,30,15.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2612003900,2955 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,19,0,0,Unaccommodated Need,0.63,R11/ R-30 OL,R11/ R-30 OL,25,30,19.0,Non-Vacant,ONE SINGLE STORY SINGLE-FAMILY RESIDENCE,ENCINITAS,2023
+ENCINITAS,San Diego,2023,2620618500,Sage Canyon Drive,SAGE CANYON PARCEL,Ord No. 2019-04,2019-03-27,0,60,0,0,Unaccommodated Need,2.4,R3/ R30 OL,R3/ R30 OL,25,30,60.0,Vacant, ,ENCINITAS,2023
+ENCINITAS,San Diego,2024,"2160412000, 2160412100",1950 HWY 101,JACKEL PROPERTIES,Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,2.97,North 101 Corridor Specific Plan,N-LVSC,25,30,33.0,Non-Vacant,VACANT RESTAURANT AND SURFACE PARKING LOT,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2160520100,1967 N Vulcan Ave,VULCAN & LA COSTA,Ord No. 2019-04,2019-03-27,0,50,0,0,Unaccommodated Need,2.0,R3/ R30 OL,R3/ R30 OL,25,30,50.0,Non-Vacant,temporary agricultural structures such as greenhouses,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2561711300,682 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,23,0,0,Unaccommodated Need,0.75,R5/ R-30 OL,R5/ R-30 OL,25,30,23.0,Non-Vacant,single-story residence,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2561711400,672 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,19,0,0,Unaccommodated Need,0.63,R5/ R-30 OL,R5/ R-30 OL,25,30,19.0,Non-Vacant,single-story residence,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2561711500,662 Clark Ave,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,42,0,0,Unaccommodated Need,1.41,R5/ R-30 OL,R5/ R-30 OL,25,30,42.0,Non-Vacant,outdoor storage area associated with agricultural uses,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2561712000,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,18,0,0,Unaccommodated Need,0.6,R3/ R30 OL,R3/ R30 OL,25,30,18.0,Non-Vacant,flower growing business and associated greenhouse and sales temporary structures,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2561712100,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,11,0,0,Unaccommodated Need,0.38,R3/ R30 OL,R3/ R30 OL,25,30,11.0,Non-Vacant,SEE ABOVE,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2561712400,556 Union St,MEYER PROPOSAL,Ord No. 2019-04,2019-03-27,0,82,0,0,Unaccommodated Need,2.75,R3/ R30 OL,R3/ R30 OL,25,30,82.0,Non-Vacant,SEE ABOVE,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2570203600,Mays Hollow Ln,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,43,0,0,Unaccommodated Need,1.74,R3/ R30 OL,R3/ R30 OL,25,30,43.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2570203700,225 Quail Gardens Dr,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.24,R3/ R30 OL,R3/ R30 OL,25,30,31.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2574702400,N El Camino Real,ARMSTRONG PARCELS,Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.06,GC/ R30 OL,GC R-30 OL,25,30,31.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2580350700,371 2nd St,HARRISON PROPERTIES,Ord No. 2019-04,2019-03-27,0,16,0,0,Unaccommodated Need,1.26,DESP-VCM,DESP-VCM/ R-30 OL,25,30,16.0,Non-Vacant,"2-story office building, one 2-story residential structure, and a surface parking lot - Existing operational businesses",ENCINITAS,2024
+ENCINITAS,San Diego,2024,2580521200,364 2nd St,HARRISON PROPERTIES,Ord No. 2019-04,2019-03-27,0,9,0,0,Unaccommodated Need,0.65,DESP-VCM,DESP-VCM/ R-30 OL,25,30,9.0,Non-Vacant,2-story office building and a surface parking lot - Existing operational businesses,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2581111600,"696 & 550 Encinitas Blvd, Quail Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,66,0,0,Unaccommodated Need,2.2,OP/ R-30 OL,OP/ R-30 OL,25,30,66.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2581303400,"696 & 550 Encinitas Blvd, Quail Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,31,0,0,Unaccommodated Need,1.02,OP/ R-30 OL,OP/ R-30 OL,25,30,31.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2581304500,"696 & 550 Encinitas Blvd, Quail Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,7,0,0,Unaccommodated Need,0.23,OP/ R-30 OL,OP/ R-30 OL,25,30,7.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2581308000,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,25,0,0,Unaccommodated Need,1.0,R5/ R-30 OL,R5/ R-30 OL,25,30,25.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2581308100,"696 & 550 Encinitas Blvd, Quail Gardens Dr","ENCINITAS BLVD &
+QUAIL GARDENS SITES",Ord No. 2019-04,2019-03-27,0,39,0,0,Unaccommodated Need,1.31,OP/ R-30 OL,OP/ R-30 OL,25,30,39.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2581308200,Quail Gardens Drive,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,22,0,0,Unaccommodated Need,0.88,R5/ R-30 OL,R5/ R-30 OL,25,30,22.0,Non-Vacant,UTILITY EASEMENT,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2581308600,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,56,0,0,Unaccommodated Need,2.24,R5/ R-30 OL,R5/ R-30 OL,25,30,56.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2581309100,Mays Hollow Lane,BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,8,0,0,Unaccommodated Need,0.33,R5/ R-30 OL,R5/ R-30 OL,25,30,8.0,Non-Vacant,SEE ABOVE,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2581309300,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,33,0,0,Unaccommodated Need,1.35,R5/ R-30 OL,R5/ R-30 OL,25,30,33.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2581309400,"185, 195 Quail Gardens Drive, Encinitas Blvd",BALDWIN & SONS PROPERTIES,Ord No. 2019-04,2019-03-27,0,7,0,0,Unaccommodated Need,0.27,R5/ R-30 OL,R5/ R-30 OL,25,30,7.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,"2581309700, 2581309800",630 Encinitas Boulevard,SUNSHINE GARDENS,Ord No. 2019-04,2019-03-27,0,84,0,0,Unaccommodated Need,3.39,OP/ R-30 OL,OP/ R-30 OL,25,30,84.0,Non-Vacant,"single-story commercial building, a paved surface parking lot, and a variety of retail uses in both permanent and temporary structures",ENCINITAS,2024
+ENCINITAS,San Diego,2024,2582411000,1050 Regal Road,SEACOAST CHURCH,Ord No. 2019-04,2019-03-27,0,42,0,0,Unaccommodated Need,1.41,R11/ R-30 OL,R11/ R-30 OL,25,30,42.0,Non-Vacant,"four existing 1 and
+2-story structures associated with the existing church facility on-site, two paved parking lots",ENCINITAS,2024
+ENCINITAS,San Diego,2024,2592312800,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,89,0,0,Unaccommodated Need,3.57,RR2/ R-30  OL,RR2/ R-30  OL,25,30,89.0,Non-Vacant,three residential structures across multiple parcels,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2592313000,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,13,0,0,Unaccommodated Need,0.54,RR2/ R-30  OL,RR2/ R-30  OL,25,30,13.0,Non-Vacant,SEE ABOVE,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2592313100,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,11,0,0,Unaccommodated Need,0.46,RR2/ R-30  OL,RR2/ R-30  OL,25,30,11.0,Non-Vacant,SEE ABOVE,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2592313200,Rancho Santa Fe Dr,RANCHO SANTA FE PARCELS (GAFFNEY/ GOODSEN),Ord No. 2019-04,2019-03-27,0,36,0,0,Unaccommodated Need,1.45,RR2/ R-30  OL,RR2/ R-30  OL,25,30,36.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2611506400,3459 Manchester Avenue,GREEK CHURCH PARCEL,Ord No. 2019-04,2019-03-27,0,60,0,0,Unaccommodated Need,2.0,RR1/ R-30 OL,RR1/ R-30 OL,25,30,60.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2612003700,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,16,0,0,Unaccommodated Need,0.54,R11/ R-30 OL,R11/ R-30 OL,25,30,16.0,Non-Vacant,ONE SINGLE STORY SINGLE-FAMILY RESIDENCE,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2612003800,2951 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,15,0,0,Unaccommodated Need,0.5,R11/ R-30 OL,R11/ R-30 OL,25,30,15.0,Vacant, ,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2612003900,2955 Manchester Avenue,"MANCHESTER AVENUE
+WEST SITES",Ord No. 2019-04,2019-03-27,0,19,0,0,Unaccommodated Need,0.63,R11/ R-30 OL,R11/ R-30 OL,25,30,19.0,Non-Vacant,ONE SINGLE STORY SINGLE-FAMILY RESIDENCE,ENCINITAS,2024
+ENCINITAS,San Diego,2024,2620618500,Sage Canyon Drive,SAGE CANYON PARCEL,Ord No. 2019-04,2019-03-27,0,60,0,0,Unaccommodated Need,2.4,R3/ R30 OL,R3/ R30 OL,25,30,60.0,Vacant, ,ENCINITAS,2024
+IMPERIAL BEACH,San Diego,2024,6331611300,1376 Holly Ave,,,2024-12-04,3,0,3,40,No Net Loss,0.16,R-2000,R-2000,3,3,3.0,Non-Vacant,Existing SFR - Site used to devfelop an affordable housing project ref 1368 Holly 46 Units developed,IMPERIAL BEACH,2024
+OCEANSIDE,San Diego,2022,1481430400,Olive Street,,,2023-03-22,0,0,0,4,Shortfall of Sites,0.13,SC,CS-HO,35,43,4.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1481430500,Olive Street,,,2023-03-22,0,0,0,4,Shortfall of Sites,0.13,SC,CS-HO,35,43,4.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1481524000,0 Mission Avenue,,,2023-03-22,0,0,0,16,Shortfall of Sites,0.48,GC,CG,35,43,16.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1481600400,1806 Mission Ave,,,2023-03-22,0,0,0,13,Shortfall of Sites,0.38,GC,CG,35,43,13.0,Non-Vacant,Unmanned Facility,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1481700600,2005 Mission Avenue,,,2023-03-22,0,333,0,0,Shortfall of Sites,9.53,NC,CN,35,43,333.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1482602500,1527 Mission Avenue,,,2023-03-22,0,330,0,0,Shortfall of Sites,9.45,NC,CN,35,43,330.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1483402400,105 Brooks Street,,,2023-03-22,0,8,0,0,Shortfall of Sites,0.26,SC,CS-HO,35,43,8.0,Non-Vacant,Bar,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1483402500,1435 Mission Avenue,,,2023-03-22,0,14,0,0,Shortfall of Sites,0.43,SC,CS-HO,35,43,14.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1510104000,1906 Oceanside Blvd.,,,2023-03-22,0,100,0,0,Shortfall of Sites,2.87,GC,CL,35,43,100.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1510104400,Greenbrier Drive,,,2023-03-22,0,24,0,0,Shortfall of Sites,0.71,GC,CL,35,43,24.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1510111200,1702 Oceanside Blvd,,,2023-03-22,0,220,0,0,Shortfall of Sites,6.3,SC,CS-HO,35,43,220.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1513102200,1767 S. Oceanside Blvd,,,2023-03-22,0,22,0,0,Shortfall of Sites,0.65,SC,CS-HO,35,43,22.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1513102600,1729 S. Oceanside Blvd,,,2023-03-22,0,117,0,0,Shortfall of Sites,3.37,SC,CS-HO,35,43,117.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1513102700,Oceanside Blvd,,,2023-03-22,0,54,0,0,Shortfall of Sites,1.56,SC,CS-HO,35,43,54.0,Non-Vacant,Parking Lot for Commerical Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1513103400,1310 Union Plaza Ct,,,2023-03-22,0,31,0,0,Shortfall of Sites,0.9,PC,CP,35,43,31.0,Non-Vacant,Office,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1513103500,1320 Union Plaza Ct,,,2023-03-22,0,66,0,0,Shortfall of Sites,1.9,PC,CP,35,43,66.0,Non-Vacant,Office,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1513103600,1305 Union Plaza Ct,,,2023-03-22,0,45,0,0,Shortfall of Sites,1.3,PC,CP,35,43,45.0,Non-Vacant,Office,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1513103700,1315 Union Plaza Ct,,,2023-03-22,0,66,0,0,Shortfall of Sites,1.91,PC,CP,35,43,66.0,Non-Vacant,Office,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1600531200,0 Mission Ave,,,2023-03-22,0,63,0,0,Shortfall of Sites,1.82,GC,CG,35,43,63.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1602713700,3240 Mission Avenue,,,2023-03-22,0,59,0,0,Shortfall of Sites,0.35,GC,CG,35,43,59.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1602713800,3240 Mission Avenue,,,2023-03-22,0,59,0,0,Shortfall of Sites,2.3,GC,CG,35,43,59.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1602906800,0 Hacienda Drive,,,2023-03-22,0,109,0,0,Shortfall of Sites,3.14,GC,CL,35,43,109.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1602911200,0 Mission Ave,,,2023-03-22,0,63,0,0,Shortfall of Sites,1.82,GC,CG,35,43,63.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1605601300,3855 Mission Avenue,,,2023-03-22,0,164,0,0,Shortfall of Sites,4.71,SC,CS-L-H,35,43,164.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1610302300,0 Oceanside Blvd,,,2023-03-22,0,184,0,0,Shortfall of Sites,5.28,NC,CN,35,43,184.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1610302400,0 Oceanside Blvd,,,2023-03-22,0,75,0,0,Shortfall of Sites,2.15,NC,CN,35,43,75.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1620312400,1401 El Camino Real,,,2023-03-22,0,143,0,0,Shortfall of Sites,4.11,GI,IG-MP,35,43,143.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1622405100,4170 Oceanside Blvd.,,,2023-03-22,0,0,0,32,Shortfall of Sites,1.83,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,32.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1622411000,4201 Oceanside Blvd.,,,2023-03-22,0,90,0,0,Shortfall of Sites,2.59,GC,CG-PBD-2,35,43,90.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1622412300,4211 Oceanside Blvd.,,,2023-03-22,0,140,0,0,Shortfall of Sites,4.01,GC,CG - PBD-2,35,43,140.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1622414000,4161 Oceanside Blvd.,,,2023-03-22,0,53,0,0,Shortfall of Sites,1.52,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,53.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1622414100,4171 Oceanside Blvd.,,,2023-03-22,0,63,0,0,Shortfall of Sites,1.8,GC,CG,35,43,63.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1625022200,4150 Oceanside Blvd.,,,2023-03-22,0,0,0,71,Shortfall of Sites,4.01,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,71.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1625022300,4130 Oceanside Blvd.,,,2023-03-22,0,0,0,42,Shortfall of Sites,2.37,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,42.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1625022400,4140 Oceanside Blvd.,,,2023-03-22,0,0,0,27,Shortfall of Sites,1.54,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,27.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1625022600,4136 Oceanside Blvd.,,,2023-03-22,0,0,0,13,Shortfall of Sites,0.77,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,13.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1625022900,4120 Oceanside Blvd.,,,2023-03-22,0,0,0,12,Shortfall of Sites,0.69,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,12.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1650120500,2136 El Camino Real,,,2023-03-22,0,26,0,0,Shortfall of Sites,0.76,PC,CP,35,43,26.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1650120600,2136 El Camino Real,,,2023-03-22,0,27,0,0,Shortfall of Sites,0.78,PC,CP,35,43,27.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1650120700,2136 El Camino Real,,,2023-03-22,0,17,0,0,Shortfall of Sites,0.5,PC,CP,35,43,17.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1651202400,2335 Vista Way,,,2023-03-22,0,0,0,224,Shortfall of Sites,6.41,CC,CC,35,43,224.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1651203800,2485 Vista Way,,,2023-03-22,0,0,0,9,Shortfall of Sites,0.26,CC,CC,35,43,9.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1651204400,2481 Vista Way,,,2023-03-22,0,0,0,10,Shortfall of Sites,0.31,CC,CC,35,43,10.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1651204600,2415 Vista Way,,,2023-03-22,0,0,0,6,Shortfall of Sites,0.19,CC,CC,35,43,6.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1651204700,2405 Vista Way,,,2023-03-22,0,0,0,6,Shortfall of Sites,0.19,CC,CC,35,43,6.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1651205900,0 Higway 78,,,2023-03-22,0,122,0,0,Shortfall of Sites,3.5,SC,CS-HO,35,43,122.0,Non-Vacant,Parking Lot for Commerical Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1651206400,2471 Vista Way,,,2023-03-22,0,0,0,12,Shortfall of Sites,0.37,CC,CC,35,43,12.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1651206500,Vista Way,,,2023-03-22,0,0,0,103,Shortfall of Sites,2.95,CC,CC,35,43,103.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1651910500,Null,,,2023-03-22,0,0,0,383,Shortfall of Sites,10.97,PC,CP,35,43,383.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1654303000,0 El Camino Real,,,2023-03-22,0,0,0,16,Shortfall of Sites,0.47,PC,CP,35,43,16.0,Vacant,,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1680120300,3817 Plaza Drive,,,2023-03-22,0,133,0,0,Shortfall of Sites,3.8,CC,CC,35,43,133.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2022,1680121100,3805 Plaza Drive,,,2023-03-22,0,24,0,0,Shortfall of Sites,0.69,CC,CC,35,43,24.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2022
+OCEANSIDE,San Diego,2023,1481430400,Olive Street,,,2023-03-22,0,0,0,4,Shortfall of Sites,0.13,SC,CS-HO,35,43,4.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1481430500,Olive Street,,,2023-03-22,0,0,0,4,Shortfall of Sites,0.13,SC,CS-HO,35,43,4.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1481524000,0 Mission Avenue,,,2023-03-22,0,0,0,16,Shortfall of Sites,0.48,GC,CG,35,43,16.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1481600400,1806 Mission Ave,,,2023-03-22,0,0,0,13,Shortfall of Sites,0.38,GC,CG,35,43,13.0,Non-Vacant,Unmanned Facility,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1481700600,2005 Mission Avenue,,,2023-03-22,0,333,0,0,Shortfall of Sites,9.53,NC,CN,35,43,333.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1482602500,1527 Mission Avenue,,,2023-03-22,0,330,0,0,Shortfall of Sites,9.45,NC,CN,35,43,330.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1483402400,105 Brooks Street,,,2023-03-22,0,8,0,0,Shortfall of Sites,0.26,SC,CS-HO,35,43,8.0,Non-Vacant,Bar,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1483402500,1435 Mission Avenue,,,2023-03-22,0,14,0,0,Shortfall of Sites,0.43,SC,CS-HO,35,43,14.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1510104000,1906 Oceanside Blvd.,,,2023-03-22,0,100,0,0,Shortfall of Sites,2.87,GC,CL,35,43,100.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1510104400,Greenbrier Drive,,,2023-03-22,0,24,0,0,Shortfall of Sites,0.71,GC,CL,35,43,24.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1510111200,1702 Oceanside Blvd,,,2023-03-22,0,220,0,0,Shortfall of Sites,6.3,SC,CS-HO,35,43,220.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1513102200,1767 S. Oceanside Blvd,,,2023-03-22,0,22,0,0,Shortfall of Sites,0.65,SC,CS-HO,35,43,22.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1513102600,1729 S. Oceanside Blvd,,,2023-03-22,0,117,0,0,Shortfall of Sites,3.37,SC,CS-HO,35,43,117.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1513102700,Oceanside Blvd,,,2023-03-22,0,54,0,0,Shortfall of Sites,1.56,SC,CS-HO,35,43,54.0,Non-Vacant,Parking Lot for Commerical Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1513103400,1310 Union Plaza Ct,,,2023-03-22,0,31,0,0,Shortfall of Sites,0.9,PC,CP,35,43,31.0,Non-Vacant,Office,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1513103500,1320 Union Plaza Ct,,,2023-03-22,0,66,0,0,Shortfall of Sites,1.9,PC,CP,35,43,66.0,Non-Vacant,Office,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1513103600,1305 Union Plaza Ct,,,2023-03-22,0,45,0,0,Shortfall of Sites,1.3,PC,CP,35,43,45.0,Non-Vacant,Office,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1513103700,1315 Union Plaza Ct,,,2023-03-22,0,66,0,0,Shortfall of Sites,1.91,PC,CP,35,43,66.0,Non-Vacant,Office,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1600531200,0 Mission Ave,,,2023-03-22,0,63,0,0,Shortfall of Sites,1.82,GC,CG,35,43,63.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1602713700,3240 Mission Avenue,,,2023-03-22,0,59,0,0,Shortfall of Sites,0.35,GC,CG,35,43,59.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1602713800,3240 Mission Avenue,,,2023-03-22,0,59,0,0,Shortfall of Sites,2.3,GC,CG,35,43,59.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1602906800,0 Hacienda Drive,,,2023-03-22,0,109,0,0,Shortfall of Sites,3.14,GC,CL,35,43,109.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1602911200,0 Mission Ave,,,2023-03-22,0,63,0,0,Shortfall of Sites,1.82,GC,CG,35,43,63.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1605601300,3855 Mission Avenue,,,2023-03-22,0,164,0,0,Shortfall of Sites,4.71,SC,CS-L-H,35,43,164.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1610302300,0 Oceanside Blvd,,,2023-03-22,0,184,0,0,Shortfall of Sites,5.28,NC,CN,35,43,184.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1610302400,0 Oceanside Blvd,,,2023-03-22,0,75,0,0,Shortfall of Sites,2.15,NC,CN,35,43,75.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1620312400,1401 El Camino Real,,,2023-03-22,0,143,0,0,Shortfall of Sites,4.11,GI,IG-MP,35,43,143.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1622405100,4170 Oceanside Blvd.,,,2023-03-22,0,0,0,32,Shortfall of Sites,1.83,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,32.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1622411000,4201 Oceanside Blvd.,,,2023-03-22,0,90,0,0,Shortfall of Sites,2.59,GC,CG-PBD-2,35,43,90.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1622412300,4211 Oceanside Blvd.,,,2023-03-22,0,140,0,0,Shortfall of Sites,4.01,GC,CG - PBD-2,35,43,140.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1622414000,4161 Oceanside Blvd.,,,2023-03-22,0,53,0,0,Shortfall of Sites,1.52,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,53.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1622414100,4171 Oceanside Blvd.,,,2023-03-22,0,63,0,0,Shortfall of Sites,1.8,GC,CG,35,43,63.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1625022200,4150 Oceanside Blvd.,,,2023-03-22,0,0,0,71,Shortfall of Sites,4.01,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,71.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1625022300,4130 Oceanside Blvd.,,,2023-03-22,0,0,0,42,Shortfall of Sites,2.37,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,42.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1625022400,4140 Oceanside Blvd.,,,2023-03-22,0,0,0,27,Shortfall of Sites,1.54,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,27.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1625022600,4136 Oceanside Blvd.,,,2023-03-22,0,0,0,13,Shortfall of Sites,0.77,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,13.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1625022900,4120 Oceanside Blvd.,,,2023-03-22,0,0,0,12,Shortfall of Sites,0.69,Rancho Del Oro SP-1-84,PD-1 Commercial,35,43,12.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1650120500,2136 El Camino Real,,,2023-03-22,0,26,0,0,Shortfall of Sites,0.76,PC,CP,35,43,26.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1650120600,2136 El Camino Real,,,2023-03-22,0,27,0,0,Shortfall of Sites,0.78,PC,CP,35,43,27.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1650120700,2136 El Camino Real,,,2023-03-22,0,17,0,0,Shortfall of Sites,0.5,PC,CP,35,43,17.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1651202400,2335 Vista Way,,,2023-03-22,0,0,0,224,Shortfall of Sites,6.41,CC,CC,35,43,224.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1651203800,2485 Vista Way,,,2023-03-22,0,0,0,9,Shortfall of Sites,0.26,CC,CC,35,43,9.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1651204400,2481 Vista Way,,,2023-03-22,0,0,0,10,Shortfall of Sites,0.31,CC,CC,35,43,10.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1651204600,2415 Vista Way,,,2023-03-22,0,0,0,6,Shortfall of Sites,0.19,CC,CC,35,43,6.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1651204700,2405 Vista Way,,,2023-03-22,0,0,0,6,Shortfall of Sites,0.19,CC,CC,35,43,6.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1651205900,0 Higway 78,,,2023-03-22,0,122,0,0,Shortfall of Sites,3.5,SC,CS-HO,35,43,122.0,Non-Vacant,Parking Lot for Commerical Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1651206400,2471 Vista Way,,,2023-03-22,0,0,0,12,Shortfall of Sites,0.37,CC,CC,35,43,12.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1651206500,Vista Way,,,2023-03-22,0,0,0,103,Shortfall of Sites,2.95,CC,CC,35,43,103.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1651910500,Null,,,2023-03-22,0,0,0,383,Shortfall of Sites,10.97,PC,CP,35,43,383.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1654303000,0 El Camino Real,,,2023-03-22,0,0,0,16,Shortfall of Sites,0.47,PC,CP,35,43,16.0,Vacant,,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1680120300,3817 Plaza Drive,,,2023-03-22,0,133,0,0,Shortfall of Sites,3.8,CC,CC,35,43,133.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+OCEANSIDE,San Diego,2023,1680121100,3805 Plaza Drive,,,2023-03-22,0,24,0,0,Shortfall of Sites,0.69,CC,CC,35,43,24.0,Non-Vacant,Commercial Shopping Center,OCEANSIDE,2023
+POWAY,San Diego,2019,31715143,12369 Poway Road,,,2017-12-05,24,19,0,0,No Net Loss,1.44,Planned Community (PC),PC-8,0,35 du/ac,50.0,Non-Vacant,Commercial Shopping Center,POWAY,2019
+POWAY,San Diego,2019,31715144,12339  Poway Road,,,2017-12-05,32,25,0,0,No Net Loss,1.92,Planned Community (PC),PC-8,0,35 du/ac,67.0,Non-Vacant,Commercial Shopping Center,POWAY,2019
+POWAY,San Diego,2019,31715150,12317 Poway Road,,,2017-12-05,7,7,0,0,No Net Loss,0.47,Planned Community (PC),PC-8,0,35 du/ac,16.0,Non-Vacant,Commercial Shopping Center,POWAY,2019
+POWAY,San Diego,2019,31715151,12313 Poway Road,,,2017-12-05,25,20,0,0,No Net Loss,1.53,Planned Community (PC),PC-8,0,35 du/ac,53.0,Non-Vacant,Commercial Shopping Center,POWAY,2019
+POWAY,San Diego,2020,31710102,13020 Poway Road,,,2017-12-05,14,8,0,0,No Net Loss,0.88,Planned Community (PC),PC-8,,35 du/ac,26.0,Non-Vacant,Commercial Shopping Center,POWAY,2020
+POWAY,San Diego,2020,31710111,13210 Poway Road,,,2017-12-05,45,26,0,0,No Net Loss,2.71,Planned Community (PC),PC-8,,35 du/ac,81.0,Non-Vacant,Commercial Shopping Center;,POWAY,2020
+POWAY,San Diego,2020,31747302,13205 Poway Road,,,2017-12-05,10,5,0,0,No Net Loss,0.62,Planned Community (PC),PC-8,,35 du/ac,18.0,Non-Vacant,Commercial Shopping Center,POWAY,2020
+POWAY,San Diego,2020,31747303,13215 Poway Road,,,2017-12-05,3,2,0,0,No Net Loss,0.2,Planned Community (PC),PC-8,,35 du/ac,6.0,Non-Vacant,Commercial Shopping Center,POWAY,2020
+POWAY,San Diego,2020,31747305,13119 Bowron Road,,,2017-12-05,5,3,0,0,No Net Loss,0.35,Planned Community (PC),PC-8,,35 du/ac,10.0,Non-Vacant,Commercial Shopping Center;,POWAY,2020
+SAN MARCOS,San Diego,2023,2202019000,337 E. Carmel Street,Zirpollo Property,,2022-07-12,46,46,0,0,No Net Loss,6.13,Specific Plan Area,Specific Plan Area,30 du/acre,No maximum density,92.0,Vacant,No exisitng land uses,SAN MARCOS,2023
