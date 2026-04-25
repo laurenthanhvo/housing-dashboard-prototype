@@ -1,0 +1,539 @@
+source,path,jur_key,raw_examples
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,adelanto,ADELANTO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,agoura hills,AGOURA HILLS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,alameda,ALAMEDA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,alameda county,ALAMEDA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,albany,ALBANY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,alhambra,ALHAMBRA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,aliso viejo,ALISO VIEJO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,alpine county,ALPINE COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,alturas,ALTURAS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,amador,AMADOR
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,amador county,AMADOR COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,american canyon,AMERICAN CANYON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,anaheim,ANAHEIM
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,anderson,ANDERSON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,angels camp,ANGELS CAMP
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,antioch,ANTIOCH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,apple valley,APPLE VALLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,arcadia,ARCADIA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,arcata,ARCATA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,arroyo grande,ARROYO GRANDE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,artesia,ARTESIA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,arvin,ARVIN
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,atascadero,ATASCADERO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,atherton,ATHERTON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,atwater,ATWATER
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,auburn,AUBURN
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,avalon,AVALON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,avenal,AVENAL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,azusa,AZUSA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,bakersfield,BAKERSFIELD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,baldwin park,BALDWIN PARK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,banning,BANNING
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,barstow,BARSTOW
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,beaumont,BEAUMONT
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,bell,BELL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,bell gardens,BELL GARDENS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,bellflower,BELLFLOWER
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,belmont,BELMONT
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,belvedere,BELVEDERE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,benicia,BENICIA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,berkeley,BERKELEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,beverly hills,BEVERLY HILLS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,big bear lake,BIG BEAR LAKE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,biggs,BIGGS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,bishop,BISHOP
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,blue lake,BLUE LAKE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,blythe,BLYTHE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,bradbury,BRADBURY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,brawley,BRAWLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,brea,BREA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,brentwood,BRENTWOOD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,brisbane,BRISBANE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,buellton,BUELLTON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,buena park,BUENA PARK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,burbank,BURBANK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,burlingame,BURLINGAME
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,butte county,BUTTE COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,calabasas,CALABASAS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,calaveras county,CALAVERAS COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,calexico,CALEXICO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,calimesa,CALIMESA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,calipatria,CALIPATRIA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,calistoga,CALISTOGA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,camarillo,CAMARILLO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,campbell,CAMPBELL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,canyon lake,CANYON LAKE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,capitola,CAPITOLA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,carmel,CARMEL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,carpinteria,CARPINTERIA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,carson,CARSON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,cathedral,CATHEDRAL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,ceres,CERES
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,cerritos,CERRITOS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,chico,CHICO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,chino,CHINO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,chino hills,CHINO HILLS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,chowchilla,CHOWCHILLA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,citrus heights,CITRUS HEIGHTS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,claremont,CLAREMONT
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,clayton,CLAYTON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,clearlake,CLEARLAKE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,cloverdale,CLOVERDALE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,clovis,CLOVIS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,coachella,COACHELLA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,coalinga,COALINGA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,colfax,COLFAX
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,colma,COLMA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,colton,COLTON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,colusa,COLUSA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,colusa county,COLUSA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,commerce,COMMERCE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,compton,COMPTON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,concord,CONCORD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,contra costa county,CONTRA COSTA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,corcoran,CORCORAN
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,corning,CORNING
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,corona,CORONA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,corte madera,CORTE MADERA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,costa mesa,COSTA MESA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,cotati,COTATI
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,county of san diego,SAN DIEGO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,covina,COVINA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,crescent,CRESCENT CITY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,cudahy,CUDAHY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,culver,CULVER CITY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,cupertino,CUPERTINO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,cypress,CYPRESS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,daly,DALY CITY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,dana point,DANA POINT
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,danville,DANVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,davis,DAVIS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,del norte county,DEL NORTE COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,del rey oaks,DEL REY OAKS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,delano,DELANO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,desert hot springs,DESERT HOT SPRINGS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,diamond bar,DIAMOND BAR
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,dinuba,DINUBA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,dixon,DIXON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,dorris,DORRIS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,dos palos,DOS PALOS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,downey,DOWNEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,duarte,DUARTE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,dublin,DUBLIN
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,dunsmuir,DUNSMUIR
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,east palo alto,EAST PALO ALTO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,eastvale,EASTVALE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,el centro,EL CENTRO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,el cerrito,EL CERRITO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,el dorado county,EL DORADO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,el monte,EL MONTE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,el segundo,EL SEGUNDO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,elk grove,ELK GROVE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,emeryville,EMERYVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,escalon,ESCALON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,etna,ETNA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,eureka,EUREKA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,exeter,EXETER
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fairfax,FAIRFAX
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fairfield,FAIRFIELD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,farmersville,FARMERSVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,ferndale,FERNDALE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fillmore,FILLMORE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,firebaugh,FIREBAUGH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,folsom,FOLSOM
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fontana,FONTANA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fort bragg,FORT BRAGG
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fort jones,FORT JONES
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fortuna,FORTUNA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,foster,FOSTER CITY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fountain valley,FOUNTAIN VALLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fowler,FOWLER
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fremont,FREMONT
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fresno,FRESNO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fresno county,FRESNO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,fullerton,FULLERTON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,galt,GALT
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,garden grove,GARDEN GROVE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,gardena,GARDENA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,gilroy,GILROY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,glendale,GLENDALE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,glendora,GLENDORA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,glenn county,GLENN COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,goleta,GOLETA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,gonzales,GONZALES
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,grand terrace,GRAND TERRACE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,grass valley,GRASS VALLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,greenfield,GREENFIELD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,gridley,GRIDLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,grover beach,GROVER BEACH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,guadalupe,GUADALUPE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,gustine,GUSTINE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,half moon bay,HALF MOON BAY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,hanford,HANFORD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,hawaiian gardens,HAWAIIAN GARDENS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,hawthorne,HAWTHORNE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,hayward,HAYWARD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,healdsburg,HEALDSBURG
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,hemet,HEMET
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,hercules,HERCULES
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,hermosa beach,HERMOSA BEACH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,hesperia,HESPERIA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,hidden hills,HIDDEN HILLS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,highland,HIGHLAND
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,hillsborough,HILLSBOROUGH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,hollister,HOLLISTER
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,holtville,HOLTVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,hughson,HUGHSON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,humboldt county,HUMBOLDT COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,huntington beach,HUNTINGTON BEACH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,huntington park,HUNTINGTON PARK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,huron,HURON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,imperial,IMPERIAL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,imperial county,IMPERIAL COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,indian wells,INDIAN WELLS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,indio,INDIO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,industry,INDUSTRY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,inglewood,INGLEWOOD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,inyo county,INYO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,ione,IONE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,irvine,IRVINE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,irwindale,IRWINDALE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,isleton,ISLETON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,jackson,JACKSON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,jurupa valley,JURUPA VALLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,kerman,KERMAN
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,kern county,KERN COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,king,KING CITY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,kings county,KINGS COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,kingsburg,KINGSBURG
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,la canada flintridge,LA CANADA FLINTRIDGE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,la habra,LA HABRA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,la habra heights,LA HABRA HEIGHTS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,la mirada,LA MIRADA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,la palma,LA PALMA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,la puente,LA PUENTE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,la quinta,LA QUINTA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,la verne,LA VERNE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lafayette,LAFAYETTE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,laguna beach,LAGUNA BEACH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,laguna hills,LAGUNA HILLS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,laguna niguel,LAGUNA NIGUEL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,laguna woods,LAGUNA WOODS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lake county,LAKE COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lake elsinore,LAKE ELSINORE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lake forest,LAKE FOREST
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lakeport,LAKEPORT
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lakewood,LAKEWOOD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lancaster,LANCASTER
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,larkspur,LARKSPUR
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lassen county,LASSEN COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lathrop,LATHROP
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lawndale,LAWNDALE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lemoore,LEMOORE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lincoln,LINCOLN
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lindsay,LINDSAY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,live oak,LIVE OAK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,livermore,LIVERMORE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,livingston,LIVINGSTON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lodi,LODI
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,loma linda,LOMA LINDA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lomita,LOMITA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lompoc,LOMPOC
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,long beach,LONG BEACH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,loomis,LOOMIS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,los alamitos,LOS ALAMITOS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,los altos,LOS ALTOS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,los altos hills,LOS ALTOS HILLS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,los angeles,LOS ANGELES
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,los angeles county,LOS ANGELES COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,los banos,LOS BANOS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,los gatos,LOS GATOS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,loyalton,LOYALTON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,lynwood,LYNWOOD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,madera,MADERA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,madera county,MADERA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,malibu,MALIBU
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,mammoth lakes,MAMMOTH LAKES
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,manhattan beach,MANHATTAN BEACH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,manteca,MANTECA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,maricopa,MARICOPA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,marin county,MARIN COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,marina,MARINA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,mariposa county,MARIPOSA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,martinez,MARTINEZ
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,marysville,MARYSVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,maywood,MAYWOOD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,mcfarland,MCFARLAND
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,mendocino county,MENDOCINO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,mendota,MENDOTA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,menifee,MENIFEE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,menlo park,MENLO PARK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,merced,MERCED
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,merced county,MERCED COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,mill valley,MILL VALLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,millbrae,MILLBRAE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,milpitas,MILPITAS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,mission viejo,MISSION VIEJO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,modesto,MODESTO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,modoc county,MODOC COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,mono county,MONO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,monrovia,MONROVIA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,montague,MONTAGUE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,montclair,MONTCLAIR
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,monte sereno,MONTE SERENO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,montebello,MONTEBELLO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,monterey,MONTEREY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,monterey county,MONTEREY COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,monterey park,MONTEREY PARK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,moorpark,MOORPARK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,moraga,MORAGA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,moreno valley,MORENO VALLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,morgan hill,MORGAN HILL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,morro bay,MORRO BAY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,mount shasta,MOUNT SHASTA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,mountain view,MOUNTAIN VIEW
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,murrieta,MURRIETA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,napa,NAPA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,napa county,NAPA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,needles,NEEDLES
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,nevada,NEVADA CITY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,nevada county,NEVADA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,newark,NEWARK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,newman,NEWMAN
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,newport beach,NEWPORT BEACH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,norco,NORCO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,norwalk,NORWALK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,novato,NOVATO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,oakdale,OAKDALE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,oakland,OAKLAND
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,oakley,OAKLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,ojai,OJAI
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,ontario,ONTARIO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,orange,ORANGE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,orange county,ORANGE COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,orange cove,ORANGE COVE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,orinda,ORINDA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,orland,ORLAND
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,oroville,OROVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,oxnard,OXNARD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,pacific grove,PACIFIC GROVE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,pacifica,PACIFICA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,palm desert,PALM DESERT
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,palm springs,PALM SPRINGS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,palmdale,PALMDALE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,palo alto,PALO ALTO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,palos verdes estates,PALOS VERDES ESTATES
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,paradise,PARADISE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,paramount,PARAMOUNT
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,parlier,PARLIER
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,pasadena,PASADENA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,paso robles,PASO ROBLES
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,patterson,PATTERSON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,perris,PERRIS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,petaluma,PETALUMA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,pico rivera,PICO RIVERA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,piedmont,PIEDMONT
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,pinole,PINOLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,pismo beach,PISMO BEACH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,pittsburg,PITTSBURG
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,placentia,PLACENTIA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,placer county,PLACER COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,placerville,PLACERVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,pleasant hill,PLEASANT HILL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,pleasanton,PLEASANTON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,plumas county,PLUMAS COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,plymouth,PLYMOUTH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,point arena,POINT ARENA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,pomona,POMONA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,port hueneme,PORT HUENEME
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,porterville,PORTERVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,portola,PORTOLA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,portola valley,PORTOLA VALLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rancho cordova,RANCHO CORDOVA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rancho cucamonga,RANCHO CUCAMONGA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rancho mirage,RANCHO MIRAGE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rancho palos verdes,RANCHO PALOS VERDES
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rancho santa margarita,RANCHO SANTA MARGARITA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,red bluff,RED BLUFF
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,redding,REDDING
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,redlands,REDLANDS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,redondo beach,REDONDO BEACH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,redwood,REDWOOD CITY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,reedley,REEDLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rialto,RIALTO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,richmond,RICHMOND
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,ridgecrest,RIDGECREST
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rio dell,RIO DELL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rio vista,RIO VISTA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,ripon,RIPON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,riverbank,RIVERBANK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,riverside,RIVERSIDE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,riverside county,RIVERSIDE COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rocklin,ROCKLIN
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rohnert park,ROHNERT PARK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rolling hills,ROLLING HILLS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rolling hills estates,ROLLING HILLS ESTATES
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,rosemead,ROSEMEAD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,roseville,ROSEVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,ross,ROSS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sacramento,SACRAMENTO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sacramento county,SACRAMENTO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,saint helena,SAINT HELENA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,salinas,SALINAS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san anselmo,SAN ANSELMO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san benito county,SAN BENITO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san bernardino,SAN BERNARDINO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san bernardino county,SAN BERNARDINO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san bruno,SAN BRUNO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san carlos,SAN CARLOS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san clemente,SAN CLEMENTE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san dimas,SAN DIMAS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san fernando,SAN FERNANDO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san francisco,SAN FRANCISCO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san gabriel,SAN GABRIEL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san jacinto,SAN JACINTO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san joaquin,SAN JOAQUIN
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san joaquin county,SAN JOAQUIN COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san jose,SAN JOSE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san juan bautista,SAN JUAN BAUTISTA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san juan capistrano,SAN JUAN CAPISTRANO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san leandro,SAN LEANDRO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san luis obispo,SAN LUIS OBISPO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san luis obispo county,SAN LUIS OBISPO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san marino,SAN MARINO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san mateo,SAN MATEO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san mateo county,SAN MATEO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san pablo,SAN PABLO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san rafael,SAN RAFAEL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,san ramon,SAN RAMON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sand,SAND CITY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sanger,SANGER
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa ana,SANTA ANA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa barbara,SANTA BARBARA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa barbara county,SANTA BARBARA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa clara,SANTA CLARA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa clara county,SANTA CLARA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa clarita,SANTA CLARITA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa cruz,SANTA CRUZ
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa cruz county,SANTA CRUZ COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa fe springs,SANTA FE SPRINGS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa maria,SANTA MARIA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa monica,SANTA MONICA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa paula,SANTA PAULA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,santa rosa,SANTA ROSA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,saratoga,SARATOGA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sausalito,SAUSALITO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,scotts valley,SCOTTS VALLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,seal beach,SEAL BEACH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,seaside,SEASIDE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sebastopol,SEBASTOPOL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,selma,SELMA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,shafter,SHAFTER
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,shasta county,SHASTA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,shasta lake,SHASTA LAKE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sierra county,SIERRA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sierra madre,SIERRA MADRE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,signal hill,SIGNAL HILL
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,simi valley,SIMI VALLEY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,siskiyou county,SISKIYOU COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,solano county,SOLANO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,soledad,SOLEDAD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,solvang,SOLVANG
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sonoma,SONOMA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sonoma county,SONOMA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sonora,SONORA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,south el monte,SOUTH EL MONTE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,south gate,SOUTH GATE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,south lake tahoe,SOUTH LAKE TAHOE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,south pasadena,SOUTH PASADENA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,south san francisco,SOUTH SAN FRANCISCO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,stanislaus county,STANISLAUS COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,stanton,STANTON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,stockton,STOCKTON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,suisun,SUISUN CITY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sunnyvale,SUNNYVALE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,susanville,SUSANVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sutter county,SUTTER COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,sutter creek,SUTTER CREEK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,taft,TAFT
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,tehachapi,TEHACHAPI
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,tehama,TEHAMA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,tehama county,TEHAMA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,temecula,TEMECULA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,temple,TEMPLE CITY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,thousand oaks,THOUSAND OAKS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,tiburon,TIBURON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,torrance,TORRANCE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,tracy,TRACY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,trinidad,TRINIDAD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,trinity county,TRINITY COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,truckee,TRUCKEE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,tulare,TULARE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,tulare county,TULARE COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,tulelake,TULELAKE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,tuolumne county,TUOLUMNE COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,turlock,TURLOCK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,tustin,TUSTIN
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,twentynine palms,TWENTYNINE PALMS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,ukiah,UKIAH
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,union,UNION CITY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,upland,UPLAND
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,vacaville,VACAVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,vallejo,VALLEJO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,ventura,VENTURA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,ventura county,VENTURA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,vernon,VERNON
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,victorville,VICTORVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,villa park,VILLA PARK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,visalia,VISALIA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,walnut,WALNUT
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,walnut creek,WALNUT CREEK
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,wasco,WASCO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,waterford,WATERFORD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,watsonville,WATSONVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,weed,WEED
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,west covina,WEST COVINA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,west hollywood,WEST HOLLYWOOD
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,west sacramento,WEST SACRAMENTO
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,westlake village,WESTLAKE VILLAGE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,westminster,WESTMINSTER
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,westmorland,WESTMORLAND
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,wheatland,WHEATLAND
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,whittier,WHITTIER
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,wildomar,WILDOMAR
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,williams,WILLIAMS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,willits,WILLITS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,willows,WILLOWS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,windsor,WINDSOR
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,winters,WINTERS
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,woodlake,WOODLAKE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,woodland,WOODLAND
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,woodside,WOODSIDE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,yolo county,YOLO COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,yorba linda,YORBA LINDA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,yountville,YOUNTVILLE
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,yreka,YREKA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,yuba,YUBA CITY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,yuba county,YUBA COUNTY
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,yucaipa,YUCAIPA
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,yucca valley,YUCCA VALLEY
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,11194,11194
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,13392,13392
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,16378,16378
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18506,18506
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,21712,21712
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,22678,22678
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,22804,22804
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,36294,36294
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,40004,40004
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,41124,41124
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,50398,50398
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,53322,53322
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,58520,58520
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,66000,66000
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,68196,68196
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,70224,70224
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,72506,72506
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,82996,82996

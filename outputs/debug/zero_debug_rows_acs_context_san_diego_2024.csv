@@ -1,0 +1,2 @@
+NAME,population,households,housing_occupied,owner_occupied,renter_occupied,median_household_income,median_gross_rent,median_home_value,state,place,place_geoid,city_only,jur_norm,pct_renter,pct_owner,_debug_city_key
+"San Diego city, California",1385061,522146,522146,248395,273751,104321,2223,848500,6,66000,666000,San Diego,SAN DIEGO,0.5242805652059003,0.4757194347940997,san diego

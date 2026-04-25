@@ -1,0 +1,90 @@
+source,column,rows,numeric_non_null,numeric_null_or_non_numeric,numeric_non_null_pct
+boundaries,OBJECTID,73,73,0,100.0
+boundaries,CREATEDDATE,73,73,0,100.0
+boundaries,UPDATEDATE,73,73,0,100.0
+boundaries,DOCYR,73,6,67,8.22
+boundaries,DOCNO,73,6,67,8.22
+boundaries,DOCDATE,73,6,67,8.22
+boundaries,Shape_Length,73,73,0,100.0
+boundaries,Shape_Area,73,73,0,100.0
+boundaries,rhna_target_total,73,30,43,41.1
+boundaries,units_reported_total,73,30,43,41.1
+boundaries,pct_achieved,73,30,43,41.1
+boundaries,units_remaining,73,30,43,41.1
+rhna6,VLI UNITS,18,18,0,100.0
+rhna6,RHNA VLI,18,18,0,100.0
+rhna6,VLI %,18,18,0,100.0
+rhna6,LI UNITS,18,18,0,100.0
+rhna6,RHNA LI,18,18,0,100.0
+rhna6,LI %,18,18,0,100.0
+rhna6,MOD UNITS,18,18,0,100.0
+rhna6,RHNA MOD,18,18,0,100.0
+rhna6,MOD %,18,18,0,100.0
+rhna6,ABOVE MOD UNITS,18,18,0,100.0
+rhna6,RHNA ABOVE MOD,18,18,0,100.0
+rhna6,ABOVE MOD %,18,18,0,100.0
+rhna6,units_reported_total,18,18,0,100.0
+rhna6,rhna_target_total,18,18,0,100.0
+rhna6,pct_achieved_total,18,18,0,100.0
+rhna5,rhna_target_total,539,539,0,100.0
+rhna5,units_reported_total,539,539,0,100.0
+rhna5,pct_achieved,539,530,9,98.33
+rhna5,units_remaining,539,539,0,100.0
+apr_a2_supply,year,18,18,0,100.0
+apr_a2_supply,BP_VLOW_INCOME_DR,18,18,0,100.0
+apr_a2_supply,BP_VLOW_INCOME_NDR,18,18,0,100.0
+apr_a2_supply,BP_LOW_INCOME_DR,18,18,0,100.0
+apr_a2_supply,BP_LOW_INCOME_NDR,18,18,0,100.0
+apr_a2_supply,BP_MOD_INCOME_DR,18,18,0,100.0
+apr_a2_supply,BP_MOD_INCOME_NDR,18,18,0,100.0
+apr_a2_supply,BP_ABOVE_MOD_INCOME,18,18,0,100.0
+apr_a2_supply,CO_VLOW_INCOME_DR,18,18,0,100.0
+apr_a2_supply,CO_VLOW_INCOME_NDR,18,18,0,100.0
+apr_a2_supply,CO_LOW_INCOME_DR,18,18,0,100.0
+apr_a2_supply,CO_LOW_INCOME_NDR,18,18,0,100.0
+apr_a2_supply,CO_MOD_INCOME_DR,18,18,0,100.0
+apr_a2_supply,CO_MOD_INCOME_NDR,18,18,0,100.0
+apr_a2_supply,CO_ABOVE_MOD_INCOME,18,18,0,100.0
+apr_a2_supply,bp_units_total,18,18,0,100.0
+apr_a2_supply,co_units_total,18,18,0,100.0
+apr_a2_supply,bp_affordable_total,18,18,0,100.0
+apr_a2_supply,co_affordable_total,18,18,0,100.0
+apr_a2_supply,bp_affordable_share,18,18,0,100.0
+apr_a2_supply,co_affordable_share,18,18,0,100.0
+dof_population,year,17,17,0,100.0
+dof_population,population_total,17,17,0,100.0
+dof_population,housing_units_total,17,17,0,100.0
+dof_population,housing_units_per_1000_pop,17,17,0,100.0
+acs_context,population,18,18,0,100.0
+acs_context,households,18,18,0,100.0
+acs_context,housing_occupied,18,18,0,100.0
+acs_context,owner_occupied,18,18,0,100.0
+acs_context,renter_occupied,18,18,0,100.0
+acs_context,median_household_income,18,18,0,100.0
+acs_context,median_gross_rent,18,18,0,100.0
+acs_context,median_home_value,18,18,0,100.0
+acs_context,state,18,18,0,100.0
+acs_context,place,18,18,0,100.0
+acs_context,place_geoid,18,18,0,100.0
+acs_context,pct_renter,18,18,0,100.0
+acs_context,pct_owner,18,18,0,100.0
+city_sd_permits,issue_year,15,15,0,100.0
+city_sd_permits,permits,15,15,0,100.0
+city_sd_permits,du_total,15,15,0,100.0
+city_sd_permits,adu_total,15,15,0,100.0
+city_sd_permits,jadu_total,15,15,0,100.0
+city_sd_permits,share_du_missing,15,15,0,100.0
+dashboard_kpis,bp_units_total,18,18,0,100.0
+dashboard_kpis,co_units_total,18,18,0,100.0
+dashboard_kpis,bp_affordable_share,18,18,0,100.0
+dashboard_kpis,co_affordable_share,18,18,0,100.0
+dashboard_kpis,population,18,18,0,100.0
+dashboard_kpis,median_household_income,18,18,0,100.0
+dashboard_kpis,median_gross_rent,18,18,0,100.0
+dashboard_kpis,pct_renter,18,18,0,100.0
+dashboard_kpis,housing_units_total,18,17,1,94.44
+dashboard_kpis,housing_units_per_1000_pop,18,17,1,94.44
+dashboard_kpis,rhna_target_total,18,18,0,100.0
+dashboard_kpis,units_reported_total,18,18,0,100.0
+dashboard_kpis,pct_achieved_total,18,18,0,100.0
+dashboard_kpis,co_units_per_10k_pop,18,18,0,100.0

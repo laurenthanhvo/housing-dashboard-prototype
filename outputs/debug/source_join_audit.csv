@@ -1,0 +1,9 @@
+source,path,rows,jurisdiction_col,year_col,unique_jurisdictions,unmatched_jurisdictions,duplicate_key_year_rows,min_year,max_year,notes
+boundaries,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/municipal_boundaries_with_rhna6.geojson,73,jur_clean,,19,0,59,,,filtered to selected year for coverage
+rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,18,Jurisdiction,,18,0,0,,,filtered to selected year for coverage
+rhna5,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/rhna5_city_summary.csv,539,jur_clean,,538,520,0,,,filtered to selected year for coverage
+apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,126,jur_clean,year,18,0,0,2018,2024,filtered to selected year for coverage
+dof_population,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,102,jur_clean,year,17,0,0,2020,2025,filtered to selected year for coverage
+acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18,place,,18,18,0,,,filtered to selected year for coverage
+city_sd_permits,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_city_permits_units_by_year.csv,15,_jur_raw,,1,0,15,,,filtered to selected year for coverage
+dashboard_kpis,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_kpi_city_scorecard.csv,18,,,0,0,18,,,filtered to selected year for coverage

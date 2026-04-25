@@ -1,0 +1,68 @@
+source,status,path,rows_total,rows_city,rows_city_year,city_col,year_col,metric,matched_col,value,interpretation
+apr_a2_supply,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,126,7,1,jur_clean,year,proposed,,,metric column not found in this source
+apr_a2_supply,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,126,7,1,jur_clean,year,approved,,,metric column not found in this source
+apr_a2_supply,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,126,7,1,jur_clean,year,permitted,bp_units_total,82.0,has nonzero value
+apr_a2_supply,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,126,7,1,jur_clean,year,completed,co_units_total,16.0,has nonzero value
+apr_a2_supply,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,126,7,1,jur_clean,year,adu,,,metric column not found in this source
+apr_a2_supply,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,126,7,1,jur_clean,year,jadu,,,metric column not found in this source
+apr_a2_supply,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,126,7,1,jur_clean,year,population,,,metric column not found in this source
+apr_a2_supply,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,126,7,1,jur_clean,year,housing_units,,,metric column not found in this source
+apr_a2_supply,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,126,7,1,jur_clean,year,median_rent,,,metric column not found in this source
+apr_a2_supply,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,126,7,1,jur_clean,year,median_home_value,,,metric column not found in this source
+apr_a2_supply,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,126,7,1,jur_clean,year,rent_burden,,,metric column not found in this source
+apr_a_table,missing_file,,0,0,0,,,,,,source file not found
+dof_population,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,102,6,1,jur_clean,year,proposed,,,metric column not found in this source
+dof_population,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,102,6,1,jur_clean,year,approved,,,metric column not found in this source
+dof_population,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,102,6,1,jur_clean,year,permitted,,,metric column not found in this source
+dof_population,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,102,6,1,jur_clean,year,completed,,,metric column not found in this source
+dof_population,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,102,6,1,jur_clean,year,adu,,,metric column not found in this source
+dof_population,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,102,6,1,jur_clean,year,jadu,,,metric column not found in this source
+dof_population,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,102,6,1,jur_clean,year,population,population_total,13054.0,has nonzero value
+dof_population,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,102,6,1,jur_clean,year,housing_units,housing_units_total,6723.0,has nonzero value
+dof_population,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,102,6,1,jur_clean,year,median_rent,,,metric column not found in this source
+dof_population,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,102,6,1,jur_clean,year,median_home_value,,,metric column not found in this source
+dof_population,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,102,6,1,jur_clean,year,rent_burden,,,metric column not found in this source
+acs_context,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18,1,1,NAME,,proposed,,,metric column not found in this source
+acs_context,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18,1,1,NAME,,approved,,,metric column not found in this source
+acs_context,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18,1,1,NAME,,permitted,,,metric column not found in this source
+acs_context,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18,1,1,NAME,,completed,,,metric column not found in this source
+acs_context,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18,1,1,NAME,,adu,,,metric column not found in this source
+acs_context,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18,1,1,NAME,,jadu,,,metric column not found in this source
+acs_context,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18,1,1,NAME,,population,population,12841,has nonzero value
+acs_context,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18,1,1,NAME,,housing_units,,,metric column not found in this source
+acs_context,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18,1,1,NAME,,median_rent,median_gross_rent,3022,has nonzero value
+acs_context,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18,1,1,NAME,,median_home_value,median_home_value,1934700,has nonzero value
+acs_context,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,18,1,1,NAME,,rent_burden,,,metric column not found in this source
+rhna6,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,18,1,1,Jurisdiction,,proposed,,,metric column not found in this source
+rhna6,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,18,1,1,Jurisdiction,,approved,,,metric column not found in this source
+rhna6,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,18,1,1,Jurisdiction,,permitted,,,metric column not found in this source
+rhna6,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,18,1,1,Jurisdiction,,completed,,,metric column not found in this source
+rhna6,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,18,1,1,Jurisdiction,,adu,,,metric column not found in this source
+rhna6,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,18,1,1,Jurisdiction,,jadu,,,metric column not found in this source
+rhna6,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,18,1,1,Jurisdiction,,population,,,metric column not found in this source
+rhna6,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,18,1,1,Jurisdiction,,housing_units,,,metric column not found in this source
+rhna6,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,18,1,1,Jurisdiction,,median_rent,,,metric column not found in this source
+rhna6,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,18,1,1,Jurisdiction,,median_home_value,,,metric column not found in this source
+rhna6,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,18,1,1,Jurisdiction,,rent_burden,,,metric column not found in this source
+city_sd_permits,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_city_permits_units_by_year.csv,15,0,0,,,proposed,,,no row for selected city/year
+city_sd_permits,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_city_permits_units_by_year.csv,15,0,0,,,approved,,,no row for selected city/year
+city_sd_permits,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_city_permits_units_by_year.csv,15,0,0,,,permitted,,,no row for selected city/year
+city_sd_permits,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_city_permits_units_by_year.csv,15,0,0,,,completed,,,no row for selected city/year
+city_sd_permits,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_city_permits_units_by_year.csv,15,0,0,,,adu,adu_total,,no row for selected city/year
+city_sd_permits,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_city_permits_units_by_year.csv,15,0,0,,,jadu,jadu_total,,no row for selected city/year
+city_sd_permits,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_city_permits_units_by_year.csv,15,0,0,,,population,,,no row for selected city/year
+city_sd_permits,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_city_permits_units_by_year.csv,15,0,0,,,housing_units,,,no row for selected city/year
+city_sd_permits,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_city_permits_units_by_year.csv,15,0,0,,,median_rent,,,no row for selected city/year
+city_sd_permits,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_city_permits_units_by_year.csv,15,0,0,,,median_home_value,,,no row for selected city/year
+city_sd_permits,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_city_permits_units_by_year.csv,15,0,0,,,rent_burden,,,no row for selected city/year
+dashboard_kpis,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_kpi_city_scorecard.csv,18,0,0,,,proposed,,,no row for selected city/year
+dashboard_kpis,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_kpi_city_scorecard.csv,18,0,0,,,approved,,,no row for selected city/year
+dashboard_kpis,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_kpi_city_scorecard.csv,18,0,0,,,permitted,bp_units_total,,no row for selected city/year
+dashboard_kpis,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_kpi_city_scorecard.csv,18,0,0,,,completed,co_units_total,,no row for selected city/year
+dashboard_kpis,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_kpi_city_scorecard.csv,18,0,0,,,adu,,,no row for selected city/year
+dashboard_kpis,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_kpi_city_scorecard.csv,18,0,0,,,jadu,,,no row for selected city/year
+dashboard_kpis,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_kpi_city_scorecard.csv,18,0,0,,,population,population,,no row for selected city/year
+dashboard_kpis,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_kpi_city_scorecard.csv,18,0,0,,,housing_units,housing_units_total,,no row for selected city/year
+dashboard_kpis,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_kpi_city_scorecard.csv,18,0,0,,,median_rent,median_gross_rent,,no row for selected city/year
+dashboard_kpis,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_kpi_city_scorecard.csv,18,0,0,,,median_home_value,,,no row for selected city/year
+dashboard_kpis,ok,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_kpi_city_scorecard.csv,18,0,0,,,rent_burden,,,no row for selected city/year

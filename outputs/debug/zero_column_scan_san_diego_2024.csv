@@ -1,0 +1,62 @@
+column,non_null_count,numeric_non_null_count,sum_numeric,min_numeric,max_numeric,sample_values,source,path,keyword_group,city_col,year_col,rows_scanned
+BP_VLOW_INCOME_DR,1,1,276.0,276.0,276.0,276.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+BP_VLOW_INCOME_NDR,1,1,0.0,0.0,0.0,0.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+BP_LOW_INCOME_DR,1,1,320.0,320.0,320.0,320.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+BP_LOW_INCOME_NDR,1,1,0.0,0.0,0.0,0.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+BP_MOD_INCOME_DR,1,1,465.0,465.0,465.0,465.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+BP_MOD_INCOME_NDR,1,1,0.0,0.0,0.0,0.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+BP_ABOVE_MOD_INCOME,1,1,7721.0,7721.0,7721.0,7721.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+CO_VLOW_INCOME_DR,1,1,137.0,137.0,137.0,137.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+CO_VLOW_INCOME_NDR,1,1,0.0,0.0,0.0,0.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+CO_LOW_INCOME_DR,1,1,463.0,463.0,463.0,463.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+CO_LOW_INCOME_NDR,1,1,0.0,0.0,0.0,0.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+CO_MOD_INCOME_DR,1,1,95.0,95.0,95.0,95.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+CO_MOD_INCOME_NDR,1,1,0.0,0.0,0.0,0.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+CO_ABOVE_MOD_INCOME,1,1,4400.0,4400.0,4400.0,4400.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+bp_units_total,1,1,8782.0,8782.0,8782.0,8782.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+co_units_total,1,1,5095.0,5095.0,5095.0,5095.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+bp_affordable_total,1,1,1061.0,1061.0,1061.0,1061.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+co_affordable_total,1,1,695.0,695.0,695.0,695.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+bp_affordable_share,1,1,0.1208153040309724,0.1208153040309724,0.1208153040309724,0.1208153040309724,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+co_affordable_share,1,1,0.1364082433758587,0.1364082433758587,0.1364082433758587,0.1364082433758587,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,supply_keywords,jur_clean,year,1
+BP_VLOW_INCOME_DR,1,1,276.0,276.0,276.0,276.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+BP_VLOW_INCOME_NDR,1,1,0.0,0.0,0.0,0.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+BP_LOW_INCOME_DR,1,1,320.0,320.0,320.0,320.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+BP_LOW_INCOME_NDR,1,1,0.0,0.0,0.0,0.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+BP_MOD_INCOME_DR,1,1,465.0,465.0,465.0,465.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+BP_MOD_INCOME_NDR,1,1,0.0,0.0,0.0,0.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+BP_ABOVE_MOD_INCOME,1,1,7721.0,7721.0,7721.0,7721.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+CO_VLOW_INCOME_DR,1,1,137.0,137.0,137.0,137.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+CO_VLOW_INCOME_NDR,1,1,0.0,0.0,0.0,0.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+CO_LOW_INCOME_DR,1,1,463.0,463.0,463.0,463.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+CO_LOW_INCOME_NDR,1,1,0.0,0.0,0.0,0.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+CO_MOD_INCOME_DR,1,1,95.0,95.0,95.0,95.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+CO_MOD_INCOME_NDR,1,1,0.0,0.0,0.0,0.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+CO_ABOVE_MOD_INCOME,1,1,4400.0,4400.0,4400.0,4400.0,apr_a2_supply,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_apr_a2_city_year_supply.csv,rhna_keywords,jur_clean,year,1
+housing_units_total,1,1,571542.0,571542.0,571542.0,571542.0,dof_population,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,supply_keywords,jur_clean,year,1
+housing_units_per_1000_pop,1,1,409.908220297106,409.908220297106,409.908220297106,409.908220297106,dof_population,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,supply_keywords,jur_clean,year,1
+population_total,1,1,1394317.0,1394317.0,1394317.0,1394317.0,dof_population,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,context_keywords,jur_clean,year,1
+housing_units_total,1,1,571542.0,571542.0,571542.0,571542.0,dof_population,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,context_keywords,jur_clean,year,1
+housing_units_per_1000_pop,1,1,409.908220297106,409.908220297106,409.908220297106,409.908220297106,dof_population,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_dof_e5_city_year.csv,context_keywords,jur_clean,year,1
+population,1,1,1385061.0,1385061.0,1385061.0,1385061,acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,context_keywords,NAME,,1
+housing_occupied,1,1,522146.0,522146.0,522146.0,522146,acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,context_keywords,NAME,,1
+renter_occupied,1,1,273751.0,273751.0,273751.0,273751,acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,context_keywords,NAME,,1
+median_gross_rent,1,1,2223.0,2223.0,2223.0,2223,acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,context_keywords,NAME,,1
+median_home_value,1,1,848500.0,848500.0,848500.0,848500,acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,context_keywords,NAME,,1
+pct_renter,1,1,0.5242805652059003,0.5242805652059003,0.5242805652059003,0.5242805652059003,acs_context,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_acs_place_2023_summary_fixed.csv,context_keywords,NAME,,1
+VLI UNITS,1,1,1862.0,1862.0,1862.0,1862,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,supply_keywords,Jurisdiction,,1
+LI UNITS,1,1,2179.0,2179.0,2179.0,2179,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,supply_keywords,Jurisdiction,,1
+MOD UNITS,1,1,740.0,740.0,740.0,740,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,supply_keywords,Jurisdiction,,1
+ABOVE MOD UNITS,1,1,24122.0,24122.0,24122.0,24122,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,supply_keywords,Jurisdiction,,1
+units_reported_total,1,1,28903.0,28903.0,28903.0,28903,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,supply_keywords,Jurisdiction,,1
+VLI UNITS,1,1,1862.0,1862.0,1862.0,1862,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,rhna_keywords,Jurisdiction,,1
+RHNA VLI,1,1,27549.0,27549.0,27549.0,27549,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,rhna_keywords,Jurisdiction,,1
+VLI %,1,1,0.07,0.07,0.07,0.07,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,rhna_keywords,Jurisdiction,,1
+RHNA LI,1,1,17331.0,17331.0,17331.0,17331,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,rhna_keywords,Jurisdiction,,1
+MOD UNITS,1,1,740.0,740.0,740.0,740,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,rhna_keywords,Jurisdiction,,1
+RHNA MOD,1,1,19319.0,19319.0,19319.0,19319,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,rhna_keywords,Jurisdiction,,1
+MOD %,1,1,0.04,0.04,0.04,0.04,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,rhna_keywords,Jurisdiction,,1
+ABOVE MOD UNITS,1,1,24122.0,24122.0,24122.0,24122,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,rhna_keywords,Jurisdiction,,1
+RHNA ABOVE MOD,1,1,43837.0,43837.0,43837.0,43837,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,rhna_keywords,Jurisdiction,,1
+ABOVE MOD %,1,1,0.55,0.55,0.55,0.55,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,rhna_keywords,Jurisdiction,,1
+rhna_target_total,1,1,108036.0,108036.0,108036.0,108036,rhna6,/Users/laurenvo/Documents/github/housing-dashboard-prototype/data/processed/sd_rhna6_city_totals.csv,rhna_keywords,Jurisdiction,,1

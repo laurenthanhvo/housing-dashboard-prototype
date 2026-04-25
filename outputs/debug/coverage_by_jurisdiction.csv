@@ -1,0 +1,20 @@
+_jur_key,canonical_name,boundaries_rows,boundaries_has_data,rhna6_rows,rhna6_has_data,rhna5_rows,rhna5_has_data,apr_a2_supply_rows,apr_a2_supply_has_data,dof_population_rows,dof_population_has_data,acs_context_rows,acs_context_has_data,city_sd_permits_rows,city_sd_permits_has_data,dashboard_kpis_rows,dashboard_kpis_has_data
+s d county,S.D. COUNTY,43,True,0,False,0,False,0,False,0,False,0,False,0,False,0,False
+escondido,ESCONDIDO,5,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+vista,VISTA,3,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+san diego,SAN DIEGO,6,True,1,True,1,True,1,True,1,True,0,False,15,True,0,False
+coronado,CORONADO,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+el cajon,EL CAJON,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+poway,POWAY,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+santee,SANTEE,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+la mesa,LA MESA,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+oceanside,OCEANSIDE,2,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+del mar,DEL MAR,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+carlsbad,CARLSBAD,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+imperial beach,IMPERIAL BEACH,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+chula vista,CHULA VISTA,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+national,NATIONAL CITY,1,True,1,True,1,True,1,True,0,False,0,False,0,False,0,False
+encinitas,ENCINITAS,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+solana beach,SOLANA BEACH,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+san marcos,SAN MARCOS,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False
+lemon grove,LEMON GROVE,1,True,1,True,1,True,1,True,1,True,0,False,0,False,0,False

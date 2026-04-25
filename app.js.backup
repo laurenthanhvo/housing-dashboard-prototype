@@ -7,8 +7,6 @@
 
 const PATHS = {
   boundaries: [
-    './data/processed/municipal_boundaries_with_rhna6.geojson',
-    './data/processed/sd_municipal_boundaries_with_rhna6.geojson',
     './data/processed/sd_tiger_places.geojson',
     './data/processed/sd_municipal_boundaries.geojson',
     './data/processed/municipal_boundaries_wide.geojson',
@@ -55,9 +53,8 @@ const PATHS = {
 };
 
 const CITY_FIELDS = [
-  'jur_clean', 'jur_norm', '_jur_raw', 'jurisdiction_clean', 'jurisdiction_name',
   'jurisdiction', 'Jurisdiction', 'JURISDICTION', 'JURIS_NAME', 'JURISDICTION_NAME',
-  'city', 'City', 'NAME', 'Name', 'place_name', 'Place Name', 'NAME10', 'Geography', 'geography'
+  'city', 'City', 'NAME', 'Name', 'place', 'Place', 'place_name', 'Geography', 'geography'
 ];
 
 const YEAR_FIELDS = ['year', 'YEAR', 'Year', 'report_year', 'REPORT_YEAR', 'calendar_year'];
@@ -182,7 +179,7 @@ function cleanKey(v) {
   s = s.replace(/\s+county$/, ' county');
   s = s.replace(/unincorporated\s+(area\s+)?of\s+san\s+diego\s+county/, 'unincorporated');
   s = s.replace(/[^a-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim();
-  if (s === 's d county' || s === 'sd county' || s === 'san diego county' || s === 'county san diego') return 'county san diego';
+  if (s === 'san diego county' || s === 'county san diego') return 'county san diego';
   return s;
 }
 
@@ -206,35 +203,9 @@ function firstValue(row, fields) {
   return null;
 }
 
-function fmtMetric(v) {
-  if (v === null || v === undefined || v === "" || !Number.isFinite(Number(v))) {
-    return "No data";
-  }
-
-  return Number(v).toLocaleString();
-}
-
-function numFrom(row, candidates) {
-  if (!row) return null;
-
-  for (const col of candidates) {
-    if (Object.prototype.hasOwnProperty.call(row, col)) {
-      const raw = row[col];
-
-      if (raw === null || raw === undefined || raw === "") {
-        continue;
-      }
-
-      const cleaned = String(raw).replace(/,/g, "").trim();
-      const n = Number(cleaned);
-
-      if (Number.isFinite(n)) {
-        return n;
-      }
-    }
-  }
-
-  return null;
+function numFrom(row, fields) {
+  const v = firstValue(row, fields);
+  return toNum(v);
 }
 
 function includesAll(name, words) {
@@ -342,9 +313,9 @@ function reduceAcs(rows, label, key) {
   const latest = rows[rows.length - 1] || {};
   return {
     key, label,
-    population: numFrom(latest, ['population_total', 'total_population', 'population', 'POPULATION', 'B01003_001E']),
+    population: numFrom(latest, ['total_population', 'population', 'POPULATION', 'B01003_001E']),
     households: numFrom(latest, ['households', 'total_households', 'B11001_001E']),
-    housingUnits: numFrom(latest, ['housing_units_total', 'housing_units', 'total_housing_units', 'B25001_001E']),
+    housingUnits: numFrom(latest, ['housing_units', 'total_housing_units', 'B25001_001E']),
     renterHouseholds: numFrom(latest, ['renter_occupied', 'renter_households', 'B25003_003E']),
     ownerHouseholds: numFrom(latest, ['owner_occupied', 'owner_households', 'B25003_002E']),
     medianRent: numFrom(latest, ['median_gross_rent', 'gross_rent_median', 'B25064_001E', 'median_rent']),
@@ -358,11 +329,11 @@ function reduceKpi(rows, label, key) {
   const latest = rows[rows.length - 1] || {};
   return {
     key, label,
-    permitted: numFrom(latest, ['permitted_units', 'units_permitted', 'bp_units_total', 'bp_units', 'building_permit_units', 'permits_units', 'total_permitted_units']),
-    completed: numFrom(latest, ['completed_units', 'co_units_total', 'co_units', 'certificate_of_occupancy_units', 'units_completed']),
-    approved: numFrom(latest, ['approved_units', 'pipeline_units', 'entitled_units', 'units_approved', 'approved_total']),
-    proposed: numFrom(latest, ['proposed_units', 'submitted_units', 'units_proposed', 'proposed_total']),
-    affordable: numFrom(latest, ['affordable_units', 'lower_income_units', 'vli_li_mod_units', 'bp_affordable_total', 'co_affordable_total']),
+    permitted: numFrom(latest, ['permitted_units', 'units_permitted', 'bp_units', 'building_permit_units', 'permits_units', 'total_permitted_units']),
+    completed: numFrom(latest, ['completed_units', 'co_units', 'certificate_of_occupancy_units', 'units_completed']),
+    approved: numFrom(latest, ['approved_units', 'pipeline_units', 'entitled_units', 'units_approved']),
+    proposed: numFrom(latest, ['proposed_units', 'submitted_units', 'units_proposed']),
+    affordable: numFrom(latest, ['affordable_units', 'lower_income_units', 'vli_li_mod_units']),
     aboveModerate: numFrom(latest, ['above_moderate_units', 'above_mod_units']),
     raw: latest,
   };
@@ -371,27 +342,10 @@ function reduceKpi(rows, label, key) {
 function reduceDof(rows, label, key) {
   const series = rows.map(row => ({
     year: detectYear(row),
-    population: numFrom(row, ['population_total', 'population', 'total_population', 'POPULATION', 'Pop', 'pop']),
-    housingUnits: numFrom(row, ['housing_units_total', 'housing_units', 'total_housing_units', 'housing_unit_estimate', 'HU', 'hu']),
+    population: numFrom(row, ['population', 'total_population', 'POPULATION', 'Pop', 'pop']),
+    housingUnits: numFrom(row, ['housing_units', 'total_housing_units', 'housing_unit_estimate', 'HU', 'hu']),
   })).filter(d => isNum(d.year));
   return { key, label, series };
-}
-
-function blankSupplyYear(key, label, year) {
-  return {
-    key,
-    label,
-    year,
-    permitted: null,
-    completed: null,
-    approved: null,
-    proposed: null,
-    adu: null,
-    jadu: null,
-    affordable: null,
-    aboveModerate: null,
-    points: [],
-  };
 }
 
 function buildSupplySeries(rows) {
@@ -403,11 +357,11 @@ function buildSupplySeries(rows) {
     if (!key || !isNum(year)) return;
     state.allKeys.add(key);
     const permitted =
-      numFrom(row, ['permitted_units', 'units_permitted', 'bp_units_total', 'bp_units', 'building_permit_units', 'BP_TOTAL_UNITS']) ??
+      numFrom(row, ['permitted_units', 'units_permitted', 'bp_units', 'building_permit_units', 'BP_TOTAL_UNITS']) ??
       sumMatching(row, k => k.toUpperCase().startsWith('BP_') && (k.toUpperCase().includes('INCOME') || k.toUpperCase().includes('ABOVE_MOD')) && !k.toUpperCase().includes('NO_')) ??
       numFrom(row, ['APPROVAL_DU_TOTAL', 'total_units']);
     const completed =
-      numFrom(row, ['completed_units', 'co_units_total', 'co_units', 'certificate_of_occupancy_units', 'CO_TOTAL_UNITS']) ??
+      numFrom(row, ['completed_units', 'co_units', 'certificate_of_occupancy_units', 'CO_TOTAL_UNITS']) ??
       sumMatching(row, k => k.toUpperCase().startsWith('CO_') && (k.toUpperCase().includes('INCOME') || k.toUpperCase().includes('ABOVE_MOD')) && !k.toUpperCase().includes('NO_'));
     const approved =
       numFrom(row, ['approved_units', 'pipeline_units', 'entitled_units', 'TOT_APPROVED_UNITS']) ??
@@ -420,7 +374,7 @@ function buildSupplySeries(rows) {
     const jadu =
       numFrom(row, ['jadu_units', 'APPROVAL_JADU_TOTAL', 'approval_jadu_total']);
     const affordable =
-      numFrom(row, ['affordable_units', 'lower_income_units', 'vli_li_mod_units', 'bp_affordable_total', 'co_affordable_total']) ??
+      numFrom(row, ['affordable_units', 'lower_income_units', 'vli_li_mod_units']) ??
       sumMatching(row, k => /(VLOW|VERY_LOW|LOW_INCOME|MOD_INCOME|EXTREMELY_LOW|VLI|LI_|MOD_)/i.test(k) && !/ABOVE/i.test(k));
     const aboveModerate =
       numFrom(row, ['above_moderate_units', 'above_mod_units', 'BP_ABOVE_MOD_INCOME', 'ABOVE_MOD_INCOME']) ??
@@ -429,14 +383,7 @@ function buildSupplySeries(rows) {
     const lng = numFrom(row, ['LNG_JOB', 'lng', 'lon', 'longitude', 'LON']);
 
     const id = `${key}|${Math.trunc(Number(year))}`;
-
-    if (!groups.has(id)) {
-      groups.set(
-        id,
-        blankSupplyYear(key, String(name), Math.trunc(Number(year)))
-      );
-    }
-
+    if (!groups.has(id)) groups.set(id, { key, label: String(name), year: Math.trunc(Number(year)), permitted: 0, completed: 0, approved: 0, proposed: 0, adu: 0, jadu: 0, affordable: 0, aboveModerate: 0, points: [] });
     const g = groups.get(id);
     addIfNum(g, 'permitted', permitted);
     addIfNum(g, 'completed', completed);
@@ -459,13 +406,7 @@ function buildSupplySeries(rows) {
 }
 
 function addIfNum(obj, field, val) {
-  if (!isNum(val)) return;
-
-  if (!isNum(obj[field])) {
-    obj[field] = 0;
-  }
-
-  obj[field] += Number(val);
+  if (isNum(val)) obj[field] += Number(val);
 }
 
 function yearFromDate(v) {
@@ -643,33 +584,14 @@ function mergeSupplyMaps(a, b) {
 
 function combineSeries(a = [], b = []) {
   const byYear = new Map();
-
   [...a, ...b].forEach(row => {
     const y = Number(row.year);
     if (!isNum(y)) return;
-
-    if (!byYear.has(y)) {
-      byYear.set(y, blankSupplyYear(row.key, row.label, y));
-    }
-
+    if (!byYear.has(y)) byYear.set(y, { key: row.key, label: row.label, year: y, permitted: 0, completed: 0, approved: 0, proposed: 0, adu: 0, jadu: 0, affordable: 0, aboveModerate: 0, points: [] });
     const target = byYear.get(y);
-
-    [
-      'permitted',
-      'completed',
-      'approved',
-      'proposed',
-      'adu',
-      'jadu',
-      'affordable',
-      'aboveModerate',
-    ].forEach(f => addIfNum(target, f, row[f]));
-
-    if (row.points?.length) {
-      target.points.push(...row.points);
-    }
+    ['permitted', 'completed', 'approved', 'proposed', 'adu', 'jadu', 'affordable', 'aboveModerate'].forEach(f => addIfNum(target, f, row[f]));
+    if (row.points?.length) target.points.push(...row.points);
   });
-
   return [...byYear.values()].sort((x, y) => x.year - y.year);
 }
 
@@ -952,7 +874,7 @@ function renderSupplyPanel() {
   const s = statsForKey(state.selectedKey, state.selectedYear);
   $('supplyMiniStats').innerHTML = [
     miniStat('Proposed', s.proposed),
-    miniStat('Approved / entitled', s.approved),
+    miniStat('Approved', s.approved),
     miniStat('Permitted', s.permitted),
     miniStat('Completed', s.completed),
     miniStat('ADU units', s.adu),
@@ -1021,83 +943,26 @@ function miniStat(label, value, kind = 'number') {
 function renderTrendChart(id, key) {
   const el = $(id);
   const series = state.dataMaps.supply?.get(key) || [];
-
   if (!series.length) {
     el.innerHTML = '<div class="no-data">No annual supply series was found for this jurisdiction. Check that the APR/permit city-year file has a recognizable city and year column.</div>';
     return;
   }
-
-  const data = series
-    .map(d => ({
-      year: d.year,
-      permitted: isNum(d.permitted) ? Number(d.permitted) : null,
-      completed: isNum(d.completed) ? Number(d.completed) : null,
-      approved: isNum(d.approved) ? Number(d.approved) : null,
-    }))
-    .filter(d => isNum(d.year));
-
-  const hasPermitted = data.some(d => isNum(d.permitted));
-  const hasCompleted = data.some(d => isNum(d.completed));
-  const hasApproved = data.some(d => isNum(d.approved));
-
-  if (!hasPermitted && !hasCompleted && !hasApproved) {
-    el.innerHTML = '<div class="no-data">No permitted, completed, or approved annual values were found for this jurisdiction.</div>';
-    return;
-  }
-
-  const w = el.clientWidth || 300;
-  const h = 190;
-  const m = { top: 18, right: 12, bottom: 28, left: 38 };
-
-  const values = [];
-  data.forEach(d => {
-    ['permitted', 'completed', 'approved'].forEach(f => {
-      if (isNum(d[f])) values.push(Number(d[f]));
-    });
-  });
-
-  const maxY = d3.max(values) || 1;
-
-  const x = d3.scalePoint()
-    .domain(data.map(d => d.year))
-    .range([m.left, w - m.right])
-    .padding(0.4);
-
-  const y = d3.scaleLinear()
-    .domain([0, maxY])
-    .nice()
-    .range([h - m.bottom, m.top]);
-
-  const makeLine = field => d3.line()
-    .defined(d => isNum(d[field]))
-    .x(d => x(d.year))
-    .y(d => y(d[field]))(data);
-
-  const legendItems = [];
-  if (hasPermitted) legendItems.push(`<text x="${m.left}" y="14" fill="#B35B3D" font-size="11" font-weight="700">Permitted</text>`);
-  if (hasCompleted) legendItems.push(`<text x="${m.left + 82}" y="14" fill="#2F7884" font-size="11" font-weight="700">Completed</text>`);
-  if (hasApproved) legendItems.push(`<text x="${m.left + 176}" y="14" fill="#D7A64A" font-size="11" font-weight="700">Approved</text>`);
-
-  el.innerHTML = `
-    <svg class="chart-svg" width="100%" height="${h}" viewBox="0 0 ${w} ${h}" role="img">
-      <g>
-        ${y.ticks(4).map(t => `
-          <line x1="${m.left}" x2="${w - m.right}" y1="${y(t)}" y2="${y(t)}" stroke="rgba(23,56,74,.10)"/>
-          <text class="axis-label" x="${m.left - 7}" y="${y(t) + 4}" text-anchor="end">${compactNumber(t)}</text>
-        `).join('')}
-      </g>
-
-      ${hasApproved ? `<path d="${makeLine('approved') || ''}" fill="none" stroke="#D7A64A" stroke-width="3" opacity=".85"/>` : ''}
-      ${hasPermitted ? `<path d="${makeLine('permitted') || ''}" fill="none" stroke="#B35B3D" stroke-width="3"/>` : ''}
-      ${hasCompleted ? `<path d="${makeLine('completed') || ''}" fill="none" stroke="#2F7884" stroke-width="3"/>` : ''}
-
-      ${data.map(d => `
-        <text class="axis-label" x="${x(d.year)}" y="${h - 8}" text-anchor="middle">${String(d.year).slice(-2)}</text>
-      `).join('')}
-
-      ${legendItems.join('')}
-    </svg>
-  `;
+  const data = series.map(d => ({ year: d.year, permitted: d.permitted || 0, completed: d.completed || 0, approved: d.approved || 0 })).filter(d => isNum(d.year));
+  const w = el.clientWidth || 300, h = 190, m = { top: 14, right: 12, bottom: 28, left: 38 };
+  const maxY = d3.max(data, d => Math.max(d.permitted, d.completed, d.approved)) || 1;
+  const x = d3.scalePoint().domain(data.map(d => d.year)).range([m.left, w - m.right]).padding(0.4);
+  const y = d3.scaleLinear().domain([0, maxY]).nice().range([h - m.bottom, m.top]);
+  const line = field => d3.line().x(d => x(d.year)).y(d => y(d[field]))(data);
+  el.innerHTML = `<svg class="chart-svg" width="100%" height="${h}" viewBox="0 0 ${w} ${h}" role="img">
+    <g>${y.ticks(4).map(t => `<line x1="${m.left}" x2="${w - m.right}" y1="${y(t)}" y2="${y(t)}" stroke="rgba(23,56,74,.10)"/><text class="axis-label" x="${m.left - 7}" y="${y(t)+4}" text-anchor="end">${compactNumber(t)}</text>`).join('')}</g>
+    <path d="${line('approved') || ''}" fill="none" stroke="#D7A64A" stroke-width="3" opacity=".85"/>
+    <path d="${line('permitted') || ''}" fill="none" stroke="#B35B3D" stroke-width="3"/>
+    <path d="${line('completed') || ''}" fill="none" stroke="#2F7884" stroke-width="3"/>
+    ${data.map(d => `<text class="axis-label" x="${x(d.year)}" y="${h - 8}" text-anchor="middle">${String(d.year).slice(-2)}</text>`).join('')}
+    <text x="${m.left}" y="14" fill="#B35B3D" font-size="11" font-weight="800">Permitted</text>
+    <text x="${m.left + 78}" y="14" fill="#2F7884" font-size="11" font-weight="800">Completed</text>
+    <text x="${m.left + 164}" y="14" fill="#D7A64A" font-size="11" font-weight="800">Approved</text>
+  </svg>`;
 }
 
 function renderRankChart(id, metricKey) {
