@@ -16,7 +16,7 @@
   <header class="app-header">
     <div class="header-brand">
       <div class="brand-kicker">Center for Housing Policy & Design · UC San Diego</div>
-      <a class="brand-title" href="./index.html">State of Housing in San Diego</a>
+      <a class="brand-title" href="./index.html">San Diego Housing Supply Dashboard</a>
     </div>
 
     <nav class="site-nav" aria-label="Main navigation">
@@ -33,9 +33,9 @@
         <div class="eyebrow">Pilot dashboard</div>
         <h1>Housing supply, RHNA progress, and context in one place.</h1>
         <p>
-          Designed like a Power BI report, but simplified for public users: one filter panel,
-          clear cards, readable maps, and caveats close to the visuals.
-        </p>
+  A public-facing dashboard for tracking building permits, pipeline activity, RHNA progress,
+  market context, and housing-need indicators across San Diego jurisdictions.
+</p>
       </div>
 
       <div class="filters-card">
@@ -69,41 +69,72 @@
       </div>
 
       <div class="filters-card">
-        <div class="filter-card-title"><i class="bi bi-layers"></i> Map layers</div>
-        <div class="overlay-item">
-          <label class="toggle-line">
-            <label class="toggle-switch"><input id="toggleChoro" type="checkbox" checked><span></span></label>
-            <div>
-              <div class="overlay-title">Jurisdiction shading</div>
-              <div class="overlay-desc">Color polygons by the selected housing metric.</div>
-            </div>
-          </label>
-        </div>
-        <div class="overlay-item">
-          <label class="toggle-line">
-            <label class="toggle-switch"><input id="toggleOutlines" type="checkbox" checked><span></span></label>
-            <div>
-              <div class="overlay-title">Boundary outlines</div>
-              <div class="overlay-desc">Keep city and place boundaries visible.</div>
-            </div>
-          </label>
-        </div>
-        <div class="overlay-item">
-          <label class="toggle-line">
-            <label class="toggle-switch"><input id="togglePermitPoints" type="checkbox"><span></span></label>
-            <div>
-              <div class="overlay-title">Permit/project points</div>
-              <div class="overlay-desc">Show point records only when latitude/longitude fields are available.</div>
-            </div>
-          </label>
+  <div class="filter-card-title"><i class="bi bi-layers"></i> Map layers</div>
+
+  <div class="overlay-item">
+    <label class="toggle-line">
+      <label class="toggle-switch">
+        <input id="toggleChoro" type="checkbox" checked>
+        <span></span>
+      </label>
+      <div>
+        <div class="overlay-title">Jurisdiction shading</div>
+        <div class="overlay-desc">Color polygons by the selected housing metric.</div>
+      </div>
+    </label>
+  </div>
+
+  <div class="overlay-item">
+    <label class="toggle-line">
+      <label class="toggle-switch">
+        <input id="toggleOutlines" type="checkbox" checked>
+        <span></span>
+      </label>
+      <div>
+        <div class="overlay-title">Boundary outlines</div>
+        <div class="overlay-desc">Keep city and place boundaries visible.</div>
+      </div>
+    </label>
+  </div>
+
+  <div class="overlay-item">
+    <label class="toggle-line">
+      <label class="toggle-switch">
+        <input id="toggleZoningBase" type="checkbox">
+        <span></span>
+      </label>
+      <div>
+        <div class="overlay-title">Zoning base layer</div>
+        <div class="overlay-desc">
+          Adds SANDAG/SanGIS zoning geography as context. This does not represent units permitted or built.
         </div>
       </div>
+    </label>
+  </div>
+
+  <div class="overlay-item">
+    <label class="toggle-line">
+      <label class="toggle-switch">
+        <input id="toggleZoningUnincorporated" type="checkbox">
+        <span></span>
+      </label>
+      <div>
+        <div class="overlay-title">Unincorporated zoning</div>
+        <div class="overlay-desc">
+          Shows zoning for unincorporated county areas only. Use as a supplemental context layer.
+        </div>
+      </div>
+    </label>
+  </div>
+</div>
 
       <div class="filters-card method-note">
         <div class="filter-card-title"><i class="bi bi-info-circle"></i> Reading the data</div>
         <p>
-          APR/RHNA data is self-reported and may lag. Permit records are a supply signal, not a final count of completed homes.
-        </p>
+  APR/RHNA data is self-reported and may lag. Permit records are a supply signal, not a final count of completed homes.
+  Zoning layers are shown for geographic context only and should not be interpreted as housing production counts.
+  Future affordability-risk modules should clearly state assumptions for NOAH loss and expiring LIHTC estimates.
+</p>
       </div>
     </aside>
 
@@ -111,7 +142,7 @@
       <div class="report-toolbar">
         <div>
           <div class="report-eyebrow">Version 1 · Public-facing prototype</div>
-          <h2>San Diego housing dashboard</h2>
+          <h2>San Diego housing supply dashboard</h2>
         </div>
         <div class="report-tabs" aria-label="Dashboard sections">
           <button class="rail-btn active" type="button" data-panel="overview"><i class="bi bi-grid-1x2"></i> Overview</button>

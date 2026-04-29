@@ -21,6 +21,14 @@ const PATHS = {
     './data/raw/San_Diego_County_Boundary.geojson',
     './data/raw/San_Diego_County_Boundary.geojson',
   ],
+  zoningBase: [
+    './data/raw/sandag/Zoning_Base_SD.geojson',
+    './data/raw/sandag/zoning_base_sd.geojson',
+  ],
+  zoningUnincorporated: [
+    './data/raw/sandag/Zoning_Unincorporated.geojson',
+    './data/raw/sandag/zoning_unincorporated.geojson',
+  ],
   kpi: [
     './data/processed/sd_kpi_latest_city.csv',
     './data/processed/sd_city_kpis_latest.csv',
@@ -142,6 +150,12 @@ const METRICS = {
 
 const state = {
   geojson: null,
+  zoningBaseGeojson: null,
+  zoningUnincorporatedGeojson: null,
+  zoningBaseLayer: null,
+  zoningUnincorporatedLayer: null,
+  showZoningBase: false,
+  showZoningUnincorporated: false,
   countyGeojson: null,
   boundaryLayer: null,
   countyLayer: null,
@@ -386,8 +400,6 @@ function blankSupplyYear(key, label, year) {
     completed: null,
     approved: null,
     proposed: null,
-    adu: null,
-    jadu: null,
     affordable: null,
     aboveModerate: null,
     points: [],
@@ -414,11 +426,11 @@ function buildSupplySeries(rows) {
       sumMatching(row, k => k.toUpperCase().includes('APPROVED') && k.toUpperCase().includes('UNITS'));
     const proposed =
       numFrom(row, ['proposed_units', 'submitted_units', 'TOT_PROPOSED_UNITS']);
-    const adu =
-      numFrom(row, ['adu_units', 'APPROVAL_ADU_TOTAL', 'approval_adu_total']) ??
-      sumMatching(row, k => k.toUpperCase().includes('ADU') && !k.toUpperCase().includes('JADU') && k.toUpperCase().includes('TOTAL'));
-    const jadu =
-      numFrom(row, ['jadu_units', 'APPROVAL_JADU_TOTAL', 'approval_jadu_total']);
+    // const adu =
+    //   numFrom(row, ['adu_units', 'APPROVAL_ADU_TOTAL', 'approval_adu_total']) ??
+    //   sumMatching(row, k => k.toUpperCase().includes('ADU') && !k.toUpperCase().includes('JADU') && k.toUpperCase().includes('TOTAL'));
+    // const jadu =
+    //   numFrom(row, ['jadu_units', 'APPROVAL_JADU_TOTAL', 'approval_jadu_total']);
     const affordable =
       numFrom(row, ['affordable_units', 'lower_income_units', 'vli_li_mod_units', 'bp_affordable_total', 'co_affordable_total']) ??
       sumMatching(row, k => /(VLOW|VERY_LOW|LOW_INCOME|MOD_INCOME|EXTREMELY_LOW|VLI|LI_|MOD_)/i.test(k) && !/ABOVE/i.test(k));
@@ -442,11 +454,18 @@ function buildSupplySeries(rows) {
     addIfNum(g, 'completed', completed);
     addIfNum(g, 'approved', approved);
     addIfNum(g, 'proposed', proposed);
-    addIfNum(g, 'adu', adu);
-    addIfNum(g, 'jadu', jadu);
+    // addIfNum(g, 'adu', adu);
+    // addIfNum(g, 'jadu', jadu);
     addIfNum(g, 'affordable', affordable);
     addIfNum(g, 'aboveModerate', aboveModerate);
-    if (isNum(lat) && isNum(lng)) g.points.push({ lat: Number(lat), lng: Number(lng), title: firstValue(row, ['PROJECT_TITLE', 'PROJECT_NAME']) || 'Permit record', units: permitted ?? adu ?? null });
+    if (isNum(lat) && isNum(lng)) {
+  g.points.push({
+    lat: Number(lat),
+    lng: Number(lng),
+    title: firstValue(row, ['PROJECT_TITLE', 'PROJECT_NAME']) || 'Permit record',
+    units: permitted ?? null,
+  });
+}
   });
 
   const byCity = new Map();
@@ -487,7 +506,7 @@ function aggregateCountyStats(year) {
   state.allKeys.forEach(key => {
     if (key === 'county san diego') return;
     const s = statsForKey(key, year, false);
-    ['permitted', 'completed', 'approved', 'proposed', 'adu', 'jadu', 'affordable', 'aboveModerate', 'rhnaUnits', 'rhnaTarget', 'population', 'housingUnits'].forEach(f => {
+    ['permitted', 'completed', 'approved', 'proposed', 'affordable', 'aboveModerate', 'rhnaUnits', 'rhnaTarget', 'population', 'housingUnits'].forEach(f => {
       if (isNum(s[f])) stats[f] = (stats[f] || 0) + Number(s[f]);
     });
   });
@@ -502,7 +521,7 @@ function blankStats(key, label) {
   return {
     key, label,
     permitted: null, completed: null, approved: null, proposed: null,
-    adu: null, jadu: null, affordable: null, aboveModerate: null,
+    affordable: null, aboveModerate: null,
     rhnaUnits: null, rhnaTarget: null, rhnaTiers: {},
     population: null, housingUnits: null, households: null, renterHouseholds: null,
     medianRent: null, medianHomeValue: null, rentBurdenShare: null,
@@ -522,9 +541,9 @@ function statsForKey(key, year = state.selectedYear, allowCountyAggregate = true
 
   const supply = rowForYear(state.dataMaps.supply?.get(key), year);
   if (supply) {
-    ['permitted', 'completed', 'approved', 'proposed', 'adu', 'jadu', 'affordable', 'aboveModerate'].forEach(f => {
-      if (isNum(supply[f])) stats[f] = supply[f];
-    });
+    ['permitted', 'completed', 'approved', 'proposed', 'affordable', 'aboveModerate'].forEach(f => {
+  if (isNum(supply[f])) stats[f] = supply[f];
+});
   }
 
   const rhna = state.dataMaps.rhna?.get(key);
@@ -579,19 +598,34 @@ async function init() {
   setupUi();
   setStatus('Loading source files…');
 
-  const [geojson, countyGeojson, kpiRows, rhnaRows, aprRows, permitRows, acsRows, dofRows] = await Promise.all([
-    loadFirst('Municipal/place boundaries', PATHS.boundaries, 'json'),
-    loadFirst('County boundary', PATHS.countyBoundary, 'json'),
-    loadFirst('KPI scorecard', PATHS.kpi, 'csv'),
-    loadFirst('RHNA 6th Cycle', PATHS.rhna, 'csv'),
-    loadFirst('APR supply by city/year', PATHS.aprSupply, 'csv'),
-    loadFirst('City permit units by year', PATHS.permits, 'csv'),
-    loadFirst('ACS place summary', PATHS.acs, 'csv'),
-    loadFirst('DOF city/year estimates', PATHS.dof, 'csv'),
-  ]);
+  const [
+  geojson,
+  countyGeojson,
+  zoningBaseGeojson,
+  zoningUnincorporatedGeojson,
+  kpiRows,
+  rhnaRows,
+  aprRows,
+  permitRows,
+  acsRows,
+  dofRows,
+] = await Promise.all([
+  loadFirst('Municipal/place boundaries', PATHS.boundaries, 'json'),
+  loadFirst('County boundary', PATHS.countyBoundary, 'json'),
+  loadFirst('SANDAG zoning base', PATHS.zoningBase, 'json'),
+  loadFirst('SANDAG zoning unincorporated', PATHS.zoningUnincorporated, 'json'),
+  loadFirst('KPI scorecard', PATHS.kpi, 'csv'),
+  loadFirst('RHNA 6th Cycle', PATHS.rhna, 'csv'),
+  loadFirst('APR supply by city/year', PATHS.aprSupply, 'csv'),
+  loadFirst('City permit units by year', PATHS.permits, 'csv'),
+  loadFirst('ACS place summary', PATHS.acs, 'csv'),
+  loadFirst('DOF city/year estimates', PATHS.dof, 'csv'),
+]);
 
   state.geojson = geojson;
   state.countyGeojson = countyGeojson;
+  state.zoningBaseGeojson = zoningBaseGeojson;
+  state.zoningUnincorporatedGeojson = zoningUnincorporatedGeojson;
   state.dataMaps.labels = new Map();
 
   if (geojson?.features) {
@@ -655,15 +689,13 @@ function combineSeries(a = [], b = []) {
     const target = byYear.get(y);
 
     [
-      'permitted',
-      'completed',
-      'approved',
-      'proposed',
-      'adu',
-      'jadu',
-      'affordable',
-      'aboveModerate',
-    ].forEach(f => addIfNum(target, f, row[f]));
+  'permitted',
+  'completed',
+  'approved',
+  'proposed',
+  'affordable',
+  'aboveModerate',
+].forEach(f => addIfNum(target, f, row[f]));
 
     if (row.points?.length) {
       target.points.push(...row.points);
@@ -718,9 +750,20 @@ function setupUi() {
   $('toggleChoro')?.addEventListener('change', e => { state.showChoro = e.target.checked; renderMap(); });
   $('toggleOutlines')?.addEventListener('change', e => { state.showOutlines = e.target.checked; renderMap(); });
   $('togglePermitPoints')?.addEventListener('change', e => { state.showPermitPoints = e.target.checked; renderPermitPoints(); });
+  $('toggleChoro')?.addEventListener('change', e => { state.showChoro = e.target.checked; renderMap(); });
+  $('toggleOutlines')?.addEventListener('change', e => { state.showOutlines = e.target.checked; renderMap(); });
+  $('togglePermitPoints')?.addEventListener('change', e => { state.showPermitPoints = e.target.checked; renderPermitPoints(); });
   $('zoomHomeBtn')?.addEventListener('click', fitToData);
   $('collapseSnapshot')?.addEventListener('click', () => $('snapshotCard')?.classList.add('hidden'));
   document.querySelectorAll('.faq-btn').forEach(btn => btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open')));
+  $('toggleZoningBase')?.addEventListener('change', e => {
+  state.showZoningBase = e.target.checked;
+  renderZoningLayers();
+  });
+  $('toggleZoningUnincorporated')?.addEventListener('change', e => {
+    state.showZoningUnincorporated = e.target.checked;
+    renderZoningLayers();
+  });
 }
 
 function switchPanel(panel) {
@@ -816,6 +859,7 @@ function renderMap() {
     if (!state.hasFit) fitToData();
   }
 
+  renderZoningLayers();
   renderPermitPoints();
   renderLegend();
 }
@@ -879,6 +923,124 @@ function renderPermitPoints() {
     fillColor: '#D7A64A',
     fillOpacity: 0.82,
   }).bindPopup(`<div class="popup-title">${escapeHtml(p.title)}</div><div>${formatMaybe(p.units)} units</div>`))).addTo(map);
+}
+
+function zoningLabel(feature) {
+  const p = feature?.properties || {};
+
+  return (
+    firstValue(p, [
+      'ZONE',
+      'Zone',
+      'zone',
+      'ZONE_CODE',
+      'zone_code',
+      'ZONING',
+      'zoning',
+      'ZONING_CODE',
+      'zoning_code',
+      'BASEZONE',
+      'basezone',
+      'Name',
+      'NAME',
+    ]) || 'Zoning area'
+  );
+}
+
+function zoningDescription(feature) {
+  const p = feature?.properties || {};
+
+  const jurisdiction = firstValue(p, [
+    'JURISDICTION',
+    'Jurisdiction',
+    'jurisdiction',
+    'CITY',
+    'City',
+    'city',
+    'COMMUNITY',
+    'Community',
+    'community',
+  ]);
+
+  const landUse = firstValue(p, [
+    'LANDUSE',
+    'LandUse',
+    'land_use',
+    'LAND_USE',
+    'DESCRIPTION',
+    'Description',
+    'desc',
+  ]);
+
+  const parts = [];
+
+  if (jurisdiction) parts.push(`Jurisdiction: ${jurisdiction}`);
+  if (landUse) parts.push(`Description: ${landUse}`);
+
+  return parts.length ? parts.join('<br>') : 'SANDAG/SanGIS zoning context layer';
+}
+
+function zoningPopupHtml(feature, sourceLabel) {
+  const label = zoningLabel(feature);
+  const desc = zoningDescription(feature);
+
+  return `
+    <div class="popup-title">${escapeHtml(label)}</div>
+    <div class="helper-text">${escapeHtml(sourceLabel)}</div>
+    <div style="margin-top:6px;">${desc}</div>
+    <div class="helper-text" style="margin-top:8px;">
+      Zoning is shown as context only. It is not a housing production count.
+    </div>
+  `;
+}
+
+function renderZoningLayers() {
+  if (state.zoningBaseLayer) {
+    state.zoningBaseLayer.remove();
+    state.zoningBaseLayer = null;
+  }
+
+  if (state.zoningUnincorporatedLayer) {
+    state.zoningUnincorporatedLayer.remove();
+    state.zoningUnincorporatedLayer = null;
+  }
+
+  if (state.showZoningBase && state.zoningBaseGeojson?.features) {
+    state.zoningBaseLayer = L.geoJSON(state.zoningBaseGeojson, {
+      pane: 'overlayPane',
+      style: {
+        color: '#5E704D',
+        weight: 0.65,
+        opacity: 0.58,
+        fillColor: '#A8C88C',
+        fillOpacity: 0.10,
+      },
+      onEachFeature: (feature, layer) => {
+        layer.bindPopup(() => zoningPopupHtml(feature, 'Zoning_Base_SD'));
+      },
+    }).addTo(map);
+  }
+
+  if (state.showZoningUnincorporated && state.zoningUnincorporatedGeojson?.features) {
+    state.zoningUnincorporatedLayer = L.geoJSON(state.zoningUnincorporatedGeojson, {
+      pane: 'overlayPane',
+      style: {
+        color: '#6A6F2E',
+        weight: 0.75,
+        opacity: 0.70,
+        fillColor: '#D6D88A',
+        fillOpacity: 0.14,
+        dashArray: '3 3',
+      },
+      onEachFeature: (feature, layer) => {
+        layer.bindPopup(() => zoningPopupHtml(feature, 'Zoning_Unincorporated'));
+      },
+    }).addTo(map);
+  }
+
+  // Keep city boundaries visually above zoning.
+  if (state.boundaryLayer) state.boundaryLayer.bringToFront();
+  if (state.permitPointLayer) state.permitPointLayer.bringToFront();
 }
 
 function computeBins() {
@@ -950,14 +1112,14 @@ function renderDrawerKpis() {
 
 function renderSupplyPanel() {
   const s = statsForKey(state.selectedKey, state.selectedYear);
+
   $('supplyMiniStats').innerHTML = [
-    miniStat('Proposed', s.proposed),
+    miniStat('Proposed / submitted', s.proposed),
     miniStat('Approved / entitled', s.approved),
     miniStat('Permitted', s.permitted),
     miniStat('Completed', s.completed),
-    miniStat('ADU units', s.adu),
-    miniStat('JADU units', s.jadu),
   ].join('');
+
   renderTrendChart('supplyTrend', state.selectedKey);
   renderRankChart('rankChart', state.metric);
 }
