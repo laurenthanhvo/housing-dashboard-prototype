@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>State of Housing in San Diego</title>
+  <title>San Diego Housing Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,167 +15,86 @@
 <body>
   <header class="app-header">
     <div class="header-brand">
-      <div class="brand-kicker">Center for Housing Policy & Design · UC San Diego</div>
-      <a class="brand-title" href="./index.html">San Diego Housing Supply Dashboard</a>
+      <div class="brand-mark" aria-hidden="true"><i class="bi bi-buildings-fill"></i></div>
+      <div>
+        <a class="brand-title" href="./index.html">San Diego Housing Dashboard</a>
+        <div class="brand-kicker">Center for Housing Policy & Design · UC San Diego</div>
+      </div>
     </div>
 
-    <nav class="site-nav" aria-label="Main navigation">
-      <a class="active" href="./index.html">Dashboard</a>
-      <a href="./datasets.html">Data & Methods</a>
-      <a href="./about.html">About</a>
-      <a href="./contact.html">Contact</a>
+    <nav class="report-tabs site-nav" aria-label="Dashboard pages">
+      <button class="rail-btn active" type="button" data-panel="overview">Overview</button>
+      <button class="rail-btn" type="button" data-panel="supply">Supply &amp; RHNA</button>
+      <button class="rail-btn" type="button" data-panel="need">Need &amp; Affordability</button>
+      <button class="rail-btn" type="button" data-panel="methods">Data &amp; Methods</button>
     </nav>
+
+    <div class="header-logo-right" aria-label="CHPD logo">
+      <img src="./logo.png" alt="Center for Housing Policy and Design logo">
+    </div>
   </header>
 
-  <div class="app-shell">
-    <aside class="filters-panel" aria-label="Dashboard filters">
-      <div class="filters-card intro-card">
-        <div class="eyebrow">Pilot dashboard</div>
-        <h1>Housing supply, RHNA progress, and context in one place.</h1>
-        <p>
-  A public-facing dashboard for tracking building permits, pipeline activity, RHNA progress,
-  market context, and housing-need indicators across San Diego jurisdictions.
-</p>
-      </div>
+  <main class="dashboard-shell">
+    <section class="top-strip" aria-label="Dashboard filters and headline metrics">
+      <div class="snapshot-kpis power-kpis" id="snapshotKpis"></div>
 
-      <div class="filters-card">
-        <div class="filter-card-title"><i class="bi bi-funnel"></i> Filters</div>
-
-        <div class="control-section">
-          <label class="control-label" for="metricSelect">Map metric</label>
-          <select id="metricSelect" class="form-select control-select"></select>
-        </div>
-
-        <div class="control-section">
-          <label class="control-label" for="yearSelect">Reporting year</label>
-          <select id="yearSelect" class="form-select control-select"></select>
-          <div class="helper-text mt-2" id="yearNote">The year list is built from the processed files loaded by the page.</div>
-        </div>
-
-        <div class="control-section">
-          <label class="control-label" for="searchInput">Search jurisdiction</label>
-          <div class="drawer-search-row">
-            <input id="searchInput" class="drawer-search-input" type="text" list="searchSuggestions" placeholder="San Diego, Chula Vista, Oceanside…" autocomplete="off" />
-            <button id="searchBtn" class="mini-btn primary" type="button">Go</button>
+      <article class="filter-card filters-card">
+        <div class="visual-header tight">
+          <div>
+            <h3>Filters</h3>
+            <p>Filter the dashboard.</p>
           </div>
-          <datalist id="searchSuggestions"></datalist>
-          <div id="searchHelperText" class="helper-text">Search or click a city on the map to update all visuals.</div>
+          <div class="filter-icons" aria-hidden="true"><i class="bi bi-arrow-clockwise"></i><i class="bi bi-funnel"></i></div>
         </div>
-      </div>
 
-      <div class="filters-card selected-card">
-        <div class="filter-card-title"><i class="bi bi-pin-map"></i> Selected area</div>
-        <div id="drawerKpis" class="kpi-stack compact"></div>
-      </div>
-
-      <div class="filters-card">
-  <div class="filter-card-title"><i class="bi bi-layers"></i> Map layers</div>
-
-  <div class="overlay-item">
-    <label class="toggle-line">
-      <label class="toggle-switch">
-        <input id="toggleChoro" type="checkbox" checked>
-        <span></span>
-      </label>
-      <div>
-        <div class="overlay-title">Jurisdiction shading</div>
-        <div class="overlay-desc">Color polygons by the selected housing metric.</div>
-      </div>
-    </label>
-  </div>
-
-  <div class="overlay-item">
-    <label class="toggle-line">
-      <label class="toggle-switch">
-        <input id="toggleOutlines" type="checkbox" checked>
-        <span></span>
-      </label>
-      <div>
-        <div class="overlay-title">Boundary outlines</div>
-        <div class="overlay-desc">Keep city and place boundaries visible.</div>
-      </div>
-    </label>
-  </div>
-
-  <div class="overlay-item">
-    <label class="toggle-line">
-      <label class="toggle-switch">
-        <input id="toggleZoningBase" type="checkbox">
-        <span></span>
-      </label>
-      <div>
-        <div class="overlay-title">Zoning base layer</div>
-        <div class="overlay-desc">
-          Adds SANDAG/SanGIS zoning geography as context. This does not represent units permitted or built.
+        <div class="filter-grid">
+          <div class="control-section">
+            <label class="control-label" for="metricSelect">Metric</label>
+            <select id="metricSelect" class="form-select control-select"></select>
+          </div>
+          <div class="control-section">
+            <label class="control-label" for="yearSelect">Year</label>
+            <select id="yearSelect" class="form-select control-select"></select>
+          </div>
+          <div class="control-section search-control">
+            <label class="control-label" for="searchInput">Jurisdiction</label>
+            <div class="drawer-search-row">
+              <input id="searchInput" class="drawer-search-input" type="text" list="searchSuggestions" placeholder="San Diego, Chula Vista…" autocomplete="off" />
+              <button id="searchBtn" class="mini-btn primary" type="button">Go</button>
+            </div>
+            <datalist id="searchSuggestions"></datalist>
+          </div>
         </div>
-      </div>
-    </label>
-  </div>
 
-  <div class="overlay-item">
-    <label class="toggle-line">
-      <label class="toggle-switch">
-        <input id="toggleZoningUnincorporated" type="checkbox">
-        <span></span>
-      </label>
-      <div>
-        <div class="overlay-title">Unincorporated zoning</div>
-        <div class="overlay-desc">
-          Shows zoning for unincorporated county areas only. Use as a supplemental context layer.
-        </div>
-      </div>
-    </label>
-  </div>
-</div>
+        
+        <div id="yearNote" class="helper-text visually-subtle">Year list is built from loaded processed files.</div>
+        <div id="searchHelperText" class="helper-text visually-subtle">Search or click a city on the map to update visuals.</div>
+      </article>
+    </section>
 
-      <div class="filters-card method-note">
-        <div class="filter-card-title"><i class="bi bi-info-circle"></i> Reading the data</div>
-        <p>
-  APR/RHNA data is self-reported and may lag. Permit records are a supply signal, not a final count of completed homes.
-  Zoning layers are shown for geographic context only and should not be interpreted as housing production counts.
-  Future affordability-risk modules should clearly state assumptions for NOAH loss and expiring LIHTC estimates.
-</p>
-      </div>
-    </aside>
-
-    <main class="report-stage">
-      <div class="report-toolbar">
+    <section class="dashboard-page active" id="overview-section" data-page="overview">
+      <div class="page-heading">
         <div>
-          <div class="report-eyebrow">Version 1 · Public-facing prototype</div>
-          <h2>San Diego housing supply dashboard</h2>
+          <div class="visual-kicker">Overview</div>
+          <h1>Housing supply and RHNA progress at a glance</h1>
         </div>
-        <div class="report-tabs" aria-label="Dashboard sections">
-          <button class="rail-btn active" type="button" data-panel="overview"><i class="bi bi-grid-1x2"></i> Overview</button>
-          <button class="rail-btn" type="button" data-panel="supply"><i class="bi bi-buildings"></i> Supply</button>
-          <button class="rail-btn" type="button" data-panel="rhna"><i class="bi bi-bar-chart-line"></i> RHNA</button>
-          <button class="rail-btn" type="button" data-panel="need"><i class="bi bi-house-heart"></i> Need</button>
-          <button class="rail-btn" type="button" data-panel="methods"><i class="bi bi-journal-text"></i> Methods</button>
-        </div>
+        <p>Permits, completions, RHNA progress, and context in one view.</p>
       </div>
 
-      <section class="section-anchor" id="overview-section">
-        <div class="section-label">County snapshot</div>
-        <div class="snapshot-kpis power-kpis" id="snapshotKpis"></div>
-      </section>
-
-      <section class="report-grid map-rank-grid">
-        <article class="visual-card map-card">
+      <div class="page-grid overview-grid">
+        <article class="visual-card map-card large-card">
           <div class="visual-header">
             <div>
-              <div class="visual-kicker">Geography</div>
-              <h3>Where housing activity is concentrated</h3>
+              <h3>Geographic housing activity</h3>
+              <p>Click a jurisdiction to update the dashboard.</p>
             </div>
             <button id="zoomHomeBtn" class="mini-btn" type="button"><i class="bi bi-house-door"></i> Reset map</button>
           </div>
           <div class="map-frame">
             <div id="map" aria-label="San Diego housing dashboard map"></div>
             <section class="legend-card" id="legendCard">
-              <div class="legend-head">
-                <div>
-                  <div class="legend-title" id="legendTitle">Loading metric</div>
-                  <div class="legend-subtitle" id="legendSubtitle">Values are grouped into data-driven bins.</div>
-                </div>
-              </div>
+              <div class="legend-title" id="legendTitle">Loading metric</div>
+              <div class="legend-subtitle" id="legendSubtitle">Values are grouped into data-driven bins.</div>
               <div class="legend-scale" id="legendScale"></div>
               <div class="legend-labels" id="legendLabels"></div>
               <div class="legend-footnote" id="legendFootnote">Loading data…</div>
@@ -183,89 +102,151 @@
           </div>
         </article>
 
-        <article class="visual-card" id="location-section">
+        <article class="visual-card selected-card">
           <div class="visual-header">
             <div>
-              <div class="visual-kicker">Selected jurisdiction</div>
-              <h3>Quick profile</h3>
+              <h3>Selected jurisdiction</h3>
+              <p>Selected area summary.</p>
             </div>
           </div>
           <div id="locationPanel" class="location-summary"></div>
         </article>
-      </section>
-
-      <section class="report-grid two-col" id="supply-section">
-        <article class="visual-card">
+        
+        <article class="visual-card rank-card">
           <div class="visual-header">
             <div>
-              <div class="visual-kicker">Supply & pipeline</div>
-              <h3>Selected jurisdiction trend</h3>
+              <h3>Top jurisdictions by selected metric</h3>
+              <p>Click a bar to update the map and selected jurisdiction.</p>
             </div>
           </div>
-          <div id="supplyMiniStats" class="mini-stat-grid mb-3"></div>
+          <div id="rankChart" class="chart-box large"></div>
+        </article>
+
+        <article class="visual-card reading-card">
+          <div class="visual-header">
+            <div>
+              <h3>Reading the dashboard</h3>
+              <p>Important caveat.</p>
+            </div>
+          </div>
+          <p class="callout-text">RHNA is shown for the 6th Cycle, 2021–2029. APR permitting data is shown alongside RHNA progress to frame production against housing targets. Permit records are a supply signal, not a final count of completed homes.</p>
+          <div id="drawerKpis" class="kpi-stack compact hidden-kpi-source"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="dashboard-page" id="supply-section" data-page="supply">
+      <div class="page-heading">
+        <div>
+          <div class="visual-kicker">Supply &amp; RHNA</div>
+          <h1>Permits, completions, and RHNA targets together</h1>
+        </div>
+        <p>This page keeps RHNA target/progress next to permitted and completed units so users see the full housing-supply story.</p>
+      </div>
+
+      <div class="page-grid supply-grid">
+        <article class="visual-card wide-card">
+          <div class="visual-header">
+            <div>
+              <h3>Permits and completions over time</h3>
+              <p>Selected jurisdiction trend for permits, completions, and pipeline values where available.</p>
+            </div>
+          </div>
+          <div id="supplyMiniStats" class="mini-stat-grid metric-row"></div>
           <div id="supplyTrend" class="chart-box large"></div>
         </article>
 
         <article class="visual-card">
           <div class="visual-header">
             <div>
-              <div class="visual-kicker">Comparison</div>
-              <h3>Top jurisdictions by selected metric</h3>
-            </div>
-          </div>
-          <div id="rankChart" class="chart-box large"></div>
-        </article>
-      </section>
-
-      <section class="report-grid two-col" id="rhna-section">
-        <article class="visual-card">
-          <div class="visual-header">
-            <div>
-              <div class="visual-kicker">RHNA progress</div>
-              <h3>Progress against income-tier targets</h3>
+              <h3>RHNA progress summary</h3>
+              <p>Progress against 6th Cycle targets.</p>
             </div>
           </div>
           <div id="rhnaSummary" class="kpi-stack horizontal"></div>
-          <div id="incomeBars" class="chart-box mt-3"></div>
         </article>
 
-        <article class="visual-card" id="need-section">
+        <article class="visual-card">
           <div class="visual-header">
             <div>
-              <div class="visual-kicker">Housing need & context</div>
-              <h3>Do not read production counts alone</h3>
+              <h3>RHNA progress by income tier</h3>
+              <p>Very low, low, moderate, and above-moderate income categories.</p>
+            </div>
+          </div>
+          <div id="incomeBars" class="chart-box"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="dashboard-page" id="need-section" data-page="need">
+      <div class="page-heading">
+        <div>
+          <div class="visual-kicker">Need &amp; Affordability</div>
+          <h1>Context for interpreting housing production</h1>
+        </div>
+        <p>Production counts should not be read alone. Add market pressure, demographic need, and preservation risk to understand whether production is keeping pace.</p>
+      </div>
+
+      <div class="page-grid need-grid">
+        <article class="visual-card wide-card">
+          <div class="visual-header">
+            <div>
+              <h3>Housing need and market context</h3>
+              <p>Population, housing stock, rent, and value indicators where available.</p>
             </div>
           </div>
           <div id="needStats" class="mini-stat-grid context-grid"></div>
-          <div id="contextChart" class="chart-box mt-3"></div>
+          <div id="contextChart" class="chart-box large"></div>
         </article>
-      </section>
 
-      <section class="report-grid" id="methods-section">
-        <article class="visual-card methods-card">
+        <article class="visual-card preservation-card">
           <div class="visual-header">
             <div>
-              <div class="visual-kicker">Data & maintenance</div>
+              <h3>Preservation indicators to add</h3>
+              <p>Future module for affordability risk.</p>
+            </div>
+          </div>
+          <div class="method-list">
+            <div><strong>NOAH loss estimate</strong><span>Unsubsidized affordable homes at risk of becoming unaffordable.</span></div>
+            <div><strong>Expiring LIHTC</strong><span>Affordable units with restrictions ending by year and jurisdiction.</span></div>
+            <div><strong>Affordable inventory</strong><span>Subsidized/public affordable housing inventory at aggregate geographies.</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="dashboard-page" id="methods-section" data-page="methods">
+      <div class="page-heading">
+        <div>
+          <div class="visual-kicker">Data &amp; Methods</div>
+          <h1>Sources, caveats, and maintenance notes</h1>
+        </div>
+        <p>Keep data limitations close to the visuals so public users understand what is measured, what is estimated, and what is not included in Version 1.</p>
+      </div>
+
+      <div class="page-grid methods-grid">
+        <article class="visual-card methods-card wide-card">
+          <div class="visual-header">
+            <div>
               <h3>Loaded files and known limitations</h3>
+              <p>Automatically reports which processed files loaded successfully.</p>
             </div>
             <a class="mini-btn" href="./datasets.html">Open full methodology</a>
           </div>
           <div class="methods-layout">
             <div id="fileStatus" class="file-status"></div>
             <div class="methods-copy">
-              <h4>Prototype rule of thumb</h4>
-              <p>
-                Start with stable statewide/federal sources, then add higher-burden local portals or preservation datasets after the core refresh pipeline is documented.
-              </p>
-              <div class="callout-note">
-                Sensitive preservation-risk datasets should be mapped only at aggregated geographies unless redistribution rights and privacy rules are clear.
-              </div>
+              <h4>Version 1 includes</h4>
+              <p>APR permits/completions, RHNA progress and targets, ACS/DOF context, jurisdiction geography, and SANDAG zoning as context.</p>
+              <h4>Version 1 does not include</h4>
+              <p>A real-time regional permit tracker, parcel-level rent roll, precise unit-level rent pricing, forecasting, or sensitive address-level preservation-risk data.</p>
+              <div class="callout-note">Sensitive preservation-risk datasets should be mapped only at aggregated geographies unless redistribution rights and privacy rules are clear.</div>
             </div>
           </div>
         </article>
-      </section>
-    </main>
-  </div>
+      </div>
+    </section>
+  </main>
 
   <section class="snapshot-card hidden" id="snapshotCard" aria-hidden="true">
     <button id="collapseSnapshot" class="mini-btn" type="button">Hide</button>

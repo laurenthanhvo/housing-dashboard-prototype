@@ -70,8 +70,8 @@ const CITY_FIELDS = [
 
 const YEAR_FIELDS = ['year', 'YEAR', 'Year', 'report_year', 'REPORT_YEAR', 'calendar_year'];
 
-const PALETTE = ['#F4E7D8', '#E8C9A9', '#D9A06B', '#B96A4B', '#805063', '#3E5D70', '#17384A'];
-const NO_DATA_FILL = '#E8ECEE';
+const PALETTE = ['#F5F0E6', '#FFCD00', '#C69214', '#00C6D7', '#00629B', '#182B49'];
+const NO_DATA_FILL = '#F5F0E6';
 
 const METRICS = {
   rhna_progress: {
@@ -660,7 +660,10 @@ async function init() {
   populateYearSelect();
   populateSearch();
   renderMap();
-  setTimeout(() => { map.invalidateSize(); fitToData(); }, 120);
+  setTimeout(() => {
+  map.invalidateSize();
+  fitToData();
+}, 250);
   renderAll();
   renderFileStatus();
   setStatus(`Loaded ${state.loadedFiles.length} data source${state.loadedFiles.length === 1 ? '' : 's'}.`);
@@ -767,24 +770,22 @@ function setupUi() {
 }
 
 function switchPanel(panel) {
-  document.querySelectorAll('.rail-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.panel === panel));
-  document.querySelectorAll('.panel-view').forEach(view => view.classList.toggle('active', view.id === `panel-${panel}`));
+  document.querySelectorAll('.rail-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.panel === panel);
+  });
 
-  const anchor = $(`${panel}-section`);
-  if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  document.querySelectorAll('.dashboard-page').forEach(view => {
+    view.classList.toggle('active', view.dataset.page === panel);
+  });
 
-  const titles = {
-    overview: ['Overview', 'Explore housing supply, RHNA progress, and affordability context across San Diego County.'],
-    supply: ['Supply & Pipeline', 'Track permits, approvals, completions, ADUs, and city rankings.'],
-    rhna: ['RHNA Progress', 'Compare 6th Cycle production against income-tier targets.'],
-    need: ['Housing Need & Context', 'Frame production counts with population, rent, and housing-stock context.'],
-    layers: ['Map Layers', 'Adjust map layers and display options.'],
-    location: ['Location Details', 'Review the selected city or county area.'],
-    methods: ['Data & Methodology', 'Check files, source caveats, and maintenance notes.'],
-  };
-  if ($('drawerTitle')) $('drawerTitle').textContent = titles[panel]?.[0] || 'Dashboard';
-  if ($('drawerSubtitle')) $('drawerSubtitle').textContent = titles[panel]?.[1] || '';
-  if ($('drawerPanel')) $('drawerPanel').classList.remove('collapsed');
+  renderAll();
+
+  if (panel === 'overview') {
+    setTimeout(() => {
+      map.invalidateSize();
+      renderMap();
+    }, 180);
+  }
 }
 
 function populateMetricSelect() {
@@ -823,10 +824,24 @@ function runSearch() {
 
 function selectKey(key, zoom = false) {
   state.selectedKey = key;
+
+  // Update values without changing the visible page or scrolling the browser.
   renderAll();
   renderMap();
-  switchPanel('location');
-  if (zoom) zoomToKey(key);
+
+  const activePanel = document.querySelector('.rail-btn.active')?.dataset.panel || 'overview';
+
+  document.querySelectorAll('.dashboard-page').forEach(view => {
+    view.classList.toggle('active', view.dataset.page === activePanel);
+  });
+
+  setTimeout(() => {
+    map.invalidateSize();
+
+    if (zoom) {
+      zoomToKey(key);
+    }
+  }, 90);
 }
 
 function renderMap() {
@@ -867,9 +882,17 @@ function renderMap() {
 function fitToData() {
   const layer = state.boundaryLayer || state.countyLayer;
   if (!layer) return;
+
   try {
     map.invalidateSize();
-    map.fitBounds(layer.getBounds(), { padding: [26, 26] });
+
+    // Fit to the actual jurisdiction layer with tighter padding.
+    map.fitBounds(layer.getBounds(), {
+      paddingTopLeft: [18, 18],
+      paddingBottomRight: [18, 18],
+      maxZoom: 10,
+    });
+
     state.hasFit = true;
   } catch (_) {}
 }
@@ -920,7 +943,7 @@ function renderPermitPoints() {
     radius: 4,
     color: '#17384A',
     weight: 1,
-    fillColor: '#D7A64A',
+    fillColor: '#C69214',
     fillOpacity: 0.82,
   }).bindPopup(`<div class="popup-title">${escapeHtml(p.title)}</div><div>${formatMaybe(p.units)} units</div>`))).addTo(map);
 }
@@ -1070,34 +1093,110 @@ function colorForValue(value) {
 
 function renderLegend() {
   const meta = METRICS[state.metric];
+
   $('legendTitle').textContent = meta.label;
   $('legendSubtitle').textContent = meta.description;
-  $('legendScale').innerHTML = PALETTE.map(() => '<div class="legend-step"></div>').join('');
-  const labels = state.bins.length
-    ? state.bins.map(v => compactValue(v, state.metric))
-    : ['No', 'data', '', '', '', '', ''];
-  $('legendLabels').innerHTML = labels.map(l => `<span>${l}</span>`).join('');
+
+  if (!state.bins.length) {
+    $('legendScale').innerHTML = `
+      <div class="legend-bin-row">
+        <span class="legend-swatch" style="background:${NO_DATA_FILL}"></span>
+        <span class="legend-bin-text">No data available</span>
+      </div>
+    `;
+    $('legendLabels').innerHTML = '';
+    $('legendFootnote').textContent = meta.caveat;
+    return;
+  }
+
+  const rows = PALETTE.map((color, i) => {
+    const low = state.bins[i];
+    const high = state.bins[i + 1];
+
+    let label;
+    if (i === 0) {
+      label = `Lowest: ≤ ${compactValue(high, state.metric)}`;
+    } else if (i === PALETTE.length - 1) {
+      label = `Highest: ≥ ${compactValue(low, state.metric)}`;
+    } else {
+      label = `${compactValue(low, state.metric)} – ${compactValue(high, state.metric)}`;
+    }
+
+    return `
+      <div class="legend-bin-row">
+        <span class="legend-swatch" style="background:${color}"></span>
+        <span class="legend-bin-text">${label}</span>
+      </div>
+    `;
+  }).join('');
+
+  $('legendScale').innerHTML = rows;
+  $('legendLabels').innerHTML = '';
   $('legendFootnote').textContent = meta.caveat;
 }
 
+function safeRender(label, fn) {
+  try {
+    fn();
+  } catch (err) {
+    console.warn(`${label} render skipped`, err);
+  }
+}
+
 function renderAll() {
-  renderSnapshot();
-  renderDrawerKpis();
-  renderSupplyPanel();
-  renderRhnaPanel();
-  renderNeedPanel();
-  renderLocationPanel();
+  // Render the visible overview pieces first so one off-page chart error
+  // never leaves the main dashboard blank.
+  safeRender('snapshot KPIs', renderSnapshot);
+  safeRender('selected jurisdiction', renderLocationPanel);
+  safeRender('overview ranking', () => renderRankChart('rankChart', state.metric));
+
+  // Render secondary pages independently. These are allowed to fail silently
+  // during early data loading without breaking the overview page.
+  safeRender('drawer KPIs', renderDrawerKpis);
+  safeRender('supply panel', renderSupplyPanel);
+  safeRender('RHNA panel', renderRhnaPanel);
+  safeRender('need panel', renderNeedPanel);
+
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 120);
+  });
 }
 
 function renderSnapshot() {
   const county = statsForKey('county san diego', state.selectedYear);
+
   const cards = [
-    ['RHNA progress', formatMetricValue(pct(county.rhnaUnits, county.rhnaTarget), 'rhna_progress')],
-    ['Permitted units', formatMetricValue(county.permitted, 'permitted_units')],
-    ['Completed units', formatMetricValue(county.completed, 'completed_units')],
-    ['Permits / 1k residents', formatMetricValue(ratio(county.permitted, county.population) * 1000, 'permits_per_1k')],
+    {
+      label: 'RHNA progress',
+      note: 'Share of 6th Cycle target',
+      value: formatMetricValue(pct(county.rhnaUnits, county.rhnaTarget), 'rhna_progress'),
+    },
+    {
+      label: 'Permitted units',
+      note: 'New units permitted',
+      value: formatMetricValue(county.permitted, 'permitted_units'),
+    },
+    {
+      label: 'Completed units',
+      note: 'Units completed',
+      value: formatMetricValue(county.completed, 'completed_units'),
+    },
+    {
+      label: 'Permits/1k residents',
+      note: 'Per-capita supply signal',
+      value: formatMetricValue(ratio(county.permitted, county.population) * 1000, 'permits_per_1k'),
+    },
   ];
-  $('snapshotKpis').innerHTML = cards.map(([label, value]) => `<div class="snapshot-kpi"><div class="label">${label}</div><div class="value">${value}</div></div>`).join('');
+
+  $('snapshotKpis').innerHTML = cards.map(card => `
+    <div class="snapshot-kpi">
+      <div class="label">${escapeHtml(card.label)}</div>
+      <div class="kpi-note">${escapeHtml(card.note)}</div>
+      <div class="value">${escapeHtml(String(card.value))}</div>
+    </div>
+  `).join('');
 }
 
 function renderDrawerKpis() {
@@ -1148,17 +1247,32 @@ function renderNeedPanel() {
 
 function renderLocationPanel() {
   const s = statsForKey(state.selectedKey, state.selectedYear);
+  const zoomKey = String(state.selectedKey || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+
   $('locationPanel').innerHTML = `
-    <div class="section-heading">${escapeHtml(s.label)}</div>
-    <p class="helper-text">Selected jurisdiction · ${state.selectedYear}</p>
-    <div class="kpi-stack">
+    <div class="location-card-head">
+      <div>
+        <div class="section-heading">${escapeHtml(s.label)}</div>
+        <p class="helper-text">Selected jurisdiction · ${state.selectedYear}</p>
+      </div>
+    </div>
+
+    <div class="location-action-row">
+      <button class="mini-btn location-zoom-btn" type="button" onclick="zoomToKey('${zoomKey}')">
+        <i class="bi bi-house-door"></i> Zoom
+      </button>
+
+      <button class="mini-btn location-detail-btn" type="button" onclick="switchPanel('supply')">
+        <i class="bi bi-bar-chart"></i> Supply details
+      </button>
+    </div>
+
+    <div class="kpi-stack location-kpis">
       ${kpiHtml(METRICS[state.metric].label, formatMetricValue(metricValueForKey(state.selectedKey), state.metric), METRICS[state.metric].description)}
       ${kpiHtml('Permitted / completed', `${formatMaybe(s.permitted)} / ${formatMaybe(s.completed)}`, 'Permitted units compared with completed units')}
       ${kpiHtml('RHNA target', formatMaybe(s.rhnaTarget), `${formatMaybe(s.rhnaUnits)} units counted toward progress`)}
       ${kpiHtml('Market / need context', `${formatMaybe(s.population)} residents`, `${formatMoneyMaybe(s.medianRent)} median gross rent`)}
     </div>
-    <div class="section-divider"></div>
-    <button class="mini-btn" type="button" onclick="zoomToKey('${state.selectedKey}')">Zoom to this area</button>
   `;
 }
 
@@ -1236,9 +1350,9 @@ function renderTrendChart(id, key) {
     .y(d => y(d[field]))(data);
 
   const legendItems = [];
-  if (hasPermitted) legendItems.push(`<text x="${m.left}" y="14" fill="#B35B3D" font-size="11" font-weight="700">Permitted</text>`);
-  if (hasCompleted) legendItems.push(`<text x="${m.left + 82}" y="14" fill="#2F7884" font-size="11" font-weight="700">Completed</text>`);
-  if (hasApproved) legendItems.push(`<text x="${m.left + 176}" y="14" fill="#D7A64A" font-size="11" font-weight="700">Approved</text>`);
+  if (hasPermitted) legendItems.push(`<text x="${m.left}" y="14" fill="#00629B" font-size="11" font-weight="700">Permitted</text>`);
+  if (hasCompleted) legendItems.push(`<text x="${m.left + 82}" y="14" fill="#00C6D7" font-size="11" font-weight="700">Completed</text>`);
+  if (hasApproved) legendItems.push(`<text x="${m.left + 176}" y="14" fill="#C69214" font-size="11" font-weight="700">Approved</text>`);
 
   el.innerHTML = `
     <svg class="chart-svg" width="100%" height="${h}" viewBox="0 0 ${w} ${h}" role="img">
@@ -1249,9 +1363,9 @@ function renderTrendChart(id, key) {
         `).join('')}
       </g>
 
-      ${hasApproved ? `<path d="${makeLine('approved') || ''}" fill="none" stroke="#D7A64A" stroke-width="3" opacity=".85"/>` : ''}
-      ${hasPermitted ? `<path d="${makeLine('permitted') || ''}" fill="none" stroke="#B35B3D" stroke-width="3"/>` : ''}
-      ${hasCompleted ? `<path d="${makeLine('completed') || ''}" fill="none" stroke="#2F7884" stroke-width="3"/>` : ''}
+      ${hasApproved ? `<path d="${makeLine('approved') || ''}" fill="none" stroke="#C69214" stroke-width="3" opacity=".85"/>` : ''}
+      ${hasPermitted ? `<path d="${makeLine('permitted') || ''}" fill="none" stroke="#00629B" stroke-width="3"/>` : ''}
+      ${hasCompleted ? `<path d="${makeLine('completed') || ''}" fill="none" stroke="#00C6D7" stroke-width="3"/>` : ''}
 
       ${data.map(d => `
         <text class="axis-label" x="${x(d.year)}" y="${h - 8}" text-anchor="middle">${String(d.year).slice(-2)}</text>
@@ -1264,26 +1378,64 @@ function renderTrendChart(id, key) {
 
 function renderRankChart(id, metricKey) {
   const el = $(id);
+
   const rows = [...state.allKeys]
     .filter(k => k !== 'county san diego')
-    .map(k => ({ key: k, label: state.dataMaps.labels.get(k) || titleCase(k), value: metricValueForKey(k, state.selectedYear, metricKey) }))
+    .map(k => ({
+      key: k,
+      label: state.dataMaps.labels.get(k) || titleCase(k),
+      value: metricValueForKey(k, state.selectedYear, metricKey),
+    }))
     .filter(d => isNum(d.value))
     .sort((a, b) => b.value - a.value)
     .slice(0, 10);
+
   if (!rows.length) {
     el.innerHTML = '<div class="no-data">No ranking data was found for the selected metric.</div>';
     return;
   }
-  const w = el.clientWidth || 300, h = Math.max(190, rows.length * 26 + 24), m = { top: 8, right: 76, bottom: 12, left: 104 };
-  const x = d3.scaleLinear().domain([0, d3.max(rows, d => d.value) || 1]).range([0, w - m.left - m.right]);
-  el.innerHTML = `<svg class="chart-svg" width="100%" height="${h}" viewBox="0 0 ${w} ${h}">
-    ${rows.map((d, i) => {
-      const y = m.top + i * 26;
-      return `<text class="axis-label" x="${m.left - 8}" y="${y + 15}" text-anchor="end">${escapeSvg(shortName(d.label))}</text>
-      <rect x="${m.left}" y="${y}" width="${Math.max(2, x(d.value))}" height="18" rx="5" fill="#B35B3D" opacity="${d.key === state.selectedKey ? 1 : 0.72}"></rect>
-      <text class="bar-label" x="${m.left + x(d.value) + 7}" y="${y + 14}">${formatMetricValue(d.value, metricKey)}</text>`;
-    }).join('')}
-  </svg>`;
+
+  const w = el.clientWidth || 300;
+  const h = Math.max(210, rows.length * 28 + 28);
+  const m = { top: 8, right: 42, bottom: 10, left: 106 };
+
+  const x = d3.scaleLinear()
+    .domain([0, d3.max(rows, d => d.value) || 1])
+    .range([0, w - m.left - m.right]);
+
+  el.innerHTML = `
+    <svg class="chart-svg" width="100%" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Top jurisdictions ranking">
+      ${rows.map((d, i) => {
+        const y = m.top + i * 28;
+        const isSelected = d.key === state.selectedKey;
+        const barWidth = Math.max(3, x(d.value));
+
+        return `
+          <g class="rank-row ${isSelected ? 'rank-selected' : ''}" data-rank-key="${escapeHtml(d.key)}" tabindex="0" role="button" aria-label="Select ${escapeHtml(d.label)}">
+            <rect x="0" y="${y - 4}" width="${w}" height="26" fill="transparent"></rect>
+            <text class="axis-label" x="${m.left - 9}" y="${y + 15}" text-anchor="end">${escapeSvg(shortName(d.label))}</text>
+            <rect class="rank-bar" x="${m.left}" y="${y}" width="${barWidth}" height="18" rx="3" fill="#00629B" opacity="${isSelected ? 1 : 0.72}"></rect>
+            <text class="bar-label" x="${m.left + barWidth + 7}" y="${y + 14}">${formatMetricValue(d.value, metricKey)}</text>
+          </g>
+        `;
+      }).join('')}
+    </svg>
+  `;
+
+  el.querySelectorAll('.rank-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const key = row.dataset.rankKey;
+      if (key) selectKey(key, true);
+    });
+
+    row.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const key = row.dataset.rankKey;
+        if (key) selectKey(key, true);
+      }
+    });
+  });
 }
 
 function renderIncomeBars(id, stats) {
@@ -1305,7 +1457,7 @@ function renderIncomeBars(id, stats) {
       const y = m.top + i * 32;
       return `<text class="axis-label" x="${m.left - 8}" y="${y + 17}" text-anchor="end">${d.label}</text>
       <rect x="${m.left}" y="${y}" width="${x(100)}" height="20" rx="6" fill="rgba(23,56,74,.10)"></rect>
-      <rect x="${m.left}" y="${y}" width="${isNum(d.pct) ? Math.min(x(d.pct), x(Math.max(100, d.pct))) : 0}" height="20" rx="6" fill="${i < 2 ? '#B35B3D' : i === 2 ? '#D7A64A' : '#2F7884'}"></rect>
+      <rect x="${m.left}" y="${y}" width="${isNum(d.pct) ? Math.min(x(d.pct), x(Math.max(100, d.pct))) : 0}" height="20" rx="6" fill="${i < 2 ? '#00629B' : i === 2 ? '#C69214' : '#00C6D7'}"></rect>
       <text class="bar-label" x="${m.left + x(100) + 7}" y="${y + 15}">${formatMetricValue(d.pct, 'rhna_progress')}</text>`;
     }).join('')}
   </svg>`;
