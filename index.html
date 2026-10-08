@@ -501,7 +501,12 @@
   <div class="map-status-pill" id="mapStatus">Loading San Diego housing data…</div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-  <script src="./app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+
+<!-- Used to create Unincorporated San Diego County:
+     County boundary minus the 18 incorporated cities -->
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+
+<script src="./app.js"></script>
 </body>
 </html>

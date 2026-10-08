@@ -1006,6 +1006,220 @@ L.tileLayer(
   }
 ).addTo(map);
 
+/*
+  Build an interactive Unincorporated San Diego County polygon.
+
+  Unincorporated County =
+  full San Diego County boundary
+  minus the 18 incorporated cities.
+*/
+function addUnincorporatedCountyGeometry(
+  municipalGeojson,
+  countyGeojson
+) {
+  if (
+    !municipalGeojson?.features?.length ||
+    !countyGeojson?.features?.length
+  ) {
+    console.warn(
+      'Cannot build unincorporated geometry: boundary data missing.'
+    );
+    return municipalGeojson;
+  }
+
+  if (typeof turf === 'undefined') {
+    console.warn(
+      'Turf.js is not loaded. Unincorporated geometry was not created.'
+    );
+    return municipalGeojson;
+  }
+
+  /*
+    Do not create a duplicate if the source GeoJSON
+    already contains an unincorporated feature.
+  */
+  const existingUnincorporated =
+    municipalGeojson.features.some(feature => {
+      const key = cleanKey(featureName(feature));
+      return key === 'unincorporated';
+    });
+
+  if (existingUnincorporated) {
+    console.log(
+      'Unincorporated San Diego County geometry already exists.'
+    );
+    return municipalGeojson;
+  }
+
+  /*
+    Only these 18 incorporated cities should be removed.
+
+    This whitelist is intentional. If a fallback TIGER
+    "places" file contains communities such as Ramona,
+    Fallbrook, etc., those should NOT be removed because
+    they are still part of unincorporated San Diego County.
+  */
+  const incorporatedCities = new Set([
+    'carlsbad',
+    'chula vista',
+    'coronado',
+    'del mar',
+    'el cajon',
+    'encinitas',
+    'escondido',
+    'imperial beach',
+    'la mesa',
+    'lemon grove',
+    'national city',
+    'oceanside',
+    'poway',
+    'san diego',
+    'san marcos',
+    'santee',
+    'solana beach',
+    'vista',
+  ]);
+
+  /*
+    Get polygon features from the county boundary file.
+  */
+  const countyFeatures =
+    countyGeojson.features.filter(feature =>
+      feature?.geometry &&
+      (
+        feature.geometry.type === 'Polygon' ||
+        feature.geometry.type === 'MultiPolygon'
+      )
+    );
+
+  if (!countyFeatures.length) {
+    console.warn(
+      'No polygon was found in the San Diego County boundary file.'
+    );
+    return municipalGeojson;
+  }
+
+  /*
+    Normally the county boundary file contains one feature.
+    This also handles the case where it contains multiple
+    polygon pieces by merging them.
+  */
+  let countyFeature =
+    JSON.parse(
+      JSON.stringify(countyFeatures[0])
+    );
+
+  for (
+    let i = 1;
+    i < countyFeatures.length;
+    i++
+  ) {
+    try {
+      const merged = turf.union(
+        countyFeature,
+        countyFeatures[i]
+      );
+
+      if (merged) {
+        countyFeature = merged;
+      }
+    } catch (err) {
+      console.warn(
+        'Could not merge a county boundary piece:',
+        err
+      );
+    }
+  }
+
+  /*
+    Begin with the entire county.
+  */
+  let unincorporated =
+    JSON.parse(
+      JSON.stringify(countyFeature)
+    );
+
+  /*
+    Subtract each incorporated city's geometry.
+  */
+  const cityFeatures =
+    municipalGeojson.features.filter(feature => {
+      const key = cleanKey(
+        featureName(feature)
+      );
+
+      return (
+        incorporatedCities.has(key) &&
+        feature?.geometry &&
+        (
+          feature.geometry.type === 'Polygon' ||
+          feature.geometry.type === 'MultiPolygon'
+        )
+      );
+    });
+
+  console.log(
+    `Subtracting ${cityFeatures.length} incorporated city polygons`
+  );
+
+  cityFeatures.forEach(cityFeature => {
+    try {
+      const result = turf.difference(
+        unincorporated,
+        cityFeature
+      );
+
+      if (result) {
+        unincorporated = result;
+      } else {
+        console.warn(
+          'Difference returned no geometry for:',
+          featureName(cityFeature)
+        );
+      }
+    } catch (err) {
+      console.warn(
+        `Could not subtract ${featureName(cityFeature)}:`,
+        err
+      );
+    }
+  });
+
+  /*
+    Give the new geometry exactly the key that the
+    dashboard's data already uses.
+  */
+  unincorporated.properties = {
+    ...(unincorporated.properties || {}),
+
+    NAME:
+      'Unincorporated San Diego County',
+
+    name:
+      'Unincorporated San Diego County',
+
+    jurisdiction:
+      'Unincorporated San Diego County',
+
+    __housing_key:
+      'unincorporated',
+  };
+
+  /*
+    Add it to the same FeatureCollection as the cities.
+    Leaflet will therefore treat it exactly like another
+    selectable jurisdiction.
+  */
+  return {
+    ...municipalGeojson,
+
+    features: [
+      ...municipalGeojson.features,
+      unincorporated,
+    ],
+  };
+}
+
 async function init() {
   setupUi();
   setStatus('Loading validated source files…');
@@ -1076,7 +1290,17 @@ async function init() {
   ),
 ]);
 
-state.geojson = geojson;
+/*
+  Add Unincorporated San Diego County to the
+  interactive jurisdiction geometry.
+*/
+const jurisdictionGeojson =
+  addUnincorporatedCountyGeometry(
+    geojson,
+    countyGeojson
+  );
+
+state.geojson = jurisdictionGeojson;
 state.countyGeojson = countyGeojson;
 
 /*
@@ -1087,17 +1311,26 @@ state.zoningBaseGeojson = null;
 state.zoningUnincorporatedGeojson = null;
   state.dataMaps.labels = new Map();
 
-  if (geojson?.features) {
-    geojson.features.forEach(f => {
-      const name = featureName(f);
-      const key = cleanKey(name);
-      if (key) {
-        state.allKeys.add(key);
-        state.dataMaps.labels.set(key, String(name));
-        f.properties.__housing_key = key;
-      }
-    });
-  }
+  if (state.geojson?.features) {
+  state.geojson.features.forEach(f => {
+    const name = featureName(f);
+    const key = cleanKey(name);
+
+    if (key) {
+      state.allKeys.add(key);
+      state.dataMaps.labels.set(
+        key,
+        String(name)
+      );
+
+      f.properties =
+        f.properties || {};
+
+      f.properties.__housing_key =
+        key;
+    }
+  });
+}
 
   const ws1 = buildWs1Maps(ws1Rows);
   state.dataMaps.supply = ws1.supply;
