@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>San Diego Housing Dashboard</title>
+  <title>San Diego Regional Housing Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,71 +14,69 @@
 </head>
 <body>
   <header class="app-header">
-    <div class="header-brand">
-      <div class="brand-mark" aria-hidden="true"><i class="bi bi-buildings-fill"></i></div>
-      <div>
-        <a class="brand-title" href="./index.html">San Diego Housing Dashboard</a>
-        <div class="brand-kicker">Center for Housing Policy & Design · UC San Diego</div>
+  <div class="header-brand">
+    <div class="brand-mark" aria-hidden="true">
+      <i class="bi bi-buildings-fill"></i>
+    </div>
+
+    <div class="header-title-group">
+      <div class="header-eyebrow">
+        San Diego Region · Housing Policy Dashboard
+      </div>
+
+      <a class="brand-title" href="./index.html">
+        San Diego Regional Housing Dashboard
+      </a>
+
+      <div class="header-description">
+        Housing supply · RHNA · affordability · housing need · preservation
       </div>
     </div>
+  </div>
 
     <nav class="report-tabs site-nav" aria-label="Dashboard pages">
       <button class="rail-btn active" type="button" data-panel="overview">Overview</button>
-      <button class="rail-btn" type="button" data-panel="supply">Supply &amp; RHNA</button>
-      <button class="rail-btn" type="button" data-panel="need">Need &amp; Affordability</button>
+      <button class="rail-btn" type="button" data-panel="rhna">RHNA</button>
+      <button class="rail-btn" type="button" data-panel="production">Housing Production</button>
+      <button class="rail-btn" type="button" data-panel="need">Housing Need &amp; Demand</button>
+      <button class="rail-btn" type="button" data-panel="rental">Rental Affordability</button>
+      <button class="rail-btn" type="button" data-panel="ownership">Homeownership Affordability</button>
       <button class="rail-btn" type="button" data-panel="methods">Data &amp; Methods</button>
     </nav>
 
+  <div class="header-context">
+    <span class="header-context-label">Reporting year</span>
+    <strong id="headerReportingYear">2025</strong>
+  </div>
     <div class="header-logo-right" aria-label="CHPD logo">
       <img src="./logo.png" alt="Center for Housing Policy and Design logo">
     </div>
-  </header>
+
+</header>
 
   <main class="dashboard-shell">
-    <section class="top-strip" aria-label="Dashboard filters and headline metrics">
-      <div class="snapshot-kpis power-kpis" id="snapshotKpis"></div>
+    <section class="top-strip" aria-label="Regional summary">
+  <div class="scope-row">
+    <div>
+      <div class="visual-kicker">San Diego Region</div>
+      <div class="scope-title">Regional Summary</div>
+    </div>
 
-      <article class="filter-card filters-card">
-        <div class="visual-header tight">
-          <div>
-            <h3>Filters</h3>
-            <p>Filter the dashboard.</p>
-          </div>
-          <div class="filter-icons" aria-hidden="true"><i class="bi bi-arrow-clockwise"></i><i class="bi bi-funnel"></i></div>
-        </div>
+    <div id="regionalPeriodLabel" class="scope-context">
+      Current validated data
+    </div>
+  </div>
 
-        <div class="filter-grid">
-          <div class="control-section">
-            <label class="control-label" for="metricSelect">Metric</label>
-            <select id="metricSelect" class="form-select control-select"></select>
-          </div>
-          <div class="control-section">
-            <label class="control-label" for="yearSelect">Year</label>
-            <select id="yearSelect" class="form-select control-select"></select>
-          </div>
-          <div class="control-section search-control">
-            <label class="control-label" for="searchInput">Jurisdiction</label>
-            <div class="drawer-search-row">
-              <input id="searchInput" class="drawer-search-input" type="text" list="searchSuggestions" placeholder="San Diego, Chula Vista…" autocomplete="off" />
-              <button id="searchBtn" class="mini-btn primary" type="button">Go</button>
-            </div>
-            <datalist id="searchSuggestions"></datalist>
-          </div>
-        </div>
-
-        
-        <div id="yearNote" class="helper-text visually-subtle">Year list is built from loaded processed files.</div>
-        <div id="searchHelperText" class="helper-text visually-subtle">Search or click a city on the map to update visuals.</div>
-      </article>
-    </section>
+  <div class="snapshot-kpis power-kpis" id="snapshotKpis"></div>
+</section>
 
     <section class="dashboard-page active" id="overview-section" data-page="overview">
       <div class="page-heading">
         <div>
-          <div class="visual-kicker">Overview</div>
-          <h1>Housing supply and RHNA progress at a glance</h1>
+          <div class="visual-kicker">Overview · By Jurisdiction</div>
+          <h1>Regional housing supply and RHNA progress</h1>
         </div>
-        <p>Permits, completions, RHNA progress, and context in one view.</p>
+        <p class="selected-scope-text">Selected jurisdiction: <strong class="selected-jurisdiction-label">San Diego</strong></p>
       </div>
 
       <div class="page-grid overview-grid">
@@ -86,12 +84,12 @@
           <div class="visual-header">
             <div>
               <h3>Geographic housing activity</h3>
-              <p>Click a jurisdiction to update the dashboard.</p>
+              <p>Jurisdiction-level view. Click a jurisdiction to update the dashboard.</p>
             </div>
             <button id="zoomHomeBtn" class="mini-btn" type="button"><i class="bi bi-house-door"></i> Reset map</button>
           </div>
           <div class="map-frame">
-            <div id="map" aria-label="San Diego housing dashboard map"></div>
+            <div id="map" aria-label="San Diego regional housing dashboard map"></div>
             <section class="legend-card" id="legendCard">
               <div class="legend-title" id="legendTitle">Loading metric</div>
               <div class="legend-subtitle" id="legendSubtitle">Values are grouped into data-driven bins.</div>
@@ -106,74 +104,214 @@
           <div class="visual-header">
             <div>
               <h3>Selected jurisdiction</h3>
-              <p>Selected area summary.</p>
+              <p>Jurisdiction-level summary.</p>
             </div>
           </div>
           <div id="locationPanel" class="location-summary"></div>
         </article>
-        
+
         <article class="visual-card rank-card">
+  <div class="visual-header">
+    <div>
+      <h3>Jurisdiction ranking</h3>
+      <p>
+        Ranked by the selected metric. Click a jurisdiction
+        to zoom to it and view its details.
+      </p>
+    </div>
+  </div>
+
+  <div
+    id="rankChart"
+    class="chart-box large"
+    aria-label="Jurisdiction ranking"
+  ></div>
+</article>
+
+        <div class="overview-filter-panel">
+  <div class="visual-header tight">
+    <div>
+      <h3>Filters</h3>
+    </div>
+
+    <div class="filter-icons" aria-hidden="true">
+      <i class="bi bi-arrow-clockwise"></i>
+      <i class="bi bi-funnel"></i>
+    </div>
+  </div>
+
+  <div class="overview-filter-grid">
+    <div class="control-section">
+      <label class="control-label" for="yearSelect">
+        Year
+      </label>
+
+      <select
+        id="yearSelect"
+        class="form-select control-select"
+      ></select>
+    </div>
+
+    <div class="control-section search-control">
+      <label class="control-label" for="searchInput">
+        Jurisdiction
+      </label>
+
+      <div class="drawer-search-row">
+        <input
+          id="searchInput"
+          class="drawer-search-input"
+          type="text"
+          list="searchSuggestions"
+          placeholder="San Diego, Chula Vista…"
+          autocomplete="off"
+        />
+
+        <button
+          id="searchBtn"
+          class="mini-btn primary"
+          type="button"
+        >
+          Go
+        </button>
+      </div>
+
+      <datalist id="searchSuggestions"></datalist>
+    </div>
+
+    <div class="control-section metric-control">
+      <label class="control-label" for="metricSelect">
+        Map / ranking metric
+      </label>
+
+      <select
+        id="metricSelect"
+        class="form-select control-select"
+      ></select>
+    </div>
+  </div>
+
+  <div id="selectedContext" class="selected-context"></div>
+  <div id="yearNote" class="helper-text"></div>
+  <div id="searchHelperText" class="helper-text"></div>
+</div>
+      </div>
+    </section>
+
+    <section class="dashboard-page" id="rhna-section" data-page="rhna">
+      <div class="page-heading">
+        <div>
+          <div class="visual-kicker">RHNA · By Jurisdiction</div>
+          <h1>6th Cycle allocation and progress</h1>
+        </div>
+        <p>Selected jurisdiction: <strong class="selected-jurisdiction-label">San Diego</strong></p>
+      </div>
+
+      <div class="page-grid rhna-policy-grid">
+        <article class="visual-card rhna-status-panel wide-card">
           <div class="visual-header">
             <div>
-              <h3>Top jurisdictions by selected metric</h3>
-              <p>Click a bar to update the map and selected jurisdiction.</p>
+              <h3>6th Cycle progress at a glance</h3>
+              <p>Qualifying building-permit progress toward the jurisdiction's RHNA allocation.</p>
             </div>
           </div>
-          <div id="rankChart" class="chart-box large"></div>
+          <div class="rhna-status-layout">
+            <div id="rhnaOverallDonut" class="policy-chart compact-donut" aria-label="Overall RHNA completion"></div>
+            <div id="rhnaSummary" class="kpi-stack four-up policy-kpis"></div>
+          </div>
+          <div id="rhnaInsights" class="policy-insight-row"></div>
+          <div class="chart-meta">Source: HCD RHNA 6th Cycle Progress Report · Remaining need is tracked by income tier, so excess progress in one tier does not offset another tier.</div>
         </article>
 
-        <article class="visual-card reading-card">
+        <article class="visual-card">
           <div class="visual-header">
             <div>
-              <h3>Reading the dashboard</h3>
-              <p>Important caveat.</p>
+              <h3>Progress by income tier</h3>
+              <p>Share of each income-tier allocation achieved, with remaining need shown alongside the progress rate.</p>
             </div>
           </div>
-          <p class="callout-text">RHNA is shown for the 6th Cycle, 2021–2029. APR permitting data is shown alongside RHNA progress to frame production against housing targets. Permit records are a supply signal, not a final count of completed homes.</p>
-          <div id="drawerKpis" class="kpi-stack compact hidden-kpi-source"></div>
+          <div id="incomeTierChart" class="policy-chart tier-progress-chart"></div>
+          <div class="chart-meta">Source: HCD RHNA 6th Cycle Progress Report · Hover for allocation, qualifying units, and remaining need.</div>
+        </article>
+
+        <article class="visual-card">
+          <div class="visual-header">
+            <div>
+              <h3>Current-year development activity</h3>
+              <p>Applications, entitlements, permits, and completions reported for the selected APR year.</p>
+            </div>
+          </div>
+          <div id="rhnaPipelineChart" class="policy-chart pipeline-chart"></div>
+          <div class="chart-meta">Source: HCD APR Tables A/A2 · These are same-year stage counts, not a cohort conversion funnel · Under-construction data is not inferred.</div>
         </article>
       </div>
     </section>
 
-    <section class="dashboard-page" id="supply-section" data-page="supply">
+    <section class="dashboard-page" id="production-section" data-page="production">
       <div class="page-heading">
         <div>
-          <div class="visual-kicker">Supply &amp; RHNA</div>
-          <h1>Permits, completions, and RHNA targets together</h1>
+          <div class="visual-kicker">Housing Production · By Jurisdiction</div>
+          <h1>Housing production and housing stock</h1>
         </div>
-        <p>This page keeps RHNA target/progress next to permitted and completed units so users see the full housing-supply story.</p>
+        <p>Selected jurisdiction: <strong class="selected-jurisdiction-label">San Diego</strong></p>
       </div>
 
-      <div class="page-grid supply-grid">
+      <div class="page-grid production-grid">
         <article class="visual-card wide-card">
           <div class="visual-header">
             <div>
-              <h3>Permits and completions over time</h3>
-              <p>Selected jurisdiction trend for permits, completions, and pipeline values where available.</p>
+              <h3>Housing production pipeline over time</h3>
+<p>
+  Applications, entitlements, building permits, and completed units
+  by APR reporting year. Hover for exact values; click legend items
+  to show or hide a series.
+</p>
             </div>
           </div>
-          <div id="supplyMiniStats" class="mini-stat-grid metric-row"></div>
+          <div id="productionMiniStats" class="mini-stat-grid metric-row"></div>
           <div id="supplyTrend" class="chart-box large"></div>
+          <div class="chart-meta">
+  Source: HCD APR Tables A/A2 · Unit: housing units ·
+  Annual development stages are shown separately and should not be added together
+</div>
         </article>
 
         <article class="visual-card">
           <div class="visual-header">
             <div>
-              <h3>RHNA progress summary</h3>
-              <p>Progress against 6th Cycle targets.</p>
+              <h3>Production by housing type</h3>
+              <p>
+  Permitted and completed units by housing type for the selected reporting year.
+  Hover over a bar for the exact value.
+</p>
             </div>
           </div>
-          <div id="rhnaSummary" class="kpi-stack horizontal"></div>
+          <div id="productionTypeChart" class="chart-box"></div>
+          <div class="chart-meta">Source: HCD APR Table A2 · 2–4 unit buildings remain combined because the source does not support a defensible split</div>
         </article>
 
         <article class="visual-card">
           <div class="visual-header">
             <div>
-              <h3>RHNA progress by income tier</h3>
-              <p>Very low, low, moderate, and above-moderate income categories.</p>
+              <h3>Current housing stock</h3>
+              <p>Annual Department of Finance housing-stock estimate.</p>
             </div>
           </div>
-          <div id="incomeBars" class="chart-box"></div>
+          <div id="stockStats" class="mini-stat-grid context-grid"></div>
+          <div class="chart-meta">Source: California Department of Finance E-5 · Housing stock is not annual housing production</div>
+        </article>
+
+        <article class="visual-card wide-card">
+          <div class="visual-header">
+            <div>
+              <h3>Housing stock over time</h3>
+              <p>
+  Long-term housing-stock benchmarks compared with annual California
+  Department of Finance estimates. Hover over any point for source and value.
+</p>
+          </div>
+          <div id="stockTrend" class="chart-box large"></div>
+          <div class="chart-meta">Census, ACS, and DOF estimates use different methodologies and should be read as complementary benchmarks</div>
         </article>
       </div>
     </section>
@@ -181,36 +319,144 @@
     <section class="dashboard-page" id="need-section" data-page="need">
       <div class="page-heading">
         <div>
-          <div class="visual-kicker">Need &amp; Affordability</div>
-          <h1>Context for interpreting housing production</h1>
+          <div class="visual-kicker">Housing Need &amp; Demand · By Jurisdiction</div>
+          <h1>Housing need, cost burden, and assisted housing</h1>
         </div>
-        <p>Production counts should not be read alone. Add market pressure, demographic need, and preservation risk to understand whether production is keeping pace.</p>
+        <p>Selected jurisdiction: <strong class="selected-jurisdiction-label">San Diego</strong></p>
       </div>
 
-      <div class="page-grid need-grid">
+      <div class="page-grid need-policy-grid">
         <article class="visual-card wide-card">
           <div class="visual-header">
             <div>
-              <h3>Housing need and market context</h3>
-              <p>Population, housing stock, rent, and value indicators where available.</p>
+              <h3>Who is experiencing housing cost burden?</h3>
+              <p>Renter and homeowner households shown as severe burden, moderate burden, and not cost-burdened.</p>
             </div>
           </div>
-          <div id="needStats" class="mini-stat-grid context-grid"></div>
-          <div id="contextChart" class="chart-box large"></div>
+          <div class="need-burden-layout">
+            <div id="needBurdenChart" class="policy-chart burden-chart"></div>
+            <div id="needStats" class="compact-metric-list"></div>
+          </div>
+          <div class="chart-meta">Source: 2020–2024 ACS 5-year · Cost burden &gt;30% of household income · Severe burden &gt;50%</div>
         </article>
 
-        <article class="visual-card preservation-card">
+        <article class="visual-card assisted-panel">
           <div class="visual-header">
             <div>
-              <h3>Preservation indicators to add</h3>
-              <p>Future module for affordability risk.</p>
+              <h3>Federally assisted housing</h3>
+              <p>Aggregated jurisdiction-level preservation inventory.</p>
             </div>
           </div>
-          <div class="method-list">
-            <div><strong>NOAH loss estimate</strong><span>Unsubsidized affordable homes at risk of becoming unaffordable.</span></div>
-            <div><strong>Expiring LIHTC</strong><span>Affordable units with restrictions ending by year and jurisdiction.</span></div>
-            <div><strong>Affordable inventory</strong><span>Subsidized/public affordable housing inventory at aggregate geographies.</span></div>
+          <div id="assistedStats" class="compact-metric-list two-column"></div>
+          <div class="chart-meta">Source: National Housing Preservation Database · Assisted-unit totals use the validated conservative property-level estimate.</div>
+        </article>
+
+        <article class="visual-card preservation-panel">
+          <div class="visual-header">
+            <div>
+              <h3>Preservation risk</h3>
+              <p>Assisted units with affordability restrictions expiring within five years, plus the program mix behind that risk.</p>
+            </div>
           </div>
+          <div class="preservation-layout">
+            <div id="assistedRiskDonut" class="policy-chart compact-donut small"></div>
+            <div id="preservationRiskChart" class="policy-chart preservation-chart"></div>
+          </div>
+          <div class="chart-meta">NHPD subsidy records may overlap across programs; program bars should not be summed as a unique assisted-unit total. Public dashboard uses aggregated NHPD results only.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="dashboard-page" id="rental-section" data-page="rental">
+      <div class="page-heading">
+        <div>
+          <div class="visual-kicker">Rental Affordability · By Jurisdiction</div>
+          <h1>Rental affordability and renter cost burden</h1>
+        </div>
+        <p>Selected jurisdiction: <strong class="selected-jurisdiction-label">San Diego</strong></p>
+      </div>
+
+      <div class="page-grid rental-policy-grid">
+        <article class="visual-card wide-card">
+          <div class="visual-header">
+            <div>
+              <h3>Selected-jurisdiction renter profile</h3>
+              <p>Rent, rent-to-income benchmark, and observed renter cost burden.</p>
+            </div>
+          </div>
+          <div class="rental-profile-layout">
+            <div id="rentalStats" class="compact-metric-list three-column"></div>
+            <div id="rentalBurdenChart" class="policy-chart single-burden-chart"></div>
+          </div>
+          <div class="chart-meta">Source: 2020–2024 ACS 5-year · Rent-to-income is a benchmark using median household income, not an observed renter burden rate.</div>
+        </article>
+
+        <article class="visual-card wide-card">
+          <div class="visual-header">
+            <div>
+              <h3>Rent and income across jurisdictions</h3>
+              <p>Compare one-bedroom median gross rent with median household income. Hover over a jurisdiction for rent-to-income and renter-burden context.</p>
+            </div>
+          </div>
+          <div id="rentalRelationshipChart" class="policy-chart relationship-chart"></div>
+          <div class="chart-meta">Each point is a jurisdiction with available ACS values · The selected jurisdiction is highlighted.</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="dashboard-page" id="ownership-section" data-page="ownership">
+      <div class="page-heading">
+        <div>
+          <div class="visual-kicker">Homeownership Affordability · By Jurisdiction</div>
+          <h1>Homeownership affordability and owner cost burden</h1>
+        </div>
+        <p>Selected jurisdiction: <strong class="selected-jurisdiction-label">San Diego</strong></p>
+      </div>
+
+      <div class="page-grid ownership-policy-grid">
+        <article class="visual-card wide-card">
+          <div class="visual-header">
+            <div>
+              <h3>Selected-jurisdiction ownership profile</h3>
+              <p>Home value, monthly owner costs, and cost burden for owners with and without a mortgage.</p>
+            </div>
+          </div>
+          <div id="ownershipStats" class="compact-metric-list three-column"></div>
+          <div id="ownershipBurdenChart" class="policy-chart owner-burden-chart"></div>
+          <div class="chart-meta">Source: 2020–2024 ACS 5-year · Home value, monthly owner costs, and homeowner cost burden are distinct measures.</div>
+        </article>
+
+        <article class="visual-card wide-card">
+          <div class="visual-header">
+            <div>
+              <h3>Home value and income across jurisdictions</h3>
+              <p>Compare median home value with median household income. Hover over a jurisdiction for owner-burden context.</p>
+            </div>
+          </div>
+          <div id="ownershipRelationshipChart" class="policy-chart relationship-chart"></div>
+          <div class="chart-meta">Each point is a jurisdiction with available ACS values · Home value is not the same as a home sale price.</div>
+        </article>
+
+        <article class="visual-card">
+          <div class="visual-header">
+            <div>
+              <h3>Four-person HUD income benchmarks</h3>
+              <p>Regional FY 2026 benchmarks for a four-person household.</p>
+            </div>
+          </div>
+          <div id="amiStats" class="compact-metric-list two-column"></div>
+          <div class="chart-meta">HUD Area Median Income / income-limit benchmark · Regional, not jurisdiction-specific.</div>
+        </article>
+
+        <article class="visual-card">
+          <div class="visual-header">
+            <div>
+              <h3>Jurisdiction income comparison</h3>
+              <p>Median household income compared with the San Diego County median.</p>
+            </div>
+          </div>
+          <div id="incomeComparisonStats" class="compact-metric-list"></div>
+          <div class="chart-meta">Source: 2020–2024 ACS 5-year · Same median household income definition used in numerator and denominator.</div>
         </article>
       </div>
     </section>
@@ -221,26 +467,26 @@
           <div class="visual-kicker">Data &amp; Methods</div>
           <h1>Sources, caveats, and maintenance notes</h1>
         </div>
-        <p>Keep data limitations close to the visuals so public users understand what is measured, what is estimated, and what is not included in Version 1.</p>
+        <p>Each dashboard tab identifies its source, reporting period, geography, unit, and major limitations.</p>
       </div>
 
       <div class="page-grid methods-grid">
         <article class="visual-card methods-card wide-card">
           <div class="visual-header">
             <div>
-              <h3>Loaded files and known limitations</h3>
-              <p>Automatically reports which processed files loaded successfully.</p>
+              <h3>Validated data sources and known limitations</h3>
+<p>Processed data sources currently used by the dashboard.</p>
             </div>
             <a class="mini-btn" href="./datasets.html">Open full methodology</a>
           </div>
           <div class="methods-layout">
             <div id="fileStatus" class="file-status"></div>
             <div class="methods-copy">
-              <h4>Version 1 includes</h4>
-              <p>APR permits/completions, RHNA progress and targets, ACS/DOF context, jurisdiction geography, and SANDAG zoning as context.</p>
-              <h4>Version 1 does not include</h4>
-              <p>A real-time regional permit tracker, parcel-level rent roll, precise unit-level rent pricing, forecasting, or sensitive address-level preservation-risk data.</p>
-              <div class="callout-note">Sensitive preservation-risk datasets should be mapped only at aggregated geographies unless redistribution rights and privacy rules are clear.</div>
+              <h4>Current validated sources</h4>
+              <p>HCD APR and RHNA 6th Cycle progress, California DOF E-5, Census/ACS, HUD FY 2026 income limits, and aggregated NHPD preservation data.</p>
+              <h4>Important limitations</h4>
+              <p>APR data are jurisdiction-reported and may be revised. ACS values are survey estimates. DOF and Census/ACS housing-stock estimates use different methods. NHPD assisted-unit counts are validated conservative estimates where subsidies overlap.</p>
+              <div class="callout-note">The public dashboard uses aggregated NHPD results. Property-level NHPD data are not redistributed.</div>
             </div>
           </div>
         </article>

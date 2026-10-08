@@ -11,14 +11,10 @@ const PATHS = {
     './data/processed/sd_municipal_boundaries_with_rhna6.geojson',
     './data/processed/sd_tiger_places.geojson',
     './data/processed/sd_municipal_boundaries.geojson',
-    './data/processed/municipal_boundaries_wide.geojson',
-    './data/processed/sd_municipal_boundaries_wide.geojson',
-    './data/raw/Municipal_Boundaries.geojson',
     './data/raw/Municipal_Boundaries.geojson',
   ],
   countyBoundary: [
     './data/processed/sd_county_boundary.geojson',
-    './data/raw/San_Diego_County_Boundary.geojson',
     './data/raw/San_Diego_County_Boundary.geojson',
   ],
   zoningBase: [
@@ -29,36 +25,27 @@ const PATHS = {
     './data/raw/sandag/Zoning_Unincorporated.geojson',
     './data/raw/sandag/zoning_unincorporated.geojson',
   ],
-  kpi: [
-    './data/processed/sd_kpi_latest_city.csv',
-    './data/processed/sd_city_kpis_latest.csv',
-    './data/processed/sd_kpi_city_scorecard.csv',
+  ws1Long: [
+    './data/processed/powerbi_rhna_production_2018_2025_long.csv',
   ],
-  rhna: [
-    './data/processed/sd_rhna6_city_totals.csv',
-    './data/processed/sd_rhna6_filtered.csv',
-    './data/processed/rhna6_city_summary.csv',
-    './data/processed/rhna6_city_totals.csv',
-  ],
-  aprSupply: [
-    './data/processed/sd_apr_a2_city_year_supply.csv',
-    './data/processed/sd_apr_a2_city_year_bp_co_totals.csv',
-    './data/processed/apr_a2_city_year_supply.csv',
-  ],
-  permits: [
-    './data/processed/sd_permits_housing_like_units_by_year.csv',
-    './data/processed/sd_city_permits_units_by_year.csv',
-    './data/processed/sd_permits_units_by_year.csv',
-    './data/processed/sd_permits_count_by_year.csv',
-  ],
-  acs: [
-    './data/processed/sd_acs_place_2023_summary_fixed.csv',
-    './data/processed/sd_acs_place_2023_summary.csv',
-    './data/processed/sd_acs_place_summary.csv',
+  productionType: [
+    './data/processed/powerbi_production_by_housing_type_2018_2025.csv',
   ],
   dof: [
-    './data/processed/sd_dof_e5_city_year.csv',
-    './data/processed/sd_dof_city_year.csv',
+    './data/processed/powerbi_dof_annual_housing_stock_2020_2025.csv',
+  ],
+  benchmarks: [
+    './data/processed/powerbi_housing_stock_benchmarks_2000_2010_2021_2024.csv',
+  ],
+  affordability: [
+    './data/processed/housing_need_affordability_acs2024_hud2026.csv',
+    './data/processed/acs_2024_housing_need_affordability_by_jurisdiction.csv',
+  ],
+  nhpdSummary: [
+    './data/processed/nhpd_san_diego_by_jurisdiction.csv',
+  ],
+  nhpdRisk: [
+    './data/processed/nhpd_san_diego_subsidy_expiration_risk.csv',
   ],
 };
 
@@ -70,56 +57,64 @@ const CITY_FIELDS = [
 
 const YEAR_FIELDS = ['year', 'YEAR', 'Year', 'report_year', 'REPORT_YEAR', 'calendar_year'];
 
-const PALETTE = ['#F5F0E6', '#FFCD00', '#C69214', '#00C6D7', '#00629B', '#182B49'];
-const NO_DATA_FILL = '#F5F0E6';
+const PALETTE = [
+  '#FFF4B8',  // pale yellow
+  '#FFCD00',  // UCSD bright yellow
+  '#C69214',  // gold
+  '#00C6D7',  // turquoise
+  '#00629B',  // UCSD blue
+  '#182B49',  // navy
+];
+
+const NO_DATA_FILL = '#EEF2F5';
 
 const METRICS = {
   rhna_progress: {
     label: 'RHNA progress',
     unit: '%',
     decimals: 0,
-    description: 'Permitted units as a share of the 6th Cycle RHNA target.',
-    caveat: 'RHNA/APR values are self-reported by jurisdictions and can lag the current year.',
-    getter: stats => pct(stats.rhnaUnits, stats.rhnaTarget),
+    description: 'Cumulative 6th Cycle qualifying building permits as a share of the RHNA allocation.',
+    caveat: 'RHNA progress is cumulative and is not the same as annual APR production.',
+    getter: stats => stats.rhnaPct,
   },
   permitted_units: {
     label: 'Permitted units',
     unit: 'units',
     decimals: 0,
-    description: 'Housing units with building permits or permit-like records in the selected year.',
-    caveat: 'Permit definitions vary by source; use this as a supply signal rather than a final construction count.',
+    description: 'Building permits reported in HCD APR Table A2 for the selected reporting year.',
+    caveat: 'Annual building permits are separate from cumulative RHNA progress.',
     getter: stats => stats.permitted,
   },
   completed_units: {
     label: 'Completed units',
     unit: 'units',
     decimals: 0,
-    description: 'Units reported as completed or certificate-of-occupancy units in the selected year.',
-    caveat: 'Completion records may be incomplete for the most recent year.',
+    description: 'Completed / certificate-of-occupancy units reported in HCD APR Table A2.',
+    caveat: 'Recent-year completion data may be revised as jurisdictions update APR filings.',
     getter: stats => stats.completed,
   },
-  approved_units: {
-    label: 'Approved / pipeline units',
+  entitlement_units: {
+    label: 'Entitled units',
     unit: 'units',
     decimals: 0,
-    description: 'Units approved, entitled, or otherwise in the near-term development pipeline.',
-    caveat: 'Pipeline data can change as applications are revised, withdrawn, or reclassified.',
+    description: 'Units with entitlement or planning approval reported for the selected year.',
+    caveat: 'Entitlements are not permits and are not counted as completed units.',
     getter: stats => stats.approved,
   },
-  affordable_share: {
-    label: 'Lower/moderate income share',
-    unit: '%',
+  application_units: {
+    label: 'Applications submitted',
+    unit: 'units',
     decimals: 0,
-    description: 'Share of tracked units assigned to very-low, low, or moderate income categories.',
-    caveat: 'Income-category reporting depends on source fields and may not capture all affordability programs.',
-    getter: stats => pct(stats.affordable, stats.affordable + stats.aboveModerate),
+    description: 'Application units reported in HCD APR Table A for the selected year.',
+    caveat: 'Applications are an early pipeline stage and are not combined with later development stages.',
+    getter: stats => stats.proposed,
   },
   permits_per_1k: {
     label: 'Permits per 1,000 residents',
     unit: 'per 1k',
     decimals: 1,
-    description: 'Permitted units normalized by population to support cross-city comparison.',
-    caveat: 'Population denominators may come from ACS or DOF depending on which file is available.',
+    description: 'Annual building permits normalized by population.',
+    caveat: 'Population is taken from the validated housing-stock / ACS context available for the jurisdiction.',
     getter: stats => ratio(stats.permitted, stats.population) * 1000,
   },
   housing_per_1k: {
@@ -127,24 +122,56 @@ const METRICS = {
     unit: 'per 1k',
     decimals: 1,
     description: 'Existing housing stock normalized by population.',
-    caveat: 'This is a broad stock measure and does not indicate affordability or unit size.',
+    caveat: 'This is a housing-stock measure, not annual production.',
     getter: stats => ratio(stats.housingUnits, stats.population) * 1000,
   },
   median_rent: {
-    label: 'Median gross rent',
+    label: '1BR median gross rent',
     unit: '$',
     decimals: 0,
-    description: 'Median gross rent from ACS context data when available.',
-    caveat: 'ACS estimates may have margins of error; avoid over-interpreting small differences.',
+    description: 'Median gross rent for a one-bedroom unit from the 2020–2024 ACS 5-year estimate.',
+    caveat: 'ACS estimates have sampling uncertainty and should not be treated as exact market asking rents.',
     getter: stats => stats.medianRent,
+  },
+  rent_to_income: {
+    label: '1BR rent-to-income benchmark',
+    unit: '%',
+    decimals: 1,
+    description: 'Annual one-bedroom median gross rent divided by median household income.',
+    caveat: 'This is a benchmark ratio, not an observed renter cost-burden rate.',
+    getter: stats => stats.rentToIncomePct,
   },
   rent_burden: {
     label: 'Rent-burdened renter households',
     unit: '%',
-    decimals: 0,
-    description: 'Share of renter households spending at least 30% of income on rent when available.',
-    caveat: 'ACS burden measures are estimates and should be interpreted with margins of error when published.',
+    decimals: 1,
+    description: 'Share of renter households spending more than 30% of household income on housing costs.',
+    caveat: 'Based on ACS 5-year estimates.',
     getter: stats => stats.rentBurdenShare,
+  },
+  median_home_value: {
+    label: 'Median home value',
+    unit: '$',
+    decimals: 0,
+    description: 'ACS median home value where available.',
+    caveat: 'Home value is not the same as a home sale price.',
+    getter: stats => stats.medianHomeValue,
+  },
+  income_ratio: {
+    label: 'Income vs. county median',
+    unit: '%',
+    decimals: 1,
+    description: 'Jurisdiction median household income as a percent of San Diego County median household income.',
+    caveat: 'Uses the same ACS median household income definition in numerator and denominator.',
+    getter: stats => stats.incomeRatioPct,
+  },
+  assisted_units: {
+    label: 'Estimated federally assisted units',
+    unit: 'units',
+    decimals: 0,
+    description: 'Validated conservative NHPD estimate of federally assisted units by jurisdiction.',
+    caveat: 'Property-level subsidies can overlap; the dashboard uses the validated conservative estimate.',
+    getter: stats => stats.assistedUnits,
   },
 };
 
@@ -196,6 +223,9 @@ function cleanKey(v) {
   s = s.replace(/\s+county$/, ' county');
   s = s.replace(/unincorporated\s+(area\s+)?of\s+san\s+diego\s+county/, 'unincorporated');
   s = s.replace(/[^a-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim();
+  if (s.includes('san diego region')) return 'county san diego';
+  if (s === 'unincorporated san diego county') return 'unincorporated';
+  if (s.includes('san diego county') && s.includes('countywide')) return 'county san diego';
   if (s === 's d county' || s === 'sd county' || s === 'san diego county' || s === 'county san diego') return 'county san diego';
   return s;
 }
@@ -355,15 +385,43 @@ function reduceRhna(rows, label, key) {
 function reduceAcs(rows, label, key) {
   const latest = rows[rows.length - 1] || {};
   return {
-    key, label,
-    population: numFrom(latest, ['population_total', 'total_population', 'population', 'POPULATION', 'B01003_001E']),
-    households: numFrom(latest, ['households', 'total_households', 'B11001_001E']),
-    housingUnits: numFrom(latest, ['housing_units_total', 'housing_units', 'total_housing_units', 'B25001_001E']),
-    renterHouseholds: numFrom(latest, ['renter_occupied', 'renter_households', 'B25003_003E']),
-    ownerHouseholds: numFrom(latest, ['owner_occupied', 'owner_households', 'B25003_002E']),
-    medianRent: numFrom(latest, ['median_gross_rent', 'gross_rent_median', 'B25064_001E', 'median_rent']),
+    key,
+    label,
+    acsYear: numFrom(latest, ['acs_year', 'year']),
+    acsPeriod: firstValue(latest, ['acs_period']) || '2020–2024 ACS 5-year',
+    population: numFrom(latest, ['population', 'population_total', 'total_population', 'B01003_001E']),
+    medianHouseholdIncome: numFrom(latest, ['median_household_income']),
+    countyMedianHouseholdIncome: numFrom(latest, ['county_median_household_income']),
+    incomeRatio: numFrom(latest, ['jurisdiction_county_income_ratio']),
+    incomeRatioPct: numFrom(latest, ['jurisdiction_county_income_pct']),
+    renterHouseholds: numFrom(latest, ['renter_households_computed', 'renter_households_total']),
+    renterBurdenedCount: numFrom(latest, ['renter_cost_burdened_count']),
+    renterSevereCount: numFrom(latest, ['renter_severely_burdened_count']),
+    rentBurdenShare: numFrom(latest, ['renter_cost_burdened_pct']),
+    rentSevereShare: numFrom(latest, ['renter_severely_burdened_pct']),
+    ownerHouseholds: numFrom(latest, ['owner_households_computed']),
+    ownerBurdenedCount: numFrom(latest, ['owner_cost_burdened_count']),
+    ownerSevereCount: numFrom(latest, ['owner_severely_burdened_count']),
+    ownerBurdenShare: numFrom(latest, ['owner_cost_burdened_pct']),
+    ownerSevereShare: numFrom(latest, ['owner_severely_burdened_pct']),
+    ownerWithMortgageBurdenShare: numFrom(latest, ['owner_with_mortgage_burdened_pct']),
+    ownerWithoutMortgageBurdenShare: numFrom(latest, ['owner_without_mortgage_burdened_pct']),
+    ownerWithMortgageSevereShare: numFrom(latest, ['owner_with_mortgage_severely_burdened_pct']),
+    ownerWithoutMortgageSevereShare: numFrom(latest, ['owner_without_mortgage_severely_burdened_pct']),
+    medianRent: numFrom(latest, ['median_gross_rent_1br', 'median_gross_rent']),
+    rentToIncomePct: numFrom(latest, ['one_br_rent_to_income_pct']),
+    medianOwnerCostMortgage: numFrom(latest, ['median_owner_cost_with_mortgage']),
+    medianOwnerCostNoMortgage: numFrom(latest, ['median_owner_cost_without_mortgage']),
+    ownerCostMortgagePct: numFrom(latest, ['owner_cost_with_mortgage_to_income_pct']),
+    ownerCostNoMortgagePct: numFrom(latest, ['owner_cost_without_mortgage_to_income_pct']),
+    medianOwnerCostMortgageDisplay: firstValue(latest, ['median_owner_cost_with_mortgage_display']),
+    medianOwnerCostNoMortgageDisplay: firstValue(latest, ['median_owner_cost_without_mortgage_display']),
     medianHomeValue: numFrom(latest, ['median_home_value', 'B25077_001E']),
-    rentBurdenShare: numFrom(latest, ['rent_burden_share', 'rent_burdened_share', 'gross_rent_30_pct_share', 'rent_burden_pct']),
+    hudFiscalYear: numFrom(latest, ['hud_fiscal_year']),
+    hudMedianFamilyIncome: numFrom(latest, ['hud_four_person_median_family_income']),
+    hudExtremelyLow: numFrom(latest, ['hud_four_person_extremely_low_income_limit']),
+    hudVeryLow: numFrom(latest, ['hud_four_person_very_low_income_limit']),
+    hudLow: numFrom(latest, ['hud_four_person_low_income_limit']),
     raw: latest,
   };
 }
@@ -383,12 +441,211 @@ function reduceKpi(rows, label, key) {
 }
 
 function reduceDof(rows, label, key) {
-  const series = rows.map(row => ({
-    year: detectYear(row),
-    population: numFrom(row, ['population_total', 'population', 'total_population', 'POPULATION', 'Pop', 'pop']),
-    housingUnits: numFrom(row, ['housing_units_total', 'housing_units', 'total_housing_units', 'housing_unit_estimate', 'HU', 'hu']),
-  })).filter(d => isNum(d.year));
-  return { key, label, series };
+  const byYear = new Map();
+
+  rows.forEach(row => {
+    const year = detectYear(row);
+    if (!isNum(year)) return;
+    const y = Number(year);
+    if (!byYear.has(y)) {
+      byYear.set(y, {
+        year: y,
+        population: null,
+        housingUnits: null,
+        occupiedUnits: null,
+        vacantUnits: null,
+        singleFamilyUnits: null,
+        multifamilyUnits: null,
+        mobileHomeUnits: null,
+      });
+    }
+
+    const target = byYear.get(y);
+    const metric = String(firstValue(row, ['metric']) || '').trim();
+    const value = numFrom(row, ['value']);
+
+    if (metric === 'total_housing_units') target.housingUnits = value;
+    if (metric === 'occupied_housing_units') target.occupiedUnits = value;
+    if (metric === 'vacant_housing_units') target.vacantUnits = value;
+    if (metric === 'single_family_total') target.singleFamilyUnits = value;
+    if (metric === 'multifamily_total') target.multifamilyUnits = value;
+    if (metric === 'mobile_homes') target.mobileHomeUnits = value;
+  });
+
+  return {
+    key,
+    label,
+    series: [...byYear.values()].sort((a, b) => a.year - b.year),
+  };
+}
+
+function buildWs1Maps(rows) {
+  const supply = new Map();
+  const rhna = new Map();
+
+  const ensureSupply = (key, label, year) => {
+    if (!supply.has(key)) supply.set(key, []);
+    let row = supply.get(key).find(d => Number(d.year) === Number(year));
+    if (!row) {
+      row = blankSupplyYear(key, label, Number(year));
+      supply.get(key).push(row);
+    }
+    return row;
+  };
+
+  const ensureRhna = (key, label) => {
+    if (!rhna.has(key)) {
+      rhna.set(key, {
+        key,
+        label,
+        year: null,
+        allocation: null,
+        progress: null,
+        remaining: null,
+        pct: null,
+        tiers: {
+          very_low: {},
+          low: {},
+          moderate: {},
+          above_moderate: {},
+        },
+      });
+    }
+    return rhna.get(key);
+  };
+
+  rows.forEach(row => {
+    const rawName = firstValue(row, ['jurisdiction', 'jur_clean']);
+    let key = cleanKey(rawName);
+    if (!key) return;
+
+    const geographicLevel = String(firstValue(row, ['geographic_level']) || '').toLowerCase();
+    if (geographicLevel.includes('regional')) key = 'county san diego';
+
+    const label = key === 'county san diego'
+      ? 'San Diego Region'
+      : (key === 'unincorporated' ? 'Unincorporated San Diego County' : titleCase(rawName));
+
+    state.allKeys.add(key);
+    if (!state.dataMaps.labels?.has(key)) state.dataMaps.labels?.set(key, label);
+
+    const year = detectYear(row);
+    const stage = String(firstValue(row, ['development_stage']) || '').trim();
+    const income = String(firstValue(row, ['income_category']) || '').trim().toLowerCase();
+    const value = numFrom(row, ['value']);
+
+    if (['Application', 'Entitlement', 'Building Permit', 'Completion'].includes(stage) && income === 'all' && isNum(year)) {
+      const target = ensureSupply(key, label, Number(year));
+      if (stage === 'Application') target.proposed = value;
+      if (stage === 'Entitlement') target.approved = value;
+      if (stage === 'Building Permit') target.permitted = value;
+      if (stage === 'Completion') target.completed = value;
+      target.reportingStatus = firstValue(row, ['reporting_status']);
+    }
+
+    if (stage.startsWith('RHNA')) {
+      const target = ensureRhna(key, label);
+      if (isNum(year)) target.year = Math.max(target.year || 0, Number(year));
+
+      const slot = income === 'all' ? target : target.tiers[income];
+      if (!slot) return;
+
+      if (stage === 'RHNA Allocation') slot.allocation = value;
+      if (stage === 'RHNA Progress (Building Permits)') slot.progress = value;
+      if (stage === 'RHNA Remaining') slot.remaining = value;
+      if (stage === 'RHNA Percent Complete') slot.pct = isNum(value) ? Number(value) * 100 : null;
+    }
+  });
+
+  supply.forEach(arr => arr.sort((a, b) => a.year - b.year));
+
+  rhna.forEach(r => {
+    if (!isNum(r.pct) && isNum(r.progress) && isNum(r.allocation)) r.pct = pct(r.progress, r.allocation);
+    Object.values(r.tiers).forEach(t => {
+      if (!isNum(t.pct) && isNum(t.progress) && isNum(t.allocation)) t.pct = pct(t.progress, t.allocation);
+    });
+  });
+
+  return { supply, rhna };
+}
+
+function buildProductionTypeMap(rows) {
+  const map = new Map();
+
+  rows.forEach(row => {
+    const rawName = firstValue(row, ['jurisdiction', 'jur_clean']);
+    let key = cleanKey(rawName);
+    if (!key) return;
+    if (String(firstValue(row, ['geographic_level']) || '').toLowerCase().includes('regional')) key = 'county san diego';
+
+    const year = detectYear(row);
+    const stage = String(firstValue(row, ['development_stage']) || '').trim();
+    const housingType = String(firstValue(row, ['housing_type']) || '').trim();
+    const value = numFrom(row, ['value']);
+    if (!isNum(year) || !housingType || !['Building Permit', 'Completion'].includes(stage)) return;
+
+    if (!map.has(key)) map.set(key, new Map());
+    const byYear = map.get(key);
+    if (!byYear.has(Number(year))) byYear.set(Number(year), new Map());
+    const byType = byYear.get(Number(year));
+    if (!byType.has(housingType)) byType.set(housingType, { housingType, permitted: null, completed: null });
+    const target = byType.get(housingType);
+    if (stage === 'Building Permit') target.permitted = value;
+    if (stage === 'Completion') target.completed = value;
+  });
+
+  return map;
+}
+
+function buildBenchmarkMap(rows) {
+  const map = new Map();
+  rows.forEach(row => {
+    const rawName = firstValue(row, ['jurisdiction', 'jur_clean']);
+    const key = cleanKey(rawName);
+    if (!key) return;
+    const year = numFrom(row, ['benchmark_year']);
+    const value = numFrom(row, ['housing_units_total']);
+    if (!isNum(year) || !isNum(value)) return;
+    if (!map.has(key)) map.set(key, []);
+    map.get(key).push({
+      year: Number(year),
+      value: Number(value),
+      label: firstValue(row, ['benchmark_label']) || String(year),
+      source: firstValue(row, ['source']) || '',
+    });
+  });
+  map.forEach(arr => arr.sort((a, b) => a.year - b.year));
+  return map;
+}
+
+function reduceNhpd(rows, label, key) {
+  const latest = rows[rows.length - 1] || {};
+  return {
+    key,
+    label,
+    assistedProperties: numFrom(latest, ['federally_assisted_properties']),
+    assistedUnits: numFrom(latest, ['federally_assisted_units_estimated_conservative', 'total_units_in_assisted_properties']),
+    totalUnitsInAssistedProperties: numFrom(latest, ['total_units_in_assisted_properties']),
+    atRiskProperties: numFrom(latest, ['properties_expiring_within_5_years']),
+    atRiskAssistedUnits: numFrom(latest, ['at_risk_assisted_units_estimated_conservative', 'units_in_expiring_properties']),
+    unitsInExpiringProperties: numFrom(latest, ['units_in_expiring_properties']),
+    raw: latest,
+  };
+}
+
+function buildNhpdRiskMap(rows) {
+  const map = new Map();
+  rows.forEach(row => {
+    const key = cleanKey(firstValue(row, ['jurisdiction']));
+    if (!key) return;
+    if (!map.has(key)) map.set(key, []);
+    map.get(key).push({
+      program: firstValue(row, ['program_name']) || 'Program not reported',
+      expiringSubsidies: numFrom(row, ['expiring_subsidies']),
+      assistedUnits: numFrom(row, ['assisted_units_with_expiring_subsidy']),
+    });
+  });
+  return map;
 }
 
 function blankSupplyYear(key, label, year) {
@@ -498,72 +755,205 @@ function rowForYear(series = [], year = state.selectedYear) {
   const exact = series.find(d => Number(d.year) === Number(year));
   if (exact) return exact;
   const before = series.filter(d => isNum(d.year) && Number(d.year) <= Number(year)).sort((a, b) => b.year - a.year)[0];
-  return before || series[series.length - 1];
+  return before || null;
 }
 
 function aggregateCountyStats(year) {
-  const stats = blankStats('county san diego', 'San Diego County');
-  state.allKeys.forEach(key => {
-    if (key === 'county san diego') return;
-    const s = statsForKey(key, year, false);
-    ['permitted', 'completed', 'approved', 'proposed', 'affordable', 'aboveModerate', 'rhnaUnits', 'rhnaTarget', 'population', 'housingUnits'].forEach(f => {
-      if (isNum(s[f])) stats[f] = (stats[f] || 0) + Number(s[f]);
+  const stats = blankStats('county san diego', 'San Diego Region');
+
+  const supply = rowForYear(state.dataMaps.supply?.get('county san diego'), year);
+  if (supply) {
+    ['permitted', 'completed', 'approved', 'proposed'].forEach(f => {
+      if (isNum(supply[f])) stats[f] = supply[f];
     });
+  } else {
+    state.allKeys.forEach(key => {
+      if (key === 'county san diego') return;
+      const s = statsForKey(key, year, false);
+      ['permitted', 'completed', 'approved', 'proposed'].forEach(f => {
+        if (isNum(s[f])) stats[f] = (stats[f] || 0) + Number(s[f]);
+      });
+    });
+  }
+
+  const rhna = state.dataMaps.rhna?.get('county san diego');
+  if (rhna) {
+    stats.rhnaAllocation = rhna.allocation;
+    stats.rhnaProgress = rhna.progress;
+    stats.rhnaRemaining = rhna.remaining;
+    stats.rhnaPct = rhna.pct;
+    stats.rhnaTiers = rhna.tiers || {};
+    stats.rhnaYear = rhna.year;
+  }
+
+  const acs = state.dataMaps.acs?.get('county san diego');
+  if (acs) applyAcsToStats(stats, acs);
+
+  const dof = rowForYear(state.dataMaps.dof?.get('county san diego')?.series, year);
+  if (dof) applyDofToStats(stats, dof);
+  else {
+    state.allKeys.forEach(key => {
+      if (key === 'county san diego') return;
+      const d = rowForYear(state.dataMaps.dof?.get(key)?.series, year);
+      if (!d) return;
+      ['housingUnits', 'occupiedUnits', 'vacantUnits', 'singleFamilyUnits', 'multifamilyUnits', 'mobileHomeUnits'].forEach(f => {
+        if (isNum(d[f])) stats[f] = (stats[f] || 0) + Number(d[f]);
+      });
+    });
+  }
+
+  let assistedProperties = 0;
+  let assistedUnits = 0;
+  let totalUnitsInAssistedProperties = 0;
+  let atRiskProperties = 0;
+  let atRiskAssistedUnits = 0;
+  let unitsInExpiringProperties = 0;
+  let hasNhpd = false;
+
+  state.dataMaps.nhpd?.forEach((n, key) => {
+    if (key === 'county san diego') return;
+    hasNhpd = true;
+    assistedProperties += Number(n.assistedProperties || 0);
+    assistedUnits += Number(n.assistedUnits || 0);
+    totalUnitsInAssistedProperties += Number(n.totalUnitsInAssistedProperties || 0);
+    atRiskProperties += Number(n.atRiskProperties || 0);
+    atRiskAssistedUnits += Number(n.atRiskAssistedUnits || 0);
+    unitsInExpiringProperties += Number(n.unitsInExpiringProperties || 0);
   });
-  const acsVals = [...state.allKeys].map(k => statsForKey(k, year, false)).filter(s => isNum(s.medianRent));
-  if (acsVals.length) stats.medianRent = d3.median(acsVals, d => d.medianRent);
-  const burdenVals = [...state.allKeys].map(k => statsForKey(k, year, false)).filter(s => isNum(s.rentBurdenShare));
-  if (burdenVals.length) stats.rentBurdenShare = d3.mean(burdenVals, d => d.rentBurdenShare);
+
+  if (hasNhpd) {
+    Object.assign(stats, {
+      assistedProperties,
+      assistedUnits,
+      totalUnitsInAssistedProperties,
+      atRiskProperties,
+      atRiskAssistedUnits,
+      unitsInExpiringProperties,
+    });
+  }
+
   return stats;
 }
 
 function blankStats(key, label) {
   return {
-    key, label,
-    permitted: null, completed: null, approved: null, proposed: null,
-    affordable: null, aboveModerate: null,
-    rhnaUnits: null, rhnaTarget: null, rhnaTiers: {},
-    population: null, housingUnits: null, households: null, renterHouseholds: null,
-    medianRent: null, medianHomeValue: null, rentBurdenShare: null,
+    key,
+    label,
+    proposed: null,
+    approved: null,
+    permitted: null,
+    completed: null,
+    rhnaAllocation: null,
+    rhnaProgress: null,
+    rhnaRemaining: null,
+    rhnaPct: null,
+    rhnaYear: null,
+    rhnaTiers: {},
+    population: null,
+    housingUnits: null,
+    occupiedUnits: null,
+    vacantUnits: null,
+    singleFamilyUnits: null,
+    multifamilyUnits: null,
+    mobileHomeUnits: null,
+    acsYear: null,
+    acsPeriod: null,
+    medianHouseholdIncome: null,
+    countyMedianHouseholdIncome: null,
+    incomeRatio: null,
+    incomeRatioPct: null,
+    renterHouseholds: null,
+    renterBurdenedCount: null,
+    renterSevereCount: null,
+    rentBurdenShare: null,
+    rentSevereShare: null,
+    ownerHouseholds: null,
+    ownerBurdenedCount: null,
+    ownerSevereCount: null,
+    ownerBurdenShare: null,
+    ownerSevereShare: null,
+    ownerWithMortgageBurdenShare: null,
+    ownerWithoutMortgageBurdenShare: null,
+    ownerWithMortgageSevereShare: null,
+    ownerWithoutMortgageSevereShare: null,
+    medianRent: null,
+    rentToIncomePct: null,
+    medianOwnerCostMortgage: null,
+    medianOwnerCostNoMortgage: null,
+    medianOwnerCostMortgageDisplay: null,
+    medianOwnerCostNoMortgageDisplay: null,
+    ownerCostMortgagePct: null,
+    ownerCostNoMortgagePct: null,
+    medianHomeValue: null,
+    hudFiscalYear: null,
+    hudMedianFamilyIncome: null,
+    hudExtremelyLow: null,
+    hudVeryLow: null,
+    hudLow: null,
+    assistedProperties: null,
+    assistedUnits: null,
+    totalUnitsInAssistedProperties: null,
+    atRiskProperties: null,
+    atRiskAssistedUnits: null,
+    unitsInExpiringProperties: null,
   };
+}
+
+function applyAcsToStats(stats, acs) {
+  [
+    'acsYear', 'acsPeriod', 'population', 'medianHouseholdIncome', 'countyMedianHouseholdIncome',
+    'incomeRatio', 'incomeRatioPct', 'renterHouseholds', 'renterBurdenedCount', 'renterSevereCount',
+    'rentBurdenShare', 'rentSevereShare', 'ownerHouseholds', 'ownerBurdenedCount', 'ownerSevereCount',
+    'ownerBurdenShare', 'ownerSevereShare', 'ownerWithMortgageBurdenShare', 'ownerWithoutMortgageBurdenShare',
+    'ownerWithMortgageSevereShare', 'ownerWithoutMortgageSevereShare', 'medianRent', 'rentToIncomePct',
+    'medianOwnerCostMortgage', 'medianOwnerCostNoMortgage', 'medianOwnerCostMortgageDisplay',
+    'medianOwnerCostNoMortgageDisplay', 'ownerCostMortgagePct', 'ownerCostNoMortgagePct', 'medianHomeValue',
+    'hudFiscalYear', 'hudMedianFamilyIncome', 'hudExtremelyLow', 'hudVeryLow', 'hudLow',
+  ].forEach(f => {
+    if (acs[f] !== null && acs[f] !== undefined && acs[f] !== '') stats[f] = acs[f];
+  });
+}
+
+function applyDofToStats(stats, dof) {
+  ['population', 'housingUnits', 'occupiedUnits', 'vacantUnits', 'singleFamilyUnits', 'multifamilyUnits', 'mobileHomeUnits'].forEach(f => {
+    if (isNum(dof[f])) stats[f] = dof[f];
+  });
 }
 
 function statsForKey(key, year = state.selectedYear, allowCountyAggregate = true) {
   if (key === 'county san diego' && allowCountyAggregate) return aggregateCountyStats(year);
+
   const label = state.dataMaps.labels?.get(key) || titleCase(key);
   const stats = blankStats(key, label);
 
-  const kpi = state.dataMaps.kpi?.get(key);
-  if (kpi) Object.assign(stats, {
-    permitted: kpi.permitted, completed: kpi.completed, approved: kpi.approved, proposed: kpi.proposed,
-    affordable: kpi.affordable, aboveModerate: kpi.aboveModerate,
-  });
-
   const supply = rowForYear(state.dataMaps.supply?.get(key), year);
   if (supply) {
-    ['permitted', 'completed', 'approved', 'proposed', 'affordable', 'aboveModerate'].forEach(f => {
-  if (isNum(supply[f])) stats[f] = supply[f];
-});
+    ['permitted', 'completed', 'approved', 'proposed'].forEach(f => {
+      if (isNum(supply[f])) stats[f] = supply[f];
+    });
   }
 
   const rhna = state.dataMaps.rhna?.get(key);
   if (rhna) {
-    stats.rhnaUnits = rhna.units;
-    stats.rhnaTarget = rhna.target;
+    stats.rhnaAllocation = rhna.allocation;
+    stats.rhnaProgress = rhna.progress;
+    stats.rhnaRemaining = rhna.remaining;
+    stats.rhnaPct = rhna.pct;
+    stats.rhnaYear = rhna.year;
     stats.rhnaTiers = rhna.tiers || {};
   }
 
   const acs = state.dataMaps.acs?.get(key);
-  if (acs) {
-    ['population', 'housingUnits', 'households', 'renterHouseholds', 'medianRent', 'medianHomeValue', 'rentBurdenShare'].forEach(f => {
-      if (isNum(acs[f])) stats[f] = acs[f];
-    });
-  }
+  if (acs) applyAcsToStats(stats, acs);
 
   const dof = rowForYear(state.dataMaps.dof?.get(key)?.series, year);
-  if (dof) {
-    if (isNum(dof.population)) stats.population = dof.population;
-    if (isNum(dof.housingUnits)) stats.housingUnits = dof.housingUnits;
+  if (dof) applyDofToStats(stats, dof);
+
+  const nhpd = state.dataMaps.nhpd?.get(key);
+  if (nhpd) {
+    ['assistedProperties', 'assistedUnits', 'totalUnitsInAssistedProperties', 'atRiskProperties', 'atRiskAssistedUnits', 'unitsInExpiringProperties'].forEach(f => {
+      if (isNum(nhpd[f])) stats[f] = nhpd[f];
+    });
   }
 
   return stats;
@@ -573,9 +963,10 @@ function formatMetricValue(value, metricKey = state.metric) {
   if (!isNum(value)) return 'No data';
   const meta = METRICS[metricKey];
   const n = Number(value);
+  const decimals = Number(meta?.decimals || 0);
   if (meta.unit === '$') return fmtMoney.format(n);
-  if (meta.unit === '%') return `${fmtInt.format(n)}%`;
-  if (meta.unit === 'per 1k') return fmt1.format(n);
+  if (meta.unit === '%') return `${n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}%`;
+  if (meta.unit === 'per 1k') return n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
   return fmtInt.format(n);
 }
 
@@ -583,49 +974,117 @@ function metricValueForKey(key, year = state.selectedYear, metricKey = state.met
   return METRICS[metricKey].getter(statsForKey(key, year));
 }
 
-const map = L.map('map', { zoomControl: false, preferCanvas: true, attributionControl: true }).setView([32.84, -116.98], 10);
-L.control.zoom({ position: 'bottomright' }).addTo(map);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; OpenStreetMap &copy; CARTO',
-  maxZoom: 19,
+const CARTO_API_KEY = 'cb1_4dn0_1_f53a3c2645eb86a749a9b521';
+
+const map = L.map('map', {
+  zoomControl: false,
+  preferCanvas: true,
+  attributionControl: true,
+}).setView([32.84, -116.98], 10);
+
+L.control.zoom({
+  position: 'bottomright',
 }).addTo(map);
+
+L.tileLayer(
+  `https://basemaps.cartocdn.com/rastertiles/light_nolabels/{z}/{x}/{y}{r}.png?key=${CARTO_API_KEY}`,
+  {
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+    maxZoom: 20,
+  }
+).addTo(map);
+
 map.createPane('labels');
 map.getPane('labels').style.zIndex = 650;
 map.getPane('labels').style.pointerEvents = 'none';
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', { pane: 'labels', maxZoom: 19 }).addTo(map);
+
+L.tileLayer(
+  `https://basemaps.cartocdn.com/rastertiles/light_only_labels/{z}/{x}/{y}{r}.png?key=${CARTO_API_KEY}`,
+  {
+    pane: 'labels',
+    maxZoom: 20,
+  }
+).addTo(map);
 
 async function init() {
   setupUi();
-  setStatus('Loading source files…');
+  setStatus('Loading validated source files…');
 
   const [
   geojson,
   countyGeojson,
-  zoningBaseGeojson,
-  zoningUnincorporatedGeojson,
-  kpiRows,
-  rhnaRows,
-  aprRows,
-  permitRows,
-  acsRows,
+  ws1Rows,
+  productionTypeRows,
   dofRows,
+  benchmarkRows,
+  affordabilityRows,
+  nhpdSummaryRows,
+  nhpdRiskRows,
 ] = await Promise.all([
-  loadFirst('Municipal/place boundaries', PATHS.boundaries, 'json'),
-  loadFirst('County boundary', PATHS.countyBoundary, 'json'),
-  loadFirst('SANDAG zoning base', PATHS.zoningBase, 'json'),
-  loadFirst('SANDAG zoning unincorporated', PATHS.zoningUnincorporated, 'json'),
-  loadFirst('KPI scorecard', PATHS.kpi, 'csv'),
-  loadFirst('RHNA 6th Cycle', PATHS.rhna, 'csv'),
-  loadFirst('APR supply by city/year', PATHS.aprSupply, 'csv'),
-  loadFirst('City permit units by year', PATHS.permits, 'csv'),
-  loadFirst('ACS place summary', PATHS.acs, 'csv'),
-  loadFirst('DOF city/year estimates', PATHS.dof, 'csv'),
+  loadFirst(
+    'Municipal/place boundaries',
+    PATHS.boundaries,
+    'json'
+  ),
+
+  loadFirst(
+    'County boundary',
+    PATHS.countyBoundary,
+    'json'
+  ),
+
+  loadFirst(
+    'Validated RHNA + APR production',
+    PATHS.ws1Long,
+    'csv'
+  ),
+
+  loadFirst(
+    'Validated production by housing type',
+    PATHS.productionType,
+    'csv'
+  ),
+
+  loadFirst(
+    'Validated DOF housing stock',
+    PATHS.dof,
+    'csv'
+  ),
+
+  loadFirst(
+    'Validated housing-stock benchmarks',
+    PATHS.benchmarks,
+    'csv'
+  ),
+
+  loadFirst(
+    'Validated ACS + HUD affordability',
+    PATHS.affordability,
+    'csv'
+  ),
+
+  loadFirst(
+    'Validated aggregated NHPD inventory',
+    PATHS.nhpdSummary,
+    'csv'
+  ),
+
+  loadFirst(
+    'Validated aggregated NHPD preservation risk',
+    PATHS.nhpdRisk,
+    'csv'
+  ),
 ]);
 
-  state.geojson = geojson;
-  state.countyGeojson = countyGeojson;
-  state.zoningBaseGeojson = zoningBaseGeojson;
-  state.zoningUnincorporatedGeojson = zoningUnincorporatedGeojson;
+state.geojson = geojson;
+state.countyGeojson = countyGeojson;
+
+/*
+  Zoning is not currently used in the public dashboard.
+  Keep these null unless zoning is added as a future feature.
+*/
+state.zoningBaseGeojson = null;
+state.zoningUnincorporatedGeojson = null;
   state.dataMaps.labels = new Map();
 
   if (geojson?.features) {
@@ -640,18 +1099,39 @@ async function init() {
     });
   }
 
-  state.dataMaps.kpi = cityMapFromRows(kpiRows, reduceKpi);
-  state.dataMaps.rhna = cityMapFromRows(rhnaRows, reduceRhna);
-  state.dataMaps.acs = cityMapFromRows(acsRows, reduceAcs);
+  const ws1 = buildWs1Maps(ws1Rows);
+  state.dataMaps.supply = ws1.supply;
+  state.dataMaps.rhna = ws1.rhna;
+  state.dataMaps.productionType = buildProductionTypeMap(productionTypeRows);
   state.dataMaps.dof = cityMapFromRows(dofRows, reduceDof);
-  state.dataMaps.supply = mergeSupplyMaps(buildSupplySeries(aprRows), buildSupplySeries(permitRows));
+  state.dataMaps.benchmarks = buildBenchmarkMap(benchmarkRows);
+  state.dataMaps.acs = cityMapFromRows(affordabilityRows, reduceAcs);
+  state.dataMaps.nhpd = cityMapFromRows(nhpdSummaryRows, reduceNhpd);
+  state.dataMaps.nhpdRisk = buildNhpdRiskMap(nhpdRiskRows);
 
-  [state.dataMaps.kpi, state.dataMaps.rhna, state.dataMaps.acs, state.dataMaps.dof, state.dataMaps.supply].forEach(mapObj => {
+  [
+    state.dataMaps.supply,
+    state.dataMaps.rhna,
+    state.dataMaps.productionType,
+    state.dataMaps.dof,
+    state.dataMaps.benchmarks,
+    state.dataMaps.acs,
+    state.dataMaps.nhpd,
+    state.dataMaps.nhpdRisk,
+  ].forEach(mapObj => {
     mapObj?.forEach((v, k) => {
       state.allKeys.add(k);
-      if (!state.dataMaps.labels.has(k) && v?.label) state.dataMaps.labels.set(k, v.label);
+      if (!state.dataMaps.labels.has(k)) {
+        const label = v?.label || (k === 'unincorporated' ? 'Unincorporated San Diego County' : titleCase(k));
+        state.dataMaps.labels.set(k, label);
+      }
     });
   });
+
+  state.dataMaps.labels.set('county san diego', 'San Diego Region');
+  if (state.allKeys.has('unincorporated')) {
+    state.dataMaps.labels.set('unincorporated', 'Unincorporated San Diego County');
+  }
 
   state.selectedYear = detectDefaultYear();
   state.selectedKey = pickDefaultKey();
@@ -661,12 +1141,12 @@ async function init() {
   populateSearch();
   renderMap();
   setTimeout(() => {
-  map.invalidateSize();
-  fitToData();
-}, 250);
+    map.invalidateSize();
+    fitToData();
+  }, 250);
   renderAll();
   renderFileStatus();
-  setStatus(`Loaded ${state.loadedFiles.length} data source${state.loadedFiles.length === 1 ? '' : 's'}.`);
+  setStatus(`Loaded ${state.loadedFiles.length} validated data source${state.loadedFiles.length === 1 ? '' : 's'}.`);
 }
 
 function mergeSupplyMaps(a, b) {
@@ -726,7 +1206,143 @@ function pickDefaultKey() {
   return [...state.allKeys].sort()[0] || 'county san diego';
 }
 
+function setupPolicySidebar() {
+  if (document.getElementById('policySidebar')) return;
+
+  const nav = document.querySelector('.site-nav');
+  const filters =
+    document.querySelector('.overview-filter-panel') ||
+    document.querySelector('.filter-card.filters-card');
+  const headerLogo = document.querySelector('.header-logo-right');
+
+  if (!nav) return;
+
+  const sidebar = document.createElement('aside');
+  sidebar.id = 'policySidebar';
+  sidebar.className = 'policy-sidebar';
+  sidebar.setAttribute('aria-label', 'Dashboard navigation and filters');
+
+  sidebar.innerHTML = `
+    <div class="sidebar-head">
+      <div class="sidebar-head-copy">
+        <div class="sidebar-eyebrow">San Diego Region</div>
+        <div class="sidebar-title">Explore dashboard</div>
+      </div>
+
+      <button
+        id="policySidebarToggle"
+        class="sidebar-toggle"
+        type="button"
+        aria-label="Collapse dashboard sidebar"
+        aria-expanded="true"
+      >
+        <i class="bi bi-chevron-left"></i>
+      </button>
+    </div>
+
+    <div class="sidebar-scroll">
+      <div class="sidebar-section-label">Dashboard views</div>
+      <div id="sidebarNavHost"></div>
+
+      <div class="sidebar-section-label">Customize view</div>
+      <div id="sidebarFilterHost"></div>
+    </div>
+
+    <div id="sidebarLogoHost" class="sidebar-logo-host"></div>
+  `;
+
+  document.body.appendChild(sidebar);
+
+  if (headerLogo) {
+    headerLogo.classList.add('sidebar-logo-footer');
+    sidebar.querySelector('#sidebarLogoHost')?.appendChild(headerLogo);
+  }
+
+  const navHost = sidebar.querySelector('#sidebarNavHost');
+  navHost.appendChild(nav);
+
+  const icons = {
+    overview: 'bi-grid-1x2-fill',
+    rhna: 'bi-bullseye',
+    production: 'bi-buildings',
+    need: 'bi-people-fill',
+    rental: 'bi-key-fill',
+    ownership: 'bi-house-check-fill',
+    methods: 'bi-journal-text',
+  };
+
+  nav.querySelectorAll('.rail-btn').forEach(btn => {
+    const label = btn.textContent.trim();
+    const icon = icons[btn.dataset.panel] || 'bi-circle-fill';
+
+    btn.innerHTML = `
+      <i class="bi ${icon}" aria-hidden="true"></i>
+      <span>${label}</span>
+    `;
+  });
+
+  if (filters) {
+    filters.classList.add('sidebar-filters');
+
+    const filterHeader = filters.querySelector('.visual-header');
+    if (filterHeader) filterHeader.remove();
+
+    sidebar
+      .querySelector('#sidebarFilterHost')
+      .appendChild(filters);
+  }
+
+  const toggle = sidebar.querySelector('#policySidebarToggle');
+
+  function setSidebarCollapsed(collapsed) {
+    sidebar.classList.toggle('collapsed', collapsed);
+    document.body.classList.toggle('sidebar-collapsed', collapsed);
+
+    toggle.setAttribute(
+      'aria-expanded',
+      String(!collapsed)
+    );
+
+    toggle.setAttribute(
+      'aria-label',
+      collapsed
+        ? 'Open dashboard sidebar'
+        : 'Collapse dashboard sidebar'
+    );
+
+    setTimeout(() => {
+      if (typeof map !== 'undefined' && map) {
+        map.invalidateSize();
+      }
+    }, 260);
+  }
+
+  toggle.addEventListener('click', () => {
+    setSidebarCollapsed(
+      !sidebar.classList.contains('collapsed')
+    );
+  });
+
+  nav.querySelectorAll('.rail-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (window.innerWidth <= 980) {
+        setSidebarCollapsed(true);
+      }
+    });
+  });
+
+  if (window.innerWidth <= 980) {
+    setSidebarCollapsed(true);
+  }
+
+  document.body.classList.add('sidebar-ready');
+}
+
 function setupUi() {
+  setupPolicySidebar();
+  document.body.dataset.activePanel =
+  document.querySelector('.rail-btn.active')?.dataset.panel ||
+  'overview';
   document.querySelectorAll('.rail-btn').forEach(btn => {
     btn.addEventListener('click', () => switchPanel(btn.dataset.panel));
   });
@@ -753,9 +1369,6 @@ function setupUi() {
   $('toggleChoro')?.addEventListener('change', e => { state.showChoro = e.target.checked; renderMap(); });
   $('toggleOutlines')?.addEventListener('change', e => { state.showOutlines = e.target.checked; renderMap(); });
   $('togglePermitPoints')?.addEventListener('change', e => { state.showPermitPoints = e.target.checked; renderPermitPoints(); });
-  $('toggleChoro')?.addEventListener('change', e => { state.showChoro = e.target.checked; renderMap(); });
-  $('toggleOutlines')?.addEventListener('change', e => { state.showOutlines = e.target.checked; renderMap(); });
-  $('togglePermitPoints')?.addEventListener('change', e => { state.showPermitPoints = e.target.checked; renderPermitPoints(); });
   $('zoomHomeBtn')?.addEventListener('click', fitToData);
   $('collapseSnapshot')?.addEventListener('click', () => $('snapshotCard')?.classList.add('hidden'));
   document.querySelectorAll('.faq-btn').forEach(btn => btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open')));
@@ -770,6 +1383,7 @@ function setupUi() {
 }
 
 function switchPanel(panel) {
+  document.body.dataset.activePanel = panel;
   document.querySelectorAll('.rail-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.panel === panel);
   });
@@ -824,6 +1438,7 @@ function runSearch() {
 
 function selectKey(key, zoom = false) {
   state.selectedKey = key;
+  if ($('searchInput')) $('searchInput').value = state.dataMaps.labels?.get(key) || titleCase(key);
 
   // Update values without changing the visible page or scrolling the browser.
   renderAll();
@@ -852,7 +1467,7 @@ function renderMap() {
 
   if (state.countyGeojson?.features) {
     state.countyLayer = L.geoJSON(state.countyGeojson, {
-      style: { color: '#17384A', weight: 2, fillOpacity: 0, dashArray: '5 4' },
+      style: { color: '#36566A', weight: 1.4, fillOpacity: 0, dashArray: '4 4' },
       interactive: false,
     }).addTo(map);
   }
@@ -861,14 +1476,75 @@ function renderMap() {
     state.boundaryLayer = L.geoJSON(state.geojson, {
       style: featureStyle,
       onEachFeature: (feature, layer) => {
-        const key = feature.properties.__housing_key || cleanKey(featureName(feature));
-        layer.on({
-          mouseover: e => highlightFeature(e.target),
-          mouseout: e => resetHighlight(e.target),
-          click: () => selectKey(key),
+  const key =
+    feature.properties.__housing_key ||
+    cleanKey(featureName(feature));
+
+  layer.bindPopup(
+    () => popupHtml(key),
+    {
+      maxWidth: 340,
+      className: 'jurisdiction-popup',
+      autoPan: true,
+      closeButton: true,
+    }
+  );
+
+  layer.on({
+    mouseover: e => {
+      highlightFeature(e.target);
+    },
+
+    mouseout: e => {
+      resetHighlight(e.target);
+    },
+
+    click: e => {
+      /*
+        Update the selected jurisdiction without calling
+        renderMap(), because rebuilding the map here would
+        destroy the layer whose popup we are opening.
+      */
+      state.selectedKey = key;
+
+      if ($('searchInput')) {
+        $('searchInput').value =
+          state.dataMaps.labels?.get(key) ||
+          titleCase(key);
+      }
+
+      /*
+        Update all dashboard numbers and panels.
+        renderAll() does not recreate the GeoJSON layer.
+      */
+      renderAll();
+
+      /*
+        Refresh polygon styling so the clicked jurisdiction
+        gets the selected outline.
+      */
+      if (state.boundaryLayer) {
+        state.boundaryLayer.eachLayer(boundary => {
+          if (boundary.feature) {
+            boundary.setStyle(
+              featureStyle(boundary.feature)
+            );
+          }
         });
-        layer.bindPopup(() => popupHtml(key));
-      },
+      }
+
+      /*
+        Rebuild the popup after the selected state changes,
+        then open it on the layer that was actually clicked.
+      */
+      e.target.setPopupContent(
+        popupHtml(key)
+      );
+
+      e.target.openPopup();
+    },
+  });
+},
     }).addTo(map);
 
     if (!state.hasFit) fitToData();
@@ -915,20 +1591,26 @@ function featureStyle(feature) {
   const value = state.valuesByKey.get(key);
   const selected = key === state.selectedKey;
   return {
-    color: selected ? '#17212B' : (state.showOutlines ? 'rgba(23,56,74,0.58)' : 'rgba(23,56,74,0.08)'),
-    weight: selected ? 3 : (state.showOutlines ? 1.25 : 0.35),
+    color: selected ? '#FFCD00' : (state.showOutlines ? 'rgba(24,43,73,0.52)' : 'rgba(24,43,73,0.10)'),
+    weight: selected ? 3.2 : (state.showOutlines ? 1.0 : 0.3),
     fillColor: state.showChoro ? colorForValue(value) : '#FFFFFF',
-    fillOpacity: state.showChoro ? (isNum(value) ? 0.74 : 0.22) : 0.04,
+    fillOpacity: state.showChoro ? (isNum(value) ? 0.84 : 0.30) : 0.04,
     opacity: 1,
   };
 }
 
 function highlightFeature(layer) {
-  layer.setStyle({ weight: 3, color: '#17212B', fillOpacity: 0.86 });
+  layer.setStyle({ weight: 2.5, color: '#182B49', fillOpacity: 0.88 });
   layer.bringToFront();
 }
 function resetHighlight(layer) {
-  if (state.boundaryLayer) state.boundaryLayer.resetStyle(layer);
+  if (!state.boundaryLayer) return;
+
+  if (layer.feature) {
+    layer.setStyle(
+      featureStyle(layer.feature)
+    );
+  }
 }
 
 function renderPermitPoints() {
@@ -1144,18 +1826,16 @@ function safeRender(label, fn) {
 }
 
 function renderAll() {
-  // Render the visible overview pieces first so one off-page chart error
-  // never leaves the main dashboard blank.
+  safeRender('selection context', renderSelectionContext);
   safeRender('snapshot KPIs', renderSnapshot);
   safeRender('selected jurisdiction', renderLocationPanel);
   safeRender('overview ranking', () => renderRankChart('rankChart', state.metric));
-
-  // Render secondary pages independently. These are allowed to fail silently
-  // during early data loading without breaking the overview page.
   safeRender('drawer KPIs', renderDrawerKpis);
-  safeRender('supply panel', renderSupplyPanel);
   safeRender('RHNA panel', renderRhnaPanel);
-  safeRender('need panel', renderNeedPanel);
+  safeRender('housing production panel', renderProductionPanel);
+  safeRender('housing need panel', renderNeedPanel);
+  safeRender('rental affordability panel', renderRentalPanel);
+  safeRender('homeownership affordability panel', renderOwnershipPanel);
 
   requestAnimationFrame(() => {
     setTimeout(() => {
@@ -1164,29 +1844,100 @@ function renderAll() {
   });
 }
 
+function renderSelectionContext() {
+  if ($('headerReportingYear')) {
+  $('headerReportingYear').textContent =
+    String(state.selectedYear);
+}
+  
+  const s = statsForKey(
+    state.selectedKey,
+    state.selectedYear
+  );
+
+  const selectedLabel =
+    s.label || 'Selected jurisdiction';
+
+  document
+    .querySelectorAll('.selected-jurisdiction-label')
+    .forEach(el => {
+      el.textContent = selectedLabel;
+    });
+
+  document
+    .querySelectorAll('.selected-year-label')
+    .forEach(el => {
+      el.textContent = String(state.selectedYear);
+    });
+
+  if ($('selectedContext')) {
+    $('selectedContext').textContent =
+      `Selected: ${state.selectedYear} · ${selectedLabel}`;
+  }
+
+  if ($('regionalPeriodLabel')) {
+    const rhnaYear = statsForKey(
+      'county san diego',
+      state.selectedYear
+    ).rhnaYear;
+
+    $('regionalPeriodLabel').textContent =
+      `APR reporting year ${state.selectedYear}` +
+      `${rhnaYear ? ` · RHNA snapshot ${rhnaYear}` : ''}`;
+  }
+
+  if ($('yearNote')) {
+    const activePanel =
+      document.querySelector('.rail-btn.active')
+        ?.dataset.panel || 'overview';
+
+    if (
+      activePanel === 'need' ||
+      activePanel === 'rental' ||
+      activePanel === 'ownership'
+    ) {
+      $('yearNote').textContent =
+        `APR / production year: ${state.selectedYear}. ` +
+        `Affordability and cost-burden metrics use ` +
+        `${s.acsPeriod || 'the current ACS 5-year period'} ` +
+        `and do not change with this year filter.`;
+    } else if (activePanel === 'rhna') {
+      $('yearNote').textContent =
+        `APR reporting year: ${state.selectedYear}. ` +
+        `RHNA progress is cumulative for the 6th Cycle ` +
+        `snapshot shown above.`;
+    } else {
+      $('yearNote').textContent =
+        `Reporting year: ${state.selectedYear}. ` +
+        `Change the year to compare annual APR / ` +
+        `housing-stock records.`;
+    }
+  }
+}
+
 function renderSnapshot() {
   const county = statsForKey('county san diego', state.selectedYear);
 
   const cards = [
     {
       label: 'RHNA progress',
-      note: 'Share of 6th Cycle target',
-      value: formatMetricValue(pct(county.rhnaUnits, county.rhnaTarget), 'rhna_progress'),
+      note: '6th Cycle · qualifying permits',
+      value: formatMetricValue(county.rhnaPct, 'rhna_progress'),
     },
     {
       label: 'Permitted units',
-      note: 'New units permitted',
+      note: `APR ${state.selectedYear}`,
       value: formatMetricValue(county.permitted, 'permitted_units'),
     },
     {
       label: 'Completed units',
-      note: 'Units completed',
+      note: `APR ${state.selectedYear}`,
       value: formatMetricValue(county.completed, 'completed_units'),
     },
     {
-      label: 'Permits/1k residents',
-      note: 'Per-capita supply signal',
-      value: formatMetricValue(ratio(county.permitted, county.population) * 1000, 'permits_per_1k'),
+      label: 'Total housing stock',
+      note: `DOF estimate through ${state.selectedYear}`,
+      value: formatMaybe(county.housingUnits),
     },
   ];
 
@@ -1201,48 +1952,157 @@ function renderSnapshot() {
 
 function renderDrawerKpis() {
   const s = statsForKey(state.selectedKey, state.selectedYear);
+  if (!$('drawerKpis')) return;
   $('drawerKpis').innerHTML = [
     kpiHtml(METRICS[state.metric].label, formatMetricValue(metricValueForKey(state.selectedKey), state.metric), `${s.label} · ${state.selectedYear}`),
-    kpiHtml('RHNA progress', formatMetricValue(pct(s.rhnaUnits, s.rhnaTarget), 'rhna_progress'), `${formatMaybe(s.rhnaUnits)} of ${formatMaybe(s.rhnaTarget)} target units`),
-    kpiHtml('Permitted units', formatMetricValue(s.permitted, 'permitted_units'), 'Selected reporting year'),
-    kpiHtml('Population', formatMaybe(s.population), 'ACS/DOF context when available'),
+    kpiHtml('RHNA progress', formatMetricValue(s.rhnaPct, 'rhna_progress'), `${formatMaybe(s.rhnaProgress)} of ${formatMaybe(s.rhnaAllocation)} allocated units`),
+    kpiHtml('Permitted units', formatMetricValue(s.permitted, 'permitted_units'), `APR ${state.selectedYear}`),
+    kpiHtml('Population', formatMaybe(s.population), s.acsPeriod || 'ACS context when available'),
   ].join('');
-}
-
-function renderSupplyPanel() {
-  const s = statsForKey(state.selectedKey, state.selectedYear);
-
-  $('supplyMiniStats').innerHTML = [
-    miniStat('Proposed / submitted', s.proposed),
-    miniStat('Approved / entitled', s.approved),
-    miniStat('Permitted', s.permitted),
-    miniStat('Completed', s.completed),
-  ].join('');
-
-  renderTrendChart('supplyTrend', state.selectedKey);
-  renderRankChart('rankChart', state.metric);
 }
 
 function renderRhnaPanel() {
   const s = statsForKey(state.selectedKey, state.selectedYear);
+
   $('rhnaSummary').innerHTML = [
-    kpiHtml('Overall RHNA progress', formatMetricValue(pct(s.rhnaUnits, s.rhnaTarget), 'rhna_progress'), `${formatMaybe(s.rhnaUnits)} permitted units / ${formatMaybe(s.rhnaTarget)} target units`),
-    kpiHtml('Lower/moderate income share', formatMetricValue(pct(s.affordable, safeAdd(s.affordable, s.aboveModerate)), 'affordable_share'), 'Based on income fields available in loaded data'),
+    kpiHtml('RHNA allocation', formatMaybe(s.rhnaAllocation), '6th Cycle allocation'),
+    kpiHtml('Qualifying units', formatMaybe(s.rhnaProgress), 'Cumulative qualifying permits'),
+    kpiHtml('Remaining need', formatMaybe(s.rhnaRemaining), 'Income-tier remaining need'),
+    kpiHtml('RHNA % complete', formatMetricValue(s.rhnaPct, 'rhna_progress'), `HCD snapshot ${s.rhnaYear || 'current'}`),
   ].join('');
-  renderIncomeBars('incomeBars', s);
+
+  const tierEntries = [
+    ['Very low', s.rhnaTiers?.very_low],
+    ['Low', s.rhnaTiers?.low],
+    ['Moderate', s.rhnaTiers?.moderate],
+    ['Above moderate', s.rhnaTiers?.above_moderate],
+  ].map(([label, tier]) => ({
+    label,
+    allocation: tier?.allocation,
+    progress: tier?.progress,
+    remaining: tier?.remaining,
+    pct: isNum(tier?.pct) ? Number(tier.pct) : pct(tier?.progress, tier?.allocation),
+  }));
+
+  const remainingRows = tierEntries.filter(d => isNum(d.remaining));
+  const pctRows = tierEntries.filter(d => isNum(d.pct));
+  const largestGap = remainingRows.length ? remainingRows.slice().sort((a, b) => Number(b.remaining) - Number(a.remaining))[0] : null;
+  const strongest = pctRows.length ? pctRows.slice().sort((a, b) => Number(b.pct) - Number(a.pct))[0] : null;
+  const permitCompletionGap = isNum(s.permitted) && isNum(s.completed) ? Number(s.permitted) - Number(s.completed) : null;
+
+  $('rhnaInsights').innerHTML = [
+    `<div class="policy-insight"><span>Largest remaining tier</span><strong>${largestGap ? `${escapeHtml(largestGap.label)} · ${formatMaybe(largestGap.remaining)} units` : 'No data'}</strong></div>`,
+    `<div class="policy-insight"><span>Strongest tier progress</span><strong>${strongest ? `${escapeHtml(strongest.label)} · ${fmt1.format(strongest.pct)}%` : 'No data'}</strong></div>`,
+    `<div class="policy-insight"><span>Permits vs. completions this year</span><strong>${isNum(permitCompletionGap) ? `${formatMaybe(s.permitted)} permits · ${formatMaybe(s.completed)} completed` : 'No data'}</strong></div>`,
+  ].join('');
+
+  renderRhnaOverallDonut('rhnaOverallDonut', s);
+  renderRhnaTierChart('incomeTierChart', s);
+  renderRhnaPipelineChart('rhnaPipelineChart', s);
+}
+
+function renderProductionPanel() {
+  const s = statsForKey(state.selectedKey, state.selectedYear);
+
+  $('productionMiniStats').innerHTML = [
+    miniStat('Applications', s.proposed),
+    miniStat('Entitlements', s.approved),
+    miniStat('Permitted', s.permitted),
+    miniStat('Completed', s.completed),
+  ].join('');
+
+  $('stockStats').innerHTML = [
+    miniStat('Total housing units', s.housingUnits),
+    miniStat('Occupied units', s.occupiedUnits),
+    miniStat('Vacant units', s.vacantUnits),
+    miniStat('Single-family units', s.singleFamilyUnits),
+    miniStat('Multifamily units', s.multifamilyUnits),
+    miniStat('Mobile homes', s.mobileHomeUnits),
+  ].join('');
+
+  renderTrendChart('supplyTrend', state.selectedKey);
+  renderProductionTypeChart('productionTypeChart', state.selectedKey, state.selectedYear);
+  renderStockTrend('stockTrend', state.selectedKey);
 }
 
 function renderNeedPanel() {
   const s = statsForKey(state.selectedKey, state.selectedYear);
+
   $('needStats').innerHTML = [
     miniStat('Population', s.population),
-    miniStat('Housing units', s.housingUnits),
-    miniStat('Housing / 1k residents', ratio(s.housingUnits, s.population) * 1000, '1'),
-    miniStat('Median gross rent', s.medianRent, 'money'),
-    miniStat('Rent burden', s.rentBurdenShare, 'percent'),
-    miniStat('Median home value', s.medianHomeValue, 'money'),
+    miniStat('Renter households burdened', s.renterBurdenedCount),
+    miniStat('Severely burdened renters', s.renterSevereCount),
+    miniStat('Owner households burdened', s.ownerBurdenedCount),
+    miniStat('Severely burdened owners', s.ownerSevereCount),
   ].join('');
-  renderContextChart('contextChart');
+
+  $('assistedStats').innerHTML = [
+    miniStat('Assisted properties', s.assistedProperties),
+    miniStat('Estimated assisted units', s.assistedUnits),
+    miniStat('Properties at risk', s.atRiskProperties),
+    miniStat('Estimated units at risk', s.atRiskAssistedUnits),
+  ].join('');
+
+  renderBurdenCompositionChart('needBurdenChart', [
+    { label: 'Renters', burden: s.rentBurdenShare, severe: s.rentSevereShare },
+    { label: 'Homeowners', burden: s.ownerBurdenShare, severe: s.ownerSevereShare },
+  ]);
+
+  renderAssistedRiskDonut('assistedRiskDonut', s);
+  renderPreservationRiskChart('preservationRiskChart', state.selectedKey);
+}
+
+function renderRentalPanel() {
+  const s = statsForKey(state.selectedKey, state.selectedYear);
+
+  $('rentalStats').innerHTML = [
+    miniStat('1BR median gross rent', s.medianRent, 'money'),
+    miniStat('1BR rent-to-income', s.rentToIncomePct, 'percent1'),
+    miniStat('Renter cost-burdened', s.renterBurdenedCount),
+    miniStat('Renter burden', s.rentBurdenShare, 'percent1'),
+    miniStat('Severely burdened renters', s.renterSevereCount),
+    miniStat('Severe renter burden', s.rentSevereShare, 'percent1'),
+  ].join('');
+
+  renderBurdenCompositionChart('rentalBurdenChart', [
+    { label: s.label || 'Selected jurisdiction', burden: s.rentBurdenShare, severe: s.rentSevereShare },
+  ], { compact: true });
+
+  renderRentalRelationshipChart('rentalRelationshipChart');
+}
+
+function renderOwnershipPanel() {
+  const s = statsForKey(state.selectedKey, state.selectedYear);
+
+  $('ownershipStats').innerHTML = [
+    miniStat('Median home value', s.medianHomeValue, 'money'),
+    miniStatText('Owner cost w/ mortgage', s.medianOwnerCostMortgageDisplay || formatMoneyMaybe(s.medianOwnerCostMortgage)),
+    miniStatText('Owner cost w/o mortgage', s.medianOwnerCostNoMortgageDisplay || formatMoneyMaybe(s.medianOwnerCostNoMortgage)),
+    miniStat('Homeowner burden', s.ownerBurdenShare, 'percent1'),
+    miniStat('Mortgage owner burden', s.ownerWithMortgageBurdenShare, 'percent1'),
+    miniStat('No-mortgage owner burden', s.ownerWithoutMortgageBurdenShare, 'percent1'),
+  ].join('');
+
+  $('amiStats').innerHTML = [
+    miniStat('HUD 4-person median family income', s.hudMedianFamilyIncome, 'money'),
+    miniStat('Extremely low income limit', s.hudExtremelyLow, 'money'),
+    miniStat('Very low income limit', s.hudVeryLow, 'money'),
+    miniStat('Low income limit', s.hudLow, 'money'),
+  ].join('');
+
+  $('incomeComparisonStats').innerHTML = [
+    miniStat('Jurisdiction median household income', s.medianHouseholdIncome, 'money'),
+    miniStat('County median household income', s.countyMedianHouseholdIncome, 'money'),
+    miniStat('Jurisdiction / county income', s.incomeRatioPct, 'percent1'),
+  ].join('');
+
+  renderBurdenCompositionChart('ownershipBurdenChart', [
+    { label: 'All owners', burden: s.ownerBurdenShare, severe: s.ownerSevereShare },
+    { label: 'With mortgage', burden: s.ownerWithMortgageBurdenShare, severe: s.ownerWithMortgageSevereShare },
+    { label: 'Without mortgage', burden: s.ownerWithoutMortgageBurdenShare, severe: s.ownerWithoutMortgageSevereShare },
+  ]);
+
+  renderOwnershipRelationshipChart('ownershipRelationshipChart');
 }
 
 function renderLocationPanel() {
@@ -1253,7 +2113,7 @@ function renderLocationPanel() {
     <div class="location-card-head">
       <div>
         <div class="section-heading">${escapeHtml(s.label)}</div>
-        <p class="helper-text">Selected jurisdiction · ${state.selectedYear}</p>
+        <p class="helper-text">Selected jurisdiction · APR ${state.selectedYear}</p>
       </div>
     </div>
 
@@ -1262,16 +2122,16 @@ function renderLocationPanel() {
         <i class="bi bi-house-door"></i> Zoom
       </button>
 
-      <button class="mini-btn location-detail-btn" type="button" onclick="switchPanel('supply')">
-        <i class="bi bi-bar-chart"></i> Supply details
+      <button class="mini-btn location-detail-btn" type="button" onclick="switchPanel('production')">
+        <i class="bi bi-bar-chart"></i> Production details
       </button>
     </div>
 
     <div class="kpi-stack location-kpis">
       ${kpiHtml(METRICS[state.metric].label, formatMetricValue(metricValueForKey(state.selectedKey), state.metric), METRICS[state.metric].description)}
-      ${kpiHtml('Permitted / completed', `${formatMaybe(s.permitted)} / ${formatMaybe(s.completed)}`, 'Permitted units compared with completed units')}
-      ${kpiHtml('RHNA target', formatMaybe(s.rhnaTarget), `${formatMaybe(s.rhnaUnits)} units counted toward progress`)}
-      ${kpiHtml('Market / need context', `${formatMaybe(s.population)} residents`, `${formatMoneyMaybe(s.medianRent)} median gross rent`)}
+      ${kpiHtml('Permitted / completed', `${formatMaybe(s.permitted)} / ${formatMaybe(s.completed)}`, `APR ${state.selectedYear}`)}
+      ${kpiHtml('RHNA allocation', formatMaybe(s.rhnaAllocation), `${formatMaybe(s.rhnaProgress)} qualifying units reported`)}
+      ${kpiHtml('Population / median income', `${formatMaybe(s.population)} residents`, `${formatMoneyMaybe(s.medianHouseholdIncome)} median household income`)}
     </div>
   `;
 }
@@ -1290,90 +2150,2460 @@ function miniStat(label, value, kind = 'number') {
   let display = formatMaybe(value);
   if (kind === 'money') display = formatMoneyMaybe(value);
   if (kind === 'percent') display = isNum(value) ? `${fmtInt.format(value)}%` : 'No data';
+  if (kind === 'percent1') display = isNum(value) ? `${fmt1.format(value)}%` : 'No data';
   if (kind === '1') display = isNum(value) ? fmt1.format(value) : 'No data';
-  return `<div class="mini-stat"><div class="label">${escapeHtml(label)}</div><div class="value">${display}</div></div>`;
+  return `<div class="mini-stat"><div class="label">${escapeHtml(label)}</div><div class="value">${escapeHtml(String(display))}</div></div>`;
+}
+
+function miniStatText(label, display) {
+  const value = display === null || display === undefined || display === '' ? 'No data' : String(display);
+  return `<div class="mini-stat"><div class="label">${escapeHtml(label)}</div><div class="value">${escapeHtml(value)}</div></div>`;
+}
+
+function getDashboardChartTooltip() {
+  let tooltip =
+    document.getElementById(
+      'dashboardChartTooltip'
+    );
+
+  if (!tooltip) {
+    tooltip =
+      document.createElement('div');
+
+    tooltip.id =
+      'dashboardChartTooltip';
+
+    tooltip.className =
+      'dashboard-chart-tooltip';
+
+    document.body.appendChild(
+      tooltip
+    );
+  }
+
+  return tooltip;
+}
+
+
+function showDashboardChartTooltip(
+  event,
+  title,
+  rows
+) {
+  const tooltip =
+    getDashboardChartTooltip();
+
+  tooltip.innerHTML = `
+    <div class="chart-tooltip-title">
+      ${escapeHtml(title)}
+    </div>
+
+    ${rows
+      .map(
+        ([label, value]) => `
+          <div class="chart-tooltip-row">
+            <span>${escapeHtml(label)}</span>
+            <strong>${escapeHtml(String(value))}</strong>
+          </div>
+        `
+      )
+      .join('')}
+  `;
+
+  tooltip.classList.add(
+    'visible'
+  );
+
+  let left =
+    event.clientX + 14;
+
+  let top =
+    event.clientY + 14;
+
+  const rect =
+    tooltip.getBoundingClientRect();
+
+  if (
+    left + rect.width >
+    window.innerWidth - 12
+  ) {
+    left =
+      event.clientX -
+      rect.width -
+      14;
+  }
+
+  if (
+    top + rect.height >
+    window.innerHeight - 12
+  ) {
+    top =
+      event.clientY -
+      rect.height -
+      14;
+  }
+
+  tooltip.style.left =
+    `${Math.max(12, left)}px`;
+
+  tooltip.style.top =
+    `${Math.max(12, top)}px`;
+}
+
+
+function hideDashboardChartTooltip() {
+  const tooltip =
+    document.getElementById(
+      'dashboardChartTooltip'
+    );
+
+  if (tooltip) {
+    tooltip.classList.remove(
+      'visible'
+    );
+  }
 }
 
 function renderTrendChart(id, key) {
   const el = $(id);
-  const series = state.dataMaps.supply?.get(key) || [];
+
+  const series =
+    state.dataMaps.supply?.get(key) ||
+    [];
+
 
   if (!series.length) {
-    el.innerHTML = '<div class="no-data">No annual supply series was found for this jurisdiction. Check that the APR/permit city-year file has a recognizable city and year column.</div>';
+    el.innerHTML = `
+      <div class="no-data">
+        No annual production series was found
+        for this jurisdiction.
+      </div>
+    `;
     return;
   }
+
 
   const data = series
     .map(d => ({
-      year: d.year,
-      permitted: isNum(d.permitted) ? Number(d.permitted) : null,
-      completed: isNum(d.completed) ? Number(d.completed) : null,
-      approved: isNum(d.approved) ? Number(d.approved) : null,
+      year: Number(d.year),
+
+      proposed:
+        isNum(d.proposed)
+          ? Number(d.proposed)
+          : null,
+
+      approved:
+        isNum(d.approved)
+          ? Number(d.approved)
+          : null,
+
+      permitted:
+        isNum(d.permitted)
+          ? Number(d.permitted)
+          : null,
+
+      completed:
+        isNum(d.completed)
+          ? Number(d.completed)
+          : null,
     }))
-    .filter(d => isNum(d.year));
+    .filter(d =>
+      isNum(d.year)
+    )
+    .sort(
+      (a, b) =>
+        a.year - b.year
+    );
 
-  const hasPermitted = data.some(d => isNum(d.permitted));
-  const hasCompleted = data.some(d => isNum(d.completed));
-  const hasApproved = data.some(d => isNum(d.approved));
 
-  if (!hasPermitted && !hasCompleted && !hasApproved) {
-    el.innerHTML = '<div class="no-data">No permitted, completed, or approved annual values were found for this jurisdiction.</div>';
+  const seriesMeta = [
+    {
+      key: 'proposed',
+      label: 'Applications',
+      color: '#6D7C8C',
+      dash: '5 4',
+    },
+    {
+      key: 'approved',
+      label: 'Entitlements',
+      color: '#C69214',
+      dash: '3 3',
+    },
+    {
+      key: 'permitted',
+      label: 'Building permits',
+      color: '#00629B',
+      dash: null,
+    },
+    {
+      key: 'completed',
+      label: 'Completed units',
+      color: '#00A6B6',
+      dash: null,
+    },
+  ];
+
+
+  const availableSeries =
+    seriesMeta.filter(meta =>
+      data.some(d =>
+        isNum(d[meta.key])
+      )
+    );
+
+
+  if (!availableSeries.length) {
+    el.innerHTML = `
+      <div class="no-data">
+        No annual production values were
+        found for this jurisdiction.
+      </div>
+    `;
     return;
   }
 
-  const w = el.clientWidth || 300;
-  const h = 190;
-  const m = { top: 18, right: 12, bottom: 28, left: 38 };
 
-  const values = [];
+  el.innerHTML = '';
+
+
+  const width =
+    Math.max(
+      650,
+      el.clientWidth || 650
+    );
+
+  const height =
+    Math.max(
+      290,
+      el.clientHeight || 310
+    );
+
+
+  const margin = {
+    top: 48,
+    right: 22,
+    bottom: 52,
+    left: 66,
+  };
+
+
+  const innerWidth =
+    width -
+    margin.left -
+    margin.right;
+
+  const innerHeight =
+    height -
+    margin.top -
+    margin.bottom;
+
+
+  const svg =
+    d3
+      .select(el)
+      .append('svg')
+      .attr(
+        'width',
+        '100%'
+      )
+      .attr(
+        'height',
+        '100%'
+      )
+      .attr(
+        'viewBox',
+        `0 0 ${width} ${height}`
+      )
+      .attr(
+        'role',
+        'img'
+      )
+      .attr(
+        'aria-label',
+        'Housing production pipeline over time'
+      );
+
+
+  const plot =
+    svg
+      .append('g')
+      .attr(
+        'transform',
+        `translate(
+          ${margin.left},
+          ${margin.top}
+        )`
+      );
+
+
+  const years =
+    data.map(d => d.year);
+
+
+  const x =
+    d3
+      .scalePoint()
+      .domain(years)
+      .range([
+        0,
+        innerWidth,
+      ])
+      .padding(0.25);
+
+
+  const allValues = [];
+
   data.forEach(d => {
-    ['permitted', 'completed', 'approved'].forEach(f => {
-      if (isNum(d[f])) values.push(Number(d[f]));
-    });
+    availableSeries.forEach(
+      meta => {
+        if (
+          isNum(d[meta.key])
+        ) {
+          allValues.push(
+            Number(d[meta.key])
+          );
+        }
+      }
+    );
   });
 
-  const maxY = d3.max(values) || 1;
 
-  const x = d3.scalePoint()
-    .domain(data.map(d => d.year))
-    .range([m.left, w - m.right])
-    .padding(0.4);
+  const y =
+    d3
+      .scaleLinear()
+      .domain([
+        0,
+        d3.max(allValues) ||
+          1,
+      ])
+      .nice()
+      .range([
+        innerHeight,
+        0,
+      ]);
 
-  const y = d3.scaleLinear()
-    .domain([0, maxY])
-    .nice()
-    .range([h - m.bottom, m.top]);
 
-  const makeLine = field => d3.line()
-    .defined(d => isNum(d[field]))
-    .x(d => x(d.year))
-    .y(d => y(d[field]))(data);
+  /* Horizontal grid */
+  plot
+    .append('g')
+    .attr(
+      'class',
+      'chart-grid'
+    )
+    .call(
+      d3
+        .axisLeft(y)
+        .ticks(5)
+        .tickSize(
+          -innerWidth
+        )
+        .tickFormat('')
+    );
 
-  const legendItems = [];
-  if (hasPermitted) legendItems.push(`<text x="${m.left}" y="14" fill="#00629B" font-size="11" font-weight="700">Permitted</text>`);
-  if (hasCompleted) legendItems.push(`<text x="${m.left + 82}" y="14" fill="#00C6D7" font-size="11" font-weight="700">Completed</text>`);
-  if (hasApproved) legendItems.push(`<text x="${m.left + 176}" y="14" fill="#C69214" font-size="11" font-weight="700">Approved</text>`);
 
-  el.innerHTML = `
-    <svg class="chart-svg" width="100%" height="${h}" viewBox="0 0 ${w} ${h}" role="img">
-      <g>
-        ${y.ticks(4).map(t => `
-          <line x1="${m.left}" x2="${w - m.right}" y1="${y(t)}" y2="${y(t)}" stroke="rgba(23,56,74,.10)"/>
-          <text class="axis-label" x="${m.left - 7}" y="${y(t) + 4}" text-anchor="end">${compactNumber(t)}</text>
-        `).join('')}
-      </g>
+  /* Y axis */
+  plot
+    .append('g')
+    .attr(
+      'class',
+      'chart-axis'
+    )
+    .call(
+      d3
+        .axisLeft(y)
+        .ticks(5)
+        .tickFormat(
+          d =>
+            compactNumber(d)
+        )
+    );
 
-      ${hasApproved ? `<path d="${makeLine('approved') || ''}" fill="none" stroke="#C69214" stroke-width="3" opacity=".85"/>` : ''}
-      ${hasPermitted ? `<path d="${makeLine('permitted') || ''}" fill="none" stroke="#00629B" stroke-width="3"/>` : ''}
-      ${hasCompleted ? `<path d="${makeLine('completed') || ''}" fill="none" stroke="#00C6D7" stroke-width="3"/>` : ''}
 
-      ${data.map(d => `
-        <text class="axis-label" x="${x(d.year)}" y="${h - 8}" text-anchor="middle">${String(d.year).slice(-2)}</text>
-      `).join('')}
+  /* X axis */
+  plot
+    .append('g')
+    .attr(
+      'class',
+      'chart-axis'
+    )
+    .attr(
+      'transform',
+      `translate(
+        0,
+        ${innerHeight}
+      )`
+    )
+    .call(
+      d3
+        .axisBottom(x)
+        .tickSizeOuter(0)
+    );
 
-      ${legendItems.join('')}
-    </svg>
-  `;
+
+  /* Axis titles */
+  svg
+    .append('text')
+    .attr(
+      'class',
+      'chart-axis-title'
+    )
+    .attr(
+      'text-anchor',
+      'middle'
+    )
+    .attr(
+      'x',
+      margin.left +
+        innerWidth / 2
+    )
+    .attr(
+      'y',
+      height - 7
+    )
+    .text(
+      'APR reporting year'
+    );
+
+
+  svg
+    .append('text')
+    .attr(
+      'class',
+      'chart-axis-title'
+    )
+    .attr(
+      'text-anchor',
+      'middle'
+    )
+    .attr(
+      'transform',
+      `translate(
+        15,
+        ${
+          margin.top +
+          innerHeight / 2
+        }
+      )
+      rotate(-90)`
+    )
+    .text(
+      'Housing units'
+    );
+
+
+  /*
+    Highlight the reporting year selected
+    in the dashboard.
+  */
+  if (
+    x(state.selectedYear) !==
+    undefined
+  ) {
+    plot
+      .append('line')
+      .attr(
+        'x1',
+        x(state.selectedYear)
+      )
+      .attr(
+        'x2',
+        x(state.selectedYear)
+      )
+      .attr(
+        'y1',
+        0
+      )
+      .attr(
+        'y2',
+        innerHeight
+      )
+      .attr(
+        'stroke',
+        '#B8C5CF'
+      )
+      .attr(
+        'stroke-dasharray',
+        '3 4'
+      );
+  }
+
+
+  const active =
+    new Set(
+      availableSeries.map(
+        d => d.key
+      )
+    );
+
+
+  const line =
+    keyName =>
+      d3
+        .line()
+        .defined(d =>
+          isNum(
+            d[keyName]
+          )
+        )
+        .x(d =>
+          x(d.year)
+        )
+        .y(d =>
+          y(d[keyName])
+        );
+
+
+  availableSeries.forEach(
+    meta => {
+
+      plot
+        .append('path')
+        .datum(data)
+        .attr(
+          'class',
+          `trend-series trend-${meta.key}`
+        )
+        .attr(
+          'data-series',
+          meta.key
+        )
+        .attr(
+          'fill',
+          'none'
+        )
+        .attr(
+          'stroke',
+          meta.color
+        )
+        .attr(
+          'stroke-width',
+          2.5
+        )
+        .attr(
+          'stroke-linejoin',
+          'round'
+        )
+        .attr(
+          'stroke-linecap',
+          'round'
+        )
+        .attr(
+          'stroke-dasharray',
+          meta.dash
+        )
+        .attr(
+          'd',
+          line(meta.key)
+        );
+
+
+      const pointData =
+        data.filter(d =>
+          isNum(
+            d[meta.key]
+          )
+        );
+
+
+      plot
+        .selectAll(
+          `.point-${meta.key}`
+        )
+        .data(pointData)
+        .enter()
+        .append('circle')
+        .attr(
+          'class',
+          `chart-hover-point point-${meta.key}`
+        )
+        .attr(
+          'data-series',
+          meta.key
+        )
+        .attr(
+          'cx',
+          d => x(d.year)
+        )
+        .attr(
+          'cy',
+          d =>
+            y(d[meta.key])
+        )
+        .attr(
+          'r',
+          4
+        )
+        .attr(
+          'fill',
+          '#FFFFFF'
+        )
+        .attr(
+          'stroke',
+          meta.color
+        )
+        .attr(
+          'stroke-width',
+          2
+        )
+        .on(
+          'mouseenter',
+          function(
+            event,
+            d
+          ) {
+            d3
+              .select(this)
+              .attr(
+                'r',
+                6
+              );
+
+            showDashboardChartTooltip(
+              event,
+              String(d.year),
+              [
+                [
+                  meta.label,
+                  fmtInt.format(
+                    d[meta.key]
+                  ),
+                ],
+              ]
+            );
+          }
+        )
+        .on(
+          'mousemove',
+          function(
+            event,
+            d
+          ) {
+            showDashboardChartTooltip(
+              event,
+              String(d.year),
+              [
+                [
+                  meta.label,
+                  fmtInt.format(
+                    d[meta.key]
+                  ),
+                ],
+              ]
+            );
+          }
+        )
+        .on(
+          'mouseleave',
+          function() {
+            d3
+              .select(this)
+              .attr(
+                'r',
+                4
+              );
+
+            hideDashboardChartTooltip();
+          }
+        );
+    }
+  );
+
+
+  /*
+    Interactive legend.
+    Clicking a legend item turns a series
+    on or off without changing the data.
+  */
+  const legend =
+    svg
+      .append('g')
+      .attr(
+        'transform',
+        `translate(
+          ${margin.left},
+          18
+        )`
+      );
+
+
+  availableSeries.forEach(
+    (meta, i) => {
+
+      const item =
+        legend
+          .append('g')
+          .attr(
+            'class',
+            'chart-legend-item'
+          )
+          .attr(
+            'transform',
+            `translate(
+              ${i * 145},
+              0
+            )`
+          )
+          .on(
+            'click',
+            function() {
+              if (
+                active.has(
+                  meta.key
+                )
+              ) {
+                active.delete(
+                  meta.key
+                );
+              } else {
+                active.add(
+                  meta.key
+                );
+              }
+
+              svg
+                .selectAll(
+                  `[data-series="${meta.key}"]`
+                )
+                .style(
+                  'display',
+                  active.has(
+                    meta.key
+                  )
+                    ? null
+                    : 'none'
+                );
+
+              d3
+                .select(this)
+                .classed(
+                  'disabled',
+                  !active.has(
+                    meta.key
+                  )
+                );
+            }
+          );
+
+
+      item
+        .append('line')
+        .attr(
+          'x1',
+          0
+        )
+        .attr(
+          'x2',
+          20
+        )
+        .attr(
+          'y1',
+          0
+        )
+        .attr(
+          'y2',
+          0
+        )
+        .attr(
+          'stroke',
+          meta.color
+        )
+        .attr(
+          'stroke-width',
+          3
+        )
+        .attr(
+          'stroke-dasharray',
+          meta.dash
+        );
+
+
+      item
+        .append('text')
+        .attr(
+          'x',
+          27
+        )
+        .attr(
+          'y',
+          4
+        )
+        .text(
+          meta.label
+        );
+    }
+  );
+}
+
+function renderProductionTypeChart(
+  id,
+  key,
+  year
+) {
+  const el = $(id);
+
+  const byYear =
+    state.dataMaps
+      .productionType
+      ?.get(key);
+
+  const byType =
+    byYear?.get(
+      Number(year)
+    );
+
+
+  if (
+    !byType ||
+    !byType.size
+  ) {
+    el.innerHTML = `
+      <div class="no-data">
+        No housing-type production values
+        were reported for this jurisdiction
+        and year.
+      </div>
+    `;
+    return;
+  }
+
+
+  const rows =
+    [...byType.values()]
+      .filter(
+        d =>
+          isNum(d.permitted) ||
+          isNum(d.completed)
+      )
+      .map(d => ({
+        label:
+          String(
+            d.housingType
+          ).replace(
+            /\s*\(combined\)\s*/i,
+            ''
+          ),
+
+        fullLabel:
+          d.housingType,
+
+        permitted:
+          Number(
+            d.permitted ||
+            0
+          ),
+
+        completed:
+          Number(
+            d.completed ||
+            0
+          ),
+      }))
+      .sort(
+        (a, b) =>
+          Math.max(
+            b.permitted,
+            b.completed
+          ) -
+          Math.max(
+            a.permitted,
+            a.completed
+          )
+      );
+
+
+  if (!rows.length) {
+    el.innerHTML = `
+      <div class="no-data">
+        No housing-type production
+        values were reported.
+      </div>
+    `;
+    return;
+  }
+
+
+  el.innerHTML = '';
+
+
+  const width =
+    Math.max(
+      500,
+      el.clientWidth || 500
+    );
+
+  const height =
+    Math.max(
+      280,
+      el.clientHeight || 310
+    );
+
+
+  const margin = {
+    top: 42,
+    right: 55,
+    bottom: 48,
+    left: 175,
+  };
+
+
+  const innerWidth =
+    width -
+    margin.left -
+    margin.right;
+
+  const innerHeight =
+    height -
+    margin.top -
+    margin.bottom;
+
+
+  const svg =
+    d3
+      .select(el)
+      .append('svg')
+      .attr(
+        'width',
+        '100%'
+      )
+      .attr(
+        'height',
+        '100%'
+      )
+      .attr(
+        'viewBox',
+        `0 0 ${width} ${height}`
+      );
+
+
+  const plot =
+    svg
+      .append('g')
+      .attr(
+        'transform',
+        `translate(
+          ${margin.left},
+          ${margin.top}
+        )`
+      );
+
+
+  const maxValue =
+    d3.max(
+      rows,
+      d =>
+        Math.max(
+          d.permitted,
+          d.completed
+        )
+    ) || 1;
+
+
+  const x =
+    d3
+      .scaleLinear()
+      .domain([
+        0,
+        maxValue,
+      ])
+      .nice()
+      .range([
+        0,
+        innerWidth,
+      ]);
+
+
+  const y =
+    d3
+      .scaleBand()
+      .domain(
+        rows.map(
+          d => d.label
+        )
+      )
+      .range([
+        0,
+        innerHeight,
+      ])
+      .paddingInner(0.25);
+
+
+  const ySub =
+    d3
+      .scaleBand()
+      .domain([
+        'Permitted',
+        'Completed',
+      ])
+      .range([
+        0,
+        y.bandwidth(),
+      ])
+      .padding(0.10);
+
+
+  /* Vertical grid */
+  plot
+    .append('g')
+    .attr(
+      'class',
+      'chart-grid'
+    )
+    .call(
+      d3
+        .axisBottom(x)
+        .ticks(5)
+        .tickSize(
+          innerHeight
+        )
+        .tickFormat('')
+    );
+
+
+  /* Category axis */
+  plot
+    .append('g')
+    .attr(
+      'class',
+      'chart-axis'
+    )
+    .call(
+      d3
+        .axisLeft(y)
+        .tickSize(0)
+        .tickPadding(8)
+        .tickFormat(d =>
+          d.length > 25
+            ? `${d.slice(
+                0,
+                24
+              )}…`
+            : d
+        )
+    )
+    .select('.domain')
+    .remove();
+
+
+  /* Value axis */
+  plot
+    .append('g')
+    .attr(
+      'class',
+      'chart-axis'
+    )
+    .attr(
+      'transform',
+      `translate(
+        0,
+        ${innerHeight}
+      )`
+    )
+    .call(
+      d3
+        .axisBottom(x)
+        .ticks(5)
+        .tickFormat(
+          d =>
+            compactNumber(d)
+        )
+        .tickSizeOuter(0)
+    );
+
+
+  svg
+    .append('text')
+    .attr(
+      'class',
+      'chart-axis-title'
+    )
+    .attr(
+      'x',
+      margin.left +
+        innerWidth / 2
+    )
+    .attr(
+      'y',
+      height - 6
+    )
+    .attr(
+      'text-anchor',
+      'middle'
+    )
+    .text(
+      'Housing units'
+    );
+
+
+  svg
+    .append('text')
+    .attr(
+      'class',
+      'chart-axis-title'
+    )
+    .attr(
+      'x',
+      8
+    )
+    .attr(
+      'y',
+      margin.top - 14
+    )
+    .text(
+      'Housing type'
+    );
+
+
+  const stages = [
+    {
+      key: 'permitted',
+      label: 'Permitted',
+      color: '#00629B',
+    },
+    {
+      key: 'completed',
+      label: 'Completed',
+      color: '#00A6B6',
+    },
+  ];
+
+
+  stages.forEach(stage => {
+
+    const bars =
+      plot
+        .selectAll(
+          `.type-${stage.key}`
+        )
+        .data(rows)
+        .enter()
+        .append('rect')
+        .attr(
+          'class',
+          `type-${stage.key}`
+        )
+        .attr(
+          'x',
+          0
+        )
+        .attr(
+          'y',
+          d =>
+            y(d.label) +
+            ySub(
+              stage.label
+            )
+        )
+        .attr(
+          'height',
+          ySub.bandwidth()
+        )
+        .attr(
+          'width',
+          d =>
+            x(
+              d[stage.key]
+            )
+        )
+        .attr(
+          'rx',
+          1
+        )
+        .attr(
+          'fill',
+          stage.color
+        )
+        .attr(
+          'opacity',
+          0.88
+        )
+        .on(
+          'mouseenter',
+          function(
+            event,
+            d
+          ) {
+            d3
+              .select(this)
+              .attr(
+                'opacity',
+                1
+              );
+
+            showDashboardChartTooltip(
+              event,
+              d.fullLabel,
+              [
+                [
+                  stage.label,
+                  fmtInt.format(
+                    d[stage.key]
+                  ),
+                ],
+                [
+                  'Reporting year',
+                  year,
+                ],
+              ]
+            );
+          }
+        )
+        .on(
+          'mousemove',
+          function(
+            event,
+            d
+          ) {
+            showDashboardChartTooltip(
+              event,
+              d.fullLabel,
+              [
+                [
+                  stage.label,
+                  fmtInt.format(
+                    d[stage.key]
+                  ),
+                ],
+                [
+                  'Reporting year',
+                  year,
+                ],
+              ]
+            );
+          }
+        )
+        .on(
+          'mouseleave',
+          function() {
+            d3
+              .select(this)
+              .attr(
+                'opacity',
+                0.88
+              );
+
+            hideDashboardChartTooltip();
+          }
+        );
+
+
+    /*
+      Exact number at end of each non-zero bar.
+    */
+    plot
+      .selectAll(
+        `.value-${stage.key}`
+      )
+      .data(
+        rows.filter(
+          d =>
+            d[stage.key] > 0
+        )
+      )
+      .enter()
+      .append('text')
+      .attr(
+        'class',
+        'bar-label'
+      )
+      .attr(
+        'x',
+        d =>
+          x(
+            d[stage.key]
+          ) + 5
+      )
+      .attr(
+        'y',
+        d =>
+          y(d.label) +
+          ySub(
+            stage.label
+          ) +
+          ySub.bandwidth() /
+            2 +
+          3
+      )
+      .text(
+        d =>
+          fmtInt.format(
+            d[stage.key]
+          )
+      );
+  });
+
+
+  /* Legend */
+  const legend =
+    svg
+      .append('g')
+      .attr(
+        'transform',
+        `translate(
+          ${margin.left},
+          18
+        )`
+      );
+
+
+  stages.forEach(
+    (stage, i) => {
+
+      const item =
+        legend
+          .append('g')
+          .attr(
+            'transform',
+            `translate(
+              ${i * 105},
+              0
+            )`
+          );
+
+
+      item
+        .append('rect')
+        .attr(
+          'width',
+          12
+        )
+        .attr(
+          'height',
+          12
+        )
+        .attr(
+          'rx',
+          1
+        )
+        .attr(
+          'fill',
+          stage.color
+        );
+
+
+      item
+        .append('text')
+        .attr(
+          'x',
+          18
+        )
+        .attr(
+          'y',
+          10
+        )
+        .attr(
+          'class',
+          'axis-label'
+        )
+        .style(
+          'font-weight',
+          700
+        )
+        .text(
+          stage.label
+        );
+    }
+  );
+}
+
+function renderStockTrend(
+  id,
+  key
+) {
+  const el = $(id);
+
+  const benchmarks =
+    state.dataMaps
+      .benchmarks
+      ?.get(key) ||
+    [];
+
+  const dofSeries =
+    state.dataMaps
+      .dof
+      ?.get(key)
+      ?.series ||
+    [];
+
+
+  const benchmarkPoints =
+    benchmarks
+      .map(d => ({
+        year:
+          Number(d.year),
+
+        value:
+          Number(d.value),
+
+        kind:
+          'benchmark',
+
+        source:
+          d.label ||
+          'Census / ACS benchmark',
+      }))
+      .filter(
+        d =>
+          isNum(d.year) &&
+          isNum(d.value)
+      );
+
+
+  const dofPoints =
+    dofSeries
+      .filter(d =>
+        isNum(
+          d.housingUnits
+        )
+      )
+      .map(d => ({
+        year:
+          Number(d.year),
+
+        value:
+          Number(
+            d.housingUnits
+          ),
+
+        kind:
+          'dof',
+
+        source:
+          'California DOF E-5',
+      }));
+
+
+  const allPoints = [
+    ...benchmarkPoints,
+    ...dofPoints,
+  ].sort(
+    (a, b) =>
+      a.year - b.year
+  );
+
+
+  if (!allPoints.length) {
+    el.innerHTML = `
+      <div class="no-data">
+        No housing-stock series was found
+        for this jurisdiction.
+      </div>
+    `;
+    return;
+  }
+
+
+  el.innerHTML = '';
+
+
+  const width =
+    Math.max(
+      650,
+      el.clientWidth || 650
+    );
+
+  const height =
+    Math.max(
+      280,
+      el.clientHeight || 300
+    );
+
+
+  const margin = {
+    top: 45,
+    right: 24,
+    bottom: 50,
+    left: 72,
+  };
+
+
+  const innerWidth =
+    width -
+    margin.left -
+    margin.right;
+
+  const innerHeight =
+    height -
+    margin.top -
+    margin.bottom;
+
+
+  const svg =
+    d3
+      .select(el)
+      .append('svg')
+      .attr(
+        'width',
+        '100%'
+      )
+      .attr(
+        'height',
+        '100%'
+      )
+      .attr(
+        'viewBox',
+        `0 0 ${width} ${height}`
+      );
+
+
+  const plot =
+    svg
+      .append('g')
+      .attr(
+        'transform',
+        `translate(
+          ${margin.left},
+          ${margin.top}
+        )`
+      );
+
+
+  const minYear =
+    d3.min(
+      allPoints,
+      d => d.year
+    );
+
+  const maxYear =
+    d3.max(
+      allPoints,
+      d => d.year
+    );
+
+
+  const x =
+    d3
+      .scaleLinear()
+      .domain([
+        minYear,
+        maxYear,
+      ])
+      .range([
+        0,
+        innerWidth,
+      ]);
+
+
+  const maxValue =
+    d3.max(
+      allPoints,
+      d => d.value
+    ) || 1;
+
+
+  const y =
+    d3
+      .scaleLinear()
+      .domain([
+        0,
+        maxValue,
+      ])
+      .nice()
+      .range([
+        innerHeight,
+        0,
+      ]);
+
+
+  /* Grid */
+  plot
+    .append('g')
+    .attr(
+      'class',
+      'chart-grid'
+    )
+    .call(
+      d3
+        .axisLeft(y)
+        .ticks(5)
+        .tickSize(
+          -innerWidth
+        )
+        .tickFormat('')
+    );
+
+
+  /* Y axis */
+  plot
+    .append('g')
+    .attr(
+      'class',
+      'chart-axis'
+    )
+    .call(
+      d3
+        .axisLeft(y)
+        .ticks(5)
+        .tickFormat(
+          d =>
+            compactNumber(d)
+        )
+    );
+
+
+  /*
+    Only use meaningful year ticks,
+    rather than labeling every pixel.
+  */
+  const yearTicks =
+    [...new Set(
+      allPoints.map(
+        d => d.year
+      )
+    )];
+
+
+  plot
+    .append('g')
+    .attr(
+      'class',
+      'chart-axis'
+    )
+    .attr(
+      'transform',
+      `translate(
+        0,
+        ${innerHeight}
+      )`
+    )
+    .call(
+      d3
+        .axisBottom(x)
+        .tickValues(
+          yearTicks
+        )
+        .tickFormat(
+          d3.format('d')
+        )
+        .tickSizeOuter(0)
+    );
+
+
+  svg
+    .append('text')
+    .attr(
+      'class',
+      'chart-axis-title'
+    )
+    .attr(
+      'text-anchor',
+      'middle'
+    )
+    .attr(
+      'x',
+      margin.left +
+        innerWidth / 2
+    )
+    .attr(
+      'y',
+      height - 6
+    )
+    .text(
+      'Year'
+    );
+
+
+  svg
+    .append('text')
+    .attr(
+      'class',
+      'chart-axis-title'
+    )
+    .attr(
+      'text-anchor',
+      'middle'
+    )
+    .attr(
+      'transform',
+      `translate(
+        15,
+        ${
+          margin.top +
+          innerHeight / 2
+        }
+      )
+      rotate(-90)`
+    )
+    .text(
+      'Total housing units'
+    );
+
+
+  const dofLine =
+    d3
+      .line()
+      .x(d =>
+        x(d.year)
+      )
+      .y(d =>
+        y(d.value)
+      );
+
+
+  if (
+    dofPoints.length > 1
+  ) {
+    plot
+      .append('path')
+      .datum(dofPoints)
+      .attr(
+        'fill',
+        'none'
+      )
+      .attr(
+        'stroke',
+        '#00629B'
+      )
+      .attr(
+        'stroke-width',
+        2.75
+      )
+      .attr(
+        'stroke-linejoin',
+        'round'
+      )
+      .attr(
+        'stroke-linecap',
+        'round'
+      )
+      .attr(
+        'd',
+        dofLine
+      );
+  }
+
+
+  /* DOF points */
+  plot
+    .selectAll(
+      '.dof-stock-point'
+    )
+    .data(dofPoints)
+    .enter()
+    .append('circle')
+    .attr(
+      'class',
+      'chart-hover-point dof-stock-point'
+    )
+    .attr(
+      'cx',
+      d => x(d.year)
+    )
+    .attr(
+      'cy',
+      d => y(d.value)
+    )
+    .attr(
+      'r',
+      4
+    )
+    .attr(
+      'fill',
+      '#FFFFFF'
+    )
+    .attr(
+      'stroke',
+      '#00629B'
+    )
+    .attr(
+      'stroke-width',
+      2.25
+    )
+    .on(
+      'mouseenter mousemove',
+      function(
+        event,
+        d
+      ) {
+        showDashboardChartTooltip(
+          event,
+          String(d.year),
+          [
+            [
+              'Housing units',
+              fmtInt.format(
+                d.value
+              ),
+            ],
+            [
+              'Source',
+              d.source,
+            ],
+          ]
+        );
+      }
+    )
+    .on(
+      'mouseleave',
+      hideDashboardChartTooltip
+    );
+
+
+  /*
+    Benchmark values use diamonds so users
+    can immediately distinguish them from
+    annual DOF estimates.
+  */
+  plot
+    .selectAll(
+      '.benchmark-stock-point'
+    )
+    .data(
+      benchmarkPoints
+    )
+    .enter()
+    .append('path')
+    .attr(
+      'class',
+      'chart-hover-point benchmark-stock-point'
+    )
+    .attr(
+      'd',
+      d3
+        .symbol()
+        .type(
+          d3.symbolDiamond
+        )
+        .size(85)
+    )
+    .attr(
+      'transform',
+      d =>
+        `translate(
+          ${x(d.year)},
+          ${y(d.value)}
+        )`
+    )
+    .attr(
+      'fill',
+      '#C69214'
+    )
+    .attr(
+      'stroke',
+      '#FFFFFF'
+    )
+    .attr(
+      'stroke-width',
+      1.5
+    )
+    .on(
+      'mouseenter mousemove',
+      function(
+        event,
+        d
+      ) {
+        showDashboardChartTooltip(
+          event,
+          String(d.year),
+          [
+            [
+              'Housing units',
+              fmtInt.format(
+                d.value
+              ),
+            ],
+            [
+              'Benchmark',
+              d.source,
+            ],
+          ]
+        );
+      }
+    )
+    .on(
+      'mouseleave',
+      hideDashboardChartTooltip
+    );
+
+
+  /* Legend */
+  const legend =
+    svg
+      .append('g')
+      .attr(
+        'transform',
+        `translate(
+          ${margin.left},
+          18
+        )`
+      );
+
+
+  const dofLegend =
+    legend.append('g');
+
+  dofLegend
+    .append('line')
+    .attr(
+      'x1',
+      0
+    )
+    .attr(
+      'x2',
+      20
+    )
+    .attr(
+      'y1',
+      0
+    )
+    .attr(
+      'y2',
+      0
+    )
+    .attr(
+      'stroke',
+      '#00629B'
+    )
+    .attr(
+      'stroke-width',
+      3
+    );
+
+  dofLegend
+    .append('text')
+    .attr(
+      'x',
+      27
+    )
+    .attr(
+      'y',
+      4
+    )
+    .attr(
+      'class',
+      'axis-label'
+    )
+    .style(
+      'font-weight',
+      700
+    )
+    .text(
+      'DOF annual estimate'
+    );
+
+
+  const benchmarkLegend =
+    legend
+      .append('g')
+      .attr(
+        'transform',
+        'translate(155,0)'
+      );
+
+  benchmarkLegend
+    .append('path')
+    .attr(
+      'd',
+      d3
+        .symbol()
+        .type(
+          d3.symbolDiamond
+        )
+        .size(60)
+    )
+    .attr(
+      'fill',
+      '#C69214'
+    );
+
+  benchmarkLegend
+    .append('text')
+    .attr(
+      'x',
+      12
+    )
+    .attr(
+      'y',
+      4
+    )
+    .attr(
+      'class',
+      'axis-label'
+    )
+    .style(
+      'font-weight',
+      700
+    )
+    .text(
+      'Census / ACS benchmark'
+    );
+}
+
+
+function renderRhnaOverallDonut(id, stats) {
+  const el = $(id);
+  if (!el) return;
+
+  const allocation = Number(stats.rhnaAllocation);
+  const progress = Number(stats.rhnaProgress);
+  if (!isNum(allocation) || allocation <= 0 || !isNum(progress)) {
+    el.innerHTML = '<div class="no-data">No RHNA allocation/progress data available.</div>';
+    return;
+  }
+
+  const credited = Math.max(0, Math.min(progress, allocation));
+  const remaining = Math.max(0, allocation - credited);
+  const pctValue = isNum(stats.rhnaPct) ? Number(stats.rhnaPct) : pct(progress, allocation);
+  const data = [
+    { label: 'Qualifying progress', value: credited, color: '#00629B' },
+    { label: 'Allocation not yet met', value: remaining, color: '#DCE5EB' },
+  ];
+
+  const w = Math.max(230, el.clientWidth || 250);
+  const h = Math.max(210, el.clientHeight || 220);
+  const size = Math.min(w, h) - 34;
+  const outer = size / 2;
+  const inner = outer * 0.67;
+
+  el.innerHTML = '';
+  const svg = d3.select(el).append('svg')
+    .attr('width', '100%')
+    .attr('height', '100%')
+    .attr('viewBox', `0 0 ${w} ${h}`)
+    .attr('role', 'img')
+    .attr('aria-label', 'RHNA qualifying progress toward allocation');
+
+  const g = svg.append('g').attr('transform', `translate(${w / 2},${h / 2 - 5})`);
+  const arc = d3.arc().innerRadius(inner).outerRadius(outer);
+  const pie = d3.pie().sort(null).value(d => d.value);
+
+  g.selectAll('path').data(pie(data)).enter().append('path')
+    .attr('d', arc)
+    .attr('fill', d => d.data.color)
+    .attr('stroke', '#F2F5F7')
+    .attr('stroke-width', 2)
+    .style('cursor', 'pointer')
+    .on('mouseenter mousemove', (event, d) => {
+      showDashboardChartTooltip(event, d.data.label, [
+        ['Units', fmtInt.format(d.data.value)],
+        ['Share of allocation', `${fmt1.format((d.data.value / allocation) * 100)}%`],
+      ]);
+    })
+    .on('mouseleave', hideDashboardChartTooltip);
+
+  g.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('y', -4)
+    .attr('class', 'donut-value')
+    .text(isNum(pctValue) ? `${fmtInt.format(pctValue)}%` : '—');
+
+  g.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('y', 18)
+    .attr('class', 'donut-label')
+    .text('complete');
+
+  svg.append('text')
+    .attr('x', w / 2)
+    .attr('y', h - 4)
+    .attr('text-anchor', 'middle')
+    .attr('class', 'donut-caption')
+    .text(`${fmtInt.format(progress)} qualifying units reported`);
+}
+
+function renderRhnaTierChart(id, stats) {
+  const el = $(id);
+  if (!el) return;
+
+  const colors = ['#182B49', '#00629B', '#00A6B6', '#C69214'];
+  const tiers = [
+    ['Very low', stats.rhnaTiers?.very_low],
+    ['Low', stats.rhnaTiers?.low],
+    ['Moderate', stats.rhnaTiers?.moderate],
+    ['Above moderate', stats.rhnaTiers?.above_moderate],
+  ].map(([label, tier], i) => ({
+    label,
+    color: colors[i],
+    allocation: tier?.allocation,
+    progress: tier?.progress,
+    remaining: tier?.remaining,
+    pct: isNum(tier?.pct) ? Number(tier.pct) : pct(tier?.progress, tier?.allocation),
+  }));
+
+  if (!tiers.some(d => isNum(d.allocation) || isNum(d.progress))) {
+    el.innerHTML = '<div class="no-data">No income-tier RHNA fields were found for this jurisdiction.</div>';
+    return;
+  }
+
+  const w = Math.max(520, el.clientWidth || 620);
+  const h = Math.max(300, el.clientHeight || 320);
+  const m = { top: 26, right: 104, bottom: 34, left: 132 };
+  const innerW = Math.max(200, w - m.left - m.right);
+  const rowStep = (h - m.top - m.bottom) / tiers.length;
+  const x = d3.scaleLinear().domain([0, 100]).range([0, innerW]);
+
+  el.innerHTML = '';
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', '100%').attr('viewBox', `0 0 ${w} ${h}`);
+
+  const ticks = [0, 25, 50, 75, 100];
+  svg.selectAll('.tier-grid').data(ticks).enter().append('line')
+    .attr('x1', d => m.left + x(d)).attr('x2', d => m.left + x(d))
+    .attr('y1', m.top - 4).attr('y2', h - m.bottom + 2)
+    .attr('stroke', '#DCE3E8').attr('stroke-width', 1);
+
+  svg.selectAll('.tier-tick').data(ticks).enter().append('text')
+    .attr('x', d => m.left + x(d)).attr('y', h - 8)
+    .attr('text-anchor', 'middle').attr('class', 'chart-axis-label')
+    .text(d => `${d}%`);
+
+  tiers.forEach((d, i) => {
+    const y = m.top + i * rowStep + rowStep * 0.22;
+    const barH = Math.min(24, rowStep * 0.34);
+    const share = isNum(d.pct) ? Math.max(0, Number(d.pct)) : 0;
+    const clamped = Math.min(100, share);
+
+    svg.append('text').attr('x', m.left - 12).attr('y', y + 3)
+      .attr('text-anchor', 'end').attr('class', 'tier-label').text(d.label);
+    svg.append('text').attr('x', m.left - 12).attr('y', y + 19)
+      .attr('text-anchor', 'end').attr('class', 'tier-subtext')
+      .text(isNum(d.allocation) ? `${formatMaybe(d.progress)} / ${formatMaybe(d.allocation)} units` : 'No allocation data');
+
+    svg.append('rect').attr('x', m.left).attr('y', y - barH / 2)
+      .attr('width', innerW).attr('height', barH).attr('fill', '#E2E8EC');
+
+    const filled = svg.append('rect').attr('x', m.left).attr('y', y - barH / 2)
+      .attr('width', x(clamped)).attr('height', barH).attr('fill', d.color).style('cursor', 'pointer');
+
+    filled.on('mouseenter mousemove', event => {
+      showDashboardChartTooltip(event, d.label, [
+        ['Allocation', formatMaybe(d.allocation)],
+        ['Qualifying units', formatMaybe(d.progress)],
+        ['Remaining need', formatMaybe(d.remaining)],
+        ['Percent complete', isNum(d.pct) ? `${fmt1.format(d.pct)}%` : 'No data'],
+      ]);
+    }).on('mouseleave', hideDashboardChartTooltip);
+
+    if (share > 100) {
+      svg.append('path')
+        .attr('d', d3.symbol().type(d3.symbolTriangle).size(70)())
+        .attr('transform', `translate(${m.left + innerW},${y}) rotate(90)`)
+        .attr('fill', '#FFCD00').attr('stroke', '#182B49').attr('stroke-width', 0.8);
+    }
+
+    svg.append('text').attr('x', m.left + innerW + 12).attr('y', y + 5)
+      .attr('class', 'tier-value').text(isNum(d.pct) ? `${fmt1.format(d.pct)}%` : '—');
+  });
+}
+
+function renderRhnaPipelineChart(id, stats) {
+  const el = $(id);
+  if (!el) return;
+
+  const rows = [
+    { label: 'Applications', value: stats.proposed, color: '#6D7C8C' },
+    { label: 'Entitlements', value: stats.approved, color: '#C69214' },
+    { label: 'Permits', value: stats.permitted, color: '#00629B' },
+    { label: 'Completed', value: stats.completed, color: '#00A6B6' },
+  ];
+
+  if (!rows.some(d => isNum(d.value))) {
+    el.innerHTML = '<div class="no-data">No annual development-stage values were found for this jurisdiction.</div>';
+    return;
+  }
+
+  const w = Math.max(520, el.clientWidth || 620);
+  const h = Math.max(300, el.clientHeight || 320);
+  const m = { top: 26, right: 18, bottom: 62, left: 64 };
+  const innerW = w - m.left - m.right;
+  const innerH = h - m.top - m.bottom;
+  const x = d3.scaleBand().domain(rows.map(d => d.label)).range([0, innerW]).padding(0.38);
+  const maxV = d3.max(rows, d => Number(d.value || 0)) || 1;
+  const y = d3.scaleLinear().domain([0, maxV]).nice().range([innerH, 0]);
+
+  el.innerHTML = '';
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', '100%').attr('viewBox', `0 0 ${w} ${h}`);
+  const g = svg.append('g').attr('transform', `translate(${m.left},${m.top})`);
+
+  g.append('g').attr('class', 'chart-grid').call(d3.axisLeft(y).ticks(4).tickSize(-innerW).tickFormat(''));
+  g.append('g').attr('class', 'chart-axis').call(d3.axisLeft(y).ticks(4).tickFormat(compactNumber));
+  g.append('g').attr('class', 'chart-axis').attr('transform', `translate(0,${innerH})`)
+    .call(d3.axisBottom(x).tickSize(0).tickPadding(10)).select('.domain').remove();
+
+  g.selectAll('.pipeline-bar').data(rows).enter().append('rect')
+    .attr('class', 'pipeline-bar')
+    .attr('x', d => x(d.label)).attr('width', x.bandwidth())
+    .attr('y', d => isNum(d.value) ? y(Number(d.value)) : innerH)
+    .attr('height', d => isNum(d.value) ? innerH - y(Number(d.value)) : 0)
+    .attr('fill', d => d.color).attr('opacity', 0.9)
+    .style('cursor', 'pointer')
+    .on('mouseenter mousemove', (event, d) => {
+      showDashboardChartTooltip(event, d.label, [
+        ['Units', formatMaybe(d.value)],
+        ['APR reporting year', state.selectedYear],
+      ]);
+    }).on('mouseleave', hideDashboardChartTooltip);
+
+  g.selectAll('.pipeline-value').data(rows.filter(d => isNum(d.value))).enter().append('text')
+    .attr('x', d => x(d.label) + x.bandwidth() / 2)
+    .attr('y', d => y(Number(d.value)) - 8)
+    .attr('text-anchor', 'middle').attr('class', 'bar-label')
+    .text(d => fmtInt.format(Number(d.value)));
+
+  svg.append('text').attr('x', 14).attr('y', m.top + innerH / 2)
+    .attr('transform', `rotate(-90,14,${m.top + innerH / 2})`)
+    .attr('text-anchor', 'middle').attr('class', 'chart-axis-title').text('Housing units');
+}
+
+function burdenSegments(row) {
+  if (!isNum(row?.burden)) return null;
+  const burden = Math.max(0, Math.min(100, Number(row.burden)));
+  const severe = isNum(row.severe) ? Math.max(0, Math.min(burden, Number(row.severe))) : 0;
+  return {
+    severe,
+    moderate: Math.max(0, burden - severe),
+    notBurdened: Math.max(0, 100 - burden),
+  };
+}
+
+function renderBurdenCompositionChart(id, rows, options = {}) {
+  const el = $(id);
+  if (!el) return;
+  const valid = rows.map(row => ({ ...row, segments: burdenSegments(row) })).filter(d => d.segments);
+  if (!valid.length) {
+    el.innerHTML = '<div class="no-data">No cost-burden percentages were found for this jurisdiction.</div>';
+    return;
+  }
+
+  const w = Math.max(520, el.clientWidth || 620);
+  const h = options.compact ? 170 : Math.max(220, 86 + valid.length * 62);
+  const m = { top: 54, right: 54, bottom: 34, left: options.compact ? 150 : 122 };
+  const innerW = w - m.left - m.right;
+  const x = d3.scaleLinear().domain([0, 100]).range([0, innerW]);
+  const colors = { severe: '#182B49', moderate: '#C69214', notBurdened: '#DCE5EB' };
+  const labels = { severe: 'Severe burden (>50%)', moderate: 'Burdened 30–50%', notBurdened: 'Not burdened' };
+
+  el.innerHTML = '';
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', '100%').attr('viewBox', `0 0 ${w} ${h}`);
+
+  const legend = svg.append('g').attr('transform', `translate(${m.left},18)`);
+  [['severe', 'Severe burden'], ['moderate', 'Burdened 30–50%'], ['notBurdened', 'Not burdened']].forEach(([key, label], i) => {
+    const item = legend.append('g').attr('transform', `translate(${i * 150},0)`);
+    item.append('rect').attr('width', 12).attr('height', 12).attr('fill', colors[key]);
+    item.append('text').attr('x', 18).attr('y', 10).attr('class', 'chart-legend-label').text(label);
+  });
+
+  const rowStep = (h - m.top - m.bottom) / valid.length;
+  valid.forEach((row, i) => {
+    const y = m.top + i * rowStep + rowStep * 0.16;
+    const barH = Math.min(30, rowStep * 0.45);
+    svg.append('text').attr('x', m.left - 12).attr('y', y + barH / 2 + 4)
+      .attr('text-anchor', 'end').attr('class', 'burden-row-label').text(row.label);
+
+    let cursor = m.left;
+    ['severe', 'moderate', 'notBurdened'].forEach(key => {
+      const value = row.segments[key];
+      const width = x(value);
+      const rect = svg.append('rect').attr('x', cursor).attr('y', y).attr('width', width)
+        .attr('height', barH).attr('fill', colors[key]).style('cursor', 'pointer');
+      rect.on('mouseenter mousemove', event => {
+        showDashboardChartTooltip(event, row.label, [
+          [labels[key], `${fmt1.format(value)}%`],
+          ['Total cost burden', `${fmt1.format(Number(row.burden))}%`],
+        ]);
+      }).on('mouseleave', hideDashboardChartTooltip);
+      cursor += width;
+    });
+
+    svg.append('text').attr('x', m.left + innerW + 10).attr('y', y + barH / 2 + 4)
+      .attr('class', 'burden-total-label').text(`${fmt1.format(Number(row.burden))}%`);
+  });
+
+  [0, 25, 50, 75, 100].forEach(t => {
+    svg.append('text').attr('x', m.left + x(t)).attr('y', h - 8).attr('text-anchor', 'middle')
+      .attr('class', 'chart-axis-label').text(`${t}%`);
+  });
+}
+
+function renderAssistedRiskDonut(id, stats) {
+  const el = $(id);
+  if (!el) return;
+  const total = Number(stats.assistedUnits);
+  const atRisk = Number(stats.atRiskAssistedUnits);
+  if (!isNum(total) || total <= 0 || !isNum(atRisk)) {
+    el.innerHTML = '<div class="no-data">No assisted-unit preservation-risk total is available.</div>';
+    return;
+  }
+
+  const risk = Math.max(0, Math.min(total, atRisk));
+  const other = Math.max(0, total - risk);
+  const riskPct = (risk / total) * 100;
+  const w = Math.max(210, el.clientWidth || 230);
+  const h = Math.max(200, el.clientHeight || 220);
+  const radius = Math.min(w, h) / 2 - 28;
+  const data = [
+    { label: 'Units at risk', value: risk, color: '#C69214' },
+    { label: 'Other assisted units', value: other, color: '#DCE5EB' },
+  ];
+
+  el.innerHTML = '';
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', '100%').attr('viewBox', `0 0 ${w} ${h}`);
+  const g = svg.append('g').attr('transform', `translate(${w / 2},${h / 2 - 5})`);
+  const arc = d3.arc().innerRadius(radius * 0.66).outerRadius(radius);
+  const pie = d3.pie().sort(null).value(d => d.value);
+
+  g.selectAll('path').data(pie(data)).enter().append('path').attr('d', arc)
+    .attr('fill', d => d.data.color).attr('stroke', '#F2F5F7').attr('stroke-width', 2)
+    .style('cursor', 'pointer')
+    .on('mouseenter mousemove', (event, d) => showDashboardChartTooltip(event, d.data.label, [['Units', fmtInt.format(d.data.value)]]))
+    .on('mouseleave', hideDashboardChartTooltip);
+
+  g.append('text').attr('text-anchor', 'middle').attr('y', -3).attr('class', 'donut-value').text(`${fmt1.format(riskPct)}%`);
+  g.append('text').attr('text-anchor', 'middle').attr('y', 19).attr('class', 'donut-label').text('at risk');
+  svg.append('text').attr('x', w / 2).attr('y', h - 4).attr('text-anchor', 'middle').attr('class', 'donut-caption')
+    .text(`${fmtInt.format(risk)} of ${fmtInt.format(total)} assisted units`);
+}
+
+function relationshipData(kind) {
+  return [...state.allKeys]
+    .filter(key => key !== 'county san diego')
+    .map(key => {
+      const s = statsForKey(key, state.selectedYear);
+      return {
+        key,
+        label: s.label || state.dataMaps.labels?.get(key) || titleCase(key),
+        income: s.medianHouseholdIncome,
+        rent: s.medianRent,
+        rentToIncome: s.rentToIncomePct,
+        renterBurden: s.rentBurdenShare,
+        homeValue: s.medianHomeValue,
+        ownerBurden: s.ownerBurdenShare,
+      };
+    })
+    .filter(d => kind === 'rental'
+      ? isNum(d.income) && isNum(d.rent)
+      : isNum(d.income) && isNum(d.homeValue));
+}
+
+function renderRelationshipScatter(id, kind) {
+  const el = $(id);
+  if (!el) return;
+  const rows = relationshipData(kind);
+  if (!rows.length) {
+    el.innerHTML = '<div class="no-data">No jurisdiction relationship data were found.</div>';
+    return;
+  }
+
+  const isRental = kind === 'rental';
+  const w = Math.max(760, el.clientWidth || 900);
+  const h = Math.max(390, el.clientHeight || 420);
+  const m = { top: 24, right: 36, bottom: 66, left: 92 };
+  const innerW = w - m.left - m.right;
+  const innerH = h - m.top - m.bottom;
+  const xExtent = d3.extent(rows, d => Number(d.income));
+  const yExtent = d3.extent(rows, d => Number(isRental ? d.rent : d.homeValue));
+  const padX = Math.max(5000, (xExtent[1] - xExtent[0]) * 0.08);
+  const padY = Math.max(isRental ? 100 : 50000, (yExtent[1] - yExtent[0]) * 0.08);
+  const x = d3.scaleLinear().domain([Math.max(0, xExtent[0] - padX), xExtent[1] + padX]).nice().range([0, innerW]);
+  const y = d3.scaleLinear().domain([Math.max(0, yExtent[0] - padY), yExtent[1] + padY]).nice().range([innerH, 0]);
+
+  el.innerHTML = '';
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', '100%').attr('viewBox', `0 0 ${w} ${h}`);
+  const g = svg.append('g').attr('transform', `translate(${m.left},${m.top})`);
+
+  g.append('g').attr('class', 'chart-grid').call(d3.axisLeft(y).ticks(5).tickSize(-innerW).tickFormat(''));
+  g.append('g').attr('class', 'chart-axis').call(d3.axisLeft(y).ticks(5).tickFormat(d => `$${compactNumber(d)}`));
+  g.append('g').attr('class', 'chart-axis').attr('transform', `translate(0,${innerH})`)
+    .call(d3.axisBottom(x).ticks(6).tickFormat(d => `$${compactNumber(d)}`));
+
+  svg.append('text').attr('x', m.left + innerW / 2).attr('y', h - 10).attr('text-anchor', 'middle')
+    .attr('class', 'chart-axis-title').text('Median household income');
+  svg.append('text').attr('x', 18).attr('y', m.top + innerH / 2)
+    .attr('transform', `rotate(-90,18,${m.top + innerH / 2})`).attr('text-anchor', 'middle')
+    .attr('class', 'chart-axis-title').text(isRental ? '1BR median gross rent' : 'Median home value');
+
+  const dots = g.selectAll('.relationship-dot').data(rows).enter().append('circle')
+    .attr('class', 'relationship-dot')
+    .attr('cx', d => x(Number(d.income)))
+    .attr('cy', d => y(Number(isRental ? d.rent : d.homeValue)))
+    .attr('r', d => d.key === state.selectedKey ? 8 : 5.5)
+    .attr('fill', d => d.key === state.selectedKey ? '#FFCD00' : '#00629B')
+    .attr('stroke', d => d.key === state.selectedKey ? '#182B49' : '#FFFFFF')
+    .attr('stroke-width', d => d.key === state.selectedKey ? 2.5 : 1.5)
+    .attr('opacity', d => d.key === state.selectedKey ? 1 : 0.72)
+    .style('cursor', 'pointer');
+
+  dots.on('mouseenter mousemove', (event, d) => {
+    const details = isRental
+      ? [['Median income', fmtMoney.format(d.income)], ['1BR median rent', fmtMoney.format(d.rent)], ['Rent-to-income', isNum(d.rentToIncome) ? `${fmt1.format(d.rentToIncome)}%` : 'No data'], ['Renter burden', isNum(d.renterBurden) ? `${fmt1.format(d.renterBurden)}%` : 'No data']]
+      : [['Median income', fmtMoney.format(d.income)], ['Median home value', fmtMoney.format(d.homeValue)], ['Owner burden', isNum(d.ownerBurden) ? `${fmt1.format(d.ownerBurden)}%` : 'No data']];
+    showDashboardChartTooltip(event, d.label, details);
+  }).on('mouseleave', hideDashboardChartTooltip)
+    .on('click', (_, d) => selectKey(d.key, false));
+
+  const selected = rows.find(d => d.key === state.selectedKey);
+  if (selected) {
+    g.append('text')
+      .attr('x', x(Number(selected.income)) + 11)
+      .attr('y', y(Number(isRental ? selected.rent : selected.homeValue)) - 9)
+      .attr('class', 'selected-point-label')
+      .text(shortName(selected.label));
+  }
+}
+
+function renderRentalRelationshipChart(id) {
+  renderRelationshipScatter(id, 'rental');
+}
+
+function renderOwnershipRelationshipChart(id) {
+  renderRelationshipScatter(id, 'ownership');
+}
+
+function riskRowsForKey(key) {
+  if (key !== 'county san diego') return state.dataMaps.nhpdRisk?.get(key) || [];
+
+  const byProgram = new Map();
+  state.dataMaps.nhpdRisk?.forEach((rows, rowKey) => {
+    if (rowKey === 'county san diego') return;
+    rows.forEach(row => {
+      const program = row.program || 'Program not reported';
+      if (!byProgram.has(program)) byProgram.set(program, { program, expiringSubsidies: 0, assistedUnits: 0 });
+      const target = byProgram.get(program);
+      target.expiringSubsidies += Number(row.expiringSubsidies || 0);
+      target.assistedUnits += Number(row.assistedUnits || 0);
+    });
+  });
+  return [...byProgram.values()];
+}
+
+function renderPreservationRiskChart(id, key) {
+  const el = $(id);
+  if (!el) return;
+  const rows = riskRowsForKey(key)
+    .filter(d => isNum(d.assistedUnits) || isNum(d.expiringSubsidies))
+    .sort((a, b) => Number(b.assistedUnits || 0) - Number(a.assistedUnits || 0))
+    .slice(0, 7);
+
+  if (!rows.length) {
+    el.innerHTML = '<div class="no-data">No active subsidy expiration records were found within the five-year risk window for this jurisdiction.</div>';
+    return;
+  }
+
+  const w = Math.max(460, el.clientWidth || 560);
+  const h = Math.max(245, rows.length * 42 + 28);
+  const m = { top: 16, right: 64, bottom: 26, left: 150 };
+  const innerW = Math.max(140, w - m.left - m.right);
+  const maxV = d3.max(rows, d => Number(d.assistedUnits || 0)) || 1;
+  const x = d3.scaleLinear().domain([0, maxV]).nice().range([0, innerW]);
+  const y = d3.scaleBand().domain(rows.map(d => d.program)).range([m.top, h - m.bottom]).padding(0.36);
+
+  el.innerHTML = '';
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', '100%').attr('viewBox', `0 0 ${w} ${h}`);
+
+  rows.forEach(d => {
+    const cy = y(d.program) + y.bandwidth() / 2;
+    const value = Number(d.assistedUnits || 0);
+    svg.append('text').attr('x', m.left - 12).attr('y', cy + 4).attr('text-anchor', 'end')
+      .attr('class', 'axis-label').text(shortName(d.program));
+    svg.append('line').attr('x1', m.left).attr('x2', m.left + x(value)).attr('y1', cy).attr('y2', cy)
+      .attr('stroke', '#C8D2D9').attr('stroke-width', 3);
+    const dot = svg.append('circle').attr('cx', m.left + x(value)).attr('cy', cy).attr('r', 7)
+      .attr('fill', '#C69214').attr('stroke', '#FFFFFF').attr('stroke-width', 2).style('cursor', 'pointer');
+    dot.on('mouseenter mousemove', event => showDashboardChartTooltip(event, d.program, [
+      ['Assisted units with expiring subsidy', fmtInt.format(value)],
+      ['Expiring subsidy records', formatMaybe(d.expiringSubsidies)],
+    ])).on('mouseleave', hideDashboardChartTooltip);
+    svg.append('text').attr('x', m.left + x(value) + 13).attr('y', cy + 4).attr('class', 'bar-label')
+      .text(fmtInt.format(value));
+  });
 }
 
 function renderRankChart(id, metricKey) {
@@ -1383,82 +4613,354 @@ function renderRankChart(id, metricKey) {
     .filter(k => k !== 'county san diego')
     .map(k => ({
       key: k,
-      label: state.dataMaps.labels.get(k) || titleCase(k),
-      value: metricValueForKey(k, state.selectedYear, metricKey),
+      label:
+        state.dataMaps.labels.get(k) ||
+        titleCase(k),
+      value: metricValueForKey(
+        k,
+        state.selectedYear,
+        metricKey
+      ),
     }))
     .filter(d => isNum(d.value))
-    .sort((a, b) => b.value - a.value)
-    .slice(0, 10);
+    .sort((a, b) => b.value - a.value);
+
 
   if (!rows.length) {
-    el.innerHTML = '<div class="no-data">No ranking data was found for the selected metric.</div>';
+    el.innerHTML = `
+      <div class="no-data">
+        No ranking data was found for the selected metric.
+      </div>
+    `;
     return;
   }
 
-  const w = el.clientWidth || 300;
-  const h = Math.max(210, rows.length * 28 + 28);
-  const m = { top: 8, right: 42, bottom: 10, left: 106 };
 
-  const x = d3.scaleLinear()
-    .domain([0, d3.max(rows, d => d.value) || 1])
-    .range([0, w - m.left - m.right]);
+  const w =
+    el.clientWidth ||
+    330;
+
+  const h = Math.max(
+    360,
+    el.clientHeight || 560
+  );
+
+
+  const m = {
+    top: 8,
+    right: 48,
+    bottom: 8,
+    left: 118,
+  };
+
+
+  const innerWidth =
+    Math.max(
+      80,
+      w - m.left - m.right
+    );
+
+
+  const usableHeight =
+    Math.max(
+      200,
+      h - m.top - m.bottom
+    );
+
+
+  const rowStep =
+    usableHeight / rows.length;
+
+
+  const barHeight =
+    Math.max(
+      10,
+      Math.min(
+        17,
+        rowStep * 0.56
+      )
+    );
+
+
+  const x = d3
+    .scaleLinear()
+    .domain([
+      0,
+      d3.max(
+        rows,
+        d => d.value
+      ) || 1,
+    ])
+    .range([
+      0,
+      innerWidth,
+    ]);
+
 
   el.innerHTML = `
-    <svg class="chart-svg" width="100%" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Top jurisdictions ranking">
+    <svg
+      class="chart-svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 ${w} ${h}"
+      preserveAspectRatio="xMidYMid meet"
+      role="img"
+      aria-label="Jurisdiction ranking"
+    >
+
       ${rows.map((d, i) => {
-        const y = m.top + i * 28;
-        const isSelected = d.key === state.selectedKey;
-        const barWidth = Math.max(3, x(d.value));
+
+        const rowY =
+          m.top +
+          i * rowStep;
+
+        const barY =
+          rowY +
+          (
+            rowStep -
+            barHeight
+          ) / 2;
+
+        const textY =
+          rowY +
+          rowStep / 2 +
+          3;
+
+        const isSelected =
+          d.key === state.selectedKey;
+
+        const barWidth =
+          Math.max(
+            3,
+            x(d.value)
+          );
+
 
         return `
-          <g class="rank-row ${isSelected ? 'rank-selected' : ''}" data-rank-key="${escapeHtml(d.key)}" tabindex="0" role="button" aria-label="Select ${escapeHtml(d.label)}">
-            <rect x="0" y="${y - 4}" width="${w}" height="26" fill="transparent"></rect>
-            <text class="axis-label" x="${m.left - 9}" y="${y + 15}" text-anchor="end">${escapeSvg(shortName(d.label))}</text>
-            <rect class="rank-bar" x="${m.left}" y="${y}" width="${barWidth}" height="18" rx="3" fill="#00629B" opacity="${isSelected ? 1 : 0.72}"></rect>
-            <text class="bar-label" x="${m.left + barWidth + 7}" y="${y + 14}">${formatMetricValue(d.value, metricKey)}</text>
+          <g
+            class="
+              rank-row
+              ${isSelected
+                ? 'rank-selected'
+                : ''}
+            "
+            data-rank-key="${escapeHtml(d.key)}"
+            tabindex="0"
+            role="button"
+            aria-label="
+              Select ${escapeHtml(d.label)}
+            "
+          >
+
+            <rect
+              x="0"
+              y="${rowY}"
+              width="${w}"
+              height="${rowStep}"
+              fill="transparent"
+            ></rect>
+
+
+            <text
+              class="axis-label"
+              x="${m.left - 9}"
+              y="${textY}"
+              text-anchor="end"
+            >
+              ${escapeSvg(
+                shortName(d.label)
+              )}
+            </text>
+
+
+            <rect
+              class="rank-bar"
+              x="${m.left}"
+              y="${barY}"
+              width="${barWidth}"
+              height="${barHeight}"
+              rx="1"
+              fill="#3E86B3"
+              opacity="${
+                isSelected
+                  ? 1
+                  : 0.82
+              }"
+            ></rect>
+
+
+            <text
+              class="bar-label"
+              x="${
+                m.left +
+                barWidth +
+                6
+              }"
+              y="${textY}"
+            >
+              ${formatMetricValue(
+                d.value,
+                metricKey
+              )}
+            </text>
+
           </g>
         `;
+
       }).join('')}
+
     </svg>
   `;
 
-  el.querySelectorAll('.rank-row').forEach(row => {
-    row.addEventListener('click', () => {
-      const key = row.dataset.rankKey;
-      if (key) selectKey(key, true);
-    });
 
-    row.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        const key = row.dataset.rankKey;
-        if (key) selectKey(key, true);
-      }
+  el
+    .querySelectorAll(
+      '.rank-row'
+    )
+    .forEach(row => {
+
+      row.addEventListener(
+        'click',
+        () => {
+
+          const key =
+            row.dataset.rankKey;
+
+          if (key) {
+            selectRankedJurisdiction(
+              key
+            );
+          }
+
+        }
+      );
+
+
+      row.addEventListener(
+        'keydown',
+        e => {
+
+          if (
+            e.key === 'Enter' ||
+            e.key === ' '
+          ) {
+
+            e.preventDefault();
+
+            const key =
+              row.dataset.rankKey;
+
+            if (key) {
+              selectRankedJurisdiction(
+                key
+              );
+            }
+
+          }
+
+        }
+      );
+
     });
-  });
+}
+
+function selectRankedJurisdiction(key) {
+  /*
+    Use the normal selection path first.
+    This updates every dashboard tab and rebuilds
+    the map with the selected jurisdiction.
+  */
+  selectKey(
+    key,
+    true
+  );
+
+
+  /*
+    selectKey() rebuilds the GeoJSON layer, so wait
+    until the new layer exists before opening its popup.
+  */
+  setTimeout(() => {
+
+    if (
+      !state.boundaryLayer
+    ) {
+      return;
+    }
+
+
+    state.boundaryLayer
+      .eachLayer(layer => {
+
+        if (
+          !layer.feature
+        ) {
+          return;
+        }
+
+
+        const layerKey =
+          layer.feature
+            .properties
+            .__housing_key ||
+          cleanKey(
+            featureName(
+              layer.feature
+            )
+          );
+
+
+        if (
+          layerKey === key
+        ) {
+
+          layer.setPopupContent(
+            popupHtml(key)
+          );
+
+          layer.openPopup();
+
+        }
+
+      });
+
+  }, 220);
 }
 
 function renderIncomeBars(id, stats) {
   const el = $(id);
   const tiers = [
-    ['Very low', stats.rhnaTiers.vliUnits, stats.rhnaTiers.vliTarget],
-    ['Low', stats.rhnaTiers.liUnits, stats.rhnaTiers.liTarget],
-    ['Moderate', stats.rhnaTiers.modUnits, stats.rhnaTiers.modTarget],
-    ['Above mod', stats.rhnaTiers.aboveUnits, stats.rhnaTiers.aboveTarget],
-  ].map(([label, units, target]) => ({ label, units, target, pct: pct(units, target) }));
-  if (!tiers.some(d => isNum(d.units) || isNum(d.target))) {
-    el.innerHTML = '<div class="no-data">No income-tier RHNA fields were found for this area.</div>';
+    ['Very low', stats.rhnaTiers?.very_low],
+    ['Low', stats.rhnaTiers?.low],
+    ['Moderate', stats.rhnaTiers?.moderate],
+    ['Above moderate', stats.rhnaTiers?.above_moderate],
+  ].map(([label, tier]) => ({
+    label,
+    allocation: tier?.allocation,
+    progress: tier?.progress,
+    remaining: tier?.remaining,
+    pct: tier?.pct,
+  }));
+
+  if (!tiers.some(d => isNum(d.allocation) || isNum(d.progress))) {
+    el.innerHTML = '<div class="no-data">No income-tier RHNA fields were found for this jurisdiction.</div>';
     return;
   }
-  const w = el.clientWidth || 300, h = 170, m = { top: 10, right: 40, bottom: 26, left: 82 };
-  const x = d3.scaleLinear().domain([0, Math.max(100, d3.max(tiers, d => d.pct) || 0)]).range([0, w - m.left - m.right]);
+
+  const w = el.clientWidth || 300;
+  const h = 176;
+  const m = { top: 10, right: 54, bottom: 20, left: 98 };
+  const x = d3.scaleLinear().domain([0, 100]).range([0, Math.max(40, w - m.left - m.right)]);
+
   el.innerHTML = `<svg class="chart-svg" width="100%" height="${h}" viewBox="0 0 ${w} ${h}">
     ${tiers.map((d, i) => {
-      const y = m.top + i * 32;
-      return `<text class="axis-label" x="${m.left - 8}" y="${y + 17}" text-anchor="end">${d.label}</text>
-      <rect x="${m.left}" y="${y}" width="${x(100)}" height="20" rx="6" fill="rgba(23,56,74,.10)"></rect>
-      <rect x="${m.left}" y="${y}" width="${isNum(d.pct) ? Math.min(x(d.pct), x(Math.max(100, d.pct))) : 0}" height="20" rx="6" fill="${i < 2 ? '#00629B' : i === 2 ? '#C69214' : '#00C6D7'}"></rect>
-      <text class="bar-label" x="${m.left + x(100) + 7}" y="${y + 15}">${formatMetricValue(d.pct, 'rhna_progress')}</text>`;
+      const y = m.top + i * 36;
+      const share = isNum(d.pct) ? Math.max(0, Number(d.pct)) : pct(d.progress, d.allocation);
+      const barShare = isNum(share) ? Math.min(100, share) : 0;
+      return `<text class="axis-label" x="${m.left - 8}" y="${y + 18}" text-anchor="end">${escapeSvg(d.label)}</text>
+      <rect x="${m.left}" y="${y}" width="${x(100)}" height="20" rx="1" fill="rgba(23,56,74,.10)"></rect>
+      <rect x="${m.left}" y="${y}" width="${x(barShare)}" height="20" rx="1" fill="${i < 2 ? '#00629B' : i === 2 ? '#C69214' : '#00A6B6'}"></rect>
+      <text class="bar-label" x="${m.left + x(100) + 7}" y="${y + 16}">${isNum(share) ? `${fmt1.format(share)}%` : '—'}</text>`;
     }).join('')}
   </svg>`;
 }
@@ -1466,16 +4968,59 @@ function renderIncomeBars(id, stats) {
 function renderContextChart(id) {
   renderRankChart(id, 'permits_per_1k');
 }
-
 function popupHtml(key) {
   const s = statsForKey(key, state.selectedYear);
-  return `<div class="popup-title">${escapeHtml(s.label)}</div>
+
+  return `
+    <div class="popup-title">${escapeHtml(s.label)}</div>
+    <div class="popup-subtitle">APR ${state.selectedYear} · Clicked jurisdiction</div>
+
     <div class="popup-grid">
-      <div class="popup-metric"><div class="label">${escapeHtml(METRICS[state.metric].label)}</div><div class="value">${formatMetricValue(metricValueForKey(key), state.metric)}</div></div>
-      <div class="popup-metric"><div class="label">Permitted</div><div class="value">${formatMaybe(s.permitted)}</div></div>
-      <div class="popup-metric"><div class="label">RHNA</div><div class="value">${formatMetricValue(pct(s.rhnaUnits, s.rhnaTarget), 'rhna_progress')}</div></div>
-      <div class="popup-metric"><div class="label">Population</div><div class="value">${formatMaybe(s.population)}</div></div>
-    </div>`;
+      <div class="popup-metric">
+        <div class="label">${escapeHtml(METRICS[state.metric].label)}</div>
+        <div class="value">${formatMetricValue(metricValueForKey(key), state.metric)}</div>
+      </div>
+
+      <div class="popup-metric">
+        <div class="label">RHNA % complete</div>
+        <div class="value">${formatMetricValue(s.rhnaPct, 'rhna_progress')}</div>
+      </div>
+
+      <div class="popup-metric">
+        <div class="label">Permitted</div>
+        <div class="value">${formatMaybe(s.permitted)}</div>
+      </div>
+
+      <div class="popup-metric">
+        <div class="label">Completed</div>
+        <div class="value">${formatMaybe(s.completed)}</div>
+      </div>
+
+      <div class="popup-metric">
+        <div class="label">RHNA allocation</div>
+        <div class="value">${formatMaybe(s.rhnaAllocation)}</div>
+      </div>
+
+      <div class="popup-metric">
+        <div class="label">Qualifying units</div>
+        <div class="value">${formatMaybe(s.rhnaProgress)}</div>
+      </div>
+
+      <div class="popup-metric">
+        <div class="label">Population</div>
+        <div class="value">${formatMaybe(s.population)}</div>
+      </div>
+
+      <div class="popup-metric">
+        <div class="label">Median income</div>
+        <div class="value">${formatMoneyMaybe(s.medianHouseholdIncome)}</div>
+      </div>
+    </div>
+
+    <div class="popup-footer">
+      Use “Production details” in the side panel for the full jurisdiction breakdown.
+    </div>
+  `;
 }
 
 function compactNumber(n) {
@@ -1493,7 +5038,38 @@ function compactValue(v, metricKey) {
 }
 function formatMaybe(v) { return isNum(v) ? fmtInt.format(v) : 'No data'; }
 function formatMoneyMaybe(v) { return isNum(v) ? fmtMoney.format(v) : 'No data'; }
-function shortName(s) { return String(s).replace(/^City of\s+/i, '').replace(/\s+City$/i, '').slice(0, 20); }
+function shortName(s) {
+  const text = String(s)
+    .replace(
+      /^City of\s+/i,
+      ''
+    )
+    .trim();
+
+
+  if (
+    /^Unincorporated San Diego County$/i
+      .test(text)
+  ) {
+    return 'Unincorp. SD County';
+  }
+
+
+  if (
+    text.length > 21
+  ) {
+    return (
+      text.slice(
+        0,
+        20
+      ) +
+      '…'
+    );
+  }
+
+
+  return text;
+}
 function escapeHtml(s) { return String(s ?? '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c])); }
 function escapeSvg(s) { return escapeHtml(s); }
 function setStatus(msg) { $('mapStatus').textContent = msg; }
