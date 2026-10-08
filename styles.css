@@ -1887,3 +1887,37 @@ body[data-active-panel]:not([data-active-panel="overview"]) .top-strip {
   line-height: 1;
   font-weight: 750;
 }
+
+/* =========================================================
+   COST-BURDEN EXPLANATIONS
+   ========================================================= */
+
+.burden-definition {
+  margin-top: 7px !important;
+  color: #536474 !important;
+  font-size: 0.78rem !important;
+  line-height: 1.35;
+}
+
+.burden-definition strong {
+  color: #182B49;
+  font-weight: 750;
+}
+
+.chart-legend-label {
+  fill: #536474;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.burden-total-label {
+  fill: #182B49;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.burden-row-label {
+  fill: #182B49;
+  font-size: 12px;
+  font-weight: 750;
+}

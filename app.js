@@ -2375,10 +2375,10 @@ function renderRhnaPanel() {
   const s = statsForKey(state.selectedKey, state.selectedYear);
 
   $('rhnaSummary').innerHTML = [
-    kpiHtml('RHNA allocation', formatMaybe(s.rhnaAllocation), '6th Cycle allocation'),
-    kpiHtml('Qualifying units', formatMaybe(s.rhnaProgress), 'Cumulative qualifying permits'),
-    kpiHtml('Remaining need', formatMaybe(s.rhnaRemaining), 'Income-tier remaining need'),
-    kpiHtml('RHNA % complete', formatMetricValue(s.rhnaPct, 'rhna_progress'), `HCD snapshot ${s.rhnaYear || 'current'}`),
+    kpiHtml('RHNA allocation', formatMaybe(s.rhnaAllocation), 'Total homes assigned for the 6th RHNA cycle'),
+    kpiHtml('Qualifying units', formatMaybe(s.rhnaProgress), 'Permitted units that count toward the RHNA goal'),
+    kpiHtml('Remaining need', formatMaybe(s.rhnaRemaining), 'Units still needed to meet the RHNA goal'),
+    kpiHtml('RHNA progress', formatMetricValue(s.rhnaPct, 'rhna_progress'), `Share of the RHNA goal met as of ${s.rhnaYear || 'current'}`),
   ].join('');
 
   const tierEntries = [
@@ -2506,11 +2506,34 @@ function renderOwnershipPanel() {
     miniStat('Jurisdiction / county income', s.incomeRatioPct, 'percent1'),
   ].join('');
 
-  renderBurdenCompositionChart('ownershipBurdenChart', [
-    { label: 'All owners', burden: s.ownerBurdenShare, severe: s.ownerSevereShare },
-    { label: 'With mortgage', burden: s.ownerWithMortgageBurdenShare, severe: s.ownerWithMortgageSevereShare },
-    { label: 'Without mortgage', burden: s.ownerWithoutMortgageBurdenShare, severe: s.ownerWithoutMortgageSevereShare },
-  ]);
+  renderBurdenCompositionChart(
+  'ownershipBurdenChart',
+  [
+    {
+      label: 'All homeowners',
+      burden:
+        s.ownerBurdenShare,
+      severe:
+        s.ownerSevereShare,
+    },
+
+    {
+      label: 'With mortgage',
+      burden:
+        s.ownerWithMortgageBurdenShare,
+      severe:
+        s.ownerWithMortgageSevereShare,
+    },
+
+    {
+      label: 'Without mortgage',
+      burden:
+        s.ownerWithoutMortgageBurdenShare,
+      severe:
+        s.ownerWithoutMortgageSevereShare,
+    },
+  ]
+);
 
   renderOwnershipRelationshipChart('ownershipRelationshipChart');
 }
@@ -4764,63 +4787,344 @@ function burdenSegments(row) {
   };
 }
 
-function renderBurdenCompositionChart(id, rows, options = {}) {
+function renderBurdenCompositionChart(
+  id,
+  rows,
+  options = {}
+) {
   const el = $(id);
+
   if (!el) return;
-  const valid = rows.map(row => ({ ...row, segments: burdenSegments(row) })).filter(d => d.segments);
+
+  const valid = rows
+    .map(row => ({
+      ...row,
+      segments: burdenSegments(row),
+    }))
+    .filter(d => d.segments);
+
   if (!valid.length) {
-    el.innerHTML = '<div class="no-data">No cost-burden percentages were found for this jurisdiction.</div>';
+    el.innerHTML = `
+      <div class="no-data">
+        No cost-burden percentages were found for this jurisdiction.
+      </div>
+    `;
     return;
   }
 
-  const w = Math.max(520, el.clientWidth || 620);
-  const h = options.compact ? 170 : Math.max(220, 86 + valid.length * 62);
-  const m = { top: 54, right: 54, bottom: 34, left: options.compact ? 150 : 122 };
-  const innerW = w - m.left - m.right;
-  const x = d3.scaleLinear().domain([0, 100]).range([0, innerW]);
-  const colors = { severe: '#182B49', moderate: '#C69214', notBurdened: '#DCE5EB' };
-  const labels = { severe: 'Severe burden (>50%)', moderate: 'Burdened 30–50%', notBurdened: 'Not burdened' };
+  /*
+    Give the chart enough horizontal space for the clearer
+    legend labels and the "cost burdened" labels on the right.
+  */
+  const w = Math.max(
+    760,
+    el.clientWidth || 760
+  );
+
+  const h = options.compact
+    ? 180
+    : Math.max(
+        230,
+        92 + valid.length * 62
+      );
+
+  const m = {
+    top: 62,
+    right: 145,
+    bottom: 34,
+    left: options.compact
+      ? 150
+      : 140,
+  };
+
+  const innerW =
+    w - m.left - m.right;
+
+  const x = d3
+    .scaleLinear()
+    .domain([0, 100])
+    .range([0, innerW]);
+
+  const colors = {
+    severe: '#182B49',
+    moderate: '#C69214',
+    notBurdened: '#DCE5EB',
+  };
+
+  /*
+    Use the same language everywhere:
+      - Severe burden = >50%
+      - Cost burden = 30–50%
+      - Not burdened = <=30%
+  */
+  const labels = {
+    severe:
+      'Severe burden (>50% of income)',
+
+    moderate:
+      'Cost burden (30–50% of income)',
+
+    notBurdened:
+      'Not burdened (≤30% of income)',
+  };
 
   el.innerHTML = '';
-  const svg = d3.select(el).append('svg').attr('width', '100%').attr('height', '100%').attr('viewBox', `0 0 ${w} ${h}`);
 
-  const legend = svg.append('g').attr('transform', `translate(${m.left},18)`);
-  [['severe', 'Severe burden'], ['moderate', 'Burdened 30–50%'], ['notBurdened', 'Not burdened']].forEach(([key, label], i) => {
-    const item = legend.append('g').attr('transform', `translate(${i * 150},0)`);
-    item.append('rect').attr('width', 12).attr('height', 12).attr('fill', colors[key]);
-    item.append('text').attr('x', 18).attr('y', 10).attr('class', 'chart-legend-label').text(label);
+  const svg = d3
+    .select(el)
+    .append('svg')
+    .attr('width', '100%')
+    .attr('height', '100%')
+    .attr(
+      'viewBox',
+      `0 0 ${w} ${h}`
+    );
+
+  /*
+    Legend
+  */
+  const legendItems = [
+    {
+      key: 'severe',
+      label:
+        'Severe burden (>50% of income)',
+      x: 0,
+    },
+
+    {
+      key: 'moderate',
+      label:
+        'Cost burden (30–50% of income)',
+      x: 245,
+    },
+
+    {
+      key: 'notBurdened',
+      label:
+        'Not burdened (≤30% of income)',
+      x: 505,
+    },
+  ];
+
+  const legend = svg
+    .append('g')
+    .attr(
+      'transform',
+      'translate(12,18)'
+    );
+
+  legendItems.forEach(item => {
+    const group = legend
+      .append('g')
+      .attr(
+        'transform',
+        `translate(${item.x},0)`
+      );
+
+    group
+      .append('rect')
+      .attr('width', 12)
+      .attr('height', 12)
+      .attr(
+        'fill',
+        colors[item.key]
+      );
+
+    group
+      .append('text')
+      .attr('x', 18)
+      .attr('y', 10)
+      .attr(
+        'class',
+        'chart-legend-label'
+      )
+      .text(item.label);
   });
 
-  const rowStep = (h - m.top - m.bottom) / valid.length;
-  valid.forEach((row, i) => {
-    const y = m.top + i * rowStep + rowStep * 0.16;
-    const barH = Math.min(30, rowStep * 0.45);
-    svg.append('text').attr('x', m.left - 12).attr('y', y + barH / 2 + 4)
-      .attr('text-anchor', 'end').attr('class', 'burden-row-label').text(row.label);
+  /*
+    Bars
+  */
+  const rowStep =
+    (
+      h -
+      m.top -
+      m.bottom
+    ) /
+    valid.length;
 
-    let cursor = m.left;
-    ['severe', 'moderate', 'notBurdened'].forEach(key => {
-      const value = row.segments[key];
-      const width = x(value);
-      const rect = svg.append('rect').attr('x', cursor).attr('y', y).attr('width', width)
-        .attr('height', barH).attr('fill', colors[key]).style('cursor', 'pointer');
-      rect.on('mouseenter mousemove', event => {
-        showDashboardChartTooltip(event, row.label, [
-          [labels[key], `${fmt1.format(value)}%`],
-          ['Total cost burden', `${fmt1.format(Number(row.burden))}%`],
-        ]);
-      }).on('mouseleave', hideDashboardChartTooltip);
-      cursor += width;
+  valid.forEach(
+    (row, i) => {
+      const y =
+        m.top +
+        i * rowStep +
+        rowStep * 0.16;
+
+      const barH =
+        Math.min(
+          30,
+          rowStep * 0.45
+        );
+
+      /*
+        Row name:
+        Renters, Homeowners,
+        All homeowners, etc.
+      */
+      svg
+        .append('text')
+        .attr(
+          'x',
+          m.left - 12
+        )
+        .attr(
+          'y',
+          y +
+            barH / 2 +
+            4
+        )
+        .attr(
+          'text-anchor',
+          'end'
+        )
+        .attr(
+          'class',
+          'burden-row-label'
+        )
+        .text(row.label);
+
+      let cursor = m.left;
+
+      /*
+        Draw the three portions of the 100% bar.
+      */
+      [
+        'severe',
+        'moderate',
+        'notBurdened',
+      ].forEach(key => {
+        const value =
+          row.segments[key];
+
+        const width =
+          x(value);
+
+        const rect = svg
+          .append('rect')
+          .attr(
+            'x',
+            cursor
+          )
+          .attr(
+            'y',
+            y
+          )
+          .attr(
+            'width',
+            width
+          )
+          .attr(
+            'height',
+            barH
+          )
+          .attr(
+            'fill',
+            colors[key]
+          )
+          .style(
+            'cursor',
+            'pointer'
+          );
+
+        rect
+          .on(
+            'mouseenter mousemove',
+            event => {
+              showDashboardChartTooltip(
+                event,
+                row.label,
+                [
+                  [
+                    labels[key],
+                    `${fmt1.format(
+                      value
+                    )}%`,
+                  ],
+
+                  [
+                    'Total cost burdened',
+                    `${fmt1.format(
+                      Number(
+                        row.burden
+                      )
+                    )}%`,
+                  ],
+                ]
+              );
+            }
+          )
+          .on(
+            'mouseleave',
+            hideDashboardChartTooltip
+          );
+
+        cursor += width;
+      });
+
+      /*
+        Make it obvious what the percentage
+        at the end of the bar represents.
+      */
+      svg
+        .append('text')
+        .attr(
+          'x',
+          m.left +
+            innerW +
+            12
+        )
+        .attr(
+          'y',
+          y +
+            barH / 2 +
+            4
+        )
+        .attr(
+          'class',
+          'burden-total-label'
+        )
+        .text(
+          `${fmt1.format(
+            Number(row.burden)
+          )}% cost burdened`
+        );
+    }
+  );
+
+  /*
+    0–100% scale
+  */
+  [0, 25, 50, 75, 100]
+    .forEach(t => {
+      svg
+        .append('text')
+        .attr(
+          'x',
+          m.left + x(t)
+        )
+        .attr(
+          'y',
+          h - 8
+        )
+        .attr(
+          'text-anchor',
+          'middle'
+        )
+        .attr(
+          'class',
+          'chart-axis-label'
+        )
+        .text(`${t}%`);
     });
-
-    svg.append('text').attr('x', m.left + innerW + 10).attr('y', y + barH / 2 + 4)
-      .attr('class', 'burden-total-label').text(`${fmt1.format(Number(row.burden))}%`);
-  });
-
-  [0, 25, 50, 75, 100].forEach(t => {
-    svg.append('text').attr('x', m.left + x(t)).attr('y', h - 8).attr('text-anchor', 'middle')
-      .attr('class', 'chart-axis-label').text(`${t}%`);
-  });
 }
 
 function renderAssistedRiskDonut(id, stats) {
