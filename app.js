@@ -186,7 +186,8 @@ const state = {
   countyGeojson: null,
   boundaryLayer: null,
   countyLayer: null,
-  permitPointLayer: null,
+unincorporatedLayer: null,
+permitPointLayer: null,
   dataMaps: {},
   allKeys: new Set(),
   selectedKey: null,
@@ -1688,99 +1689,243 @@ function selectKey(key, zoom = false) {
 
     if (zoom) {
       zoomToKey(key);
+
+      setTimeout(() => {
+        openPopupForKey(key);
+      }, 180);
     }
   }, 90);
 }
 
+function boundaryLayerForKey(key) {
+  let target = null;
+
+  if (state.boundaryLayer) {
+    state.boundaryLayer.eachLayer(layer => {
+      if (!layer.feature) return;
+
+      const layerKey =
+        layer.feature.properties?.__housing_key ||
+        cleanKey(featureName(layer.feature));
+
+      if (layerKey === key) {
+        target = layer;
+      }
+    });
+  }
+
+  return target;
+}
+
+
+function openPopupForKey(key) {
+  /*
+    First try the normal municipal/jurisdiction geometry.
+  */
+  const target = boundaryLayerForKey(key);
+
+  if (target) {
+    target.setPopupContent(
+      popupHtml(key)
+    );
+
+    target.openPopup();
+    return;
+  }
+
+  /*
+    Fallback for Unincorporated San Diego County.
+  */
+  if (
+    key === 'unincorporated' &&
+    state.unincorporatedLayer
+  ) {
+    let opened = false;
+
+    state.unincorporatedLayer.eachLayer(layer => {
+      if (opened) return;
+
+      layer.setPopupContent(
+        popupHtml('unincorporated')
+      );
+
+      layer.openPopup();
+      opened = true;
+    });
+  }
+}
+
 function renderMap() {
-  if (state.boundaryLayer) state.boundaryLayer.remove();
-  if (state.countyLayer) state.countyLayer.remove();
+  if (state.boundaryLayer) {
+    state.boundaryLayer.remove();
+    state.boundaryLayer = null;
+  }
+
+  if (state.countyLayer) {
+    state.countyLayer.remove();
+    state.countyLayer = null;
+  }
+
+  if (state.unincorporatedLayer) {
+    state.unincorporatedLayer.remove();
+    state.unincorporatedLayer = null;
+  }
 
   computeBins();
 
+  // County outline for geographic context.
   if (state.countyGeojson?.features) {
     state.countyLayer = L.geoJSON(state.countyGeojson, {
-      style: { color: '#36566A', weight: 1.4, fillOpacity: 0, dashArray: '4 4' },
+      style: {
+        color: '#36566A',
+        weight: 1.4,
+        fillOpacity: 0,
+        dashArray: '4 4',
+      },
       interactive: false,
     }).addTo(map);
   }
 
+  /*
+    If Turf successfully created a real unincorporated feature,
+    it will already be inside state.geojson and will be handled by
+    the normal jurisdiction layer below.
+  */
+  const hasRealUnincorporatedGeometry =
+    state.geojson?.features?.some(feature => {
+      const key =
+        feature?.properties?.__housing_key ||
+        cleanKey(featureName(feature));
+
+      return key === 'unincorporated';
+    });
+
+  /*
+    Fallback: if there is no dedicated unincorporated geometry,
+    use the County polygon underneath the city polygons so ranking
+    and search still have a layer to zoom to and a popup to open.
+  */
+  if (
+    !hasRealUnincorporatedGeometry &&
+    state.countyGeojson?.features
+  ) {
+    state.unincorporatedLayer = L.geoJSON(state.countyGeojson, {
+      style: {
+        color:
+          state.selectedKey === 'unincorporated'
+            ? '#FFCD00'
+            : 'transparent',
+        weight:
+          state.selectedKey === 'unincorporated'
+            ? 3
+            : 0,
+        fillColor:
+          state.showChoro && isNum(state.valuesByKey.get('unincorporated'))
+            ? colorForValue(state.valuesByKey.get('unincorporated'))
+            : '#EEF2F5',
+        fillOpacity:
+          state.selectedKey === 'unincorporated'
+            ? 0.28
+            : 0.06,
+      },
+      onEachFeature: (feature, layer) => {
+        layer.bindPopup(
+          () => popupHtml('unincorporated'),
+          {
+            maxWidth: 340,
+            className: 'jurisdiction-popup',
+            autoPan: true,
+            closeButton: true,
+          }
+        );
+
+        layer.on('click', () => {
+          state.selectedKey = 'unincorporated';
+
+          if ($('searchInput')) {
+            $('searchInput').value =
+              'Unincorporated San Diego County';
+          }
+
+          renderAll();
+          renderMap();
+
+          setTimeout(() => {
+            zoomToKey('unincorporated');
+            openPopupForKey('unincorporated');
+          }, 120);
+        });
+      },
+    }).addTo(map);
+  }
+
+  // Normal interactive jurisdiction polygons: 18 cities plus the
+  // generated unincorporated feature when Turf successfully creates it.
   if (state.geojson?.features) {
     state.boundaryLayer = L.geoJSON(state.geojson, {
       style: featureStyle,
       onEachFeature: (feature, layer) => {
-  const key =
-    feature.properties.__housing_key ||
-    cleanKey(featureName(feature));
+        const key =
+          feature.properties?.__housing_key ||
+          cleanKey(featureName(feature));
 
-  layer.bindPopup(
-    () => popupHtml(key),
-    {
-      maxWidth: 340,
-      className: 'jurisdiction-popup',
-      autoPan: true,
-      closeButton: true,
-    }
-  );
-
-  layer.on({
-    mouseover: e => {
-      highlightFeature(e.target);
-    },
-
-    mouseout: e => {
-      resetHighlight(e.target);
-    },
-
-    click: e => {
-      /*
-        Update the selected jurisdiction without calling
-        renderMap(), because rebuilding the map here would
-        destroy the layer whose popup we are opening.
-      */
-      state.selectedKey = key;
-
-      if ($('searchInput')) {
-        $('searchInput').value =
-          state.dataMaps.labels?.get(key) ||
-          titleCase(key);
-      }
-
-      /*
-        Update all dashboard numbers and panels.
-        renderAll() does not recreate the GeoJSON layer.
-      */
-      renderAll();
-
-      /*
-        Refresh polygon styling so the clicked jurisdiction
-        gets the selected outline.
-      */
-      if (state.boundaryLayer) {
-        state.boundaryLayer.eachLayer(boundary => {
-          if (boundary.feature) {
-            boundary.setStyle(
-              featureStyle(boundary.feature)
-            );
+        layer.bindPopup(
+          () => popupHtml(key),
+          {
+            maxWidth: 340,
+            className: 'jurisdiction-popup',
+            autoPan: true,
+            closeButton: true,
           }
+        );
+
+        layer.on({
+          mouseover: e => {
+            highlightFeature(e.target);
+          },
+
+          mouseout: e => {
+            resetHighlight(e.target);
+          },
+
+          click: e => {
+            state.selectedKey = key;
+
+            if ($('searchInput')) {
+              $('searchInput').value =
+                state.dataMaps.labels?.get(key) ||
+                titleCase(key);
+            }
+
+            // Update dashboard values without destroying the clicked layer.
+            renderAll();
+
+            if (state.boundaryLayer) {
+              state.boundaryLayer.eachLayer(boundary => {
+                if (boundary.feature) {
+                  boundary.setStyle(
+                    featureStyle(boundary.feature)
+                  );
+                }
+              });
+            }
+
+            e.target.setPopupContent(
+              popupHtml(key)
+            );
+
+            e.target.openPopup();
+          },
         });
-      }
-
-      /*
-        Rebuild the popup after the selected state changes,
-        then open it on the layer that was actually clicked.
-      */
-      e.target.setPopupContent(
-        popupHtml(key)
-      );
-
-      e.target.openPopup();
-    },
-  });
-},
+      },
     }).addTo(map);
 
     if (!state.hasFit) fitToData();
+  }
+
+  // Keep city polygons above the fallback County fill.
+  if (state.boundaryLayer) {
+    state.boundaryLayer.bringToFront();
   }
 
   renderZoningLayers();
@@ -1807,15 +1952,47 @@ function fitToData() {
 }
 
 function zoomToKey(key) {
-  if (!state.boundaryLayer) return;
-  let target = null;
-  state.boundaryLayer.eachLayer(layer => {
-    const k = layer.feature?.properties?.__housing_key || cleanKey(featureName(layer.feature));
-    if (k === key) target = layer;
-  });
+  /*
+    Normal city / jurisdiction geometry.
+  */
+  const target =
+    boundaryLayerForKey(key);
+
   if (target) {
     map.invalidateSize();
-    map.fitBounds(target.getBounds(), { padding: [30, 30], maxZoom: 12 });
+
+    map.fitBounds(
+      target.getBounds(),
+      {
+        padding: [30, 30],
+        maxZoom: 12,
+      }
+    );
+
+    return;
+  }
+
+  /*
+    Unincorporated County is geographically spread
+    throughout the County, so zoom to the County extent
+    if there is no dedicated unincorporated polygon.
+  */
+  if (key === 'unincorporated') {
+    const fallback =
+      state.unincorporatedLayer ||
+      state.countyLayer;
+
+    if (fallback) {
+      map.invalidateSize();
+
+      map.fitBounds(
+        fallback.getBounds(),
+        {
+          padding: [25, 25],
+          maxZoom: 9,
+        }
+      );
+    }
   }
 }
 
@@ -5098,66 +5275,7 @@ function renderRankChart(id, metricKey) {
 }
 
 function selectRankedJurisdiction(key) {
-  /*
-    Use the normal selection path first.
-    This updates every dashboard tab and rebuilds
-    the map with the selected jurisdiction.
-  */
-  selectKey(
-    key,
-    true
-  );
-
-
-  /*
-    selectKey() rebuilds the GeoJSON layer, so wait
-    until the new layer exists before opening its popup.
-  */
-  setTimeout(() => {
-
-    if (
-      !state.boundaryLayer
-    ) {
-      return;
-    }
-
-
-    state.boundaryLayer
-      .eachLayer(layer => {
-
-        if (
-          !layer.feature
-        ) {
-          return;
-        }
-
-
-        const layerKey =
-          layer.feature
-            .properties
-            .__housing_key ||
-          cleanKey(
-            featureName(
-              layer.feature
-            )
-          );
-
-
-        if (
-          layerKey === key
-        ) {
-
-          layer.setPopupContent(
-            popupHtml(key)
-          );
-
-          layer.openPopup();
-
-        }
-
-      });
-
-  }, 220);
+  selectKey(key, true);
 }
 
 function renderIncomeBars(id, stats) {
