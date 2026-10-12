@@ -90,7 +90,7 @@ const METRICS = {
     unit: 'units',
     decimals: 0,
     description: 'Completed / certificate-of-occupancy units reported in HCD APR Table A2.',
-    caveat: 'Recent-year completion data may be revised as jurisdictions update APR filings.',
+    caveat: 'Some jurisdiction-years have no completion records in HCD APR Table A2. These are shown as No data rather than zero. Recent-year values may also be revised.',
     getter: stats => stats.completed,
   },
   entitlement_units: {
@@ -3420,16 +3420,14 @@ function renderProductionTypeChart(
           d.housingType,
 
         permitted:
-          Number(
-            d.permitted ||
-            0
-          ),
+  isNum(d.permitted)
+    ? Number(d.permitted)
+    : null,
 
-        completed:
-          Number(
-            d.completed ||
-            0
-          ),
+completed:
+  isNum(d.completed)
+    ? Number(d.completed)
+    : null,
       }))
       .sort(
         (a, b) =>
@@ -3521,14 +3519,19 @@ function renderProductionTypeChart(
 
 
   const maxValue =
-    d3.max(
-      rows,
-      d =>
-        Math.max(
-          d.permitted,
-          d.completed
-        )
-    ) || 1;
+  d3.max(
+    rows,
+    d =>
+      Math.max(
+        isNum(d.permitted)
+          ? Number(d.permitted)
+          : 0,
+
+        isNum(d.completed)
+          ? Number(d.completed)
+          : 0
+      )
+  ) || 1;
 
 
   const x =
@@ -3707,7 +3710,11 @@ function renderProductionTypeChart(
         .selectAll(
           `.type-${stage.key}`
         )
-        .data(rows)
+        .data(
+  rows.filter(
+    d => isNum(d[stage.key])
+  )
+)
         .enter()
         .append('rect')
         .attr(
