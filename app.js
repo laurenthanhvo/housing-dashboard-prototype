@@ -1703,12 +1703,36 @@ function populateSearch() {
 function runSearch() {
   const q = cleanKey($('searchInput').value);
   if (!q) return;
-  const exact = [...state.allKeys].find(k => k === q || k.includes(q) || q.includes(k));
-  if (!exact) {
-    setStatus('No matching jurisdiction found. Try a city name such as San Diego or Chula Vista.');
-    return;
-  }
-  selectKey(exact, true);
+  const keys = [...state.allKeys];
+
+// Always prefer a true exact match first.
+const exact =
+  keys.find(k => k === q);
+
+// Only use fuzzy matching if there is no exact match.
+const fuzzy =
+  exact
+    ? null
+    : keys.find(
+        k =>
+          k.includes(q) ||
+          q.includes(k)
+      );
+
+const match =
+  exact || fuzzy;
+
+if (!match) {
+  setStatus(
+    'No matching jurisdiction found. Try a city name such as San Diego or Chula Vista.'
+  );
+  return;
+}
+
+selectKey(
+  match,
+  true
+);
 }
 
 function selectKey(key, zoom = false) {
