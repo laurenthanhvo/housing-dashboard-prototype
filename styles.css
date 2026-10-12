@@ -1921,3 +1921,23 @@ body[data-active-panel]:not([data-active-panel="overview"]) .top-strip {
   font-size: 12px;
   font-weight: 750;
 }
+
+/* Regional completion reporting caveat */
+.regional-completion-caveat {
+  margin-top: 6px;
+  padding: 8px 12px;
+
+  border-left: 3px solid var(--ucsd-gold);
+
+  background: rgba(255, 205, 0, 0.08);
+
+  color: var(--muted);
+
+  font-size: 0.76rem;
+  line-height: 1.35;
+}
+
+.regional-completion-caveat strong {
+  color: var(--ucsd-navy);
+  font-weight: 760;
+}

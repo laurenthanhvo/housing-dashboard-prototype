@@ -90,7 +90,7 @@ const METRICS = {
     unit: 'units',
     decimals: 0,
     description: 'Completed / certificate-of-occupancy units reported in HCD APR Table A2.',
-    caveat: 'Some jurisdiction-years have no completion records in HCD APR Table A2. These are shown as No data rather than zero. Recent-year values may also be revised.',
+    caveat: 'Some jurisdiction-years have no completion records in HCD APR Table A2. At the regional level, a total is shown only when completion reporting is complete across all jurisdictions; incomplete years are labeled Partial data rather than zero. Recent-year values may also be revised.',
     getter: stats => stats.completed,
   },
   entitlement_units: {
@@ -578,11 +578,31 @@ function buildWs1Maps(rows) {
 
     if (['Application', 'Entitlement', 'Building Permit', 'Completion'].includes(stage) && income === 'all' && isNum(year)) {
       const target = ensureSupply(key, label, Number(year));
-      if (stage === 'Application') target.proposed = value;
-      if (stage === 'Entitlement') target.approved = value;
-      if (stage === 'Building Permit') target.permitted = value;
-      if (stage === 'Completion') target.completed = value;
-      target.reportingStatus = firstValue(row, ['reporting_status']);
+      if (stage === 'Application') {
+  target.proposed = value;
+}
+
+if (stage === 'Entitlement') {
+  target.approved = value;
+}
+
+if (stage === 'Building Permit') {
+  target.permitted = value;
+}
+
+if (stage === 'Completion') {
+  target.completed = value;
+
+  target.completionReportingStatus =
+    String(
+      firstValue(
+        row,
+        ['reporting_status']
+      ) || ''
+    )
+      .trim()
+      .toLowerCase();
+}
     }
 
     if (stage.startsWith('RHNA')) {
@@ -701,6 +721,12 @@ function blankSupplyYear(key, label, year) {
     proposed: null,
     affordable: null,
     aboveModerate: null,
+
+    // Keep completion reporting status separate because
+    // a jurisdiction/year may report other APR stages
+    // while completion data are missing or partial.
+    completionReportingStatus: null,
+
     points: [],
   };
 }
@@ -2391,38 +2417,126 @@ function renderSelectionContext() {
 }
 
 function renderSnapshot() {
-  const county = statsForKey('county san diego', state.selectedYear);
+  const county =
+    statsForKey(
+      'county san diego',
+      state.selectedYear
+    );
+
+  const regionalSupply =
+    rowForYear(
+      state.dataMaps.supply?.get(
+        'county san diego'
+      ),
+      state.selectedYear
+    );
+
+  const completionStatus =
+    String(
+      regionalSupply
+        ?.completionReportingStatus ||
+      ''
+    )
+      .trim()
+      .toLowerCase();
+
+  const completionIsPartial =
+    completionStatus === 'partial';
+
+  const completedDisplay =
+    isNum(county.completed)
+      ? formatMetricValue(
+          county.completed,
+          'completed_units'
+        )
+      : completionIsPartial
+        ? 'Partial data'
+        : 'No data';
+
+  const completedNote =
+    completionIsPartial
+      ? `APR ${state.selectedYear} · incomplete regional reporting`
+      : `APR ${state.selectedYear}`;
 
   const cards = [
     {
       label: 'RHNA progress',
-      note: '6th Cycle · qualifying permits',
-      value: formatMetricValue(county.rhnaPct, 'rhna_progress'),
+      note:
+        '6th Cycle · qualifying permits',
+      value: formatMetricValue(
+        county.rhnaPct,
+        'rhna_progress'
+      ),
     },
     {
       label: 'Permitted units',
       note: `APR ${state.selectedYear}`,
-      value: formatMetricValue(county.permitted, 'permitted_units'),
+      value: formatMetricValue(
+        county.permitted,
+        'permitted_units'
+      ),
     },
     {
       label: 'Completed units',
-      note: `APR ${state.selectedYear}`,
-      value: formatMetricValue(county.completed, 'completed_units'),
+      note: completedNote,
+      value: completedDisplay,
     },
     {
       label: 'Total housing stock',
-      note: `DOF estimate through ${state.selectedYear}`,
-      value: formatMaybe(county.housingUnits),
+      note:
+        `DOF estimate through ${state.selectedYear}`,
+      value: formatMaybe(
+        county.housingUnits
+      ),
     },
   ];
 
-  $('snapshotKpis').innerHTML = cards.map(card => `
-    <div class="snapshot-kpi">
-      <div class="label">${escapeHtml(card.label)}</div>
-      <div class="kpi-note">${escapeHtml(card.note)}</div>
-      <div class="value">${escapeHtml(String(card.value))}</div>
-    </div>
-  `).join('');
+  $('snapshotKpis').innerHTML =
+    cards
+      .map(
+        card => `
+          <div class="snapshot-kpi">
+            <div class="label">
+              ${escapeHtml(card.label)}
+            </div>
+
+            <div class="kpi-note">
+              ${escapeHtml(card.note)}
+            </div>
+
+            <div class="value">
+              ${escapeHtml(
+                String(card.value)
+              )}
+            </div>
+          </div>
+        `
+      )
+      .join('');
+
+  /*
+    Explain why a regional completion total
+    is not displayed for partial years.
+  */
+  const caveat =
+    $('regionalCompletionCaveat');
+
+  if (caveat) {
+    if (completionIsPartial) {
+      caveat.hidden = false;
+
+      caveat.innerHTML = `
+        <strong>Completion data note:</strong>
+        APR ${state.selectedYear} completion reporting is incomplete
+        for one or more jurisdictions. A full San Diego regional total
+        is therefore not shown. “Partial data” does not mean zero
+        completed units.
+      `;
+    } else {
+      caveat.hidden = true;
+      caveat.innerHTML = '';
+    }
+  }
 }
 
 function renderDrawerKpis() {
