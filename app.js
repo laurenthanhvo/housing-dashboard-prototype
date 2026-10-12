@@ -323,17 +323,58 @@ function maxNonNull(...vals) {
 async function loadFirst(kind, candidates, parser = 'csv') {
   for (const path of candidates) {
     try {
-      const res = await fetch(path, { cache: 'no-cache' });
-      if (!res.ok) throw new Error(`${res.status}`);
-      const data = parser === 'json' ? await res.json() : await d3.csv(path, d3.autoType);
-      state.loadedFiles.push({ kind, path, rows: Array.isArray(data) ? data.length : data?.features?.length ?? 1 });
+      // Cache-busting query so GitHub Pages / browser
+      // always loads the newest processed file.
+      const separator = path.includes('?') ? '&' : '?';
+      const url = `${path}${separator}v=${Date.now()}`;
+
+      const res = await fetch(url, {
+        cache: 'no-store',
+      });
+
+      if (!res.ok) {
+        throw new Error(`${res.status}`);
+      }
+
+      let data;
+
+      if (parser === 'json') {
+        data = await res.json();
+      } else {
+        const text = await res.text();
+
+        data = d3.csvParse(
+          text,
+          d3.autoType
+        );
+      }
+
+      state.loadedFiles.push({
+        kind,
+        path,
+        rows: Array.isArray(data)
+          ? data.length
+          : data?.features?.length ?? 1,
+      });
+
       return data;
+
     } catch (err) {
-      // Try the next candidate. Record only the final failure below.
+      console.warn(
+        `Could not load ${kind} from ${path}:`,
+        err
+      );
     }
   }
-  state.missingFiles.push({ kind, paths: candidates });
-  return parser === 'json' ? null : [];
+
+  state.missingFiles.push({
+    kind,
+    paths: candidates,
+  });
+
+  return parser === 'json'
+    ? null
+    : [];
 }
 
 function detectCity(row) {
